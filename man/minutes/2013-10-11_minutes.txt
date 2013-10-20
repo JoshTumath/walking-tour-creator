@@ -1,0 +1,82 @@
+Project:                   Group Project 14
+Meeting:                   Weekly Project Meeting
+Persons present:           All project members
+Place and date of meeting: C57a, Friday 11th October 2013
+Circulation list:          All project members, plus project manager
+Author:                    Chris Loftus (cwl)
+Date of minutes:           11th October 2013
+Version:                   1.0
+
+Matters arising
+===============
+
+None. (first meeting of group)
+
+New business
+============
+
+1. Members of group:
+
+James Berry       jab73
+Rob Bolton        rab26
+Lars Hudson Lunde lah25
+Jake Maguire      jam64
+James Mellor      jam66
+Michael Oddie     meo9
+Theo Taylor       tht5
+Josh Tumath       jmt14
+Daniel Wakefield  daw46
+
+The group introduced themselves discussing strengths and weaknesses.
+
+2. Photos of group
+Photos were taken of group. All members needs to send their photos to cwl who
+will combine and send out.
+ACTION: Everyone, cwl
+
+3. Initial tasks for everyone
+All group members need to set up a Wordpress blog by end of Thursday 17th
+October that also includes a blog entry saying what they have done for the week.
+Send the URL to cwl by end of Thursday 17th October.
+ACTION: Everyone
+
+All group members need to read the project requirements document, SE.QA.01, and
+the pages on Blackboard giving an overview of the project.
+ACTION: Everyone
+
+Consider group roles for next meeting. After the meeting, thinking about this
+further, we won't rush the assignment of roles. However, please discuss and we
+will review at the next meeting.
+ACTION: Everyone
+
+4. Individual tasks
+Josh: Create Facebook group for discussion and invite everyone + cwl.
+ACTION: jmt14
+
+Lars: Read documents SE.QA.02, SE.QA.03, and SE.QA.06, and come prepared to tell
+us what is in SE.QA.02 and SE.QA.03.
+ACTION: lah25
+
+James Jnr: Look at the Google Maps API and see how to plot map points on a map.
+Show us next week.
+ACTION: jam66
+
+Theo and Rob: Attend Android workshop next Wednesday afternoon and come prepared
+to tell us what you learned.
+ACTION: tht5, rab26
+
+Oddie: Draw what screens might look like for the Web based part of the system.
+ACTION: meo9
+
+Jake: Draw what screens might look like for the Android based part of the system
+ACTION: jam64
+
+James Snr: Look at the schema for the database that is suggested, and see how
+you can have a web site that gets the data for a point from a database and shows
+that data on the screen (as text, not as a map point).
+ACTION: jab73
+
+AOB
+===
+
+None. 
