@@ -1,45 +1,50 @@
 Project:                    Group Project 14
 Meeting:                    Weekly Project Meeting
-Persons present:            All project members except Theo Taylor, Michael Oddie, James Berry, 
-                                                          Lars Lunde, Chris Loftus
+Persons present:            All project members except Theo Taylor (tht5),
+                            Michael Oddie (meo9), James Berry (jab73),
+                            Lars Lunde (lah25), Chris Loftus (cwl)
 Place and date of meeting:  C57a, Friday 25th October 2013
 Circulation list:           All project members, plus project manager
 Author:                     Jake Maguire (jam64)
 Date of minutes:            25th October 2013
-Version:                    1.0
+Version:                    1.1
 
 Matters arising
 ===============
 
-1. Josh Tumath asked everyone in the room whether or not they have sent their blogs to Chris Loftus 
-(cwl). Everyone in the room had.
+1. Josh Tumath asked everyone in the room whether or not they have sent their
+blogs to Chris Loftus (cwl). Everyone in the room had.
 
-2. Josh Tumath also asked everyone if they had created a GitHub account and been added to the 
-project. Everyone in the room had. James Berry doesn't seem to have been added and/or created an 
-account.
-ACTION: James Berry create an account and/or join the project group.
+2. Josh Tumath also asked everyone if they had created a GitHub account and been
+added to the repository. Everyone in the room had. James Berry doesn't seem to
+have been added and/or created an account. He will need to do so by the next
+meeting.
+ACTION: jab73
 
-3. Rob Bolton gave a presentation on the andoid workshop and strongly recommened looking at the 
-worksheet given on the introduction to android programming.
-ACTION: Everyone, look at worksheet and attempt to complete them.
+3. Rob Bolton gave a presentation on the Android workshop and strongly recommend
+looking at the worksheet given on the introduction to android programming.
+ACTION: Everyone
 
 New business
 ============
 
 1. Look at Test Plan in next Fridays meeting.
 
-2. Decided on Dan Wakefield and Josh Tumath to attend the GitHub workshop on Wednesday the 30th.
-ACTION: Dan and Josh.
+2. Decided on Dan Wakefield and Josh Tumath to attend the GitHub workshop on
+Wednesday 30th October from 2pm to 5pm.
+ACTION: daw46, jmt14
 
-3. Disscussed the possibility of moving informal meeting to next Tuesday 29th at 2pm/3pm due to a 
-clash with the GitHub workshop. Still not decided.
-ACTION: Need to decide on definite time.
+3. Discussed the possibility of moving next week's informal meeting to next
+Tuesday 29th at 2pm/3pm due to a clash with the GitHub workshop. Still not
+decided.
+ACTION: Everyone
 
-4. Looked at design plan and started to delgate individual sections of the plan to people. Decided 
-on Michael Oddie to look at the use case diagrams. Jake Maguire to look at the GUI. Theo Taylor to 
-look at the Gnatt chart. Will assign remaining tasks to people in the next informal meeting 
-(risk analysis). Rough versions for Friday.
-ACTION: Jake Maguire, Theo Taylor, Michael Oddie.
+4. Looked at project plan and started to delegate individual sections of the
+plan to people. Decided on Michael Oddie to look at the use case diagrams. Jake
+Maguire to look at the GUI. Theo Taylor to look at the Gnatt chart. Will assign
+remaining tasks to people in the next informal meeting (e.g. risk analysis).
+Rough versions need to be ready for Friday.
+ACTION: Everyone
 
 AOB
 ===
