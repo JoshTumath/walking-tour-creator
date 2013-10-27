@@ -43,7 +43,7 @@ ACTION: Everyone
 plan to people. Decided on Michael Oddie to look at the use case diagrams. Jake
 Maguire to look at the GUI. Theo Taylor to look at the Gnatt chart. Will assign
 remaining tasks to people in the next informal meeting (e.g. risk analysis).
-Rough versions need to be ready for Friday.
+Rough versions need to be ready for Friday. Drafts must be created in the wiki.
 ACTION: Everyone
 
 AOB
