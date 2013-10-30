@@ -6,7 +6,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		System.out.println("Hu\nHa\nWhat is it good for \nabsolutely nothing");
 
 	}
 
