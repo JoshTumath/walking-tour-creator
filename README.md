@@ -4,7 +4,8 @@ Setup
 =====
 
 1. Open Eclipse
-2. Right Click Project View
-3. Import
-4. Existing Projects Into Workspace
-5. {Your Git Location}/group-project/SRC/Drafts
+2. New -> java Project
+3. Name it anything
+4. Uncheck Use Default location
+5. Set to {Your Git Repo}/SRC/Drafts
+
