@@ -1,0 +1,55 @@
+Project:                   Group Project 14
+Meeting:                   Mid-Week Project Planning Meeting
+Persons present:           All project members
+Place and date of meeting: PJM Lounge, Tuesday 22nd October 2013
+Circulation list:          All project members, plus project manager
+Author:                    Lars Lunde (lah25)
+Date of minutes:           Thursday 24th October 2013
+Version:                   1.1
+
+Matters arising
+===============
+
+1. All present except Michael Oddie have a blog up.
+ACTION: meo9
+
+2. Rob Bolton and Theo Taylor. They will present the slides from the Android
+workshop next meeting. 
+ACTION: tht5, rab26
+
+3. James Berry was asked to present the Web site design next Friday.
+ACTION: jab73
+
+4. Jake Maguire was assigned to be Deputy QA Manager.
+
+5. Michael Oddie and Theo Taylor need to look at test procedures and planning.
+ACTION: meo9, tht5
+
+6. Michael Oddie needs to convert the ODP document containing a mockup of the UI to a
+more universal format like PDF.
+ACTION: meo9
+
+7. Lars Lunde needs to look up the QA document for the Project Plan and present
+it to the group in the next meeting.
+ACTION: lah25
+
+
+New business
+============
+
+1. Josh Tumath asked everyone for their mobile phone numbers.
+
+2. Josh Tumath has set up at GitHub repository for the project. Everyone is
+required to create an account on GitHub and tell Josh their username so that
+they can be added as a contributor.
+ACTION: Everyone
+
+3. It was decided that the mid-week meetings will typically be held on
+Wednesdays at 13:00.
+
+4. It was decided we will be using either MySQL or SQLite for our database.
+
+AOB
+===
+
+None.
