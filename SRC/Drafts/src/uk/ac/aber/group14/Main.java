@@ -6,7 +6,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Hu\nHa\nWhat is it good for \nabsolutely nothing");
+		System.out.println("War\nWhat is it good for \nabsolutely nothing");
 
 	}
 
