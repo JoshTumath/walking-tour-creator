@@ -3,9 +3,9 @@ Meeting:                   Mid-Week Project Planning Meeting
 Persons present:           All project members
 Place and date of meeting: PJM Lounge, Tuesday 22nd October 2013
 Circulation list:          All project members, plus project manager
-Author:                    Lars Lunde (lah25)
+Author:                    Lars Hudson Lunde (lah25)
 Date of minutes:           Thursday 24th October 2013
-Version:                   1.1
+Version:                   1.2
 
 Matters arising
 ===============
