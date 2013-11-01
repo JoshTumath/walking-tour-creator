@@ -10,6 +10,9 @@
 
 ##Git Setup
 
+For More Knowledge on the workings of Git read
+http://www-cs-students.stanford.edu/~blynn/gitmagic/book.pdf
+
 ###Giteye
 1. Right clcik on the Git Repositories view
 2. Choose "Paste repository path or URI"
