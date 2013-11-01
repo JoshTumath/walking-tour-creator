@@ -1,0 +1,43 @@
+Project:                   Group Project 14
+Meeting:                   Mid-Week Project Planning Meeting
+Persons present:           All project members
+Place and date of meeting: C57, Tuesday 29th October 2013
+Circulation list:          All project members, plus project manager
+Author:                    Lars Hudson Lunde (lah25)
+Date of minutes:           Thursday 29th October 2013
+Version:                   1.0
+
+Matters arising
+===============
+
+1. Everyone needs to keep up their blogs including how many hours of work they have
+worked on the project.
+ACTION: All
+
+2. Theo needs to make a Ghantt chart and present it at the next meeting.
+ACTION: tht5
+
+3. Lars and Daniel will attend the android workshop 30.10
+ACTION: lah25, daw46
+
+4. Everyone needs to keep a closer eye to the E-mails and GitHub, as tasks will be distributed there.
+ACTION: All
+
+
+New business
+============
+
+1. New documentation standard written in LaTeX will be enforced.
+
+2. The application will run a service that takes the users coordinates,
+and replots them on the map on reactivation of the application.
+
+3. There will be 2 types of waypoints, one for ordinary waypoints, and one
+that contatins a picture and text.
+
+4. New tasks for everyone will be released on GitHub
+
+AOB
+===
+
+None.
