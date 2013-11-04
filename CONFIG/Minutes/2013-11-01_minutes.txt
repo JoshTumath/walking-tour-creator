@@ -16,21 +16,21 @@ ACTION: jmt14
 2. The group went over what they did for each section of the Project Plan and
 discussed any problems.
 
-4. Chris Loftus mentioned a section in the Project Plan should list the roles of
+3. Chris Loftus mentioned a section in the Project Plan should list the roles of
 each team member.
 
-5. Everyone's respective sections of the Project Plan will need to be completed
+4. Everyone's respective sections of the Project Plan will need to be completed
 by next Wednesday meeting. The work should be uploaded on the wiki, ready to be
 converted to a formal document.
 ACTION: Everyone
 
-6. Have Lars convert the project plan to LaTeX by Thursday 7th of November.
+5. Have Lars convert the project plan to LaTeX by Thursday 7th of November.
 ACTION: lah25
 
-9. Lars Lunde will make walkthrough for LaTeX.
+6. Lars Lunde will make walkthrough for LaTeX.
 ACTION: lah25
 
-10. Chris Loftus mentioned that the blogs need better upkeep and detail.
+7. Chris Loftus mentioned that the blogs need better upkeep and detail.
 Everyone needs to send their blog URLs to Josh Tumath so that he can keep track
 of everyone's work hours.
 ACTION: Everyone
@@ -58,6 +58,6 @@ AOB
 1. The group discussed how to identify individual phones. It was suggested using
 hash of EFI as identifier for individual phones.
 
-1. The topic of where the online portion of the system will be hosted was
+2. The topic of where the online portion of the system will be hosted was
 discussed. Rob will generously allow us to use his server space for the project.
 It was suggested we could use the "tk" free domain name service.
