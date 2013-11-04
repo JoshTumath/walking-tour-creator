@@ -1,55 +1,63 @@
 Project:                    Group Project 14
 Meeting:                    Weekly Project Meeting
-Persons present:            All project members, plus project manager
-                            except Oddie, injured leg
+Persons present:            All project members except Michael Oddie (moe9)
 Place and date of meeting:  C57a, Friday 1st November 2013
 Circulation list:           All project members, plus project manager
-Author:                     Lars Hudson Lunde
+Author:                     Lars Hudson Lunde (lah25)
 Date of minutes:            1st November 2013
-Version:                    1.0
+Version:                    1.1
 
 Matters arising
 ===============
 
-1. Ask bernie about login system and editing walks.
+1. Ask the client about login system and editing walks.
+ACTION: jmt14
 
-2. Use hash of EFI as identifier for individual phones?
+2. The group went over what they did for each section of the Project Plan and
+discussed any problems.
 
-3. Add a function to delete walks locally
+4. Chris Loftus mentioned a section in the Project Plan should list the roles of
+each team member.
 
-4. Hva a section in the project plan about the roles of each
-team member.
-
-5. Have a complete project plan completed by Wednesday 6th of November.
+5. Everyone's respective sections of the Project Plan will need to be completed
+by next Wednesday meeting. The work should be uploaded on the wiki, ready to be
+converted to a formal document.
+ACTION: Everyone
 
 6. Have Lars convert the project plan to LaTeX by Thursday 7th of November.
+ACTION: lah25
 
-7. Rob and Dan make a testing plan.
+9. Lars Lunde will make walkthrough for LaTeX.
+ACTION: lah25
 
-8. Lars will make walkthrough for LaTeX, and have a seperate folder for
-the source of all tex sourcefiles.
-
-9. Lars will read the formal review QA documents.
-
-10. Blogs need better upkeep and detail.
-
-11. Everyone needs to send their blog URLs to Josh.
+10. Chris Loftus mentioned that the blogs need better upkeep and detail.
+Everyone needs to send their blog URLs to Josh Tumath so that he can keep track
+of everyone's work hours.
+ACTION: Everyone
 
 
 New business
 ============
 
-1. Rob and Dan make a testing plan.
+1. Josh Tumath explained the work that will be done over the next few weeks. The
+testing plan will be started next week, and the design specification the week
+after.
 
-2. Lars will make a formal review.
+2. Rob Bolton and Dan Wakefield will start work on the testing plan document and
+have a draft completed by Friday.
+ACTION: rab26, daw46
 
-3. Work will be done to make the design plan.
+3. Lars Lunde will prepare a formal review to conduct at the next Wednesday
+meeting for reviewing the competed Project Plan.
+ACTION: lah25
 
 
 AOB
 ===
 
-1. Rob will generously use his server space for the project.
+1. The group discussed how to identify individual phones. It was suggested using
+hash of EFI as identifier for individual phones.
 
-2. It will be hosted under a new domain ending in tk.
-
+1. The topic of where the online portion of the system will be hosted was
+discussed. Rob will generously allow us to use his server space for the project.
+It was suggested we could use the "tk" free domain name service.
