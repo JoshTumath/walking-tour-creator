@@ -1,0 +1,47 @@
+Project:                    Group Project 14
+Meeting:                    Weekly Project Meeting
+Persons present:            All project members, plus project manager
+                            except Oddie, injured leg
+Place and date of meeting:  C57a, Friday 1st November 2013
+Circulation list:           All project members, plus project manager
+Author:                     Lars Hudson Lunde
+Date of minutes:            1st November 2013
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Ask bernie about login system and editing walks.
+
+2. Use hash of EFI as identifier for individual phones?
+
+3. Add a function to delete walks locally
+
+4. Hva a section in the project plan about the roles of each
+team member.
+
+5. Have a complete project plan completed by Wednesday 6th of November.
+
+6. Have Lars convert the project plan to LaTeX by Thursday 7th of November.
+
+7. Rob and Dan make a testing plan.
+
+8. Lars will make walkthrough for LaTeX, and have a seperate folder for
+the source of all tex sourcefiles.
+
+9. Lars will read the formal review QA documents,
+
+
+New business
+============
+
+1. Rob and Dan make a testing plan.
+
+2. Lars will make a formal review.
+
+
+AOB
+===
+
+Rob will generously use his server space for the project.
+It wioll be hosted under a new domain ending in tk.
