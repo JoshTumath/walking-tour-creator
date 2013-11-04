@@ -29,7 +29,11 @@ team member.
 8. Lars will make walkthrough for LaTeX, and have a seperate folder for
 the source of all tex sourcefiles.
 
-9. Lars will read the formal review QA documents,
+9. Lars will read the formal review QA documents.
+
+10. Blogs need better upkeep and detail.
+
+11. Everyone needs to send their blog URLs to Josh.
 
 
 New business
@@ -39,9 +43,13 @@ New business
 
 2. Lars will make a formal review.
 
+3. Work will be done to make the design plan.
+
 
 AOB
 ===
 
-Rob will generously use his server space for the project.
-It wioll be hosted under a new domain ending in tk.
+1. Rob will generously use his server space for the project.
+
+2. It will be hosted under a new domain ending in tk.
+
