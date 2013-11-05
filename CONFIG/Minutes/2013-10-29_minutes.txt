@@ -17,7 +17,7 @@ ACTION: All
 2. Theo needs to make a Ghantt chart and present it at the next meeting.
 ACTION: tht5
 
-3. Lars and Daniel will attend the android workshop 30.10
+3. Lars and Daniel will attend the GitHub workshop 30.10
 ACTION: lah25, daw46
 
 4. Everyone needs to keep a closer eye to the E-mails and GitHub, as tasks will be distributed there.
