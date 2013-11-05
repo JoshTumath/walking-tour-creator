@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables for horizontal lines
+
+
+\begin{document}
+\begin{table}
+\begin{tabular}{| l | l | p{2cm} | p{2cm} | p{2cm} | p{2cm} |} 
+\toprule
+Test Ref & Req being tested & Test Content & Inputs & Output & Pass Criteria\\ \midrule
+
+%SE-F-0 & req & Test & inputs & outputs & pass\\ \midrule
+
+SE-F-001 & Unknown & Pressing "Start Walk" Button on Main Screen. & N/A & N/A  &  Should Open a new application screen prompting the user for the walk details. \\ \midrule
+
+SE-F-002 & Unknown & Data Entry of Null Walk Name on Walk Detail Screen  & "" & N/A & Walk Fails to Start with appropriate error message\\ \midrule
+
+SE-F-003 & Unknown & Data Entry of Long Walk Name on Walk Detail Screen  & "this walk has a very long name wouldnt you agree? well it doesnt matter if you dont i know its true" & N/A & Walk Fails to Start with appropriate error message\\ \midrule
+
+
+SE-F-002 & Unknown & Data Entry on Walk Detail Screen  &  & u &  u \\ \midrule
+
+
+SE-F-002 & Unknown & Pressing "Upload Walk" Button on Main Screen & Saved Example Walk & Database entry on the site that corresponds to the walk & Open's screen with a list of saved but not uploaded walks. \\ \midrule
+
+SE-F-002 & Unknown & Data Entry on Walk Detail Screen  &  & u &  u \\
+SE-F-001 & u & u & u & ud &  u \\
+
+
+
+
+\end{tabular}
+\caption{Test Specification Table at https://www.writelatex.com/476692scfmzv}
+\label{tab:Tests}
+\end{table}
+
+\end{document}
