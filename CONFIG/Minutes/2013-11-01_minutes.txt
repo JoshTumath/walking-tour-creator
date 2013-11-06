@@ -5,13 +5,13 @@ Place and date of meeting:  C57a, Friday 1st November 2013
 Circulation list:           All project members, plus project manager
 Author:                     Lars Hudson Lunde (lah25)
 Date of minutes:            1st November 2013
-Version:                    1.1
+Version:                    1.2
 
 Matters arising
 ===============
 
 1. Ask the client about login system and editing walks.
-ACTION: jmt14
+ACTION: jmt14 COMPLETE
 
 2. The group went over what they did for each section of the Project Plan and
 discussed any problems.
@@ -22,18 +22,18 @@ each team member.
 4. Everyone's respective sections of the Project Plan will need to be completed
 by next Wednesday meeting. The work should be uploaded on the wiki, ready to be
 converted to a formal document.
-ACTION: Everyone
+ACTION: Everyone COMPLETE
 
 5. Have Lars convert the project plan to LaTeX by Thursday 7th of November.
-ACTION: lah25
+ACTION: lah25 IN PROGRESS
 
 6. Lars Lunde will make walkthrough for LaTeX.
-ACTION: lah25
+ACTION: lah25 COMPLETE
 
 7. Chris Loftus mentioned that the blogs need better upkeep and detail.
 Everyone needs to send their blog URLs to Josh Tumath so that he can keep track
 of everyone's work hours.
-ACTION: Everyone
+ACTION: Everyone INCOMPLETE
 
 
 New business
@@ -45,11 +45,11 @@ after.
 
 2. Rob Bolton and Dan Wakefield will start work on the testing plan document and
 have a draft completed by Friday.
-ACTION: rab26, daw46
+ACTION: rab26, daw46 IN PROGRESS
 
 3. Lars Lunde will prepare a formal review to conduct at the next Wednesday
 meeting for reviewing the competed Project Plan.
-ACTION: lah25
+ACTION: lah25 NOT NEEDED... YET
 
 
 AOB
