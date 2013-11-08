@@ -19,16 +19,16 @@ New business
 ============
 
 1. Email URL of wordpress blogs to Josh Tumath.
-    ACTION: EVERYONE
+    ACTION: EVERYONE INCOMPLETE
 
 2. Tidy up Website design and incorporate ideas disscussed at project meeting. 
-    ACTION: JAKE MAGUIRE
+    ACTION: JAKE MAGUIRE COMPLETE
     
 3. Update pictures for use cases(?).
-    ACTION: ROB BOLTON
+    ACTION: ROB BOLTON COMPLETE
     
 4. Make sure that write up is linked to functional requierments.
-    ACTION JAKE MAGUIRE, ROB BOLTON (ANYONE ELSE)
+    ACTION JAKE MAGUIRE, ROB BOLTON COMPLETE
 
 5. Update gantt chart.
     *Change dates of for work on prototypes (both web and android).
@@ -37,4 +37,4 @@ New business
     *Turn the brown squares yellow
     *Change "Rob and Dan" on legend to testing team or something along those lines.
     *Different colours for web and android team
-      ACTION: THEO TAYLOR AND JOSH TUMATH
+      ACTION: THEO TAYLOR AND JOSH TUMATH COMPLETE
