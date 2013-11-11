@@ -1,7 +1,7 @@
 Project: Group Project 14.
 
 Meeting: Weekly Project Meeting
-Persons present: All project members except Michael Oddie (moe9)
+Persons present: All project members
 Place and date of meeting: C57a, Friday 8st November 2013
 Circulation list: All project members, plus project manager
 Author: Jake Maguire (jam64)
