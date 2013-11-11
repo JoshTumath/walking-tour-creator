@@ -1,0 +1,43 @@
+Project: Group Project 14.
+
+Meeting: Weekly Project Meeting
+Persons present: All project members except Michael Oddie (moe9)
+Place and date of meeting: C57a, Friday 8st November 2013
+Circulation list: All project members, plus project manager
+Author: Jake Maguire (jam64)
+Date of minutes: 8th November 2013
+Version: 1.0
+
+Matters arising
+===============
+
+1. Check to see if blogs have been emailed.
+  ACTION: SOME INCOMPLETE
+  
+2. Check that all sections have been updated of the project plan.
+  
+3. Reviewed finished LaTeX document.
+
+4. Discussed progress of test plan.
+
+
+New business
+============
+
+1. Create initial UML diagram of Android program.
+  ACTION: ROB BOLTON
+  
+2. Email blog URL if they haven't already.
+  ACTION: ANYONE EFFECTED
+  
+2. Review LaTeX document and include changes disscused at meeting.
+  *Get rid of author names in each section.
+  *Change overall author to group name.
+    ACTION: LARS LUNDE
+    
+3. Continue with test plan, initial draft by Wednesday.
+  ACTION: DANIEL WAKEFIELD
+  
+4. Email minutes to Chris Loftus
+  ACTION: JAKE MAGUIRE DONE
+  
