@@ -1,37 +1,115 @@
 \documentclass{article}
-
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables for horizontal lines
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{longtable}
 
 
 \begin{document}
-\begin{table}
-\begin{tabular}{| l | l | p{2cm} | p{2cm} | p{2cm} | p{2cm} |} 
-\toprule
-Test Ref & Req being tested & Test Content & Inputs & Output & Pass Criteria\\ \midrule
 
-%SE-F-0 & req & Test & inputs & outputs & pass\\ \midrule
+\begin{longtable}{ | p{1cm} | p{1cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |} 
 
-SE-F-001 & Unknown & Pressing "Start Walk" Button on Main Screen. & N/A & N/A  &  Should Open a new application screen prompting the user for the walk details. \\ \midrule
+\hline 
+Test Ref & Req being tested & Test Content & Inputs & Output & Pass Criteria \endhead  \hline
 
-SE-F-002 & Unknown & Data Entry of Null Walk Name on Walk Detail Screen  & "" & N/A & Walk Fails to Start with appropriate error message\\ \midrule
+SE-F-001 
+& X
+& Pressing "Start Walk" Button on Main Screen. 
+& N/A 
+& N/A  
+&  Should Open a new application screen prompting the user for the walk details. \\ \hline
 
-SE-F-003 & Unknown & Data Entry of Long Walk Name on Walk Detail Screen  & "this walk has a very long name wouldnt you agree? well it doesnt matter if you dont i know its true" & N/A & Walk Fails to Start with appropriate error message\\ \midrule
+SE-F-002
+& FR2
+& Data Entry of Null Walk Name on Walk Detail Screen  
+& "" 
+& N/A 
+& Walk Fails to Start with appropriate error message\\ \hline
+
+SE-F-003 
+& FR2
+& Data Entry of Long Walk Name on Walk Detail Screen  
+& "this walk has a very long name wouldnt you agree? well it doesnt matter if you dont i know its true"
+& N/A 
+& Walk Fails to Start with appropriate error message\\ \hline
+
+SE-F-004
+& FR2
+& Data entry of Normal Walk Name on Walk Detail Screen
+& "Sample Walk Name"
+& N/A
+& Walk can be started with this name \\ \hline
+
+SE-F-005
+& FR2
+& Data Entry of 100 Character Description in Short Description Box
+& Enter letter "a" 100 times
+& N/A
+& Walk can be started with this Description \\ \hline
+
+SE-F-006
+& FR2
+& Data Entry of 101 Character Description in Short Description Box
+& Enter letter "a" 101 times
+& N/A
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-007
+& FR2
+& Data Entry of 1000 Character Description in Long Description Box
+& Enter letter "a" 1000 times
+& N/A
+& Walk can be started with this Description \\ \hline
+
+SE-F-008
+& FR2
+& Data Entry of 1001 Character Description in Long Description Box
+& Enter letter "a" 1001 times
+& N/A
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-009
+& FR2
+& Data entry of Single Word in Keyword box
+& Enter "Aberystwyth" in keyword box
+& N/A
+& Walk can be started successfully with this keyword \\ \hline
+
+SE-F-010
+& FR2
+& Data entry of Multiple Words in Keyword box
+& Enter "Aberystwyth Is A University Town" in keyword box
+& N/A
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-011
+& FR3
+& Press Add Waypoint Button on the Walk Screen
+& N/A
+& N/A
+& Waypoint entry screen appears with the current GPS Co-ords displayed \\ \hline
+
+SE-F-012
+& FR4
+& Press "Add Picture" Button on Add Waypoint Details Screen
+& N/A
+& N/A
+& System camera options appear on the screen \\ \hline
+
+SE-F-013
+& FR5
+& Press "Cancel Walk" Button on Walk Screen
+& N/A
+& N/A
+& Walk Ends and returns to Main Screen \\ \hline
+
+SE-F-014
+& FR6
+& Pres "Upload Walk" button on Main Screen
+& Saved Example walk
+& Database Entry
+& Database entry and uploaded walk match in all details \\ \hline
 
 
-SE-F-002 & Unknown & Data Entry on Walk Detail Screen  &  & u &  u \\ \midrule
-
-
-SE-F-002 & Unknown & Pressing "Upload Walk" Button on Main Screen & Saved Example Walk & Database entry on the site that corresponds to the walk & Open's screen with a list of saved but not uploaded walks. \\ \midrule
-
-SE-F-002 & Unknown & Data Entry on Walk Detail Screen  &  & u &  u \\
-SE-F-001 & u & u & u & ud &  u \\
-
-
-
-
-\end{tabular}
-\caption{Test Specification Table at https://www.writelatex.com/476692scfmzv}
-\label{tab:Tests}
-\end{table}
+\end{longtable}
 
 \end{document}
