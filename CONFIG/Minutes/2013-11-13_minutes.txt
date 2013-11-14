@@ -1,0 +1,34 @@
+Project:                    Group Project 14
+Meeting:                    Mid Week Project Meeting
+Persons present:            All project members except Michael Oddie (moe9)
+Place and date of meeting:  C57a, Wednesday 13th November 2013
+Circulation list:           All project members, plus project manager
+Author:                     Lars H Lunde (lah25)
+Date of minutes:            13th November 2013
+Version:                    1.0
+
+Matters arising
+===============
+
+1. A formal review of the test specification was held.
+
+2. Lars made a LaTeX template that will be used for future documents.
+
+3. Theo will now be leading the Design Specification team with Micheal Oddie and James M
+   for the next 3 weeks.
+
+4. James B and Jake will start work on the frontend of the website.
+
+
+New business
+============
+
+1. Email URL of wordpress blogs to Josh Tumath.
+    ACTION: JAMES MELLOR and MICHAEL ODDIE
+
+2. Make the formal review for Test Specification
+    ACTION: LARS LUNDE
+
+3. Add test specification to the template and edit it
+    ACTION: DANIEL WAKEFIELD
+
