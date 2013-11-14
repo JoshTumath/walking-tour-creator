@@ -29,6 +29,7 @@ New business
 2. Make the formal review for Test Specification
     ACTION: LARS LUNDE
 
-3. Add test specification to the template and edit it
+3. Add test specification to the template and remove all N/As 
+   and change them to proper input/output and update changelog.
     ACTION: DANIEL WAKEFIELD
 
