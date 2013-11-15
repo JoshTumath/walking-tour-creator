@@ -1,0 +1,62 @@
+Project:                    Group Project 14
+Meeting:                    Weekly Project Meeting
+Persons present:            All project members except Michael Oddie (moe9)
+                            Apology: Illness
+Place and date of meeting:  C57a, Friday 15th November 2013
+Circulation list:           All project members, plus project manager
+Author:                     Lars Hudson Lunde (lah25)
+Date of minutes:            15th November 2013
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Email URL of wordpress blogs to Josh Tumath.
+    ACTION: JAMES MELLOR and MICHAEL ODDIE: INCOMPLETE
+
+2. Make the formal review for Test Specification
+    ACTION: LARS LUNDE: COMPLETE
+
+3. Add test specification to the template and remove all N/As 
+   and change them to proper input/output and update changelog.
+    ACTION: DANIEL WAKEFIELD: COMPLETE
+
+
+
+New business
+============
+
+1. Bold test table headers, change Test Plan status to Release and upload to blackboard.
+ACTION: DANIEL WAKEFIELD
+
+2. Restructure Git according to QA document 08, fix minutes list and make document overview.
+ACTION: LARS LUNDE
+
+3. Make a database on the Computer Science Database server, make relevant tables and plot in some fake data.
+ACTION: WEB TEAM
+
+4. Make a basic website that displays data from database.
+ACTION: WEB TEAM
+
+5. Make basic protoype of phone application.
+ACTION: ANDROID TEAM
+
+6. Make a presentation of Sequense Diagram by wednesday next week.
+ACTION: MICHEAL ODDIE
+
+7. Add work hours to github.
+ACTION: JOSH THUMATH
+
+8. Fix Blog
+ACTION: THEO TAYLOR
+
+9. Add hours to Blog
+ACTION: JAKE MAGUIRE
+
+10. Send Blog URL to Josh Thumath
+ACTION: MICHEAL ODDIE
+
+AOB
+===
+
+
