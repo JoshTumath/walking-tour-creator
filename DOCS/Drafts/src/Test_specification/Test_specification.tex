@@ -10,10 +10,10 @@
 \subtitle{Test Specification}
 \author{Daniel Wakefield}
 \shorttitle{Test Specification}
-\version{1.0}
-\status{Draft}
+\version{1.1}
+\status{Final}
 \date{2013-11-13}
-\configref{GP14-TEMPLATE-ALL}
+\configref{GP14-TEST-SPEC}
 
 \maketitle
 \tableofcontents
@@ -49,6 +49,8 @@ for tests
 
 \end {enumerate}
 
+\clearpage
+
 \section{TEST TABLE}
 
 \begin{longtable}{ | p{1cm} | p{1cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |} 
@@ -59,7 +61,7 @@ Test Ref & Req being tested & Test Content & Inputs & Output & Pass Criteria \en
 SE-F-001 
 & FR1
 & Pressing "Start Walk" Button on Main Screen. 
-& N/A 
+& Button Press Event 
 & New Screen
 &  Should Open a new application screen prompting the user for the walk details. \\ \hline
 
@@ -129,21 +131,21 @@ SE-F-010
 SE-F-011
 & FR3
 & Press Add Waypoint Button on the Walk Screen
-& N/A
-& N/A
+& Button Press Event 
+& New Screen
 & Waypoint entry screen appears with the current GPS Co-ords displayed \\ \hline
 
 SE-F-012
 & FR4
 & Press "Add Picture" Button on Add Waypoint Details Screen
-& N/A
+& Button Press Event 
 & System Pop-up
 & System camera options appear on the screen \\ \hline
 
 SE-F-013
 & FR5
 & Press "Cancel Walk" Button on Walk Screen
-& N/A
+& Button Press Event 
 & Main Screen
 & Walk Ends and returns to Main Screen \\ \hline
 
@@ -157,7 +159,7 @@ SE-F-014
 SE-F-014
 & FR7
 & Rotate the phone
-& N/A
+& Physical interaction with phone
 & Different Screen orientation
 & Different Screen orientation with the same data before screen rotation\\ \hline
 
@@ -180,7 +182,7 @@ title \\ \hline
 SE-W-003
 & FR8
 & A Walk can be selected
-& N/A
+& Mouse Click
 & N/A
 & When a walk is selected its general walk details display next to the 
 map and its waypoints are displayed on the map
@@ -189,7 +191,7 @@ map and its waypoints are displayed on the map
 SE-W-004
 & FR8
 & Waypoint Detail are correctly displayed
-& N/A
+& Mouse Click
 & N/A
 & When Selecting a waypoint Timestamp, Co-ords, Details and pictures
 are displayed correctly\\ \hline
@@ -213,7 +215,8 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 \hline
 
 %----------- Add edits and change author
-1.0 & N/A & 2013-11-13 & Initial creation & DAW46 \\
+1.0 & N/A & 2013-11-13 & Initial creation & DAW46 \\ \hline
+1.1 & N/A & 2013-11-15 & Updated Test Inputs & DAW46 \\ 
 \hline
 
 \end{tabular}
