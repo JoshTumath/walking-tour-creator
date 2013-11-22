@@ -1,4 +1,4 @@
-3<?php include_once("includes/database.php"); ?>
+<?php include_once("includes/database.php"); ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
