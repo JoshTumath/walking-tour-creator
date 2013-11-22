@@ -24,11 +24,28 @@
 			
 			<div id="content">
 				<?php 
-					mysql_query($dbhandle, "INSERT INTO listOfWalks (title) VALUES ('test')");
+					
+				//query the database
+				$query = mysql_query("SELECT * FROM listOfWalks");
+
+				//fetch the results / convert results into an array
+
+					WHILE($rows = mysql_fetch_array($query)):
+		
+					    $product_name = $rows['id'];
+					    $id = $rows['title'];
+					    $description = $rows['shortDesc'];
+					    $price = $rows['longDesc'];
+					    $image_large = $rows['hours'];
+					    $image_thumb = $rows['distance'];
+		
+					echo "$product_name<br>$description<br>$price<br>$image_large<br>$image_thumb<br>$page_link<br><br><br>";
+					endwhile;
+
+					/*mysql_query($dbhandle, "INSERT INTO listOfWalks (title) VALUES ('test')");
 						
 					$result = mysql_query($dbhandle,"SELECT * FROM listOfWalks");
-					echo $result; 
-					echo "Test2";
+					echo $result; */
 				?>
 				
 				<p>	<span><b>Distance:</b> 9 Miles</span>
