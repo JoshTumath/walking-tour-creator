@@ -1,4 +1,4 @@
-<?php include_once("includes/database.php"); ?>
+<?//php include_once("includes/database.php"); ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -24,23 +24,20 @@
 			
 			<div id="content">
 				<?php 
-					
-				//query the database
-				$query = mysql_query("SELECT * FROM listOfWalks");
+				$db_host = 'jakemaguire.co.uk';
+				$db_user = 'webWalk';
+				$db_pwd = '123';
 
-				//fetch the results / convert results into an array
+				$database = 'walking_tour_database';
+				$table = 'listOfWalks';
 
-					WHILE($rows = mysql_fetch_array($query)):
-		
-					    $product_name = $rows['id'];
-					    $id = $rows['title'];
-					    $description = $rows['shortDesc'];
-					    $price = $rows['longDesc'];
-					    $image_large = $rows['hours'];
-					    $image_thumb = $rows['distance'];
-		
-					echo "$product_name<br>$description<br>$price<br>$image_large<br>$image_thumb<br>$page_link<br><br><br>";
-					endwhile;
+				if (!mysql_connect($db_host, $db_user, $db_pwd))
+			    	die("Can't connect to database");
+
+				if (!mysql_select_db($database))
+    				die("Can't select database");
+
+				
 
 					/*mysql_query($dbhandle, "INSERT INTO listOfWalks (title) VALUES ('test')");
 						
