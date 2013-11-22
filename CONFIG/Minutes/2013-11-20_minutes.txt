@@ -5,7 +5,7 @@ Place and date of meeting:  Wierd Room close to B23, Wednesday 21st November 201
 Circulation list:           All project members, plus project manager
 Author:                     Lars H Lunde (lah25)
 Date of minutes:            21st November 2013
-Version:                    1.0
+Version:                    1.1
 
 Matters arising
 ===============
@@ -58,7 +58,7 @@ ACTION: WEB TEAM
 5. Make basic protoype of phone application.
 ACTION: ANDROID TEAM
 
-6. Make a presentation of Sequense Diagram by wednesday next week.
+6. Make a presentation of Sequense Diagram by friday.
 ACTION: MICHEAL ODDIE
 
 7. Send Blog URL to Josh Thumath
