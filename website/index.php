@@ -28,7 +28,7 @@
 						
 					$result = mysql_query($dbhandle,"SELECT * FROM listOfWalks");
 					echo $result; 
-					echo "Test";
+					echo "Test2";
 				?>
 				
 				<p>	<span><b>Distance:</b> 8 Miles</span>
