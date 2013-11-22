@@ -32,11 +32,17 @@
 				$table = 'listOfWalks';
 
 				if (!mysql_connect($db_host, $db_user, $db_pwd))
-			    	die("Can't connect to database");
-
+				{
+			    		die("Can't connect to database") 
+				} else {
+					echo"Connected to the database";
+				}
 				if (!mysql_select_db($database))
-    				die("Can't select database");
-
+				{
+    					die("Can't select database");
+				} else {
+					echo"Selected Database";
+				}
 				
 
 					/*mysql_query($dbhandle, "INSERT INTO listOfWalks (title) VALUES ('test')");
