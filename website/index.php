@@ -33,6 +33,11 @@
 
 					while ( $db_field = mysql_fetch_assoc($result2) ) {
 
+						$resultsArray [] = array(
+						'field1' => $row["id"],
+						'field2' => $row["title"],
+						'field3' => $row["shortDesc"]);
+
 						print $db_field['id'] . "<br>";
 						print $db_field['title'] . "<br>";
 						print $db_field['shortDesc'] . "<br>";
