@@ -24,26 +24,22 @@
 			
 			<div id="content">
 				<?php 
-				/* connect to the db */
-				$connection = mysql_connect('23.226.133.168','webWalk','123');
-				mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
+					/* connect to the db */
+					$connection = mysql_connect('23.226.133.168','webWalk','123');
+					mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
 				
-				$SQL = "SELECT * FROM listOfWalks";
-				$result2 = mysql_query($SQL);
+					$SQL = "SELECT * FROM listOfWalks";
+					$result2 = mysql_query($SQL);
 
-				while ( $db_field = mysql_fetch_assoc($result2) ) {
+					while ( $db_field = mysql_fetch_assoc($result2) ) {
 
-					print $db_field['id'] . "<BR>";
-					print $db_field['title'] . "<BR>";
-					print $db_field['shortDesc'] . "<BR>";
-					print $db_field['longDesc'] . "<BR>";
-
-				}
-
-					/*mysql_query($dbhandle, "INSERT INTO listOfWalks (title) VALUES ('test')");
-						
-					$result = mysql_query($dbhandle,"SELECT * FROM listOfWalks");
-					echo $result; */
+						print $db_field['id'] . "<\n>";
+						print $db_field['title'] . "<\n>";
+						print $db_field['shortDesc'] . "<\n>";
+						print $db_field['longDesc'] . "<\n>";
+						print $db_field['hours'] . "<\n>";
+						print $db_field['distance'] . "<\n>";
+					}
 				?>
 				
 				<p>	<span><b>Distance:</b> 8 Miles</span>
