@@ -29,7 +29,7 @@
 				mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
 
 				/* show tables */
-				$result = mysqli_query($con,"SELECT * FROM listOfWalks");
+				$result = mysqli_query($connection,"SELECT * FROM listOfWalks");
 				while($tableName = mysql_fetch_row($result)) {
 
 					$table = $tableName[0];
