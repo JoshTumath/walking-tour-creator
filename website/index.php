@@ -33,16 +33,16 @@
 
 					while ( $db_field = mysql_fetch_assoc($result2) ) {
 
-						print $db_field['id'] . "<br>";
-						print $db_field['title'] . "<br>";
-						print $db_field['shortDesc'] . "<br>";
-						print $db_field['longDesc'] . "<br>";
-						print $db_field['hours'] . "<br>";
-						print $db_field['distance'] . "<br>";
+						$id = $db_field['id'] . "<br>";
+						$db_field['title'] . "<br>";
+						$db_field['shortDesc'] . "<br>";
+						$db_field['longDesc'] . "<br>";
+						$db_field['hours'] . "<br>";
+						$db_field['distance'] . "<br>";
 					}
 				?>
 				
-				<p>	<span><b>Distance:</b> 8 Miles</span>
+				<p>	<span><b>Distance:</b> <?$id?></span>
 					<span><b>Number of Locations:</b> 5</span>
 					<span><b>Short Description:</b> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 							Aenean commodo ligula eget dolor. Aenean m</span>
