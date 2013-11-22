@@ -33,12 +33,12 @@
 
 					while ( $db_field = mysql_fetch_assoc($result2) ) {
 
-						print $db_field['id'] . "<\n>";
-						print $db_field['title'] . "<\n>";
-						print $db_field['shortDesc'] . "<\n>";
-						print $db_field['longDesc'] . "<\n>";
-						print $db_field['hours'] . "<\n>";
-						print $db_field['distance'] . "<\n>";
+						print $db_field['id'] . "<br>";
+						print $db_field['title'] . "<br>";
+						print $db_field['shortDesc'] . "<br>";
+						print $db_field['longDesc'] . "<br>";
+						print $db_field['hours'] . "<br>";
+						print $db_field['distance'] . "<br>";
 					}
 				?>
 				
