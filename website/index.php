@@ -47,7 +47,7 @@
 					}
 				?>
 				
-				<p>	<span><b>Distance:</b> 8 Miles</span>
+				<p>	<span><b>Distance:</b> <?php echo $resultsArray['field1'] ?></span>
 					<span><b>Number of Locations:</b> 5</span>
 					<span><b>Short Description:</b> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 							Aenean commodo ligula eget dolor. Aenean m</span>
