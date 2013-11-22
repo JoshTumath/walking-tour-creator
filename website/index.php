@@ -32,12 +32,6 @@
 					$result2 = mysql_query($SQL);
 
 					while ( $db_field = mysql_fetch_assoc($result2) ) {
-
-						$resultsArray [] = array(
-						'field1' => $db_field["id"],
-						'field2' => $db_field["title"],
-						'field3' => $db_field["shortDesc"]);
-
 						print $db_field['id'] . "<br>";
 						print $db_field['title'] . "<br>";
 						print $db_field['shortDesc'] . "<br>";
@@ -47,7 +41,7 @@
 					}
 				?>
 				
-				<p>	<span><b>Distance:</b> <?php echo $resultsArray[0] ?></span>
+				<p>	<span><b>Distance:</b> <?php echo $db_field['title'] ?></span>
 					<span><b>Number of Locations:</b> 5</span>
 					<span><b>Short Description:</b> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 							Aenean commodo ligula eget dolor. Aenean m</span>
