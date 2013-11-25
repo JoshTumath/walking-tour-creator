@@ -1,0 +1,50 @@
+Project:                    Group Project 14
+Meeting:                    Weekly Project Meeting
+Persons present:            All project members
+                            Apology:
+Place and date of meeting:  C57a, Friday 22nd November 2013
+Circulation list:           All project members, plus project manager
+Author:                     Lars Hudson Lunde (lah25)
+Date of minutes:            22nd November 2013
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Add names to GitHub profile
+ACTION: ALL: COMPLETE
+
+2. Make coding standards for the project and present them.
+ACTION: ROB BOLTON: NOT NEEDED
+
+3. Restructure Git according to QA document 08, fix minutes list and make document overview.
+ACTION: LARS LUNDE: INCOMPLETE
+
+4. Make a database on the Computer Science Database server, make relevant tables and plot in some fake data.
+ACTION: WEB TEAM: COMPLETE
+
+5. Make basic protoype of phone application.
+ACTION: ANDROID TEAM: IN PROGRESS
+
+6. Make a presentation of Sequense Diagram by friday.
+ACTION: MICHEAL ODDIE: COMPLETE
+
+7. Send Blog URL to Josh Thumath
+ACTION: MICHEAL ODDIE: COMPLETE
+
+
+New business
+============
+1. Remake project as an android project on GitHub
+ACTION: ANDROID TEAM
+
+2. Continue Design Spec in LaTeX.
+ACTION: THEO TAYLOR
+
+3. Android team start to put code on to GitHub as assigned on GitHub actions and issues.
+ACTION: ANDROID TEAM
+
+AOB
+===
+MySQL workbench: http://www.mysql.com/products/workbench/
+
