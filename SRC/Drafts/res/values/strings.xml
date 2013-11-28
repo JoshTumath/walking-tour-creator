@@ -1,5 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">WalkingTourCreator</string>
+    <string name="title_activity_walk_creator">Route Editor</string>
+    <string name="action_settings">Settings</string>
+    <string name="CancelButton">Cancel Walk</string>
+    <string name="SaveButton">Save Route</string>
+    <string name="AddButton">Add Location</string>
+    <string name="WalkCreatorTitle">Route Editor</string>
+    <string name="CurrentCoordsLabel">Current Coordinates</string>
+    <string name="DistanceTravelledLabel">Distance Travelled</string>
+    <string name="DynamicCoords">12.2 lng 15.5 lat</string>
+    <string name="DynamicDistance">100m</string>
 
 </resources>
