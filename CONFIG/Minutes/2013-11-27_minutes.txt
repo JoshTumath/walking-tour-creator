@@ -1,0 +1,41 @@
+Project:                    Group Project 14
+Meeting:                    Mid Week Project Meeting
+Persons present:            All project members, except Josh Tumath and Michael Oddie
+                            Apology: Josh: At a birthday party
+                                     Oddie: None
+Place and date of meeting:  Wierd Room close to B23, Wednesday 27th November 2013
+Circulation list:           All project members, plus project manager
+Author:                     Lars H Lunde (lah25)
+Date of minutes:            28nd November 2013
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Remake project as an android project on GitHub
+ACTION: ANDROID TEAM: DONE
+
+2. Continue Design Spec in LaTeX.
+ACTION: THEO TAYLOR: DONE
+
+3. Android team start to put code on to GitHub as assigned on GitHub actions and issues.
+ACTION: ANDROID TEAM: NOT ALL
+
+New business
+============
+
+1. Put Design Spec on to GitHub with source, and have the draft ready for review on wednesday.
+ACTION: THEO TAYLOR
+
+2. Edit their section on the GitHub Wiki for re-release of the Project Plan according to feedback
+ACTION: ALL
+
+3. Spell and Grammar Check the Design Spec and re-release of the Project Plan
+ACTION: JAKE MAGUIRE
+
+AOB
+===
+We willl use Jakes VPS for databse server.
+
+
+
