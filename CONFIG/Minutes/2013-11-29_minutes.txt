@@ -29,7 +29,7 @@ New business
   ACTION: JAKE MAGUIRE
 
 4. Make sure that chief architect (or rest of android team) talk to design spec team about possible algorithms.
-  ACTION: ROB BOLTON, THEO TAYLOR
+  ACTION: ROB BOLTON, MICHAEL ODDIE
 
 5. Email Bernie with question about whether or not we want to track the users walk or POIs.
   ACTION: ROB BOLTON, JOSH TUMATH (?)
