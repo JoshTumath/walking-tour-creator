@@ -1,0 +1,121 @@
+\documentclass{project}
+\usepackage[pdfauthor={Lars H Lunde},pdftitle={Design Specification Formal Review},pdftex]{hyperref}
+\begin{document}
+\title{Group Project 14 -}
+\subtitle{Test Specification Formal Review}
+\author{Jake Maguire}     
+\shorttitle{Design Specification Formal Review}
+\version{1.0}
+\status{Draft}
+\date{2013-12-03}
+\configref{GP14-FR-DESIGNSPEC}
+\maketitle
+\tableofcontents
+\newpage
+
+%-----------------------Document text
+\section{INTRODUCTION}
+\subsection{Purpose of this Document}
+The purpose of this document is to check that the Design Specification
+is following the standards set in Design Specification Standards \cite{se.qa.05a}
+and General Documentation Standards \cite{se.qa.03}
+
+\subsection{Scope}
+This document contains specifications that are to be checked against 
+Design Specification, both in regards to General Documentation Standards
+and the Design Specification Standards.
+
+\subsection{Objectives}
+Create a check-list of requirements for design specification to be reviewed from,
+at the review meeting 2013-12-04 at 2:00.
+
+\section{REVIEW}
+
+\begin{enumerate}
+        \item Does the document front cover contain:
+        
+        \begin{itemize}
+                \item Title indicating Group Name and nature of document.
+                \item Author.
+                \item Configuration Reference.
+                \item Date latest version was produced.
+                \item Correct Version Number.
+                \item Correct Document status.
+                \item The copyright and address of the University.
+        \end{itemize}
+        
+        \item Correct header for the document containing title, version and status on each page.
+        \item Footer containing "Aberystwyth University/Computer Science" and "Page x of y" correctly.
+        \item Document containing specified section.
+        
+        \begin{itemize}
+                \item Contents.
+                \item Introduction: Purpose of document, Scope, Objectives.
+                \item Main Body with appropriate sections.
+                \item References.
+                \item Document Change History with Version, CCF No., Date, Sections Changed from Previous Versions, Changed by.
+        \end{itemize}
+        
+        \item Correct section enumeration.
+        \item Correct font usage.
+        
+        %Design spec specific
+        
+        
+        \item Decomposition Description
+        \begin{itemize}
+        	\item Programs in system
+        	\item Significant classes in each system
+        	\item Modules shared between programs
+        	\item Mapping from requirements to classes
+        \end{itemize}
+        
+        \item Dependency Description 
+        \begin{itemize}
+        	\item Component diagrams
+        	\item Inheritance diagrams
+        \end{itemize}
+        
+        \item Interface Description
+        
+        \item Detailed Design
+        \begin{itemize}
+        	\item Sequence Diagrams
+        	\item Significant algorithms
+        	\item Significant data structures
+        	\item Mapping from requirements to classes
+        \end{itemize}
+        
+        \item References
+        
+        
+\end{enumerate}
+
+
+%------------------------References
+\clearpage
+\addcontentsline{toc}{section}{REFERENCES}
+\begin{thebibliography}{5}
+\bibitem{se.qa.03} \emph{Software Engineering Group Projects}
+General Documentation Standards.
+C. J. Price, N. W. Hardy. 1.5 Release.
+\bibitem{se.qa.06} \emph{Software Engineering Group Projects}
+Design Specification Standards.
+C. J. Price, N.W.Hardy, B.P.Tiddeman. 1.7 Release.
+
+\end{thebibliography}
+
+%-----------------------Version History 
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{flushleft}
+\begin{tabular}{ | p{1.5cm} | p{1cm} | p{2cm} | p{6cm}| p{1.5cm}| }
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+1.0 & N/A & 2013-12-03 & Initial creation & JAM64 \\
+\hline
+\end{tabular}
+\end{flushleft}
+\label{thelastpage}
+\end{document}
