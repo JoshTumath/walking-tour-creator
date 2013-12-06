@@ -1,4 +1,4 @@
-package uk.ac.aber.group14;
+package uk.ac.aber.group14.viewer;
 
 import android.os.Bundle;
 import android.app.Activity;
