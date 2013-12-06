@@ -3,10 +3,11 @@
 ##Eclipse Setup
 
 1. Open Eclipse
-2. New -> java Project
-3. Name it anything
-4. Uncheck Use Default location
-5. Set to {Your Git Repo}/SRC/Drafts
+2. File -> Import -> Existing projects into workspace
+3. Change root directory to be <your git repo>/SRC/Drafts
+4. Tick the project and import it
+5. Make sure you haven't ticked "copy projects into workspace"
+6. Finish
 
 ##Git Setup
 
