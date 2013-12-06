@@ -331,6 +331,9 @@ public interface IWalk {
 
 \subsection{Significant algorithms}
 \subsubsection{LocationLoggerService algorithm}
+This algorithm is used to decide which GPS locations to keep and which to
+discard. This is done in order to remove unnecessary points and conserve
+memory on the phone as well as space in the database.
 
 This encompasses several aglroithms. First it decides wich method it picks by
 looking at averages over several points and looking at the standard deviation
