@@ -1,0 +1,43 @@
+Project:                    Group Project 14
+Meeting:                    Mid Week Project Meeting
+Persons present:            All project members
+                            Apology:
+Place and date of meeting:  Weird Room close to B23, Wednesday 4th December 2013
+Circulation list:           All project members, plus project manager
+Author:                     Lars H Lunde (lah25)
+Date of minutes:            4th November 2013
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Put Design Spec on to GitHub with source, and have the draft ready for review on wednesday.
+  ACTION: THEO TAYLOR: DONE
+
+2. Complete design spec for formal review on Wednesday.
+  ACTION: JAMES MELLORS, THEO TAYLOR, MICHAEL ODDIE: DONE
+
+3. Complete formal review for Wednesday. 
+  ACTION: JAKE MAGUIRE: DONE
+
+4. Make sure that chief architect (or rest of android team) talk to design spec team about possible algorithms.
+  ACTION: ROB BOLTON, MICHAEL ODDIE: DONR
+
+5. Email Bernie with question about whether or not we want to track the users walk or POIs.
+  ACTION: ROB BOLTON, JOSH TUMATH (?): DONE
+  
+6. Look at commiting to app branch rather than master.
+  ACTION: ANDROID TEAM: DONE
+
+New business
+============
+
+1. Design spec needs header, footer and copyright according to template.
+  ACTION: JAMES MELLORS, THEO TAYLOR, MICHAEL ODDIE
+
+2. Edit Design Spec purpose, add references and check spelling, change so that there is only
+   2 parts to the program, explain superclass better, and set long description to 1000 characters
+   both in app and database
+  ACTION: JAMES MELLORS, THEO TAYLOR, MICHAEL ODDIE
+
+
