@@ -1,4 +1,3 @@
-<?//php include_once("includes/database.php"); ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -8,8 +7,9 @@
 		<script type="text/javascript"
       			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvBB7hlS-aPXieeaTMzZQMbCPtqCqJNz0
 				&sensor=false">
-		<!-- The script above loads the Google Maps API. The Key is the API key I was given and the sensor and indicates whether this application 				uses a sensor (such as a GPS locator) to determine the user's location. -->
-    		</script>
+		<!-- The script above loads the Google Maps API. The Key is the API key I was given and the sensor 
+		and indicates whether this application uses a sensor (such as a GPS locator) to determine the users location. -->
+   		</script>
 	</head>	
 	<body>
 		<div id="wrapper">
@@ -17,53 +17,44 @@
 				<div id="headerLeft">
 						<h1><a href="index.php">Walking Tour Creator</a></h1>
 				</div>
-				<div id="headerRight">
-						<input class="searchbox" type="text">
-				</div>
 			</div>
-			
 			<div id="content">
-				<?php 
-					/* connect to the db */
-					$connection = mysql_connect('23.226.133.168','webWalk','123');
-					mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
-				
-					$SQL = "SELECT * FROM listOfWalks";
-					$result2 = mysql_query($SQL);
+			<form method="post" action='walkingtournew.php'>
+			<?php					
+				$connection = mysql_connect('23.226.133.168','webWalk','123');
+                        	mysql_select_db('walking_tour_database',$connection) or die("cannont connect");				
 
-					while ( $db_field = mysql_fetch_assoc($result2) ) {
-						print $db_field['id'] . "<br>";
-						print $db_field['title'] . "<br>";
-						print $db_field['shortDesc'] . "<br>";
-						print $db_field['longDesc'] . "<br>";
-						print $db_field['hours'] . "<br>";
-						print $db_field['distance'] . "<br>";
-					}
-				?>
-				
-				<p>	<span><b>Distance:</b> <?php echo $db_field['title'] ?></span>
-					<span><b>Number of Locations:</b> 5</span>
-					<span><b>Short Description:</b> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-							Aenean commodo ligula eget dolor. Aenean m</span>
-					<span><b>Long Description: </b>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget 							dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 							Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec 							pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, 							venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. 							Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat 							vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus 							viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel 							augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget 							condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. N</span>
-				</p>
+				$SQL = "SELECT * FROM listOfWalks";
+		   	 	$result = mysql_query($SQL);
+			    	echo "<ul class='walkItem'>";
+				while ($db_field = mysql_fetch_assoc($result)) {
+					echo "<li>";					
+						echo "<p>" . $db_field['title'] . "</p>";
+						echo "<input name='walkID' value='" . $db_field["id"] ."' type='checkbox'>";
+					echo "</li>";
+				}
+				echo "</ul>";
+			?>	
+				<input type="submit" name="submitWalk" value="Submit">
+			</form>		
 			</div>
 
 			<div id="googleMaps">
-				<script>
-					function initialize() { //Starts the function
-						var mapOptions = {
-							zoom: 14, //Sets how far the map is zoomed in (0 = view of the earth)
-							center: new google.maps.LatLng(52.41612, -4.083798) //Sets the starting location for the map to look at
-						};
+				<script type="text/javascript">
+					function initialize() {
+					  var mapOptions = {
+					    zoom: 3,
+					    center: new google.maps.LatLng(-34.397, 150.644)
+					  };
 
-						var map = new google.maps.Map(document.getElementById('googleMaps'), //Specifies the div container for the map (e.g, googleMaps)
-						mapOptions);
-						}
-					window.onload = initialize();
+					  var map = new google.maps.Map(document.getElementById('googleMaps'),
+					      mapOptions);
+					}
+
+					window.onload = initialize;
+
 				</script>
 			</div>
-			
 			<div id="footer">
 				<p>Footer...</p>
 			</div>
