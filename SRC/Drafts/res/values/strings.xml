@@ -15,5 +15,14 @@
     <string name="title_activity_main_app">MainAppActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="Main_CreateWalk_Button">Create New Route</string>
+    <string name="title_activity_walk_details">WalkDetailsActivity</string>
+    <string name="WalkDetailsNameLabel">Name</string>
+    <string name="WalkDetailsNameTextHint">The name of your new walk</string>
+    <string name="WalkDetailsSDLabel">Short Description</string>
+    <string name="WalkDetailsNameSDHint">Short description of your walk</string>
+    <string name="WalkDetailsLDLabel">Long Description</string>
+    <string name="WalkDetailsNameLDHint">Long description of your walk</string>
+    <string name="walkDetailsCancelButtonText">Cancel</string>
+    <string name="walkDetailsConfirmButtonText">Create</string>
 
 </resources>

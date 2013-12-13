@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".WalkDetailsActivity" >
+
+    <EditText
+        android:id="@+id/walkDetailsSDEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/walkDetailsSDLabel"
+        android:layout_alignRight="@+id/walkDetailsNameEdit"
+        android:layout_below="@+id/walkDetailsSDLabel"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="@string/WalkDetailsNameSDHint"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/walkDetailsNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/walkDetailsSDLabel"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
+        android:text="@string/WalkDetailsNameLabel"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/walkDetailsNameEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/walkDetailsNameLabel"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/walkDetailsNameLabel"
+        android:ems="10"
+        android:hint="@string/WalkDetailsNameTextHint"
+        android:minWidth="200dp" />
+
+    <TextView
+        android:id="@+id/walkDetailsSDLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/walkDetailsNameEdit"
+        android:layout_marginTop="16dp"
+        android:text="@string/WalkDetailsSDLabel"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/walkDetailsLDLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/walkDetailsSDEdit"
+        android:layout_below="@+id/walkDetailsSDEdit"
+        android:layout_marginTop="17dp"
+        android:text="@string/WalkDetailsLDLabel"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/walkDetailsLDEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/walkDetailsConfirmButton"
+        android:layout_alignLeft="@+id/walkDetailsLDLabel"
+        android:layout_alignRight="@+id/walkDetailsSDEdit"
+        android:layout_below="@+id/walkDetailsLDLabel"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:hint="@string/WalkDetailsNameLDHint"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/walkDetailsConfirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/walkDetailsLDEdit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/walkDetailsSDLabel"
+        android:text="@string/walkDetailsConfirmButtonText" />
+
+    <Button
+        android:id="@+id/walkDetailsCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/walkDetailsConfirmButton"
+        android:layout_alignRight="@+id/walkDetailsLDEdit"
+        android:layout_toRightOf="@+id/walkDetailsConfirmButton"
+        android:text="@string/walkDetailsCancelButtonText" />
+
+</RelativeLayout>

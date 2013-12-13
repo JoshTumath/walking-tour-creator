@@ -26,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="uk.ac.aber.group14.WalkDetailsActivity"
+            android:label="@string/title_activity_walk_details" >
+        </activity>
     </application>
 
 </manifest>

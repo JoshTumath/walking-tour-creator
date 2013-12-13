@@ -24,7 +24,7 @@
         android:text="@string/CancelButton" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/walkDetailsCancelButton"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -40,7 +40,7 @@
         android:layout_marginTop="16dp" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/walkDetailsNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/spinner1"
@@ -55,7 +55,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/walkDetailsNameLabel"
         android:layout_centerVertical="true"
         android:maxWidth="@dimen/LargeTextBoxValue"
         android:minLines="2"
@@ -84,7 +84,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignBottom="@+id/walkDetailsNameLabel"
         android:layout_alignRight="@+id/spinner1"
         android:layout_marginBottom="14dp"
         android:text="@string/DynamicCoords"

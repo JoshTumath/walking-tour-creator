@@ -1,21 +1,22 @@
-package uk.ac.aber.group14;
+package uk.ac.aber.group14.viewer;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import uk.ac.aber.group14.R;
 
-public class MainAppActivity extends Activity {
+public class WalkDetailsActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_app);
+		setContentView(R.layout.activity_walk_details);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_app, menu);
+		getMenuInflater().inflate(R.menu.walk_details, menu);
 		return true;
 	}
 
