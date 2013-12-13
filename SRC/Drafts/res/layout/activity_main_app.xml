@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/Main_CreateWalk_Button" />
+        android:text="@string/Main_CreateWalk_Button" 
+        android:onClick="createWalk" />
 
     <FrameLayout
         android:id="@+id/Frame_Layout_Main"

@@ -2,7 +2,9 @@ package uk.ac.aber.group14.viewer;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
 import uk.ac.aber.group14.R;
 
 public class MainAppActivity extends Activity {
@@ -20,4 +22,8 @@ public class MainAppActivity extends Activity {
 		return true;
 	}
 
+	public void createWalk(View view) {
+		Intent newWalk = new Intent(this, WalkDetailsActivity.class);
+		startActivity(newWalk);
+	}
 }
