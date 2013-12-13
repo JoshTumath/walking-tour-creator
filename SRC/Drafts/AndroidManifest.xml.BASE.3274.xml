@@ -17,19 +17,6 @@
             android:name="uk.ac.aber.group14.WalkCreatorActivity"
             android:label="@string/title_activity_walk_creator" >
         </activity>
-        <activity
-            android:name="uk.ac.aber.group14.MainAppActivity"
-            android:label="@string/title_activity_main_app" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="uk.ac.aber.group14.WalkDetailsActivity"
-            android:label="@string/title_activity_walk_details" >
-        </activity>
     </application>
 
 </manifest>

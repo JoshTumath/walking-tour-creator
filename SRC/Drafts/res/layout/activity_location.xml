@@ -71,14 +71,6 @@
         android:text="Description"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <android.widget.Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/digitalClock1"
-        android:layout_below="@+id/editText2"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="72dp" />
 
     <Button
         android:id="@+id/addPicture"
