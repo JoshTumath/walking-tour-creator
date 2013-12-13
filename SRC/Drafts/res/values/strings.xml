@@ -12,5 +12,8 @@
     <string name="DistanceTravelledLabel">Distance Travelled</string>
     <string name="DynamicCoords">12.2 lng 15.5 lat</string>
     <string name="DynamicDistance">100m</string>
+    <string name="title_activity_main_app">MainAppActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Main_CreateWalk_Button">Create New Route</string>
 
 </resources>
