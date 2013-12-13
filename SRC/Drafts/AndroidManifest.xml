@@ -17,6 +17,14 @@
             android:name="uk.ac.aber.group14.WalkCreatorActivity"
             android:label="@string/title_activity_walk_creator" >
         </activity>
+        <activity
+            android:name="uk.ac.aber.group14.viewer.LocationActivity"
+            android:label="@string/title_activity_location" >
+        </activity>
+        <activity
+            android:name="uk.ac.aber.group14.LocationActivity"
+            android:label="@string/title_activity_location" >
+        </activity>
     </application>
 
 </manifest>
