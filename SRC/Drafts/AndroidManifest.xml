@@ -18,12 +18,26 @@
             android:label="@string/title_activity_walk_creator" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name="uk.ac.aber.group14.viewer.LocationActivity"
             android:label="@string/title_activity_location" >
         </activity>
         <activity
             android:name="uk.ac.aber.group14.LocationActivity"
             android:label="@string/title_activity_location" >
+=======
+            android:name="uk.ac.aber.group14.MainAppActivity"
+            android:label="@string/title_activity_main_app" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="uk.ac.aber.group14.WalkDetailsActivity"
+            android:label="@string/title_activity_walk_details" >
+>>>>>>> 42e95ee06842f2ad79db8e445001a1f81bbff6f2
         </activity>
     </application>
 
