@@ -13,7 +13,6 @@
     <string name="DynamicCoords">12.2 lng 15.5 lat</string>
     <string name="DynamicDistance">100m</string>
     <string name="title_activity_main_app">MainAppActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="Main_CreateWalk_Button">Create New Route</string>
     <string name="title_activity_walk_details">WalkDetailsActivity</string>
     <string name="WalkDetailsNameLabel">Name</string>
@@ -24,5 +23,8 @@
     <string name="WalkDetailsNameLDHint">Long description of your walk</string>
     <string name="walkDetailsCancelButtonText">Cancel</string>
     <string name="walkDetailsConfirmButtonText">Create</string>
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="UnimplementedOK">OK</string>
+
 
 </resources>
