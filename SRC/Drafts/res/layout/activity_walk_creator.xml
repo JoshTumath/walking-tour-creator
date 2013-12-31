@@ -58,6 +58,7 @@
 
     <Button
         android:id="@+id/button3"
+        android:onClick="addLocation"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/NewWalk"
