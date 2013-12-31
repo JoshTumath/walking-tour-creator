@@ -1,6 +1,8 @@
 package uk.ac.aber.group14.model;
 
-public interface IPointOfInterest {
+import android.os.Parcelable;
+
+public interface IPointOfInterest extends Parcelable{
 	
 	public void setName(String name);
 	
