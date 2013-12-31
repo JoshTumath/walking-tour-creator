@@ -1,9 +1,13 @@
 package uk.ac.aber.group14.viewer;
 import uk.ac.aber.group14.R;
+import uk.ac.aber.group14.model.IPointOfInterest;
+import uk.ac.aber.group14.model.PointOfInterest;
+import android.location.Location;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 //import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +53,38 @@ public class LocationActivity extends Activity{
 			
 		});
 		
+	}
+	
+	public boolean validInput() {
+		//TODO: Add code here to validate the input
+		boolean isValid = false;
+		
+		return isValid;
+	}
+	
+	/*
+	 * This method should be called by the "Add location button"
+	 */
+	public void addLocation(View view) {
+		if(validInput()) {
+			//TODO: Get the current location
+			
+			Location location = null;
+			IPointOfInterest pointOfInterest = new PointOfInterest(location);
+
+			//TODO: Set the point of interest up
+			
+			
+			Intent output = new Intent();
+			output.putExtra("pointOfInterest", pointOfInterest);
+			setResult(Activity.RESULT_OK, output);
+			finish();
+		}
+	}
+	
+	public void cancel(View view) {
+		setResult(Activity.RESULT_CANCELED, new Intent());
+		finish();
 	}
 
 }
