@@ -3,9 +3,12 @@ package uk.ac.aber.group14.viewer;
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
+import uk.ac.aber.group14.model.IPointOfInterest;
+import uk.ac.aber.group14.model.PointOfInterest;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
@@ -21,6 +24,9 @@ public class WalkCreatorActivity extends Activity {
 							myIntent.getStringExtra("name"),
 							myIntent.getStringExtra("shortDescription"),
 							myIntent.getStringExtra("longDescription"));
+		Log.i("WTC", "Created walk using /" + myIntent.getStringExtra("name") +
+				"/" + myIntent.getStringExtra("shortDescription") + 
+				"/" + myIntent.getStringExtra("longDescription") + "/");
 	}
 
 	@Override
@@ -32,6 +38,20 @@ public class WalkCreatorActivity extends Activity {
 	
 	public void cancelWalk(View view) {
 		finish();
+	}
+	
+	public void addLocation(View view) {
+		Intent locationIntent = new Intent(this, LocationActivity.class);
+		startActivityForResult(locationIntent, 1);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode == Activity.RESULT_OK) {
+			IPointOfInterest point = (PointOfInterest)data.getSerializableExtra("pointOfInterest");
+			walkController.addPOI(point);
+		}
 	}
 
 }
