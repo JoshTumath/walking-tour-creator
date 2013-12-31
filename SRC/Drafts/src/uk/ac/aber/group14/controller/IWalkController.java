@@ -5,5 +5,9 @@ public interface IWalkController {
 	
 	public void addPOI(IPointOfInterest point);
 	
+	public android.location.Location getCurrentLocation();
+	
 	public void cancelWalk();
+	
+	public void uploadWalk();
 }

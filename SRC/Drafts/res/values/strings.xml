@@ -25,6 +25,7 @@
     <string name="walkDetailsConfirmButtonText">Create</string>
     <string name="title_activity_location">LocationActivity</string>
     <string name="UnimplementedOK">OK</string>
+    <string name="WalkDetailsInvalidInputMessage">You must give a name, short, and long description for the walk!</string>
 
 
 </resources>

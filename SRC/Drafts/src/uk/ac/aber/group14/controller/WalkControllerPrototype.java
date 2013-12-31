@@ -34,4 +34,10 @@ public class WalkControllerPrototype implements IWalkController {
 		return locations.getLast();
 	}
 
+	@Override
+	public void uploadWalk() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

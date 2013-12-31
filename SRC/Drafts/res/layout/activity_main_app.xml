@@ -8,13 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainAppActivity" >
 
-    <android.widget.GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="138dp" />
-
     <Button
         android:id="@+id/NewWalk"
         android:layout_width="242dp"
