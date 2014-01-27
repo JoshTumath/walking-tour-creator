@@ -40,4 +40,7 @@ public class WalkControllerPrototype implements IWalkController {
 		
 	}
 
+	public void addLocation(Location location) {
+		walk.addLocation(location);
+	}
 }
