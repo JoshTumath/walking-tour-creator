@@ -21,6 +21,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
 	private final int timerDelay = 5000;
 	private LocationManager locationManager;
+	private Handler uiUpdateHandler;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +48,22 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		Log.i("WTC", "Requested updates");
 		
 		
-		Handler uiUpdateHandler = new Handler();
-		uiUpdateHandler.post(new Runnable() {
+		uiUpdateHandler = new Handler();
+		uiUpdateHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
+				Log.i("WTC", "Getting last known location");
 				Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-				Log.i("WTC", "Changing last know location to " + 
-						lastLocation.getLongitude() + "," +
-						lastLocation.getLatitude() + " at " + 
-						lastLocation.getTime());
+				Log.i("WTC", "Recording last known location");
+				if(lastLocation != null) {
+					Log.i("WTC", "Changing last know location to " + 
+							lastLocation.getLongitude() + "," +
+							lastLocation.getLatitude() + " at " + 
+							lastLocation.getTime());
+				}
+				uiUpdateHandler.postDelayed(this, timerDelay);
 			}
-		});
+		}, timerDelay);
 		
 	}
 
