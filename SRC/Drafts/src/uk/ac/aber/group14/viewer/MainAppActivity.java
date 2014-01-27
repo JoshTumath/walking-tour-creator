@@ -32,13 +32,7 @@ public class MainAppActivity extends Activity {
 		    final AlertDialog alert = builder.create();
 		    alert.show();
 		}
-	/*public void Locmanager () {
-    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
-        Log.i("WTC","Testing manager");
-    	
-    }
-	}
-	*/
+
     
    
     
@@ -65,7 +59,7 @@ public class MainAppActivity extends Activity {
 			startActivityForResult(newWalkDetails, 1);
 		} // Checks if the GPS logger on the phone is on
 		else{
-			//   buildAlertMessageNoGps();
+			   buildAlertMessageNoGps();
 			//Pop up that says "GPS is not enabled, please enable GPS to continue"
 		}
 	}
