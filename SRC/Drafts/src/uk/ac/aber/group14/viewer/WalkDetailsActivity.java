@@ -14,6 +14,9 @@ import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
 
+import java.lang.String;
+import java.util.regex.Pattern;
+
 public class WalkDetailsActivity extends Activity {
 
 	private final int short_desc_len = 100;
@@ -50,6 +53,23 @@ public class WalkDetailsActivity extends Activity {
 				builder.setMessage(R.string.WalkDetailsInvalidInputMessage);
 			}
 			
+			else if (validChecker == 2){
+				builder.setMessage(R.string.WalkDetailsInvalidInputName);
+			}
+			
+			else if (validChecker == 3){
+				builder.setMessage(R.string.WalkDetailsInvalidInputShort);
+			}
+			
+			else if (validChecker == 4){
+				builder.setMessage(R.string.WalkDetailsInvalidInputLong);
+			}
+			
+			else if (validChecker == 5){
+				builder.setMessage(R.string.WalkDetailsInvalidInputCharacters);
+			}
+			
+			
 			builder.setNeutralButton(android.R.string.ok,
 		            new DialogInterface.OnClickListener() {
 		        public void onClick(DialogInterface dialog, int id) {
@@ -70,6 +90,7 @@ public class WalkDetailsActivity extends Activity {
 		String name = ((EditText)findViewById(R.id.walkDetailsNameEdit)).getText().toString();
 		String shortDescription = ((EditText)findViewById(R.id.walkDetailsSDEdit)).getText().toString();
 		String longDescription = ((EditText)findViewById(R.id.walkDetailsLDEdit)).getText().toString();
+		
 		int result = 0;
 		
 		if(name.length() == 0 ||
@@ -78,11 +99,22 @@ public class WalkDetailsActivity extends Activity {
 			result = 1;
 		}
 		
+		else if(name.length() > name_desc_len){
+			result = 2;
+		}
 		
+		else if(shortDescription.length() > short_desc_len){
+			result = 3;
+		}
 		
-		//250 short
-		//1000  long
-		//255 name
+		else if(longDescription.length() > long_desc_len){
+			result = 4;
+		}
+		
+		else if(Pattern.matches(name, "/\\s|[a-zA-Z]|\\d|\\.*")){
+			result = 5;
+		}
+		
 
 		return result;
 	}
