@@ -1,7 +1,7 @@
 		</main>
     <footer>
       <?php
-      if (isset($content)) {
+      if (!is_null($content)) {
         echo $content;
       }
       ?>

@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     
     <?php
-    if (isset($content)) {
+    if (!is_null($content)) {
       echo $content;
     }
     ?>
