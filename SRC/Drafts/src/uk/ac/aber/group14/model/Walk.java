@@ -46,8 +46,8 @@ public class Walk implements IWalk {
 	}
 
 	@Override
-	public IPointOfInterest[] getPointsOfInterest() {
-		return (IPointOfInterest[]) points.toArray();
+	public PointOfInterest[] getPointsOfInterest() {
+		return (PointOfInterest[]) points.toArray();
 	}
 
 	@Override

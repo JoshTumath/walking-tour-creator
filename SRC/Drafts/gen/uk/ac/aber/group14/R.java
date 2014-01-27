@@ -75,7 +75,11 @@ public final class R {
         public static final int SaveButton=0x7f050004;
         public static final int UnimplementedOK=0x7f050017;
         public static final int WalkCreatorTitle=0x7f050006;
+        public static final int WalkDetailsInvalidInputCharacters=0x7f05001c;
+        public static final int WalkDetailsInvalidInputLong=0x7f05001b;
         public static final int WalkDetailsInvalidInputMessage=0x7f050018;
+        public static final int WalkDetailsInvalidInputName=0x7f050019;
+        public static final int WalkDetailsInvalidInputShort=0x7f05001a;
         public static final int WalkDetailsLDLabel=0x7f050012;
         public static final int WalkDetailsNameLDHint=0x7f050013;
         public static final int WalkDetailsNameLabel=0x7f05000e;
