@@ -84,6 +84,16 @@
 	        android:layout_alignRight="@+id/editText2"
 	        android:layout_below="@+id/editText2"
 	        android:text="Add Picture" />
+
+	    <Button
+	        android:id="@+id/ConfirmAction"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="67dp"
+	        android:onClick="addLocation"
+	        android:text="Confirm" />
 	
 	</RelativeLayout>
 </ScrollView>

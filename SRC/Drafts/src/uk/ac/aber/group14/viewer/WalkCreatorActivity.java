@@ -20,8 +20,8 @@ import android.widget.TextView;
 
 public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
+	private LocationManager locationManager ;
 	private final int timerDelay = 5000;
-	private LocationManager locationManager;
 	private Handler uiUpdateHandler;
 	private boolean isRunning;
 
@@ -37,7 +37,6 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		Log.i("WTC", "Created walk using /" + myIntent.getStringExtra("name") +
 				"/" + myIntent.getStringExtra("shortDescription") + 
 				"/" + myIntent.getStringExtra("longDescription") + "/");
-
 
 		// Acquire a reference to the system Location Manager
 		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -77,7 +76,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		}, timerDelay);
 
 	}
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -110,6 +109,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		}
 	}
 
+
 	private void recordNewLocation(Location location) {
 		Log.i("WTC", "Adding new location:" + location.getLatitude() + 
 				"," + location.getLongitude() + " at " + location.getTime());
@@ -127,4 +127,5 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	public void onProviderEnabled(String provider) {}
 
 	public void onProviderDisabled(String provider) {}
+
 }

@@ -53,6 +53,9 @@ public class MainAppActivity extends Activity {
 	}
 
 
+	
+	
+	
 	public void createWalk(View view) {
 
 		if(manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
