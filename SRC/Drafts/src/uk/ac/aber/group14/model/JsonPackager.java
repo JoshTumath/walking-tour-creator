@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.util.Base64;
@@ -77,9 +76,6 @@ public class JsonPackager implements IJsonPackager {
 			// TODO XXX write proper error handling code
 			e.printStackTrace();
 		}
-		
-		
-		
 		
 		return null;
 	}

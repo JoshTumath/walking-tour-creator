@@ -13,13 +13,14 @@ public class PointOfInterest implements IPointOfInterest {
 
 	public PointOfInterest(Location location) {
 		this.location = location;
+		this.picture = null;
 	}
 	
 	private PointOfInterest(Parcel parcel) {
-		name = parcel.readString();
-		description = parcel.readString();
-		picture = (Bitmap) parcel.readParcelable(null);
-		location = (Location) parcel.readParcelable(null);
+		this.name = parcel.readString();
+		this.description = parcel.readString();
+		this.picture = (Bitmap) parcel.readParcelable(null);
+		this.location = (Location) parcel.readParcelable(null);
 	}
 	
 	@Override
@@ -29,27 +30,27 @@ public class PointOfInterest implements IPointOfInterest {
 
 	@Override
 	public void setDescription(String desc) {
-		description = desc;
+		this.description = desc;
 	}
 
 	@Override
 	public void addPicture(Bitmap image) {
-		picture = image;
+		this.picture = image;
 	}
 
 	@Override
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	@Override
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	@Override
 	public Location getLocation() {
-		return location;
+		return this.location;
 	}
 
 	@Override
@@ -59,15 +60,15 @@ public class PointOfInterest implements IPointOfInterest {
 	}
 
 	public Bitmap getPicture() {
-		return picture;
+		return this.picture;
 	}
 
 	@Override
 	public void writeToParcel(Parcel parcel, int flags) {
-		parcel.writeString(name);
-		parcel.writeString(description);
-		parcel.writeParcelable(picture, 0);
-		parcel.writeParcelable(location, 0);
+		parcel.writeString(this.name);
+		parcel.writeString(this.description);
+		parcel.writeParcelable(this.picture, 0);
+		parcel.writeParcelable(this.location, 0);
 	}
 
 	public static final Parcelable.Creator<PointOfInterest> CREATOR = new Parcelable.Creator<PointOfInterest>() {
