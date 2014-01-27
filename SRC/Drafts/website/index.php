@@ -13,7 +13,7 @@
 					echo "<ul class='walkItem'>";
 					while ($db_field = mysql_fetch_assoc($result)) {
 						echo "<li>";	
-              echo "<a href='walkingtournew.php?id=$db_field['id']>"
+              echo "<a href='walkingtournew.php?id=" . $db_field["id"] . "'>"
                 echo "<img src='aber.jpeg' alt='' />";
                 echo "<p>$db_field['title']</p>";
               echo "</a>";
