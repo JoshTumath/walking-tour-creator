@@ -122,16 +122,16 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		walkController.addLocation(location);
 	}
 
-    	public void onLocationChanged(Location location) {
-	      // Called when a new location is found by the GPS location provider.
-	    	Log.i("WTC", "New location found, adding...");
-	      recordNewLocation(location);
-	    }
+	public void onLocationChanged(Location location) {
+      // Called when a new location is found by the GPS location provider.
+		Log.i("WTC", "New location found, adding...");
+		recordNewLocation(location);
+    }
 
-	    public void onStatusChanged(String provider, int status, Bundle extras) {}
+    public void onStatusChanged(String provider, int status, Bundle extras) {}
 
-	    public void onProviderEnabled(String provider) {}
+    public void onProviderEnabled(String provider) {}
 
 
-	    public void onProviderDisabled(String provider) {}
+    public void onProviderDisabled(String provider) {}
 }
