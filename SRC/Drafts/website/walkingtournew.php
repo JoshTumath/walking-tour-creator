@@ -1,7 +1,7 @@
 <?php require_once "includes/functions.php"; ?>
 
 <?php
-// TODO: What happens if ID is not set
+// TODO: What happens if ID is not set?
 //if (isset($_GET['id'])) {
   $walkID = $_GET['id'];
 //}
@@ -11,9 +11,10 @@ $connection = mysql_connect('jakemaguire.co.uk','webWalk','123');
 mysql_select_db('walking_tour_database',$connection) or die("cannot connect to database");
 
 //---------- Select Walk Information Based on Walk ID ----------//
-    $SQL = "SELECT * FROM listOfWalks WHERE id = " . $walkID;
+$SQL = "SELECT * FROM listOfWalks WHERE id = " . $walkID;
 $result = mysql_query($SQL);
-    while ($db_field = mysql_fetch_assoc($result)) {
+
+while ($db_field = mysql_fetch_assoc($result)) {
   $title = $db_field['title'];
   $shortDesc = $db_field['shortDesc'];
   $longDesc = $db_field['longDesc'];
