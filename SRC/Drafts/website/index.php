@@ -15,7 +15,7 @@
 						echo "<li>";
               echo "<a href='walkingtournew.php?id=" . $db_field["id"] . "'>";
                 echo "<img src='aber.jpeg' alt='' />";
-                echo "<p>$db_field['title']</p>";
+                echo "<p>" . $db_field['title'] . "</p>";
               echo "</a>";
 						echo "</li>";
 					}
