@@ -7,7 +7,7 @@
 $connection = mysql_connect('jakemaguire.co.uk','webWalk','123');
 mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
 
-if (isset($_GET['submitWalk'])) {
+if (isset($_GET['id'])) {
   $walkID = $_GET['id'];
 }
 
