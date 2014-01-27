@@ -29,6 +29,11 @@ public class Walk implements IWalk {
 	public void addLocations(LinkedList<Location> locations) {
 		this.locations.addAll(locations);
 	}
+	
+	@Override
+	public void addLocation(Location location) {
+		locations.add(location);
+	}
 
 	@Override
 	public void setName(String name) {
@@ -70,9 +75,4 @@ public class Walk implements IWalk {
 		return longDescription;
 	}
 	
-	@Override
-	public void addLocation(Location location) {
-		locations.add(location);
-	}
-
 }
