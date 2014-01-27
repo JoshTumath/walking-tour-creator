@@ -21,10 +21,4 @@
 					}
 					echo "</ul>";
 				?>
-<?php insert_footer('
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvBB7hlS-aPXieeaTMzZQMbCPtqCqJNz0&sensor=false">
-// The script above loads the Google Maps API. The Key is the API key I was
-// given and the sensor and indicates whether this application uses a sensor
-// (such as a GPS locator) to determine the users location.
-</script>
-'); ?>
+<?php insert_footer(); ?>

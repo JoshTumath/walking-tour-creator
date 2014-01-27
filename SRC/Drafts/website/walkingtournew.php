@@ -1,15 +1,14 @@
 <?php require_once "includes/functions.php"; ?>
 
 <?php
-// TODO: Move code to functions file and change DB server to localhost
+// TODO: What happens if ID is not set
+//if (isset($_GET['id'])) {
+  $walkID = $_GET['id'];
+//}
 
 //---------- Connect to Database ----------//			
 $connection = mysql_connect('jakemaguire.co.uk','webWalk','123');
-mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
-
-if (isset($_GET['id'])) {
-  $walkID = $_GET['id'];
-}
+mysql_select_db('walking_tour_database',$connection) or die("cannot connect to database");
 
 //---------- Select Walk Information Based on Walk ID ----------//
     $SQL = "SELECT * FROM listOfWalks WHERE id = " . $walkID;
@@ -101,4 +100,10 @@ while ($row = mysql_fetch_assoc($result)) {
 					google.maps.event.addDomListener(window, 'load', initialize);
 					</script>
 				</div>
-<?php insert_footer(); ?>
+<?php insert_footer('
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvBB7hlS-aPXieeaTMzZQMbCPtqCqJNz0&sensor=false">
+// The script above loads the Google Maps API. The Key is the API key I was
+// given and the sensor and indicates whether this application uses a sensor
+// (such as a GPS locator) to determine the users location.
+</script>
+'); ?>
