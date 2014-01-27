@@ -1,0 +1,102 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	border-top: 2px solid black;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+p, label {
+	color: #888;
+	float: left;
+	font-size: .800em;
+}
+
+p span 
+{
+    display: block;
+	padding-top: 10px;
+}
+
+h1 {
+	color: #636363;
+	font-size: 30px;
+	font-weight: 300;
+}
+
+h2 {
+	color: #636363;
+	font-size: 26px;
+	padding: 5px 0px;
+	font-weight: 300;
+}
+
+
+/* _____STRUCTURE_____ */
+
+
+#header {
+	height: 100px;
+}
+
+#content {
+	float: left;
+	width: 30%;
+	background-color: #eee;
+	min-height: 600px;
+}
+
+#content h2, p {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#googleMaps {
+	float: right;
+	width: 70%;
+	background-color: #ccc;
+	min-height: 600px;
+}
+
+#footer {
+	border-top: 1px solid black;
+	clear: both;
+}
+
+/* _____HEADER_____ */
+
+#headerLeft {
+
+}	
+
+#headerLeft a{
+	float: left;
+	text-decoration: none;
+	margin-top: 20px;
+	margin-left: 20px;
+	color: inherit;
+}
+
+#headerRight {
+	margin-top: 20px;
+	margin-right: 20px;
+	float: right;
+}
+
+.searchbox {
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	font-family: helvetica, arial, sans serif;
+	padding-left: 1px;
+}
+
+/* _____MAP_____ */
+
+#map-canvas { 
+	height: 100% 
+}
+
+

@@ -4,46 +4,27 @@ html body{
 	height:100%;
 }
 
-h1, h2 {
-	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-}
-
-p {
-	font-family: 'Vollkorn', Georgia, Times, serif;
-}
-
-
-/* _____STRUCTURE_____ */
-
-
 #header{
 	width:100%;
 	margin:auto;
 	height:80px;
-	text-decoration: none;
 }
 
 #header h1{
 	color:#4c66d5;
 	font-size:50px;
+	font-family: 'Cantora One', sans-serif;
 	margin:auto;
 	margin-left:7.5%;
 }
 
-#header h1 a {
-	text-decoration: none;
-}
-
-#googleMaps {
-	float: right;
-	width: 70%;
-	background-color: #ccc;
-	min-height: 600px;
+#index{
+	height:auto;
+	min-height: 100%;
 }
 
 #contents{
 	height:auto;
-	min-height: 100%;
 	font-family: 'Rum Raisin', sans-serif;
 	font-size:20px;
 	color:#262626;	
@@ -53,8 +34,6 @@ p {
 	width:85%;
 	background:#cccccc;
 }
-
-/* _____LIST_____ */
 
 #list{
 	width:95%;
@@ -88,12 +67,6 @@ p {
 
 #clear{
 	clear:both;
-}
-
-/* _____MAP_____ */
-
-#map-canvas { 
-	height: 100% 
 }
 
 

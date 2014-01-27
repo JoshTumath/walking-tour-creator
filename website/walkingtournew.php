@@ -43,76 +43,72 @@
 	?>
 
 	<body>
-		<div id="wrapper">
-			<div id="header">
-				<div id="headerLeft">
-					<h1><a href="index.php">Walking Tour Creator</a></h1>
-				</div>
-			</div>
-			<div id="content">
+		<div id="header">
+			<h1><a href="index.php">Walking Tour Creator</a></h1>
+		</div>
+			<div id="contents">
 				<p><span><b><?php echo $title;?></b></span></p>
 				<p><span><b>Short Description: </b><?php echo $shortDesc;?></span></p>
 				<p><span><b>Long Description: </b><?php echo $longDesc;?></span></p>
 				<p><span><b>Distance: </b><?php echo $distance;?></span></p>
 				<p><span><b>Hours: </b><?php echo $hours;?></span></p>
-			</div>
-			<div id="googleMaps">
-				<script type="text/javascript">
-				var infowindow = null;
-				function initialize() {
+				<div id="googleMaps">
+					<script type="text/javascript">
+					var infowindow = null;
+					function initialize() {
 
-					var centerMap = new google.maps.LatLng(52.4151, -4.08352);
+						var centerMap = new google.maps.LatLng(52.4151, -4.08352);
 
-					var myOptions = {
-					    zoom: 13,
-					    center: centerMap,
-					    mapTypeId: google.maps.MapTypeId.ROADMAP
-					}
+						var myOptions = {
+							zoom: 13,
+							center: centerMap,
+							mapTypeId: google.maps.MapTypeId.ROADMAP
+						}
 
-					var map = new google.maps.Map(document.getElementById("googleMaps"), myOptions);
+						var map = new google.maps.Map(document.getElementById("googleMaps"), myOptions);
 
-					setMarkers(map, sites);
-					    infowindow = new google.maps.InfoWindow({
-						content: "loading..."
-					    });
+						setMarkers(map, sites);
+							infowindow = new google.maps.InfoWindow({
+							content: "loading..."
+							});
 
-					var coordinates = [
-						<?php echo implode(',', $coordinates) ?>
+						var coordinates = [
+							<?php echo implode(',', $coordinates) ?>
+						];
+						var lineBetweenPoints = new google.maps.Polyline({
+							path: coordinates,
+							geodesic: true,
+							strokeColor: '#FF0000',
+							strokeOpacity: 1.0,
+							strokeWeight: 2
+						});
+						lineBetweenPoints.setMap(map);
+						}	
+
+						var sites = [
+						<?php echo implode(',', $markers) ;?>
 					];
-					var lineBetweenPoints = new google.maps.Polyline({
-						path: coordinates,
-						geodesic: true,
-						strokeColor: '#FF0000',
-						strokeOpacity: 1.0,
-						strokeWeight: 2
-					});
-					lineBetweenPoints.setMap(map);
-			    	}	
 
-			    	var sites = [
-					<?php echo implode(',', $markers) ;?>
-				];
+						function setMarkers(map, markers) {
+						for (var i = 0; i < markers.length; i++) {
+							var sites = markers[i];
+							var siteLatLng = new google.maps.LatLng(sites[1], sites[2]);
+							var marker = new google.maps.Marker({
+							position: siteLatLng,
+							map: map,
+							title: sites[0],
+							html: sites[3]
+							});
 
-			    	function setMarkers(map, markers) {
-					for (var i = 0; i < markers.length; i++) {
-					    var sites = markers[i];
-					    var siteLatLng = new google.maps.LatLng(sites[1], sites[2]);
-					    var marker = new google.maps.Marker({
-						position: siteLatLng,
-						map: map,
-						title: sites[0],
-						html: sites[3]
-					    });
-
-					    google.maps.event.addListener(marker, "click", function () {
-						infowindow.setContent("<h1>"+ this.title +"</h1><p>"+ this.html +"</p>");
-						infowindow.open(map, this);
-					    });
+							google.maps.event.addListener(marker, "click", function () {
+							infowindow.setContent("<h1>"+ this.title +"</h1><p>"+ this.html +"</p>");
+							infowindow.open(map, this);
+							});
+						}
 					}
-				}
-				google.maps.event.addDomListener(window, 'load', initialize);
-				</script>
-			</div>
+					google.maps.event.addDomListener(window, 'load', initialize);
+					</script>
+				</div>
 		</div>
 	</body>
 </html>
