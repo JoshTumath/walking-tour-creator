@@ -42,7 +42,7 @@ public class JsonPackager implements IJsonPackager {
 				points.put(String.valueOf(i), loc);
 			}
 			
-			for (int i = 0; i < locations.length; i++) {
+			for (int i = 0; i < pointsOfInterest.length; i++) {
 				JSONObject loc = new JSONObject();
 				JSONObject poiData = new JSONObject();
 				
