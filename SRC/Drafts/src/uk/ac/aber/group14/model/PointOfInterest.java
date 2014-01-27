@@ -1,7 +1,5 @@
 package uk.ac.aber.group14.model;
 
-import java.util.LinkedList;
-
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Parcel;
@@ -9,23 +7,19 @@ import android.os.Parcelable;
 
 public class PointOfInterest implements IPointOfInterest {
 	private String name;
-	private String shortDescription;
-	private String longDescription;
-	private LinkedList<Bitmap> pictures;
+	private String description;
+	private Bitmap picture;
 	private Location location;
 
 	public PointOfInterest(Location location) {
-		pictures = new LinkedList<Bitmap>();
 		this.location = location;
 	}
 	
 	private PointOfInterest(Parcel parcel) {
 		name = parcel.readString();
-		shortDescription = parcel.readString();
-		longDescription = parcel.readString();
-		pictures = new LinkedList<Bitmap>();
-		parcel.readList(pictures, null);
-		location = (Location)parcel.readParcelable(null);
+		description = parcel.readString();
+		picture = (Bitmap) parcel.readParcelable(null);
+		location = (Location) parcel.readParcelable(null);
 	}
 	
 	@Override
@@ -34,18 +28,13 @@ public class PointOfInterest implements IPointOfInterest {
 	}
 
 	@Override
-	public void setShortDescription(String desc) {
-		shortDescription = desc;
-	}
-
-	@Override
-	public void setlongDescription(String desc) {
-		longDescription = desc;
+	public void setDescription(String desc) {
+		description = desc;
 	}
 
 	@Override
 	public void addPicture(Bitmap image) {
-		pictures.add(image);
+		picture = image;
 	}
 
 	@Override
@@ -54,18 +43,8 @@ public class PointOfInterest implements IPointOfInterest {
 	}
 
 	@Override
-	public String getShortDescription() {
-		return shortDescription;
-	}
-
-	@Override
-	public String getLongDescription() {
-		return longDescription;
-	}
-
-	@Override
-	public Bitmap[] getPictures() {
-		return (Bitmap[]) pictures.toArray();
+	public String getDescription() {
+		return description;
 	}
 
 	@Override
@@ -79,15 +58,16 @@ public class PointOfInterest implements IPointOfInterest {
 		return 0;
 	}
 
+	public Bitmap getPicture() {
+		return picture;
+	}
+
 	@Override
-	public void writeToParcel(Parcel arg0, int arg1) {
-		arg0.writeString(name);
-		arg0.writeString(shortDescription);
-		arg0.writeString(longDescription);
-		arg0.writeList(pictures);
-		arg0.writeParcelable(location, 0);
-		
-		return;
+	public void writeToParcel(Parcel parcel, int flags) {
+		parcel.writeString(name);
+		parcel.writeString(description);
+		parcel.writeParcelable(picture, 0);
+		parcel.writeParcelable(location, 0);
 	}
 
 	public static final Parcelable.Creator<PointOfInterest> CREATOR = new Parcelable.Creator<PointOfInterest>() {

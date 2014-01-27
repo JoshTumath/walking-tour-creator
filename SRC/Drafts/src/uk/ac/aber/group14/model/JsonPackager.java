@@ -1,8 +1,13 @@
 package uk.ac.aber.group14.model;
 
+import java.io.ByteArrayOutputStream;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.graphics.Bitmap;
 import android.location.Location;
+import android.util.Base64;
 
 public class JsonPackager implements IJsonPackager {
 
@@ -26,7 +31,43 @@ public class JsonPackager implements IJsonPackager {
 			walkData.put("longdescription", w.getLongDescription());
 			walkData.put("time", timeDelta);
 			
+			for (int i = 0; i < locations.length; i++) {
+				JSONObject loc = new JSONObject();
+				
+				loc.put("latitude", locations[i].getLatitude());
+				loc.put("longitude", locations[i].getLongitude());
+				loc.put("time", ((int) locations[i].getTime() / 1000));
+				loc.put("poiflag", false);
+				loc.put("poidata", JSONObject.NULL);
+				
+				points.put(String.valueOf(i), loc);
+			}
 			
+			for (int i = 0; i < locations.length; i++) {
+				JSONObject loc = new JSONObject();
+				JSONObject poiData = new JSONObject();
+				
+				loc.put("latitude", pointsOfInterest[i].getLocation().getLatitude());
+				loc.put("longitude", pointsOfInterest[i].getLocation().getLongitude());
+				loc.put("time", ((int) pointsOfInterest[i].getLocation().getTime() / 1000));
+				loc.put("poiflag", true);
+				
+				poiData.put("locationname", pointsOfInterest[i].getName());
+				poiData.put("description", pointsOfInterest[i].getDescription());
+				
+				if (pointsOfInterest[i].getPicture() != null) {
+					Bitmap b = (Bitmap) pointsOfInterest[i].getPicture();
+					ByteArrayOutputStream stream = new ByteArrayOutputStream();
+					b.compress(Bitmap.CompressFormat.PNG, 100, stream);
+					byte[] byteArray = stream.toByteArray();
+					poiData.put("photo", Base64.encodeToString(byteArray ,Base64.DEFAULT));
+				} else {
+					poiData.put("photo", JSONObject.NULL);
+				}
+				
+				loc.put("poidata", poiData);
+				points.put(String.valueOf(i + locations.length), loc);
+			}
 			
 			
 			
