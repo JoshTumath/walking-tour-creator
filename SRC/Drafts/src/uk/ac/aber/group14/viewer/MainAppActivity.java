@@ -19,7 +19,7 @@ import uk.ac.aber.group14.viewer.WalkDetailsActivity;
 public class MainAppActivity extends Activity {
 	
 	
-	final LocationManager manager = (LocationManager) this.getSystemService( Context.LOCATION_SERVICE );
+	LocationManager manager;
 	 private void buildAlertMessageNoGps() {
 		    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		    builder.setMessage("Your GPS seems to be disabled")
@@ -42,6 +42,7 @@ public class MainAppActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_app);
+		manager = (LocationManager) this.getSystemService( Context.LOCATION_SERVICE );
 	}
 
 	@Override

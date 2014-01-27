@@ -9,19 +9,19 @@ public class Walk implements IWalk {
 	private String name;
 	private String shortDescription;
 	private String longDescription;
-	private LinkedList<IPointOfInterest> points;
+	private LinkedList<PointOfInterest> points;
 	private LinkedList<Location> locations;
 	
 	public Walk(String name, String shortDescription, String longDescription) {
 		setName(name);
 		setShortDescription(shortDescription);
 		setLongDescription(longDescription);
-		points = new LinkedList<IPointOfInterest>();
+		points = new LinkedList<PointOfInterest>();
 		locations = new LinkedList<Location>();
 	}
 
 	@Override
-	public void addPointOfInterest(IPointOfInterest point) {
+	public void addPointOfInterest(PointOfInterest point) {
 		points.add(point);
 	}
 
@@ -46,8 +46,8 @@ public class Walk implements IWalk {
 	}
 
 	@Override
-	public IPointOfInterest[] getPointsOfInterest() {
-		return (IPointOfInterest[]) points.toArray();
+	public PointOfInterest[] getPointsOfInterest() {
+		return (PointOfInterest[]) points.toArray();
 	}
 
 	@Override

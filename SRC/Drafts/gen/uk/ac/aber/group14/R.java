@@ -25,21 +25,28 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int Frame_Layout_Main=0x7f080009;
-        public static final int NewWalk=0x7f080008;
-        public static final int action_settings=0x7f080017;
+        public static final int ConfirmAction=0x7f080008;
+        public static final int Frame_Layout_Main=0x7f08000a;
+        public static final int NewWalk=0x7f080009;
+        public static final int action_settings=0x7f080018;
         public static final int addPicture=0x7f080007;
+<<<<<<< HEAD
         public static final int button3=0x7f08000c;
         public static final int dialogButtonOK=0x7f080016;
+=======
+        public static final int button3=0x7f08000e;
+        public static final int dialogButtonOK=0x7f080017;
+>>>>>>> eff918312e24a8e72e7429f461c9b604eb5fc697
         public static final int digitalClock1=0x7f080001;
         public static final int editText1=0x7f080003;
         public static final int editText2=0x7f080006;
         public static final int scrollView1=0x7f080000;
-        public static final int spinner1=0x7f08000b;
-        public static final int text=0x7f080015;
+        public static final int spinner1=0x7f08000c;
+        public static final int text=0x7f080016;
         public static final int textView1=0x7f080004;
         public static final int textView2=0x7f080002;
         public static final int textView3=0x7f080005;
+<<<<<<< HEAD
         public static final int textView4=0x7f08000e;
         public static final int walkDetailsCancelButton=0x7f08000a;
         public static final int walkDetailsConfirmButton=0x7f080013;
@@ -49,6 +56,17 @@ public final class R {
         public static final int walkDetailsNameLabel=0x7f08000d;
         public static final int walkDetailsSDEdit=0x7f08000f;
         public static final int walkDetailsSDLabel=0x7f080010;
+=======
+        public static final int textView4=0x7f08000f;
+        public static final int walkDetailsCancelButton=0x7f08000b;
+        public static final int walkDetailsConfirmButton=0x7f080014;
+        public static final int walkDetailsLDEdit=0x7f080015;
+        public static final int walkDetailsLDLabel=0x7f080013;
+        public static final int walkDetailsNameEdit=0x7f080012;
+        public static final int walkDetailsNameLabel=0x7f08000d;
+        public static final int walkDetailsSDEdit=0x7f080010;
+        public static final int walkDetailsSDLabel=0x7f080011;
+>>>>>>> eff918312e24a8e72e7429f461c9b604eb5fc697
     }
     public static final class layout {
         public static final int activity_location=0x7f030000;
@@ -74,7 +92,11 @@ public final class R {
         public static final int SaveButton=0x7f050004;
         public static final int UnimplementedOK=0x7f050017;
         public static final int WalkCreatorTitle=0x7f050006;
+        public static final int WalkDetailsInvalidInputCharacters=0x7f05001c;
+        public static final int WalkDetailsInvalidInputLong=0x7f05001b;
         public static final int WalkDetailsInvalidInputMessage=0x7f050018;
+        public static final int WalkDetailsInvalidInputName=0x7f050019;
+        public static final int WalkDetailsInvalidInputShort=0x7f05001a;
         public static final int WalkDetailsLDLabel=0x7f050012;
         public static final int WalkDetailsNameLDHint=0x7f050013;
         public static final int WalkDetailsNameLabel=0x7f05000e;

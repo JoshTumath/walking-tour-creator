@@ -16,11 +16,17 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
+	private LocationManager locationManager ;
 	private final int timerDelay = 5000;
-	private LocationManager locationManager;
+	private Handler uiUpdateHandler;
+	private boolean isRunning;
+	
+
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,8 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		Log.i("WTC", "Created walk using /" + myIntent.getStringExtra("name") +
 				"/" + myIntent.getStringExtra("shortDescription") + 
 				"/" + myIntent.getStringExtra("longDescription") + "/");
+
+
 		
 		
 		// Acquire a reference to the system Location Manager
@@ -47,20 +55,34 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		Log.i("WTC", "Requested updates");
 		
 		
-		Handler uiUpdateHandler = new Handler();
-		uiUpdateHandler.post(new Runnable() {
+		uiUpdateHandler = new Handler();
+		isRunning = true;
+		uiUpdateHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-				Log.i("WTC", "Changing last know location to " + 
-						lastLocation.getLongitude() + "," +
-						lastLocation.getLatitude() + " at " + 
-						lastLocation.getTime());
+				if(isRunning) {
+					Log.i("WTC", "Getting last known location");
+					Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					Log.i("WTC", "Recording last known location");
+					if(lastLocation != null) {
+						Log.i("WTC", "Changing last known location to " + 
+								lastLocation.getLongitude() + "," +
+								lastLocation.getLatitude() + " at " + 
+								lastLocation.getTime());
+						TextView coordinateView = (TextView) findViewById(R.id.textView3);
+						if(coordinateView != null) {
+							String coordinateText = lastLocation.getLongitude() + "," +
+									lastLocation.getLatitude();
+							coordinateView.setText(coordinateText);
+						}
+					}
+					uiUpdateHandler.postDelayed(this, timerDelay);
+				}
 			}
-		});
+		}, timerDelay);
 		
 	}
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -69,6 +91,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	}
 	
 	public void cancelWalk(View view) {
+		isRunning = false;
 		finish();
 	}
 	
@@ -91,6 +114,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 			walkController.addPOI(point);
 		}
 	}
+
 	
 	private void recordNewLocation(Location location) {
 		Log.i("WTC", "Adding new location:" + location.getLatitude() + 
@@ -107,6 +131,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	    public void onStatusChanged(String provider, int status, Bundle extras) {}
 
 	    public void onProviderEnabled(String provider) {}
+
 
 	    public void onProviderDisabled(String provider) {}
 }
