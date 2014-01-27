@@ -7,7 +7,11 @@
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:bold">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     
-    <?php echo $content; ?>
+    <?php
+    if (isset($content)) {
+      echo $content;
+    }
+    ?>
 	</head>	
 	<body>
 		<header>
