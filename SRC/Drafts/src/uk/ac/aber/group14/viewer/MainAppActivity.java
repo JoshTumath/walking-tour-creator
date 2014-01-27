@@ -1,16 +1,49 @@
 package uk.ac.aber.group14.viewer;
 
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
+import uk.ac.aber.group14.viewer.WalkCreatorActivity;
+import uk.ac.aber.group14.viewer.WalkDetailsActivity;
 
 public class MainAppActivity extends Activity {
-
+	
+	
+	final LocationManager manager = (LocationManager) this.getSystemService( Context.LOCATION_SERVICE );
+	 private void buildAlertMessageNoGps() {
+		    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		    builder.setMessage("Your GPS seems to be disabled")
+		           .setCancelable(false)       
+		           .setNegativeButton("ok", new DialogInterface.OnClickListener() {
+		               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+		                    dialog.cancel();
+		               }
+		           });
+		    final AlertDialog alert = builder.create();
+		    alert.show();
+		}
+	/*public void Locmanager () {
+    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+        Log.i("WTC","Testing manager");
+    	
+    }
+	}
+	*/
+    
+   
+    
+    
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,10 +56,18 @@ public class MainAppActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main_app, menu);
 		return true;
 	}
+	
 
 	public void createWalk(View view) {
-		Intent newWalkDetails = new Intent(this, WalkDetailsActivity.class);
-		startActivityForResult(newWalkDetails, 1);
+		
+		if(manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
+			Intent newWalkDetails = new Intent(this, WalkDetailsActivity.class);
+			startActivityForResult(newWalkDetails, 1);
+		} // Checks if the GPS logger on the phone is on
+		else{
+			//   buildAlertMessageNoGps();
+			//Pop up that says "GPS is not enabled, please enable GPS to continue"
+		}
 	}
 	
 	@Override
