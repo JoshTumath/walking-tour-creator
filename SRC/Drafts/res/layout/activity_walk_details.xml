@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
 
 	<RelativeLayout
 	    android:layout_width="fill_parent"
@@ -60,8 +61,10 @@
 	        android:id="@+id/walkDetailsLDEdit"
 	        android:layout_width="wrap_content"
 	        android:layout_height="fill_parent"
-	        android:layout_alignLeft="@+id/walkDetailsLDLabel"
 	        android:layout_below="@+id/walkDetailsLDLabel"
+	        android:layout_above="@+id/walkDetailsConfirmButton"
+	        android:layout_alignLeft="@+id/walkDetailsLDLabel"
+	        android:layout_alignRight="@+id/walkDetailsCancelButton"
 	        android:ems="10"
 	        android:hint="@string/WalkDetailsNameLDHint"
 	        android:inputType="textMultiLine" >
@@ -73,7 +76,7 @@
 	        android:id="@+id/walkDetailsConfirmButton"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/walkDetailsLDEdit"
+	        android:layout_alignLeft="@+id/walkDetailsLDLabel"
 	        android:layout_alignParentBottom="true"
 	        android:layout_alignRight="@+id/walkDetailsLDLabel"
 	        android:onClick="createWalk"
@@ -88,19 +91,6 @@
 	        android:layout_toRightOf="@+id/walkDetailsSDLabel"
 	        android:onClick="cancel"
 	        android:text="@string/walkDetailsCancelButtonText" />
-
-	    <EditText
-	        android:id="@+id/walkDetailsLDEdit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="fill_parent"
-	        android:layout_alignLeft="@+id/walkDetailsLDLabel"
-	        android:layout_alignRight="@+id/walkDetailsSDEdit"
-	        android:layout_below="@+id/walkDetailsLDLabel"
-	        android:ems="10"
-	        android:hint="@string/WalkDetailsNameLDHint"
-	        android:inputType="textMultiLine"
-	        android:minLines="5"
-	        android:scrollbars="vertical" />
 
 	    <EditText
 	        android:id="@+id/walkDetailsNameEdit"
