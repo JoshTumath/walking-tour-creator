@@ -66,7 +66,7 @@ public class LocationActivity extends Activity{
 	/*
 	 * This method should be called by the "Add location button"
 	 */
-	public void addLocation(View view) {
+	public void addLocation(View view) {//button add location in confirm
 		if(validInput()) {
 			//TODO: Get the current location
 			

@@ -5,8 +5,13 @@ import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.PointOfInterest;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -14,7 +19,9 @@ import android.view.View;
 
 public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
-
+	private LocationManager locationManager ;
+	private final int timerDelay = 5000;
+	
 
 	
 	
@@ -58,7 +65,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		});
 		
 	}
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
