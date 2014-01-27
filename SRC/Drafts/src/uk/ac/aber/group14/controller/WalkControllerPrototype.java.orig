@@ -2,6 +2,7 @@ package uk.ac.aber.group14.controller;
 
 import java.util.LinkedList;
 
+<<<<<<< HEAD
 import org.json.JSONObject;
 
 import android.location.Location;
@@ -10,9 +11,11 @@ import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.IWalk;
 import uk.ac.aber.group14.model.JsonPackager;
+=======
 import android.location.Location;
 import uk.ac.aber.group14.model.IWalk;
 import uk.ac.aber.group14.model.PointOfInterest;
+>>>>>>> 9a93e9338f0e4d95addab91677a6539676ef0639
 import uk.ac.aber.group14.model.Walk;
 
 public class WalkControllerPrototype implements IWalkController {
@@ -25,7 +28,7 @@ public class WalkControllerPrototype implements IWalkController {
 	}
 	
 	@Override
-	public void addPOI(IPointOfInterest point) {
+	public void addPOI(PointOfInterest point) {
 		walk.addPointOfInterest(point);
 	}
 
@@ -44,8 +47,8 @@ public class WalkControllerPrototype implements IWalkController {
 	@Override
 	public void uploadWalk() {
 		IJsonPackager jsonPackager = new JsonPackager();
-		String walkObject = jsonPackager.JSONify(walk);
-		Log.i("WTC", "\n\n=== JSON WALK===\n\n" + walkObject + "\n\n================");
+		JSONObject walkObject = jsonPackager.JSONify(walk);
+		Log.i("WTC", "\n\n=== JSON WALK===\n\n" + walkObject.toString() + "\n\n================");
 		
 	}
 

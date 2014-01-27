@@ -106,7 +106,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
 		if(resultCode == Activity.RESULT_OK) {
-			IPointOfInterest point = (IPointOfInterest) data.getSerializableExtra("pointOfInterest");
+			PointOfInterest point = (PointOfInterest) data.getSerializableExtra("pointOfInterest");
 			walkController.addPOI(point);
 		}
 	}
@@ -126,11 +126,20 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 
 	public void onStatusChanged(String provider, int status, Bundle extras) {}
 
+<<<<<<< HEAD
     public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
+=======
+	public void onProviderEnabled(String provider) {}
+>>>>>>> 9a93e9338f0e4d95addab91677a6539676ef0639
 
+	public void onProviderDisabled(String provider) {}
+
+<<<<<<< HEAD
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
     
     public void onSaveRoute(View view) {
     	walkController.uploadWalk();
     }
+=======
+>>>>>>> 9a93e9338f0e4d95addab91677a6539676ef0639
 }

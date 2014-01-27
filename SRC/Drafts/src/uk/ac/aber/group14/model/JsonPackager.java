@@ -11,7 +11,7 @@ import android.util.Base64;
 public class JsonPackager implements IJsonPackager {
 
 	@Override
-	public String JSONify(Walk w) {
+	public String JSONify(IWalk w) {
 		JSONObject walk = new JSONObject();
 		JSONObject walkData = new JSONObject();
 		JSONObject points = new JSONObject();
