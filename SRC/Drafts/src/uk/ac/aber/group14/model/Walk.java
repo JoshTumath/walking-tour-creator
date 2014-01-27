@@ -52,12 +52,12 @@ public class Walk implements IWalk {
 
 	@Override
 	public PointOfInterest[] getPointsOfInterest() {
-		return (PointOfInterest[]) points.toArray();
+		return points.toArray(new PointOfInterest[points.size()]);
 	}
 
 	@Override
 	public Location[] getLocations() {
-		return (Location[]) locations.toArray();
+		return locations.toArray(new Location[locations.size()]);
 	}
 
 	@Override
