@@ -1,7 +1,5 @@
 package uk.ac.aber.group14.viewer;
 
-import java.util.Timer;
-
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
@@ -19,10 +17,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
-public class WalkCreatorActivity extends Activity {
+public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
-	private Handler gpsTimerHandler;
 	private final int timerDelay = 5000;
+	private LocationManager locationManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,42 +34,30 @@ public class WalkCreatorActivity extends Activity {
 		Log.i("WTC", "Created walk using /" + myIntent.getStringExtra("name") +
 				"/" + myIntent.getStringExtra("shortDescription") + 
 				"/" + myIntent.getStringExtra("longDescription") + "/");
-		/*gpsTimerHandler = new Handler();
-		gpsTimerHandler.postDelayed(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				Log.i("WTC", "Adding new location...");
-				
-				gpsTimerHandler.postDelayed(this, timerDelay);
-			}
-			
-			
-		}, timerDelay);*/
 		
 		
 		// Acquire a reference to the system Location Manager
-		LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-		// Define a listener that responds to location updates
-		LocationListener locationListener = new LocationListener() {
-		    public void onLocationChanged(Location location) {
-		      // Called when a new location is found by the network location provider.
-		      recordNewLocation(location);
-		    }
-
-		    public void onStatusChanged(String provider, int status, Bundle extras) {}
-
-		    public void onProviderEnabled(String provider) {}
-
-		    public void onProviderDisabled(String provider) {}
-		  };
-
+		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+		Log.i("WTC", "Got the location manager");
+		
+		  Log.i("WTC", "Created the listener");
 		// Register the listener with the Location Manager to receive location updates
-		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+		Log.i("WTC", "Requested updates");
 		
 		
+		Handler uiUpdateHandler = new Handler();
+		uiUpdateHandler.post(new Runnable() {
+			@Override
+			public void run() {
+				Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+				Log.i("WTC", "Changing last know location to " + 
+						lastLocation.getLongitude() + "," +
+						lastLocation.getLatitude() + " at " + 
+						lastLocation.getTime());
+			}
+		});
 		
 	}
 
@@ -106,5 +92,15 @@ public class WalkCreatorActivity extends Activity {
 		walkController.addLocation(location);
 	}
 
+    	public void onLocationChanged(Location location) {
+	      // Called when a new location is found by the GPS location provider.
+	    	Log.i("WTC", "New location found, adding...");
+	      recordNewLocation(location);
+	    }
 
+	    public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+	    public void onProviderEnabled(String provider) {}
+
+	    public void onProviderDisabled(String provider) {}
 }
