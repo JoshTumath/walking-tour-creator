@@ -88,8 +88,6 @@
 	        android:layout_toRightOf="@+id/walkDetailsSDLabel"
 	        android:onClick="cancel"
 	        android:text="@string/walkDetailsCancelButtonText" />
-<<<<<<< HEAD
-=======
 
 	    <EditText
 	        android:id="@+id/walkDetailsLDEdit"
@@ -117,7 +115,6 @@
 
 	        <requestFocus />
 	    </EditText>
->>>>>>> eff918312e24a8e72e7429f461c9b604eb5fc697
 	
 	</RelativeLayout>
 </ScrollView>
