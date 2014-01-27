@@ -34,56 +34,55 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp" />
 
-    <TextView
-        android:id="@+id/walkDetailsNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner1"
-        android:layout_below="@+id/spinner1"
-        android:layout_marginTop="33dp"
-        android:maxWidth="@dimen/LargeTextBoxValue"
-        android:minLines="2"
-        android:text="@string/CurrentCoordsLabel"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/walkDetailsNameLabel"
-        android:layout_centerVertical="true"
-        android:maxWidth="@dimen/LargeTextBoxValue"
-        android:minLines="2"
-        android:text="@string/DistanceTravelledLabel"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Button
         android:id="@+id/button3"
-        android:onClick="addLocation"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/NewWalk"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
+        android:onClick="addLocation"
         android:text="@string/AddButton" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_centerVertical="true"
-        android:text="@string/DynamicDistance"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/walkDetailsNameLabel"
         android:layout_alignBottom="@+id/walkDetailsNameLabel"
         android:layout_alignRight="@+id/spinner1"
-        android:layout_marginBottom="14dp"
         android:text="@string/DynamicCoords"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignRight="@+id/walkDetailsCancelButton"
+        android:text="@string/DynamicDistance"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/NewWalk"
+        android:layout_below="@+id/spinner1"
+        android:maxWidth="@dimen/LargeTextBoxValue"
+        android:minLines="2"
+        android:text="@string/DistanceTravelledLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/walkDetailsNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:maxWidth="@dimen/LargeTextBoxValue"
+        android:minLines="2"
+        android:text="@string/CurrentCoordsLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

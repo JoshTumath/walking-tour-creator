@@ -55,25 +55,38 @@
 	        android:layout_marginTop="17dp"
 	        android:text="@string/WalkDetailsLDLabel"
 	        android:textAppearance="?android:attr/textAppearanceMedium" />
-	
+
+	    <EditText
+	        android:id="@+id/walkDetailsLDEdit"
+	        android:layout_width="wrap_content"
+	        android:layout_height="fill_parent"
+	        android:layout_alignLeft="@+id/walkDetailsLDLabel"
+	        android:layout_below="@+id/walkDetailsLDLabel"
+	        android:ems="10"
+	        android:hint="@string/WalkDetailsNameLDHint"
+	        android:inputType="textMultiLine" >
+
+	        <requestFocus />
+	    </EditText>
+
 	    <Button
 	        android:id="@+id/walkDetailsConfirmButton"
-	        android:onClick="createWalk"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignLeft="@+id/walkDetailsLDEdit"
 	        android:layout_alignParentBottom="true"
-	        android:layout_alignRight="@+id/walkDetailsSDLabel"
+	        android:layout_alignRight="@+id/walkDetailsLDLabel"
+	        android:onClick="createWalk"
 	        android:text="@string/walkDetailsConfirmButtonText" />
 
 	    <Button
 	        android:id="@+id/walkDetailsCancelButton"
-	        android:onClick="cancel"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentBottom="true"
-	        android:layout_alignRight="@+id/walkDetailsSDEdit"
-	        android:layout_toRightOf="@+id/walkDetailsConfirmButton"
+	        android:layout_alignParentRight="true"
+	        android:layout_toRightOf="@+id/walkDetailsSDLabel"
+	        android:onClick="cancel"
 	        android:text="@string/walkDetailsCancelButtonText" />
 
 	    <EditText
