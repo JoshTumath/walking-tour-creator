@@ -3,9 +3,8 @@ package uk.ac.aber.group14.controller;
 import java.util.LinkedList;
 
 import android.location.Location;
-
-import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.IWalk;
+import uk.ac.aber.group14.model.PointOfInterest;
 import uk.ac.aber.group14.model.Walk;
 
 public class WalkControllerPrototype implements IWalkController {
@@ -18,7 +17,7 @@ public class WalkControllerPrototype implements IWalkController {
 	}
 	
 	@Override
-	public void addPOI(IPointOfInterest point) {
+	public void addPOI(PointOfInterest point) {
 		walk.addPointOfInterest(point);
 	}
 

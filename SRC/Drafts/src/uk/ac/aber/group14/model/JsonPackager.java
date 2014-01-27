@@ -11,7 +11,7 @@ import android.util.Base64;
 public class JsonPackager implements IJsonPackager {
 
 	@Override
-	public JSONObject JSONify(Walk w) {
+	public String JSONify(Walk w) {
 		JSONObject walk = new JSONObject();
 		JSONObject walkData = new JSONObject();
 		JSONObject points = new JSONObject();
@@ -69,9 +69,11 @@ public class JsonPackager implements IJsonPackager {
 			}
 			
 			
-			
 			walk.put("data", walkData);
 			walk.put("points", points);
+			
+			
+			return walk.toString(4);
 		} catch (JSONException e) {
 			// TODO XXX write proper error handling code
 			e.printStackTrace();

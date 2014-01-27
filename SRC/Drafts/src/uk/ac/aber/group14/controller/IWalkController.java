@@ -4,7 +4,7 @@ import uk.ac.aber.group14.model.*;
 
 public interface IWalkController {
 	
-	public void addPOI(IPointOfInterest point);
+	public void addPOI(PointOfInterest point);
 	
 	public android.location.Location getCurrentLocation();
 	
