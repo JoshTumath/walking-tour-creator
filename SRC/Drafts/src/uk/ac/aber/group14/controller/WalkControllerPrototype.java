@@ -2,10 +2,14 @@ package uk.ac.aber.group14.controller;
 
 import java.util.LinkedList;
 
-import android.location.Location;
+import org.json.JSONObject;
 
+import android.location.Location;
+import android.util.Log;
+import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.IWalk;
+import uk.ac.aber.group14.model.JsonPackager;
 import uk.ac.aber.group14.model.Walk;
 
 public class WalkControllerPrototype implements IWalkController {
@@ -36,7 +40,9 @@ public class WalkControllerPrototype implements IWalkController {
 
 	@Override
 	public void uploadWalk() {
-		// TODO Auto-generated method stub
+		IJsonPackager jsonPackager = new JsonPackager();
+		JSONObject walkObject = jsonPackager.JSONify(walk);
+		Log.i("WTC", "\n\n=== JSON WALK===\n\n" + walkObject.toString() + "\n\n================");
 		
 	}
 

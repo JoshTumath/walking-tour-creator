@@ -99,7 +99,8 @@
 	        android:ems="10"
 	        android:hint="@string/WalkDetailsNameLDHint"
 	        android:inputType="textMultiLine"
-	        android:minLines="5"
+	        android:minLines="2"
+	        android:maxLines="5"
 	        android:scrollbars="vertical" />
 
 	    <EditText

@@ -3,7 +3,9 @@ package uk.ac.aber.group14.viewer;
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
+import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.IPointOfInterest;
+import uk.ac.aber.group14.model.JsonPackager;
 import uk.ac.aber.group14.model.PointOfInterest;
 import android.location.Location;
 import android.location.LocationListener;
@@ -136,6 +138,6 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
     
     public void onSaveRoute(View view) {
-    	
+    	walkController.uploadWalk();
     }
 }
