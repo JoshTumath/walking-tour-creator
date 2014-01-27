@@ -4,7 +4,7 @@ import android.location.Location;
 
 public interface IWalk {
 
-	public void addPointOfInterest(PointOfInterest point);
+	public void addPointOfInterest(IPointOfInterest point);
 	
 	public void addLocations(java.util.LinkedList<android.location.Location> location);
 	
