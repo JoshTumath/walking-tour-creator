@@ -4,8 +4,7 @@
 			<h1>Welcome to walking tour displayer</h1>
 			<p>Please select a tour that you wish to view <p>
 			<div id="list">
-				<form method="post" action='walkingtournew.php'>
-				<?php					
+				<?php
 					$connection = mysql_connect('23.226.133.168','webWalk','123');
 								mysql_select_db('walking_tour_database',$connection) or die("cannot connect");				
 
@@ -14,17 +13,14 @@
 					echo "<ul class='walkItem'>";
 					while ($db_field = mysql_fetch_assoc($result)) {
 						echo "<li>";	
-							echo "<img src='aber.jpeg' href='#' />";
-							echo "<p>" . $db_field['title'] . "</p>";
-							echo "<input name='walkID' value='" . $db_field["id"] ."' type='checkbox'>";
+              echo "<a href='walkingtournew.php?id=$db_field['id']>"
+                echo "<img src='aber.jpeg' alt='' />";
+                echo "<p>$db_field['title']</p>";
+              echo "</a>";
 						echo "</li>";
 					}
 					echo "</ul>";
-				?>	
-					<input type="submit" name="submitWalk" value="Submit">
-				</form>		
-				<div id='clear'>
-				</div>
+				?>
 <?php insert_footer('
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvBB7hlS-aPXieeaTMzZQMbCPtqCqJNz0&sensor=false">
 // The script above loads the Google Maps API. The Key is the API key I was
