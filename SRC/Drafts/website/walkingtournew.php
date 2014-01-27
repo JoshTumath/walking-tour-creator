@@ -1,51 +1,43 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Group 14 - Walking Tour</title>
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-	</head>	
+<?php require_once "includes/functions.php"; ?>
 
-	<?php
-		//---------- Connect to Database ----------//			
-		$connection = mysql_connect('jakemaguire.co.uk','webWalk','123');
-		mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
+<?php
+// TODO: Move code to functions file and change DB server to localhost
 
-		if ($_POST['submitWalk']) {
-			$walkID = $_POST['walkID'];
-		}
+//---------- Connect to Database ----------//			
+$connection = mysql_connect('jakemaguire.co.uk','webWalk','123');
+mysql_select_db('walking_tour_database',$connection) or die("cannont connect to database");
 
-		//---------- Select Walk Information Based on Walk ID ----------//
-	    	$SQL = "SELECT * FROM listOfWalks WHERE id = " . $walkID;
-	 	$result = mysql_query($SQL);
-	    	while ($db_field = mysql_fetch_assoc($result)) {
-			$title = $db_field['title'];
-			$shortDesc = $db_field['shortDesc'];
-			$longDesc = $db_field['longDesc'];
-			$distance = $db_field['distance'];
-			$hours = $db_field['hours'];
-		}
+if ($_POST['submitWalk']) {
+  $walkID = $_POST['walkID'];
+}
 
-		//---------- Get Markers Query ----------//
-		$SQL = ("SELECT placeDescription.description, location.latitude, location.longitude, placeDescription.title FROM placeDescription, location WHERE placeDescription.locationID = location.id AND location.walkID = " . $walkID) or mysql_error();
-		$result = mysql_query($SQL);
-		while ($row = mysql_fetch_assoc($result)) {
-			$markers[] = '["' . $row['title'] . '",' . $row['latitude'] . ',' . $row['longitude'] . ', "' . $row['description'] . '"]';
-		}
+//---------- Select Walk Information Based on Walk ID ----------//
+    $SQL = "SELECT * FROM listOfWalks WHERE id = " . $walkID;
+$result = mysql_query($SQL);
+    while ($db_field = mysql_fetch_assoc($result)) {
+  $title = $db_field['title'];
+  $shortDesc = $db_field['shortDesc'];
+  $longDesc = $db_field['longDesc'];
+  $distance = $db_field['distance'];
+  $hours = $db_field['hours'];
+}
 
-		//---------- Get Lines Query ----------//
-		$SQL = ("SELECT latitude,longitude FROM location WHERE walkID =" .$walkID) or mysql_error();
-		$result = mysql_query($SQL);
-		while ($row = mysql_fetch_assoc($result)) {
-			$coordinates[] = 'new google.maps.LatLng(' . $row['latitude'] . ', ' . $row['longitude'] . ')';
-		}
-	?>
+//---------- Get Markers Query ----------//
+$SQL = ("SELECT placeDescription.description, location.latitude, location.longitude, placeDescription.title FROM placeDescription, location WHERE placeDescription.locationID = location.id AND location.walkID = " . $walkID) or mysql_error();
+$result = mysql_query($SQL);
+while ($row = mysql_fetch_assoc($result)) {
+  $markers[] = '["' . $row['title'] . '",' . $row['latitude'] . ',' . $row['longitude'] . ', "' . $row['description'] . '"]';
+}
 
-	<body>
-		<div id="header">
-			<h1><a href="index.php">Walking Tour Creator</a></h1>
-		</div>
+//---------- Get Lines Query ----------//
+$SQL = ("SELECT latitude,longitude FROM location WHERE walkID =" .$walkID) or mysql_error();
+$result = mysql_query($SQL);
+while ($row = mysql_fetch_assoc($result)) {
+  $coordinates[] = 'new google.maps.LatLng(' . $row['latitude'] . ', ' . $row['longitude'] . ')';
+}
+?>
+
+<?php insert_header(); ?>
 			<div id="contents">
 				<p><span><b><?php echo $title;?></b></span></p>
 				<p><span><b>Short Description: </b><?php echo $shortDesc;?></span></p>
@@ -109,6 +101,4 @@
 					google.maps.event.addDomListener(window, 'load', initialize);
 					</script>
 				</div>
-		</div>
-	</body>
-</html>
+<?php insert_footer(); ?>

@@ -1,4 +1,4 @@
-html body{
+body {
 	padding:0;
 	margin:0;
 	height:100%;
@@ -16,21 +16,21 @@ p {
 /* _____STRUCTURE_____ */
 
 
-#header{
+header{
 	width:100%;
 	margin:auto;
 	height:80px;
 	text-decoration: none;
 }
 
-#header h1{
+header h1{
 	color:#4c66d5;
 	font-size:50px;
 	margin:auto;
 	margin-left:7.5%;
 }
 
-#header h1 a {
+header h1 a {
 	text-decoration: none;
 }
 
