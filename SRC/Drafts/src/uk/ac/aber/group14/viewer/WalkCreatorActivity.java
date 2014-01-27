@@ -16,12 +16,14 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
 	private LocationManager locationManager ;
 	private final int timerDelay = 5000;
 	private Handler uiUpdateHandler;
+	private boolean isRunning;
 	
 
 	
@@ -54,19 +56,28 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		
 		
 		uiUpdateHandler = new Handler();
+		isRunning = true;
 		uiUpdateHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				Log.i("WTC", "Getting last known location");
-				Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-				Log.i("WTC", "Recording last known location");
-				if(lastLocation != null) {
-					Log.i("WTC", "Changing last know location to " + 
-							lastLocation.getLongitude() + "," +
-							lastLocation.getLatitude() + " at " + 
-							lastLocation.getTime());
+				if(isRunning) {
+					Log.i("WTC", "Getting last known location");
+					Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					Log.i("WTC", "Recording last known location");
+					if(lastLocation != null) {
+						Log.i("WTC", "Changing last known location to " + 
+								lastLocation.getLongitude() + "," +
+								lastLocation.getLatitude() + " at " + 
+								lastLocation.getTime());
+						TextView coordinateView = (TextView) findViewById(R.id.textView3);
+						if(coordinateView != null) {
+							String coordinateText = lastLocation.getLongitude() + "," +
+									lastLocation.getLatitude();
+							coordinateView.setText(coordinateText);
+						}
+					}
+					uiUpdateHandler.postDelayed(this, timerDelay);
 				}
-				uiUpdateHandler.postDelayed(this, timerDelay);
 			}
 		}, timerDelay);
 		
@@ -80,6 +91,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	}
 	
 	public void cancelWalk(View view) {
+		isRunning = false;
 		finish();
 	}
 	
