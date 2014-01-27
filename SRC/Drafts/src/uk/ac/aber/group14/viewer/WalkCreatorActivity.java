@@ -130,8 +130,12 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 
     public void onStatusChanged(String provider, int status, Bundle extras) {}
 
-    public void onProviderEnabled(String provider) {}
+    public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
 
 
-    public void onProviderDisabled(String provider) {}
+    public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
+    
+    public void onSaveRoute(View view) {
+    	
+    }
 }
