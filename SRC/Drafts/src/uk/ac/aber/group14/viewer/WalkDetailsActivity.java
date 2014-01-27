@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +18,7 @@ public class WalkDetailsActivity extends Activity {
 
 	private final int short_desc_len = 100;
 	private final int long_desc_len = 1000;
+	private final int name_desc_len = 255;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,9 @@ public class WalkDetailsActivity extends Activity {
 	}
 
 	public void createWalk(View view) {
-		if(validInput()) {
+		int validChecker = validInput();
+		
+		if(validChecker == 0) {
 			Intent output = new Intent();
 			output.putExtra("name", ((EditText)findViewById(R.id.walkDetailsNameEdit)).getText().toString());
 			output.putExtra("shortDescription", ((EditText)findViewById(R.id.walkDetailsSDEdit)).getText().toString());
@@ -41,7 +45,17 @@ public class WalkDetailsActivity extends Activity {
 			finish();
 		} else {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.WalkDetailsInvalidInputMessage);
+			
+			if(validChecker == 1){
+				builder.setMessage(R.string.WalkDetailsInvalidInputMessage);
+			}
+			
+			builder.setNeutralButton(android.R.string.ok,
+		            new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int id) {
+		            dialog.cancel();
+		        }
+		    });
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
@@ -52,14 +66,24 @@ public class WalkDetailsActivity extends Activity {
 		finish();
 	}
 	
-	public boolean validInput()	{
+	public int validInput()	{
 		String name = ((EditText)findViewById(R.id.walkDetailsNameEdit)).getText().toString();
 		String shortDescription = ((EditText)findViewById(R.id.walkDetailsSDEdit)).getText().toString();
 		String longDescription = ((EditText)findViewById(R.id.walkDetailsLDEdit)).getText().toString();
-		boolean isValid = (name.length() > 0 &&
-				shortDescription.length() < short_desc_len &&
-				longDescription.length() < long_desc_len);
+		int result = 0;
+		
+		if(name.length() == 0 ||
+				shortDescription.length() == 0 ||
+				longDescription.length() == 0){
+			result = 1;
+		}
+		
+		
+		
+		//250 short
+		//1000  long
+		//255 name
 
-		return isValid;
+		return result;
 	}
-}
+}		

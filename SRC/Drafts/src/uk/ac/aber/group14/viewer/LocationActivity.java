@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 //import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -75,10 +76,15 @@ public class LocationActivity extends Activity{
 			//TODO: Set the point of interest up
 			
 			
-			Intent output = new Intent();
+			
+			Intent output = new Intent();//save
+			
+			Bundle extras = output.getExtras(); 
+			String tmp = extras.getString("myLocationalKey");
+			Log.i("WTC", "testing addLocation");//used for testing
 			output.putExtra("pointOfInterest", pointOfInterest);
 			setResult(Activity.RESULT_OK, output);
-			finish();
+			finish();//where you finish and output
 		}
 	}
 	

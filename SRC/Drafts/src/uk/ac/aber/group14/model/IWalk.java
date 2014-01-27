@@ -1,5 +1,7 @@
 package uk.ac.aber.group14.model;
 
+import android.location.Location;
+
 public interface IWalk {
 
 	public void addPointOfInterest(PointOfInterest point);
@@ -21,5 +23,7 @@ public interface IWalk {
 	public String getShortDescription();
 	
 	public String getLongDescription();
+	
+	public void addLocation(Location location);
 	
 }
