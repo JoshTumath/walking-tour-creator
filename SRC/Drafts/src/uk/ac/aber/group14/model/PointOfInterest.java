@@ -20,13 +20,13 @@ public class PointOfInterest implements IPointOfInterest {
 	}
 	
 	private PointOfInterest(Parcel parcel) {
-        name = parcel.readString();
-        shortDescription = parcel.readString();
-        longDescription = parcel.readString();
-        pictures = new LinkedList<Bitmap>();
-        parcel.readList(pictures, null);
-        location = (Location)parcel.readParcelable(null);
-    }
+		name = parcel.readString();
+		shortDescription = parcel.readString();
+		longDescription = parcel.readString();
+		pictures = new LinkedList<Bitmap>();
+		parcel.readList(pictures, null);
+		location = (Location)parcel.readParcelable(null);
+	}
 	
 	@Override
 	public void setName(String name) {
@@ -89,16 +89,16 @@ public class PointOfInterest implements IPointOfInterest {
 		
 		return;
 	}
-   
-    public static final Parcelable.Creator<PointOfInterest> CREATOR = new Parcelable.Creator<PointOfInterest>() {
-        public PointOfInterest createFromParcel(Parcel parcel) {
-            return new PointOfInterest(parcel);
-        }
 
-        public PointOfInterest[] newArray(int size) {
-            return new PointOfInterest[size];
-        }
-    };
-	
+	public static final Parcelable.Creator<PointOfInterest> CREATOR = new Parcelable.Creator<PointOfInterest>() {
+		public PointOfInterest createFromParcel(Parcel parcel) {
+			return new PointOfInterest(parcel);
+		}
+
+		public PointOfInterest[] newArray(int size) {
+			return new PointOfInterest[size];
+		}
+	};
+
 
 }
