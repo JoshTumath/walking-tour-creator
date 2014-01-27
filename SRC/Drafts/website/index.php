@@ -4,7 +4,7 @@
 <h1>Welcome to walking tour displayer</h1>
 <div class="wrapper">
   <div id="list">
-    <p>Please select a tour that you wish to view <p>
+    <p>Please select a tour that you wish to view</p>
   <?php
     $connection = mysql_connect('23.226.133.168','webWalk','123');
           mysql_select_db('walking_tour_database',$connection) or die("cannot connect");				

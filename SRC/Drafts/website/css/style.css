@@ -67,17 +67,10 @@ footer {
 	overflow:hidden;
 }
 
-main{
-	height:auto;
-	min-height: 100%;
-	font-family: 'Rum Raisin', sans-serif;
-	font-size:20px;
-	color:#262626;	
-	text-align:center;
-	border:1px solid black;
-	margin:auto;
-	width:85%;
-	background:#cccccc;
+#list > p {
+    margin:0;
+    font-size:x-large;
+    text-align:center;
 }
 
 #list ul {
@@ -89,7 +82,7 @@ main{
 #list li {
 	display:block;
 	float:left;
-    margin:0 8px 0 0;
+    margin:16px 8px 0 0;
 }
 
 #list li:nth-child(3n) {
