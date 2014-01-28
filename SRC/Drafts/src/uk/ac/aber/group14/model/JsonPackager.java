@@ -2,18 +2,12 @@ package uk.ac.aber.group14.model;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
-<<<<<<< HEAD
-import java.io.FileNotFoundException;
-import android.content.ContentResolver;
-=======
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
->>>>>>> 058981881eb0fef781e7fb1207d6e88b5a783732
 import org.json.JSONException;
 import org.json.JSONObject;
 
