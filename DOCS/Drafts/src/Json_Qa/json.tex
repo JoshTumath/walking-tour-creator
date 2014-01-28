@@ -1,0 +1,134 @@
+\documentclass{project}
+
+%---------- Edit for current document 
+\usepackage[pdfauthor={Lars H Lunde},pdftitle={Test Specification Formal Review},pdftex]{hyperref}
+\usepackage{listings}
+\begin{document}
+\lstset{language=tex}
+\title{JSON Layout}
+
+%---------- Edit for current document 
+\subtitle{QA Document}
+\author{Group 14}     
+\shorttitle{JSON}
+\version{1.0}
+\status{Final}
+\date{\today}
+\configref{SE-14-JSON-QA}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%------------------- Document text
+%-------- This section and its 3 subsections are mandatory for ANY document
+
+\section{INTRODUCTION}
+
+\subsection{Purpose of this Document}
+The purpose of this document is to create a useful template for JSON documents.
+This is required as they are required to match format between web and app to operate correctly.
+
+\subsection{Scope}
+This document will cover the possible fields and values that will be created by the WTC application
+and sent to the website. The developers of the JSON parts of the application and website are the
+people who should read this.
+
+Documents relevenat to this are SE-14-DESIGN and SE-14-PROJECT.
+
+
+\subsection{Objectives}
+The Objective of this document is to provide a single way for JSON files and querys to be constructed
+and interpreted.
+
+
+\section{LAYOUT}
+
+\subsection{Layout Information}
+All values are stored as key, value pairs.
+
+Values can be any of:
+\begin{itemize}
+\item Array containing values
+\item Nested JSON object
+\item string
+\item number
+\item true
+\item false
+\item null
+\end{itemize}
+
+All keys are strings and are required.
+
+\subsection{Example}
+
+\begin{verbatim}
+	{
+    	"data" 		: {
+                        "walkname"			: "Name",
+                    	"shortdescription"	: "Short Description",
+                    	"longdescription"	: "Long Description",
+                    	"time"				: 123455
+                 	},
+   		
+        "points"	: {
+        				"1" : {
+                                "latitude"		: 52.122,
+                                "longitude"		: -4.333,
+                                "timestamp"		: 12345678,
+                                "poiflag"		: true,
+                                "poidata"		: {
+                                                "locationname"	: "varsity",
+                                                "description"	: "a good pub",
+                                                "photo"			: "----------"
+                                			}
+                        	},
+                     	"2" : {
+                                "latitude"		: 52.122,
+                                "longitude"		: -4.333,
+                                "timestamp"		: 12345678,
+                                "poiflag"		: false,
+                                "poidata"		: null
+                        	}
+        			}
+    
+    }
+
+\end{verbatim}
+
+The first JSON Object contains the walk specific information such as the walk name, short description and long description and the timestamp of duration of the walk in seconds.
+
+The second JSON Object contains contains JSON Objects representing the locations and points of interests.
+
+Each location contains a longitude, latitude and a timestamp of the location. They also contain a flag
+indicating whether it is a point of interest as well.
+
+The poidata JSON Object contains the additional information that a point of interest requires such as the location name,
+location description and the optional Base64 encoded image.
+
+
+
+
+%------------------- References
+%--------- This contains  all the QA documents, edit out the ones you don't use in the document
+
+\clearpage
+
+
+%---------------------- Version History 
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{flushleft}
+\begin{tabular}{ | p{1.5cm} | p{1cm} | p{2cm} | p{6cm}| p{1.5cm}| }
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+
+%----------- Add edits and change author
+1.0 & N/A & 2014-1-28 & Initial creation & DAW46 \\
+\hline
+
+\end{tabular}
+\end{flushleft}
+\label{thelastpage}
+\end{document}
