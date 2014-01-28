@@ -46,12 +46,7 @@ public class MainAppActivity extends Activity {
 		    final AlertDialog alert = builder.create();
 		    alert.show();
 		}*/
-	 @Override
-	 public void onBackPressed() {
-	     // TODO Auto-generated method stub
-		 //buildAlertMessageBackMessage();
-	  //   super.onBackPressed();
-	 }
+	
    
 
 	@Override
