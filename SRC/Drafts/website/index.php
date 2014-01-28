@@ -1,7 +1,7 @@
 <?php require_once "includes/functions.php"; ?>
 
 <?php insert_header(); ?>
-<h1>Welcome to walking tour displayer</h1>
+<h1>Welcome to the Walking Tour Displayer</h1>
 <div class="wrapper">
   <div id="list">
     <p>Please select a tour that you wish to view</p>

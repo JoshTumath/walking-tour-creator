@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* _____STRUCTURE_____ */
 header {
-    background: #3C9615;
+    background:white;
 }
 
 header h1 {
@@ -26,11 +26,12 @@ header h1 a {
     padding:0.5em 0;
 	text-decoration:none;
     text-transform:uppercase;
-    color:#711596;
+    color:#FFAA00;
+    transition:200ms color;
 }
 
 header h1 a:hover {
-	color:#941CC4;
+	color:#FFD073;
 }
 
 main > h1 {
@@ -53,13 +54,16 @@ main > .wrapper {
 }
 
 footer {
+    padding:16px;
+    background:#571073;
+    color:white;
+}
+
+footer p {
     -moz-box-sizing:border-box;
     box-sizing:border-box;
     margin:auto;
-    padding:16px;
     width:960px;
-    background:#571073;
-    color:white;
 }
 
 /* _____WALK LIST_____ */
@@ -96,15 +100,15 @@ footer {
 
 #list img {
 	display:block;
-	margin:auto;
+	margin:4px;
 	height:222px;
 	width:296px;
     background:black;
-    border:4px solid white;
+    transition:200ms box-shadow;
 }
 
 #list a:hover img {
-	border-color:#571073;	
+	box-shadow:0 0 0 4px #FFAA00;	
 }
 
 #list li p {
@@ -114,12 +118,11 @@ footer {
 
 /* _____MAP_____ */
 #googleMaps {
-	float: right;
-	width: 70%;
-	background-color: #ccc;
-	min-height: 600px;
+	float:right;
+	width:70%;
+	background:black;
 }
 
 #map-canvas { 
-	height: 100% 
+	height: 100%;
 }
