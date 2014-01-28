@@ -74,5 +74,15 @@ public class Walk implements IWalk {
 	public String getLongDescription() {
 		return longDescription;
 	}
+
+	@Override
+	public int getNumberLocations() {
+		return locations.size();
+	}
+
+	@Override
+	public int getNumberPOI() {
+		return points.size();
+	}
 	
 }

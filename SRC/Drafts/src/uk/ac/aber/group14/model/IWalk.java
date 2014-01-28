@@ -26,4 +26,7 @@ public interface IWalk {
 	
 	public void addLocation(Location location);
 	
+	public int getNumberLocations();
+	
+	public int getNumberPOI();
 }

@@ -6,11 +6,11 @@ public interface IWalkController {
 	
 	public void addPOI(IPointOfInterest point);
 	
-	public android.location.Location getCurrentLocation();
-	
 	public void cancelWalk();
 	
 	public void uploadWalk();
 	
 	public void addLocation(Location location);
+	
+	public boolean canUpload();
 }
