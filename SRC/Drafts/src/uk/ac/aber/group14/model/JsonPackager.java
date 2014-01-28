@@ -12,9 +12,11 @@ import java.io.InputStreamReader;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.util.Base64;
+import android.util.Log;
 
 public class JsonPackager implements IJsonPackager {
 
@@ -61,8 +63,9 @@ public class JsonPackager implements IJsonPackager {
 				
 				poiData.put("locationname", pointsOfInterest[i].getName());
 				poiData.put("description", pointsOfInterest[i].getDescription());
-				
+				Log.i("WTC", "Testing to see if POI[" + i + "] contains a picture...");
 				if (pointsOfInterest[i].getPicture() != null) {
+					Log.i("WTC", "Attempting to convert picture to Base64 string");
 					File imageFile = new File(pointsOfInterest[i].getPicture());
 					try {
 						BufferedInputStream bufIStream = new BufferedInputStream(new FileInputStream(imageFile));
@@ -78,14 +81,20 @@ public class JsonPackager implements IJsonPackager {
 							poiData.put("photo", Base64.encodeToString(byteArray,Base64.DEFAULT));
 						}
 						else {
+							bufIStream.close();
+							Log.i("WTC", "IOException");
 							throw new IOException("File larger than 2GB");
 						}
+						bufIStream.close();
 					} catch (FileNotFoundException e) {
+						Log.i("WTC", e.getLocalizedMessage());
 						poiData.put("photo", JSONObject.NULL);
 					} catch (IOException e) {
+						Log.i("WTC", e.getLocalizedMessage());
 						poiData.put("photo", JSONObject.NULL);
 					}
 				} else {
+					Log.i("WTC", "Picture is null :(");
 					poiData.put("photo", JSONObject.NULL);
 				}
 				

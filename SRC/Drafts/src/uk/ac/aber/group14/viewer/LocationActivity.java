@@ -110,8 +110,8 @@ public class LocationActivity extends Activity{
 	    // Check which request we're responding to
 	    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 	    	// TODO Save image, add it to list of images.
-	    	((Button) this.findViewById(R.id.addPicture)).setText("Change picture");;
-	    	picture = data.getDataString();
+	    	((Button) this.findViewById(R.id.addPicture)).setText("Change picture");
+	    	picture = data.getData().getPath();
 	    }
 	}
 

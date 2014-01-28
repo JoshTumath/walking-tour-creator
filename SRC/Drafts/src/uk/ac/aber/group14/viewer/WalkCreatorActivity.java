@@ -23,7 +23,9 @@ import android.widget.TextView;
 public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
 	private LocationManager locationManager ;
-	private final int timerDelay = 5000;
+	private final int timerDelay = 5000; // Milliseconds
+	private final int locationMinTime = 5000; // Milliseconds
+	private final int locationMinDistance = 5; // Meters
 	private Handler uiUpdateHandler;
 	private boolean isRunning;
 
@@ -46,8 +48,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 
 		Log.i("WTC", "Created the listener");
 		// Register the listener with the Location Manager to receive location updates
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationMinTime, locationMinDistance, this);
 		Log.i("WTC", "Requested updates");
 
 
@@ -109,8 +110,8 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
 		if(resultCode == Activity.RESULT_OK) {
-			//IPointOfInterest point = (IPointOfInterest) data.getSerializableExtra("pointOfInterest");
 			IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
+			Log.i("WTC", "Adding new point of interest, " + point.getName());
 			walkController.addPOI(point);
 		}
 	}
@@ -135,6 +136,10 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
     
     public void onSaveRoute(View view) {
-    	walkController.uploadWalk();
+    	if(walkController.canUpload())
+    	{
+    		walkController.uploadWalk();
+    		finish();
+    	}
     }
 }
