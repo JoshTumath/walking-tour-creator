@@ -3,6 +3,7 @@ package uk.ac.aber.group14.viewer;
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
+import uk.ac.aber.group14.controller.WalkUploader;
 import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.JsonPackager;
@@ -13,11 +14,16 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class WalkCreatorActivity extends Activity implements LocationListener{
@@ -144,8 +150,17 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
     public void onSaveRoute(View view) {
     	if(walkController.canUpload())
     	{
-    		walkController.uploadWalk();
-    		finish();
+    		ProgressDialog progressDialog = new ProgressDialog(WalkCreatorActivity.this);
+    		AlertDialog.Builder messageDialogBuilder = new AlertDialog.Builder(WalkCreatorActivity.this);
+    		isRunning = false;
+    		locationManager.removeUpdates(this);
+    		Log.i("WTC", "Attempting to upload walk...");
+    		String jsonData = walkController.compileWalk();
+    		WalkUploader walkUploader = new WalkUploader();
+    		walkUploader.setDialogs(progressDialog, messageDialogBuilder);
+    		walkUploader.execute(jsonData);
     	}
     }
+    
+    	
 }

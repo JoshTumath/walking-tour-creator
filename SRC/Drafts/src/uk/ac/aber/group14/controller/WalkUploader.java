@@ -17,6 +17,8 @@ import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.JsonPackager;
 import uk.ac.aber.group14.model.Walk;
+import uk.ac.aber.group14.viewer.MainAppActivity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -27,70 +29,51 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class WalkUploader extends AsyncTask<Walk, Integer, Boolean> {
+public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 	private ProgressDialog progressDialog;
-	private Dialog messageDialog;
-	private Context context;
+	private AlertDialog.Builder messageDialogBuilder;
+	private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";
+	/*private static final String uploadAddress = "http://google.co.uk/";*/
+
+    public void setDialogs(ProgressDialog progressDialog, AlertDialog.Builder messageDialogBuilder) {
+        this.progressDialog = progressDialog;
+        this.messageDialogBuilder = messageDialogBuilder;
+    }
 	
 	@Override
 	protected void onPreExecute() {
-		progressDialog = new ProgressDialog(context);
-		messageDialog = new Dialog(context);
+		super.onPreExecute();
 		progressDialog.setMessage("Please wait whilst the walk is uploaded...");
 		progressDialog.setIndeterminate(true);
 		progressDialog.show();
-		super.onPreExecute();
 	}
 	
 	@Override
-	protected Boolean doInBackground(Walk... params) {
+	protected Boolean doInBackground(String... params) {
 		return uploadWalk(params[0]);
 	}
 	
 	@Override
 	protected void onPostExecute(Boolean result) {
-		messageDialog.setContentView(R.layout.unimplemented);
+		super.onPostExecute(result);
+        progressDialog.dismiss();
 		if(result == false) {
-			messageDialog.setTitle("Error");
-			TextView text = (TextView) messageDialog.findViewById(R.id.text);
-			text.setText("Upload failed. Please try again.");
-			Button dialogButton = (Button) messageDialog.findViewById(R.id.dialogButtonOK);
-			// if button is clicked, close the custom dialog
-			dialogButton.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					messageDialog.dismiss();
-					messageDialog.getOwnerActivity().finish();
-				}
-			});
+			messageDialogBuilder.setTitle("Error");
+			messageDialogBuilder.setMessage("Upload failed. Please try again.");
 		} else {
-			messageDialog.setTitle("Success");
-			TextView text = (TextView) messageDialog.findViewById(R.id.text);
-			text.setText("Upload Successful.");
-			Button dialogButton = (Button) messageDialog.findViewById(R.id.dialogButtonOK);
-			// if button is clicked, close the custom dialog
-			dialogButton.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					messageDialog.dismiss();
-				}
-			});
-			messageDialog.show();
+			messageDialogBuilder.setTitle("Success");
+			messageDialogBuilder.setMessage("Upload Successful.");
 		}
-		messageDialog.show();
+		messageDialogBuilder.create().show();
 	}
 	
-	public boolean uploadWalk(Walk walk) {
+	public boolean uploadWalk(String walk) {
 		boolean uploadSuccess=true;
-		IJsonPackager jsonPackager = new JsonPackager();
-		Log.i("WTC", "Number of locations:	" + walk.getLocations().length + "\n" +
-				"Number of points:	" + walk.getPointsOfInterest().length);
-		String walkObject = jsonPackager.JSONify(walk);
-		Log.i("WTC", "\n\n=== JSON WALK===\n\n" + walkObject + "\n\n================");
+		Log.v("WTC", "\n\n=== JSON WALK===\n\n" + walk + "\n\n================");
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost httpPost = new HttpPost("http://jakemaguire.co.uk/projects/wtc/upload.php");
+		HttpPost httpPost = new HttpPost(uploadAddress);
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("posttourdata", walkObject));
+		nameValuePairs.add(new BasicNameValuePair("posttourdata", walk));
 		try {
 			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		} catch (UnsupportedEncodingException e) {
@@ -108,5 +91,4 @@ public class WalkUploader extends AsyncTask<Walk, Integer, Boolean> {
 		}
 		return uploadSuccess;
 	}
-
 }

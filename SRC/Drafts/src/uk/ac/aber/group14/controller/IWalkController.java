@@ -8,7 +8,7 @@ public interface IWalkController {
 	
 	public void cancelWalk();
 	
-	public boolean uploadWalk();
+	public String compileWalk();
 	
 	public void addLocation(Location location);
 	
