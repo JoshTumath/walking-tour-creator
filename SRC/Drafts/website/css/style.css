@@ -139,6 +139,7 @@ footer p {
     right:70%;
     bottom:2em;
     left:0;
+    padding:16px;
     overflow:auto;
     background:white;
 }
