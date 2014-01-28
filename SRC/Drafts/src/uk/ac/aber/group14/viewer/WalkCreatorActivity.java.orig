@@ -92,25 +92,21 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	}
 
 	public void addLocation(View view) {//creates location activity
-		Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		if(lastLocation != null)
-		{
-			Intent locationIntent = new Intent(this, LocationActivity.class);
-			//Bundle b=new Bundle();
-			//b.putParcelable("location", lastLocation);
-			locationIntent.putExtra("location", lastLocation);
-			Log.i("WTC", "testing addlocation, in wcA");//used for testing
-			//passing the bundle into
-			startActivityForResult(locationIntent, 1);
-		}
+		Bundle b=new Bundle();
+		b.putString("mylocatKey", LOCATION_SERVICE);
+		Log.i("WTC", "testing addlocation, in wcA");//used for testing
+		//passing the bundle into
+		Intent locationIntent = new Intent(this, LocationActivity.class);
+		startActivityForResult(locationIntent, 1);
+
+		locationIntent.putExtra("myLocationalKey",locationIntent);
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
 		if(resultCode == Activity.RESULT_OK) {
-			//IPointOfInterest point = (IPointOfInterest) data.getSerializableExtra("pointOfInterest");
-			IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
+			PointOfInterest point = (PointOfInterest) data.getSerializableExtra("pointOfInterest");
 			walkController.addPOI(point);
 		}
 	}
@@ -130,11 +126,20 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 
 	public void onStatusChanged(String provider, int status, Bundle extras) {}
 
+<<<<<<< HEAD
     public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
+=======
+	public void onProviderEnabled(String provider) {}
+>>>>>>> 9a93e9338f0e4d95addab91677a6539676ef0639
 
+	public void onProviderDisabled(String provider) {}
+
+<<<<<<< HEAD
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
     
     public void onSaveRoute(View view) {
     	walkController.uploadWalk();
     }
+=======
+>>>>>>> 9a93e9338f0e4d95addab91677a6539676ef0639
 }

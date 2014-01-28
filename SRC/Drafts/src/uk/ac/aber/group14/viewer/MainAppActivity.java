@@ -20,6 +20,7 @@ public class MainAppActivity extends Activity {
 	
 	
 	LocationManager manager;
+
 	 private void buildAlertMessageNoGps() {
 		    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		    builder.setMessage("Your GPS seems to be disabled")
@@ -39,9 +40,7 @@ public class MainAppActivity extends Activity {
 	     super.onBackPressed();
 	 }
    
-    
-    
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,20 +54,23 @@ public class MainAppActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main_app, menu);
 		return true;
 	}
-	
 
+
+	
+	
+	
 	public void createWalk(View view) {
-		
+
 		if(manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
 			Intent newWalkDetails = new Intent(this, WalkDetailsActivity.class);
 			startActivityForResult(newWalkDetails, 1);
 		} // Checks if the GPS logger on the phone is on
 		else{
-			   buildAlertMessageNoGps();
+			buildAlertMessageNoGps();
 			//Pop up that says "GPS is not enabled, please enable GPS to continue"
 		}
 	}
-	
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data ){
 		super.onActivityResult(requestCode, resultCode, data);
