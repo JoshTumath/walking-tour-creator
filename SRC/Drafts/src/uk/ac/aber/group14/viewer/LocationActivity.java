@@ -34,7 +34,7 @@ public class LocationActivity extends Activity{
 		
 		location = (Location) getIntent().getExtras().getParcelable("location");
 		
-		addPicture = (Button) findViewById(R.id.addPicture);
+		/*addPicture = (Button) findViewById(R.id.addPicture);
 		
 		addPicture.setOnClickListener(new OnClickListener() {
 
@@ -60,7 +60,7 @@ public class LocationActivity extends Activity{
 			}
 			
 			
-		});
+		});*/
 		
 	}
 	
@@ -98,7 +98,7 @@ public class LocationActivity extends Activity{
 		finish();
 	}
 
-	private void dispatchTakePictureIntent() {
+	public void onClickPictureButton(View view) {
 	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 	    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
 	        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -110,6 +110,7 @@ public class LocationActivity extends Activity{
 	    // Check which request we're responding to
 	    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 	    	// TODO Save image, add it to list of images.
+	    	((Button) this.findViewById(R.id.addPicture)).setText("Change picture");;
 	    	picture = data.getDataString();
 	    }
 	}

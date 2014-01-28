@@ -83,6 +83,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignRight="@+id/locationDescriptionEdit"
 	        android:layout_below="@+id/locationDescriptionEdit"
+	        android:onClick="onClickPictureButton"
 	        android:text="Add Picture" />
 
 	    <Button
