@@ -34,7 +34,7 @@ public class MainAppActivity extends Activity {
 		    alert.show();
 		}
 	 //this code prevents the back button on being used
-	 private void buildAlertMessageBackMessage() {
+	/* private void buildAlertMessageBackMessage() {
 		    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		    builder.setMessage("you can`t do that dave")
 		           .setCancelable(false)       
@@ -45,12 +45,12 @@ public class MainAppActivity extends Activity {
 		           });
 		    final AlertDialog alert = builder.create();
 		    alert.show();
-		}
+		}*/
 	 @Override
 	 public void onBackPressed() {
 	     // TODO Auto-generated method stub
-		 buildAlertMessageBackMessage();
-	     super.onBackPressed();
+		 //buildAlertMessageBackMessage();
+	  //   super.onBackPressed();
 	 }
    
 

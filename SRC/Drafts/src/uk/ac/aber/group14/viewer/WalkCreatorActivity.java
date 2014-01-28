@@ -91,6 +91,12 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		isRunning = false;
 		finish();
 	}
+	//code the prevents back button
+		 public void onBackPressed() {
+		     // TODO Auto-generated method stub
+			 //buildAlertMessageBackMessage();
+		  //   super.onBackPressed();
+		 }
 
 	public void addLocation(View view) {//creates location activity
 		Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);

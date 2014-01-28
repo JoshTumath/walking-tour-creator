@@ -97,6 +97,12 @@ public class LocationActivity extends Activity{
 		setResult(Activity.RESULT_CANCELED, new Intent());
 		finish();
 	}
+	//code the prevents back button
+	 public void onBackPressed() {
+	     // TODO Auto-generated method stub
+		 //buildAlertMessageBackMessage();
+	  //   super.onBackPressed();
+	 }
 
 	public void onClickPictureButton(View view) {
 	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

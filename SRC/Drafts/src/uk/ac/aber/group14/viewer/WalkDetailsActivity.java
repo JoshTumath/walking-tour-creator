@@ -84,6 +84,12 @@ public class WalkDetailsActivity extends Activity {
 		setResult(Activity.RESULT_CANCELED, new Intent());
 		finish();
 	}
+	//code the prevents back button
+		 public void onBackPressed() {
+		     // TODO Auto-generated method stub
+			 //buildAlertMessageBackMessage();
+		  //   super.onBackPressed();
+		 }
 	
 	public int validInput()	{
 		String name = ((EditText)findViewById(R.id.walkDetailsNameEdit)).getText().toString();
