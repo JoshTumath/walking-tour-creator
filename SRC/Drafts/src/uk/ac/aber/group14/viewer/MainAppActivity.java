@@ -32,8 +32,12 @@ public class MainAppActivity extends Activity {
 		    final AlertDialog alert = builder.create();
 		    alert.show();
 		}
-
-    
+	 //this code prevents the back button on being used
+	 @Override
+	 public void onBackPressed() {
+	     // TODO Auto-generated method stub
+	     super.onBackPressed();
+	 }
    
     
     
