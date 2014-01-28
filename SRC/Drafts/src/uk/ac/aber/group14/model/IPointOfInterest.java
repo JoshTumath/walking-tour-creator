@@ -12,7 +12,7 @@ public interface IPointOfInterest extends Parcelable {
 	
 	public String getDescription();
 	
-	public void addPicture(String image);
+	public void addPicture(String picture);
 	
 	public String getPicture();
 	

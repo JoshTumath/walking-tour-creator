@@ -1,10 +1,22 @@
 package uk.ac.aber.group14.model;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+<<<<<<< HEAD
 import java.io.FileNotFoundException;
 import android.content.ContentResolver;
+=======
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+>>>>>>> 058981881eb0fef781e7fb1207d6e88b5a783732
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -59,13 +71,29 @@ public class JsonPackager implements IJsonPackager {
 				poiData.put("description", pointsOfInterest[i].getDescription());
 				
 				if (pointsOfInterest[i].getPicture() != null) {
-					Bitmap bitmap;
-					// XXX Load Bitmap from URI, byte conversion and Base64 encoding is done.
-					
-					ByteArrayOutputStream stream = new ByteArrayOutputStream();
-					bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-					byte[] byteArray = stream.toByteArray();
-					poiData.put("photo", Base64.encodeToString(byteArray, Base64.DEFAULT));
+					File imageFile = new File(pointsOfInterest[i].getPicture());
+					try {
+						BufferedInputStream bufIStream = new BufferedInputStream(new FileInputStream(imageFile));
+
+						long lFileLength = imageFile.length();
+						int iFileLength = (int) lFileLength;
+						if(lFileLength == iFileLength) {
+							byte[] byteArray = new byte[iFileLength];
+							int offset = 0;
+							do {
+								offset += bufIStream.read(byteArray, offset, iFileLength-offset);
+							} while(offset < iFileLength);
+							poiData.put("photo", Base64.encodeToString(byteArray,Base64.DEFAULT));
+						}
+						else {
+							throw new IOException("File larger than 2GB");
+						}
+					} catch (FileNotFoundException e) {
+						poiData.put("photo", JSONObject.NULL);
+					} catch (IOException e) {
+						poiData.put("photo", JSONObject.NULL);
+					}
+
 				} else {
 					poiData.put("photo", JSONObject.NULL);
 				}
