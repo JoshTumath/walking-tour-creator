@@ -6,15 +6,3 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:bold">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
-    
-    <?php
-    if (!is_null($content)) {
-      echo $content;
-    }
-    ?>
-	</head>	
-	<body>
-		<header>
-			<h1><a href="index.php">Walking Tour Creator</a></h1>
-		</header>
-		<main>
