@@ -1,0 +1,55 @@
+Project:                    Group Project 14
+Meeting:                    Work week project meeting.
+Persons present:            All project member
+Place and date of meeting:  Wierd Room close to B23, Monday 27th January 2014
+Circulation list:           All project members, plus project manager
+Author:                     Lars H Lunde (lah25)
+Date of minutes:            27nd January 2014
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Working over Christmas
+ACTION: EVERYONE: ONLY ROB
+
+New business
+============
+
+1. Design and feeding data in to the database.
+ACTION: WEB TEAM
+
+2. Write specs for the JSON.
+ACTION: ALL
+
+3. Write PHPUnit tests for the webpage
+ACTION: WEB TEAM
+
+4. Implement a function to check that GPS is available.
+ACTION: ANDROID TEAM
+
+5. Create error checking on user input on user input
+ACTION: ANDROID TEAM
+
+6. Implement GPS tracking in android
+ACTION: ANDROID TEAM
+
+7. Fix the UI to accommodate on screen keyboard.
+ACTION: ANDROID TEAM
+
+
+AOB
+===
+Goals:
+
+Monday
+Get GPS working
+
+Tuesday:
+Functional Tracking
+
+Wednesday:
+Be able to send data to the server.
+
+
+
