@@ -3,29 +3,22 @@
     package="uk.ac.aber.group14"
     android:versionCode="1"
     android:versionName="1.0" >
-    
+
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="16" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera"
-                  android:required="true" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="uk.ac.aber.group14.viewer.WalkCreatorActivity"
+            android:name="uk.ac.aber.group14.WalkCreatorActivity"
             android:label="@string/title_activity_walk_creator" >
         </activity>
         <activity
-            android:name="uk.ac.aber.group14.viewer.MainAppActivity"
+            android:name="uk.ac.aber.group14.MainAppActivity"
             android:label="@string/title_activity_main_app" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,12 +27,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="uk.ac.aber.group14.viewer.WalkDetailsActivity"
+            android:name="uk.ac.aber.group14.WalkDetailsActivity"
             android:label="@string/title_activity_walk_details" >
-        </activity>
-        <activity
-            android:name="uk.ac.aber.group14.viewer.LocationActivity"
-            android:label="@string/title_activity_location" >
         </activity>
     </application>
 

@@ -23,9 +23,7 @@ import android.widget.TextView;
 public class WalkCreatorActivity extends Activity implements LocationListener{
 	IWalkController walkController;
 	private LocationManager locationManager ;
-	private final int timerDelay = 5000; // Milliseconds
-	private final int locationMinTime = 5000; // Milliseconds
-	private final int locationMinDistance = 5; // Meters
+	private final int timerDelay = 5000;
 	private Handler uiUpdateHandler;
 	private boolean isRunning;
 
@@ -48,7 +46,8 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 
 		Log.i("WTC", "Created the listener");
 		// Register the listener with the Location Manager to receive location updates
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationMinTime, locationMinDistance, this);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
 		Log.i("WTC", "Requested updates");
 
 
@@ -91,33 +90,23 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 		isRunning = false;
 		finish();
 	}
-	//code the prevents back button
-		 public void onBackPressed() {
-		     // TODO Auto-generated method stub
-			 //buildAlertMessageBackMessage();
-		  //   super.onBackPressed();
-		 }
 
 	public void addLocation(View view) {//creates location activity
-		Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		if(lastLocation != null)
-		{
-			Intent locationIntent = new Intent(this, LocationActivity.class);
-			//Bundle b=new Bundle();
-			//b.putParcelable("location", lastLocation);
-			locationIntent.putExtra("location", lastLocation);
-			Log.i("WTC", "testing addlocation, in wcA");//used for testing
-			//passing the bundle into
-			startActivityForResult(locationIntent, 1);
-		}
+		Bundle b=new Bundle();
+		b.putString("mylocatKey", LOCATION_SERVICE);
+		Log.i("WTC", "testing addlocation, in wcA");//used for testing
+		//passing the bundle into
+		Intent locationIntent = new Intent(this, LocationActivity.class);
+		startActivityForResult(locationIntent, 1);
+
+		locationIntent.putExtra("myLocationalKey",locationIntent);
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
 		if(resultCode == Activity.RESULT_OK) {
-			IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
-			Log.i("WTC", "Adding new point of interest, " + point.getName());
+			PointOfInterest point = (PointOfInterest) data.getSerializableExtra("pointOfInterest");
 			walkController.addPOI(point);
 		}
 	}
@@ -137,15 +126,20 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 
 	public void onStatusChanged(String provider, int status, Bundle extras) {}
 
+<<<<<<< HEAD
     public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
+=======
+	public void onProviderEnabled(String provider) {}
+>>>>>>> 9a93e9338f0e4d95addab91677a6539676ef0639
 
+	public void onProviderDisabled(String provider) {}
+
+<<<<<<< HEAD
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
     
     public void onSaveRoute(View view) {
-    	if(walkController.canUpload())
-    	{
-    		walkController.uploadWalk();
-    		finish();
-    	}
+    	walkController.uploadWalk();
     }
+=======
+>>>>>>> 9a93e9338f0e4d95addab91677a6539676ef0639
 }
