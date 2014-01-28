@@ -1,0 +1,32 @@
+{
+  "data": {
+    "walkname": "aber",
+    "shortdescription": "blah",
+    "longdescription": "blah blah",
+    "time": 12345678900
+  },
+  "points": {
+    "1": {
+      "latitude": 52.222,
+      "longitude": 4.111,
+      "timestamp": 1234567777,
+      "poiflag": true,
+      "poidata": {
+        "locationname": "scholars",
+        "description": "blah",
+        "photo": null
+      }
+    },
+    "2": {
+      "latitude": 51.122,
+      "longitude": 5.111,
+      "timestamp": 1234567777,
+      "poiflag": true,
+      "poidata": {
+        "locationname": "varsity",
+        "description": "blah",
+        "photo": null
+      }
+    }
+  }
+}
