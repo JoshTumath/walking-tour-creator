@@ -7,6 +7,7 @@
     <string name="CancelButton">Cancel Walk</string>
     <string name="SaveButton">Save Route</string>
     <string name="AddButton">Add Location</string>
+    <string name="ConfirmButton">Confirm</string>
     <string name="WalkCreatorTitle">Route Editor</string>
     <string name="CurrentCoordsLabel">Current Coordinates</string>
     <string name="DistanceTravelledLabel">Distance Travelled</string>
@@ -30,5 +31,11 @@
     <string name="WalkDetailsInvalidInputShort">The short description of the walk is too long</string>
     <string name="WalkDetailsInvalidInputLong">The long description of the walk is too long</string>
 	<string name="WalkDetailsInvalidInputCharacters">One of the inputs contain an illegal character</string>
-
+	<string name="ActivityLocationTimeStamp">Time Stamp</string>
+	<string name="ActivityLocationLocationName">Location Name</string>
+	<string name="ActivityLocationDescription">Description</string>
+	<string name="ActivityLocationAddPicture">Add Picture</string>
+	<string name="ActivityLocationLDhint">The name of your current location</string>
+	<string name="ActivityLocationDescriptionHint">A description of your current location</string>
+	
 </resources>
