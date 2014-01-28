@@ -1,9 +1,12 @@
 package uk.ac.aber.group14.viewer;
+import java.util.LinkedList;
+
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.PointOfInterest;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,12 +22,17 @@ import android.view.View.OnClickListener;
 public class LocationActivity extends Activity{
 	
 	private Button addPicture;
+	private String picture;
 	final Context context = this;
+	Location location;
+	static final int REQUEST_IMAGE_CAPTURE = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
+		
+		location = (Location) getIntent().getExtras().getParcelable("location");
 		
 		addPicture = (Button) findViewById(R.id.addPicture);
 		
@@ -57,10 +65,9 @@ public class LocationActivity extends Activity{
 	}
 	
 	public boolean validInput() {
-		//TODO: Add code here to validate the input
-		boolean isValid = false;
-		
-		return isValid;
+		String locationName = ((TextView) findViewById(R.id.locationNameEdit)).getText().toString();
+		String locationDesc = ((TextView) findViewById(R.id.locationDescriptionEdit)).getText().toString();
+		return (locationName.length() > 0 && locationDesc.length() > 0);
 	}
 	
 	/*
@@ -68,19 +75,17 @@ public class LocationActivity extends Activity{
 	 */
 	public void addLocation(View view) {//button add location in confirm
 		if(validInput()) {
-			//TODO: Get the current location
-			
-			Location location = null;
 			IPointOfInterest pointOfInterest = new PointOfInterest(location);
-
-			//TODO: Set the point of interest up
-			
-			
+			String locationName = ((TextView) findViewById(R.id.locationNameEdit)).getText().toString();
+			String locationDesc = ((TextView) findViewById(R.id.locationDescriptionEdit)).getText().toString();
+			pointOfInterest.setName(locationName);
+			pointOfInterest.setDescription(locationDesc);
+			if(picture != null) {
+				pointOfInterest.addPicture(picture);
+			}
 			
 			Intent output = new Intent();//save
 			
-			Bundle extras = output.getExtras(); 
-			String tmp = extras.getString("myLocationalKey");
 			Log.i("WTC", "testing addLocation");//used for testing
 			output.putExtra("pointOfInterest", pointOfInterest);
 			setResult(Activity.RESULT_OK, output);
@@ -92,5 +97,22 @@ public class LocationActivity extends Activity{
 		setResult(Activity.RESULT_CANCELED, new Intent());
 		finish();
 	}
+
+	private void dispatchTakePictureIntent() {
+	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+	    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+	        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+	    }
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    // Check which request we're responding to
+	    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+	    	// TODO Save image, add it to list of images.
+	    	picture = data.getDataString();
+	    }
+	}
+
 
 }

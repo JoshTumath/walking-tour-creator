@@ -92,21 +92,25 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 	}
 
 	public void addLocation(View view) {//creates location activity
-		Bundle b=new Bundle();
-		b.putString("mylocatKey", LOCATION_SERVICE);
-		Log.i("WTC", "testing addlocation, in wcA");//used for testing
-		//passing the bundle into
-		Intent locationIntent = new Intent(this, LocationActivity.class);
-		startActivityForResult(locationIntent, 1);
-
-		locationIntent.putExtra("myLocationalKey",locationIntent);
+		Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		if(lastLocation != null)
+		{
+			Intent locationIntent = new Intent(this, LocationActivity.class);
+			//Bundle b=new Bundle();
+			//b.putParcelable("location", lastLocation);
+			locationIntent.putExtra("location", lastLocation);
+			Log.i("WTC", "testing addlocation, in wcA");//used for testing
+			//passing the bundle into
+			startActivityForResult(locationIntent, 1);
+		}
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
 		if(resultCode == Activity.RESULT_OK) {
-			IPointOfInterest point = (IPointOfInterest) data.getSerializableExtra("pointOfInterest");
+			//IPointOfInterest point = (IPointOfInterest) data.getSerializableExtra("pointOfInterest");
+			IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
 			walkController.addPOI(point);
 		}
 	}
