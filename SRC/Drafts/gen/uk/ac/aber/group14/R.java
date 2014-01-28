@@ -33,8 +33,8 @@ public final class R {
         public static final int button3=0x7f08000d;
         public static final int dialogButtonOK=0x7f080017;
         public static final int digitalClock1=0x7f080001;
-        public static final int editText1=0x7f080003;
-        public static final int editText2=0x7f080006;
+        public static final int locationDescriptionEdit=0x7f080006;
+        public static final int locationNameEdit=0x7f080003;
         public static final int scrollView1=0x7f080000;
         public static final int spinner1=0x7f08000c;
         public static final int text=0x7f080016;
