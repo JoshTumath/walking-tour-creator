@@ -5,12 +5,14 @@ import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.PointOfInterest;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 //import android.view.Menu;
 import android.view.View;
@@ -116,11 +118,21 @@ public class LocationActivity extends Activity{
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    // Check which request we're responding to
 	    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-	    	// TODO Save image, add it to list of images.
+
 	    	((Button) this.findViewById(R.id.addPicture)).setText("Change picture");
-	    	picture = data.getData().getPath();
+	    	picture = getPath(data.getData());
 	    }
 	}
 
+	public String getPath(Uri uri) {
+		Log.i("WTC", "Uri given is " + uri.toString());
+		String[] projection = { MediaStore.Images.Media.DATA };
+		Cursor cursor = managedQuery(uri, projection, null, null, null);
+		startManagingCursor(cursor);
+		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		cursor.moveToFirst();
+		Log.i("WTC", "Return path is " + cursor.getString(column_index));
+		return cursor.getString(column_index);
+		}
 
 }
