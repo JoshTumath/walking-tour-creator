@@ -37,9 +37,11 @@ header h1 a:hover {
 main > h1 {
     margin:0;
     padding:3em 0;
-    background:black;
+    background:url("../images/banner.jpg") center no-repeat black;
+    background-size:cover;
     font-size:64px;
     text-align:center;
+    text-shadow:0 0 0.25em black;
     color:white;
 }
 
@@ -123,6 +125,7 @@ footer p {
     right:0;
     left:0;
 }
+
 .tour footer {
 	position:fixed;
     right:0;
@@ -136,6 +139,7 @@ footer p {
     right:70%;
     bottom:2em;
     left:0;
+    overflow:auto;
     background:white;
 }
 
