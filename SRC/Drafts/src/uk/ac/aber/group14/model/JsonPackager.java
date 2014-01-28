@@ -1,11 +1,15 @@
 package uk.ac.aber.group14.model;
 
 import java.io.ByteArrayOutputStream;
-
+import java.io.FileNotFoundException;
+import android.content.ContentResolver;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Base64;
 
 public class JsonPackager implements IJsonPackager {
@@ -55,11 +59,13 @@ public class JsonPackager implements IJsonPackager {
 				poiData.put("description", pointsOfInterest[i].getDescription());
 				
 				if (pointsOfInterest[i].getPicture() != null) {
-					Bitmap b = (Bitmap) pointsOfInterest[i].getPicture();
+					Bitmap bitmap;
+					// XXX Load Bitmap from URI, byte conversion and Base64 encoding is done.
+					
 					ByteArrayOutputStream stream = new ByteArrayOutputStream();
-					b.compress(Bitmap.CompressFormat.PNG, 100, stream);
+					bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 					byte[] byteArray = stream.toByteArray();
-					poiData.put("photo", Base64.encodeToString(byteArray ,Base64.DEFAULT));
+					poiData.put("photo", Base64.encodeToString(byteArray, Base64.DEFAULT));
 				} else {
 					poiData.put("photo", JSONObject.NULL);
 				}
@@ -81,5 +87,5 @@ public class JsonPackager implements IJsonPackager {
 		
 		return null;
 	}
-
+	
 }
