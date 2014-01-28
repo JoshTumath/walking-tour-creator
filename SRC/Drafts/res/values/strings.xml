@@ -37,5 +37,9 @@
 	<string name="ActivityLocationAddPicture">Add Picture</string>
 	<string name="ActivityLocationLDhint">The name of your current location</string>
 	<string name="ActivityLocationDescriptionHint">A description of your current location</string>
+	<string name="ActivityWalkCreatorLat">Latitude</string>
+	<string name="ActivityWalkCreatorLong">Longitude</string>
+	<string name="ActivityWalkCreatorDefaultCoordinates">0.0000000</string>
+	
 	
 </resources>
