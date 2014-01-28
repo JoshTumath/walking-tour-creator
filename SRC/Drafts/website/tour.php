@@ -19,7 +19,7 @@ while ($db_field = mysql_fetch_assoc($result)) {
   $shortDesc = $db_field['shortDesc'];
   $longDesc = $db_field['longDesc'];
   $distance = $db_field['distance'];
-  $hours = $db_field['hours'];
+  $hours = $db_field['time'];
 }
 
 //---------- Get Markers Query ----------//
@@ -37,7 +37,7 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 ?>
 
-<?php insert_header(); ?>
+<?php insert_header("tour"); ?>
 <aside>
 	<p><span><b><?php echo $title;?></b></span></p>
 	<p><span><b>Short Description: </b><?php echo $shortDesc;?></span></p>

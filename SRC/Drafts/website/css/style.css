@@ -23,7 +23,7 @@ header h1 {
 
 header h1 a {
     display:block;
-    padding:0.5em 0;
+    line-height:2em;
 	text-decoration:none;
     text-transform:uppercase;
     color:#FFAA00;
@@ -117,10 +117,34 @@ footer p {
 
 
 /* _____MAP_____ */
-#googleMaps {
-	float:right;
-	width:70%;
-	background:black;
+.tour header {
+	position:fixed;
+    top:0;
+    right:0;
+    left:0;
+}
+.tour footer {
+	position:fixed;
+    right:0;
+    bottom:0;
+    left:0;
+}
+
+.tour aside {
+	position:fixed;
+    top:2em;
+    right:70%;
+    bottom:2em;
+    left:0;
+    background:white;
+}
+
+#map {
+	position:fixed;
+    top:2em;
+    right:0;
+    bottom:2em;
+    left:30%;
 }
 
 #map-canvas { 
