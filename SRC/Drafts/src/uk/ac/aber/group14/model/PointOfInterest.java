@@ -8,7 +8,7 @@ import android.os.Parcelable;
 public class PointOfInterest implements IPointOfInterest {
 	private String name;
 	private String description;
-	private Bitmap picture;
+	private String picture;
 	private Location location;
 
 	public PointOfInterest(Location location) {
@@ -19,7 +19,7 @@ public class PointOfInterest implements IPointOfInterest {
 	private PointOfInterest(Parcel parcel) {
 		this.name = parcel.readString();
 		this.description = parcel.readString();
-		this.picture = (Bitmap) parcel.readParcelable(null);
+		this.picture = parcel.readString();
 		this.location = (Location) parcel.readParcelable(null);
 	}
 	
@@ -34,7 +34,7 @@ public class PointOfInterest implements IPointOfInterest {
 	}
 
 	@Override
-	public void addPicture(Bitmap image) {
+	public void addPicture(String image) {
 		this.picture = image;
 	}
 
@@ -59,7 +59,7 @@ public class PointOfInterest implements IPointOfInterest {
 		return 0;
 	}
 
-	public Bitmap getPicture() {
+	public String getPicture() {
 		return this.picture;
 	}
 
@@ -67,7 +67,7 @@ public class PointOfInterest implements IPointOfInterest {
 	public void writeToParcel(Parcel parcel, int flags) {
 		parcel.writeString(this.name);
 		parcel.writeString(this.description);
-		parcel.writeParcelable(this.picture, 0);
+		parcel.writeString(this.picture);
 		parcel.writeParcelable(this.location, 0);
 	}
 

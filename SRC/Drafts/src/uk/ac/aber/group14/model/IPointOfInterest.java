@@ -12,9 +12,9 @@ public interface IPointOfInterest extends Parcelable {
 	
 	public String getDescription();
 	
-	public void addPicture(android.graphics.Bitmap image);
+	public void addPicture(String image);
 	
-	public android.graphics.Bitmap getPicture();
+	public String getPicture();
 	
 	public android.location.Location getLocation();
 	
