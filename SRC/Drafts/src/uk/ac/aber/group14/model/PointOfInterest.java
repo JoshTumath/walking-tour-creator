@@ -34,8 +34,8 @@ public class PointOfInterest implements IPointOfInterest {
 	}
 
 	@Override
-	public void addPicture(String image) {
-		this.picture = image;
+	public void addPicture(String picture) {
+		this.picture = picture;
 	}
 
 	@Override

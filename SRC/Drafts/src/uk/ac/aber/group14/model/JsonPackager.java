@@ -1,9 +1,17 @@
 package uk.ac.aber.group14.model;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.util.Base64;
@@ -55,11 +63,28 @@ public class JsonPackager implements IJsonPackager {
 				poiData.put("description", pointsOfInterest[i].getDescription());
 				
 				if (pointsOfInterest[i].getPicture() != null) {
-					Bitmap b = (Bitmap) pointsOfInterest[i].getPicture();
-					ByteArrayOutputStream stream = new ByteArrayOutputStream();
-					b.compress(Bitmap.CompressFormat.PNG, 100, stream);
-					byte[] byteArray = stream.toByteArray();
-					poiData.put("photo", Base64.encodeToString(byteArray ,Base64.DEFAULT));
+					File imageFile = new File(pointsOfInterest[i].getPicture());
+					try {
+						BufferedInputStream bufIStream = new BufferedInputStream(new FileInputStream(imageFile));
+
+						long lFileLength = imageFile.length();
+						int iFileLength = (int) lFileLength;
+						if(lFileLength == iFileLength) {
+							byte[] byteArray = new byte[iFileLength];
+							int offset = 0;
+							do {
+								offset += bufIStream.read(byteArray, offset, iFileLength-offset);
+							} while(offset < iFileLength);
+							poiData.put("photo", Base64.encodeToString(byteArray,Base64.DEFAULT));
+						}
+						else {
+							throw new IOException("File larger than 2GB");
+						}
+					} catch (FileNotFoundException e) {
+						poiData.put("photo", JSONObject.NULL);
+					} catch (IOException e) {
+						poiData.put("photo", JSONObject.NULL);
+					}
 				} else {
 					poiData.put("photo", JSONObject.NULL);
 				}
