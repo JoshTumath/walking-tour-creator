@@ -86,7 +86,8 @@ public class LocationActivity extends Activity{
 			
 			Intent output = new Intent();//save
 			
-			Log.i("WTC", "testing addLocation");//used for testing
+			Log.i("WTC", "Adding POI:\nName:" + pointOfInterest.getName() +
+					"\nPicture:" + pointOfInterest.getPicture());
 			output.putExtra("pointOfInterest", pointOfInterest);
 			setResult(Activity.RESULT_OK, output);
 			finish();//where you finish and output
