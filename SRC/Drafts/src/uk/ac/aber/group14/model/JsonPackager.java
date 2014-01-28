@@ -8,13 +8,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 
@@ -93,6 +95,7 @@ public class JsonPackager implements IJsonPackager {
 						Log.i("WTC", e.getLocalizedMessage());
 						poiData.put("photo", JSONObject.NULL);
 					}
+
 				} else {
 					Log.i("WTC", "Picture is null :(");
 					poiData.put("photo", JSONObject.NULL);
@@ -115,5 +118,5 @@ public class JsonPackager implements IJsonPackager {
 		
 		return null;
 	}
-
+	
 }

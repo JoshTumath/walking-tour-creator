@@ -33,8 +33,8 @@ public final class R {
         public static final int button3=0x7f08000d;
         public static final int dialogButtonOK=0x7f080017;
         public static final int digitalClock1=0x7f080001;
-        public static final int locationDescriptionEdit=0x7f080006;
-        public static final int locationNameEdit=0x7f080003;
+        public static final int editText1=0x7f080003;
+        public static final int editText2=0x7f080006;
         public static final int scrollView1=0x7f080000;
         public static final int spinner1=0x7f08000c;
         public static final int text=0x7f080016;
@@ -65,35 +65,42 @@ public final class R {
         public static final int walk_details=0x7f070003;
     }
     public static final class string {
+        public static final int ActivityLocationAddPicture=0x7f050021;
+        public static final int ActivityLocationDescription=0x7f050020;
+        public static final int ActivityLocationDescriptionHint=0x7f050023;
+        public static final int ActivityLocationLDhint=0x7f050022;
+        public static final int ActivityLocationLocationName=0x7f05001f;
+        public static final int ActivityLocationTimeStamp=0x7f05001e;
         public static final int AddButton=0x7f050005;
         public static final int CancelButton=0x7f050003;
-        public static final int CurrentCoordsLabel=0x7f050007;
-        public static final int DistanceTravelledLabel=0x7f050008;
-        public static final int DynamicCoords=0x7f050009;
-        public static final int DynamicDistance=0x7f05000a;
-        public static final int Main_CreateWalk_Button=0x7f05000c;
+        public static final int ConfirmButton=0x7f050006;
+        public static final int CurrentCoordsLabel=0x7f050008;
+        public static final int DistanceTravelledLabel=0x7f050009;
+        public static final int DynamicCoords=0x7f05000a;
+        public static final int DynamicDistance=0x7f05000b;
+        public static final int Main_CreateWalk_Button=0x7f05000d;
         public static final int SaveButton=0x7f050004;
-        public static final int UnimplementedOK=0x7f050017;
-        public static final int WalkCreatorTitle=0x7f050006;
-        public static final int WalkDetailsInvalidInputCharacters=0x7f05001c;
-        public static final int WalkDetailsInvalidInputLong=0x7f05001b;
-        public static final int WalkDetailsInvalidInputMessage=0x7f050018;
-        public static final int WalkDetailsInvalidInputName=0x7f050019;
-        public static final int WalkDetailsInvalidInputShort=0x7f05001a;
-        public static final int WalkDetailsLDLabel=0x7f050012;
-        public static final int WalkDetailsNameLDHint=0x7f050013;
-        public static final int WalkDetailsNameLabel=0x7f05000e;
-        public static final int WalkDetailsNameSDHint=0x7f050011;
-        public static final int WalkDetailsNameTextHint=0x7f05000f;
-        public static final int WalkDetailsSDLabel=0x7f050010;
+        public static final int UnimplementedOK=0x7f050018;
+        public static final int WalkCreatorTitle=0x7f050007;
+        public static final int WalkDetailsInvalidInputCharacters=0x7f05001d;
+        public static final int WalkDetailsInvalidInputLong=0x7f05001c;
+        public static final int WalkDetailsInvalidInputMessage=0x7f050019;
+        public static final int WalkDetailsInvalidInputName=0x7f05001a;
+        public static final int WalkDetailsInvalidInputShort=0x7f05001b;
+        public static final int WalkDetailsLDLabel=0x7f050013;
+        public static final int WalkDetailsNameLDHint=0x7f050014;
+        public static final int WalkDetailsNameLabel=0x7f05000f;
+        public static final int WalkDetailsNameSDHint=0x7f050012;
+        public static final int WalkDetailsNameTextHint=0x7f050010;
+        public static final int WalkDetailsSDLabel=0x7f050011;
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
-        public static final int title_activity_location=0x7f050016;
-        public static final int title_activity_main_app=0x7f05000b;
+        public static final int title_activity_location=0x7f050017;
+        public static final int title_activity_main_app=0x7f05000c;
         public static final int title_activity_walk_creator=0x7f050001;
-        public static final int title_activity_walk_details=0x7f05000d;
-        public static final int walkDetailsCancelButtonText=0x7f050014;
-        public static final int walkDetailsConfirmButtonText=0x7f050015;
+        public static final int title_activity_walk_details=0x7f05000e;
+        public static final int walkDetailsCancelButtonText=0x7f050015;
+        public static final int walkDetailsConfirmButtonText=0x7f050016;
     }
     public static final class style {
         /** 

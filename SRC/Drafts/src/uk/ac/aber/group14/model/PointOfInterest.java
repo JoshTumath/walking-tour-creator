@@ -1,6 +1,5 @@
 package uk.ac.aber.group14.model;
 
-import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;

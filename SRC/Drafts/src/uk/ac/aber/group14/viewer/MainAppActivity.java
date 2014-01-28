@@ -20,23 +20,39 @@ public class MainAppActivity extends Activity {
 	
 	
 	LocationManager manager;
-	private void buildAlertMessageNoGps() {
-		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Your GPS seems to be disabled")
-		.setCancelable(false)       
-		.setNegativeButton("ok", new DialogInterface.OnClickListener() {
-			public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-				dialog.cancel();
-			}
-		});
-		final AlertDialog alert = builder.create();
-		alert.show();
-	}
 
-
-
-
-
+	 private void buildAlertMessageNoGps() {
+		    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		    builder.setMessage("Your GPS seems to be disabled")
+		           .setCancelable(false)       
+		           .setNegativeButton("ok", new DialogInterface.OnClickListener() {
+		               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+		                    dialog.cancel();
+		               }
+		           });
+		    final AlertDialog alert = builder.create();
+		    alert.show();
+		}
+	 //this code prevents the back button on being used
+	 private void buildAlertMessageBackMessage() {
+		    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		    builder.setMessage("you can`t do that dave")
+		           .setCancelable(false)       
+		           .setNegativeButton("ok", new DialogInterface.OnClickListener() {
+		               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+		                    dialog.cancel();
+		               }
+		           });
+		    final AlertDialog alert = builder.create();
+		    alert.show();
+		}
+	 @Override
+	 public void onBackPressed() {
+	     // TODO Auto-generated method stub
+		 buildAlertMessageBackMessage();
+	     super.onBackPressed();
+	 }
+   
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
