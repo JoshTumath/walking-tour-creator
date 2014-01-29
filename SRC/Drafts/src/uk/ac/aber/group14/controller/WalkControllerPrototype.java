@@ -43,8 +43,14 @@ public class WalkControllerPrototype implements IWalkController {
 	public void cancelWalk() {
 		walk = null;
 	}
-
+	
 	@Override
+	public String compileWalk() {
+		IJsonPackager jsonPackager = new JsonPackager();
+		return jsonPackager.JSONify(walk);
+	}
+
+	/*@Override
 	public boolean uploadWalk() {
 		boolean uploadSuccess=true;
 		IJsonPackager jsonPackager = new JsonPackager();
@@ -55,7 +61,7 @@ public class WalkControllerPrototype implements IWalkController {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost("http://jakemaguire.co.uk/projects/wtc/upload.php");
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("json", walkObject));
+		nameValuePairs.add(new BasicNameValuePair("posttourdata", walkObject));
 		try {
 			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		} catch (UnsupportedEncodingException e) {
@@ -72,7 +78,7 @@ public class WalkControllerPrototype implements IWalkController {
 			uploadSuccess=false;
 		}
 		return uploadSuccess;
-	}
+	}*/
 
 	public void addLocation(Location location) {
 		walk.addLocation(location);

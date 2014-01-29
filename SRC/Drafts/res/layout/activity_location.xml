@@ -101,13 +101,14 @@
 
 	    <TextView
 	        android:id="@+id/textView2"
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
 	        android:layout_above="@+id/ConfirmAction"
 	        android:layout_alignLeft="@+id/locationDescriptionEdit"
 	        android:layout_alignParentRight="true"
+	        android:layout_alignRight="@+id/locationDescriptionEdit"
 	        android:layout_below="@+id/locationDescriptionEdit"
-	        android:gravity="left|right"
+	        android:layout_marginBottom="5dp"
 	        android:text="@string/EmptyString"
 	        android:textAppearance="?android:attr/textAppearanceLarge" />
 	
