@@ -50,6 +50,8 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 			walkController = savedInstanceState.getParcelable("walkController");
 			isRunning = savedInstanceState.getBoolean("isRunning");
 			isFinished = savedInstanceState.getBoolean("isFinished");
+			((TextView) this.findViewById(R.id.latitude)).setText(savedInstanceState.getString("latitude"));
+			((TextView) this.findViewById(R.id.longitude)).setText(savedInstanceState.getString("longitude"));
 		}
 		else
 		{
@@ -203,5 +205,9 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		out.putParcelable("walkController", walkController);
 		out.putBoolean("isRunning", isRunning);
 		out.putBoolean("isFinished", isFinished);
+		String latitude = (String) ((TextView) this.findViewById(R.id.latitude)).getText();
+		String longitude = (String) ((TextView) this.findViewById(R.id.longitude)).getText();
+		out.putString("latitude", latitude);
+		out.putString("latitude", longitude);
 	}
 }
