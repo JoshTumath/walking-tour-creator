@@ -28,6 +28,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * cleaning up comments
+ * @editor tht5
+ *
+ */
 public class WalkCreatorActivity extends Activity implements LocationListener,
 		IUploadFinishNotify, DialogInterface.OnDismissListener{
 	private IWalkController walkController;
@@ -83,27 +88,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 
 		uiUpdateHandler = new Handler();
 		isRunning = true;
-		/*uiUpdateHandler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				if(isRunning) {
-					Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-					if(lastLocation != null) {
-						Log.i("WTC", "Changing last known location to " + 
-								lastLocation.getLongitude() + "," +
-								lastLocation.getLatitude() + " at " + 
-								lastLocation.getTime());
-						TextView coordinateView = (TextView) findViewById(R.id.textView3);
-						if(coordinateView != null) {
-							String coordinateText = lastLocation.getLongitude() + "," +
-									lastLocation.getLatitude();
-							coordinateView.setText(coordinateText);
-						}
-					}
-					uiUpdateHandler.postDelayed(this, timerDelay);
-				}
-			}
-		}, timerDelay);*/
+		
 	}
 
 	@Override
@@ -117,11 +102,12 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		isRunning = false;
 		finish();
 	}
-	//code the prevents back button
+		/**
+		 * code that disables the physical back button on android phones
+		 * tht5
+		 */
 		 public void onBackPressed() {
-		     // TODO Auto-generated method stub
-			 //buildAlertMessageBackMessage();
-		  //   super.onBackPressed();
+			 
 		 }
 
 	public void addLocation(View view) {//creates location activity
@@ -129,8 +115,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		if(lastLocation != null)
 		{
 			Intent locationIntent = new Intent(this, LocationActivity.class);
-			//Bundle b=new Bundle();
-			//b.putParcelable("location", lastLocation);
+
 			locationIntent.putExtra("location", lastLocation);
 			Log.i("WTC", "testing addlocation, in wcA");//used for testing
 			//passing the bundle into
