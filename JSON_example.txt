@@ -6,7 +6,7 @@
     "time": 12345678900
   },
   "points": {
-    "1": {
+    "0": {
       "latitude": 52.222,
       "longitude": 4.111,
       "timestamp": 1234567777,
@@ -17,7 +17,7 @@
         "photo": null
       }
     },
-    "2": {
+    "1": {
       "latitude": 51.122,
       "longitude": 5.111,
       "timestamp": 1234567777,
