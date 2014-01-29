@@ -90,8 +90,6 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 			uploadSuccess = false;
 		}
 		
-		Log.i("WTC", "Result of http post:" + response.getStatusLine().getStatusCode());
-		
 		return uploadSuccess;
 	}
 }
