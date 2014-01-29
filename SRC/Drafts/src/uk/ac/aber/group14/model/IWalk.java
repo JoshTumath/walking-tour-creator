@@ -1,8 +1,9 @@
 package uk.ac.aber.group14.model;
 
 import android.location.Location;
+import android.os.Parcelable;
 
-public interface IWalk {
+public interface IWalk extends Parcelable{
 
 	public void addPointOfInterest(IPointOfInterest point);
 	

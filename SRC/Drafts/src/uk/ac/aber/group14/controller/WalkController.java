@@ -23,17 +23,23 @@ import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.IWalk;
 import uk.ac.aber.group14.model.JsonPackager;
 import android.location.Location;
+import android.os.Parcel;
+import android.os.Parcelable;
 import uk.ac.aber.group14.model.IWalk;
 import uk.ac.aber.group14.model.PointOfInterest;
 import uk.ac.aber.group14.model.Walk;
 
-public class WalkControllerPrototype implements IWalkController {
+public class WalkController implements IWalkController, Parcelable {
 	private IWalk walk;
 	
-	public WalkControllerPrototype(String name, String sd, String ld) {
+	public WalkController(String name, String sd, String ld) {
 		this.walk = new Walk(name, sd, ld);
 	}
 	
+	public WalkController(Parcel source) {
+		this.walk = (Walk) source.readParcelable(Walk.class.getClassLoader());
+	}
+
 	@Override
 	public void addPOI(IPointOfInterest point) {
 		walk.addPointOfInterest(point);
@@ -50,36 +56,6 @@ public class WalkControllerPrototype implements IWalkController {
 		return jsonPackager.JSONify(walk);
 	}
 
-	/*@Override
-	public boolean uploadWalk() {
-		boolean uploadSuccess=true;
-		IJsonPackager jsonPackager = new JsonPackager();
-		Log.i("WTC", "Number of locations:	" + walk.getLocations().length + "\n" +
-				"Number of points:	" + walk.getPointsOfInterest().length);
-		String walkObject = jsonPackager.JSONify(walk);
-		Log.i("WTC", "\n\n=== JSON WALK===\n\n" + walkObject + "\n\n================");
-		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost httpPost = new HttpPost("http://jakemaguire.co.uk/projects/wtc/upload.php");
-		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("posttourdata", walkObject));
-		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-		} catch (UnsupportedEncodingException e) {
-			Log.i("WTC", "Error attempting to encode URL: " + e.getLocalizedMessage());
-			uploadSuccess=false;
-		}
-		try {
-			httpClient.execute(httpPost);
-		} catch (ClientProtocolException e) {
-			Log.i("WTC", e.getLocalizedMessage());
-			uploadSuccess=false;
-		} catch (IOException e) {
-			Log.i("WTC", e.getLocalizedMessage());
-			uploadSuccess=false;
-		}
-		return uploadSuccess;
-	}*/
-
 	public void addLocation(Location location) {
 		walk.addLocation(location);
 	}
@@ -88,4 +64,29 @@ public class WalkControllerPrototype implements IWalkController {
 	public boolean canUpload() {
 		return (walk.getNumberLocations() > 0 && walk.getNumberPOI() > 0);
 	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel out, int flags) {
+		out.writeParcelable(walk, flags);
+	}
+	
+	public static final Parcelable.Creator<WalkController> CREATOR = new Parcelable.Creator<WalkController>() {
+
+		@Override
+		public WalkController createFromParcel(Parcel source) {
+			return new WalkController(source);
+		}
+
+		@Override
+		public WalkController[] newArray(int size) {
+			return new WalkController[size];
+		}
+		
+	}; 
 }

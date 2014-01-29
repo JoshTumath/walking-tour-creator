@@ -3,8 +3,10 @@ package uk.ac.aber.group14.model;
 import java.util.LinkedList;
 
 import android.location.Location;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Walk implements IWalk {
+public class Walk implements IWalk, Parcelable {
 	
 	private String name;
 	private String shortDescription;
@@ -18,6 +20,16 @@ public class Walk implements IWalk {
 		setLongDescription(longDescription);
 		points = new LinkedList<IPointOfInterest>();
 		locations = new LinkedList<Location>();
+	}
+
+	public Walk(Parcel source) {
+		name = source.readString();
+		shortDescription = source.readString();
+		longDescription = source.readString();
+		points = new LinkedList<IPointOfInterest>();
+		source.readList(points, null);
+		locations = new LinkedList<Location>();
+		source.readList(locations, null);
 	}
 
 	@Override
@@ -84,5 +96,34 @@ public class Walk implements IWalk {
 	public int getNumberPOI() {
 		return points.size();
 	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel out, int flags) {
+		out.writeString(name);
+		out.writeString(shortDescription);
+		out.writeString(longDescription);
+		out.writeList(points);
+		out.writeList(locations);
+	}
+	
+	public static final Parcelable.Creator<Walk> CREATOR = new Parcelable.Creator<Walk>() {
+
+		@Override
+		public Walk createFromParcel(Parcel source) {
+			return new Walk(source);
+		}
+
+		@Override
+		public Walk[] newArray(int size) {
+			return new Walk[size];
+		}
+		
+	}; 
 	
 }
