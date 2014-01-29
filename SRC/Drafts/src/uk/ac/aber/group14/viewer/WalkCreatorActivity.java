@@ -49,8 +49,6 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		
 		progressDialog = new ProgressDialog(WalkCreatorActivity.this);
 		alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
-		walkUploader = new WalkUploader();
-		walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
 		
 		if(savedInstanceState!=null) {
 			walkController = savedInstanceState.getParcelable("walkController");
@@ -176,6 +174,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
     		locationManager.removeUpdates(this);
     		Log.i("WTC", "Attempting to upload walk...");
     		String jsonData = walkController.compileWalk();
+    		walkUploader = new WalkUploader();
     		walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
     		walkUploader.execute(jsonData);
     	}
