@@ -210,6 +210,6 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		String latitude = (String) ((TextView) this.findViewById(R.id.latitude)).getText();
 		String longitude = (String) ((TextView) this.findViewById(R.id.longitude)).getText();
 		out.putString("latitude", latitude);
-		out.putString("latitude", longitude);
+		out.putString("longitude", longitude);
 	}
 }

@@ -28,41 +28,26 @@ public class LocationActivity extends Activity{
 	final Context context = this;
 	Location location;
 	static final int REQUEST_IMAGE_CAPTURE = 1;
+	static final String changePictureText = "Change picture";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
 		
-		location = (Location) getIntent().getExtras().getParcelable("location");
+		addPicture = (Button) this.findViewById(R.id.addPicture);
 		
-		/*addPicture = (Button) findViewById(R.id.addPicture);
-		
-		addPicture.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				final Dialog dialog = new Dialog(context);
-				dialog.setContentView(R.layout.unimplemented);
-				dialog.setTitle("Unimplemented");
-				TextView text = (TextView) dialog.findViewById(R.id.text);
-				text.setText("This feature has yet to be implemented.");
-				Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-				// if button is clicked, close the custom dialog
-				dialogButton.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						dialog.dismiss();
-					}
-				});
-	 
-				dialog.show();
+		if(savedInstanceState != null)
+		{
+			if(savedInstanceState.getString("picture") != null)
+			{
+				picture = savedInstanceState.getString("picture");
+				addPicture.setText(changePictureText);
 				
 			}
-			
-			
-		});*/
+		}
+		
+		location = (Location) getIntent().getExtras().getParcelable("location");
 		
 	}
 	
@@ -119,7 +104,7 @@ public class LocationActivity extends Activity{
 	    // Check which request we're responding to
 	    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 
-	    	((Button) this.findViewById(R.id.addPicture)).setText("Change picture");
+	    	addPicture.setText(changePictureText);
 	    	picture = getPath(data.getData());
 	    }
 	}
@@ -133,6 +118,12 @@ public class LocationActivity extends Activity{
 		cursor.moveToFirst();
 		Log.i("WTC", "Return path is " + cursor.getString(column_index));
 		return cursor.getString(column_index);
-		}
+	}
 
+	@Override
+	public void onSaveInstanceState(Bundle out) {
+		if(picture != null) {
+			out.putString("picture", picture);	
+		}
+	}
 }
