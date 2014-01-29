@@ -17,6 +17,7 @@ import android.util.Log;
 //import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -42,7 +43,7 @@ public class LocationActivity extends Activity{
 			String name = savedInstanceState.getString("name");
 			String desc = savedInstanceState.getString("desc");
 			((TextView) findViewById(R.id.locationNameEdit)).setText(name);
-			((TextView) findViewById(R.id.locationNameEdit)).setText(desc);
+			((TextView) findViewById(R.id.locationDescriptionEdit)).setText(desc);
 			if(savedInstanceState.getString("picture") != null)
 			{
 				picture = savedInstanceState.getString("picture");
@@ -127,8 +128,8 @@ public class LocationActivity extends Activity{
 
 	@Override
 	public void onSaveInstanceState(Bundle out) {
-		String name = (String) ((TextView) findViewById(R.id.locationNameEdit)).getText();
-		String desc = (String) ((TextView) findViewById(R.id.locationDescriptionEdit)).getText();
+		String name = ((EditText) findViewById(R.id.locationNameEdit)).getText().toString();
+		String desc = ((EditText) findViewById(R.id.locationDescriptionEdit)).getText().toString();
 		out.putString("name", name);
 		out.putString("desc", desc);
 		
