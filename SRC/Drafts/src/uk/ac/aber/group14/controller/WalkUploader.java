@@ -22,8 +22,8 @@ import android.util.Log;
 public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
-	/*private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";*/
-	private static final String uploadAddress = "http://lem0n.net/~tiggy/store.php";
+	private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";
+	/*private static final String uploadAddress = "http://lem0n.net/~tiggy/store.php";*/
 	private IUploadFinishNotify finishNotify;
 
     public void setDialogsAndNotify(ProgressDialog progressDialog,
