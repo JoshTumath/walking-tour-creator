@@ -16,6 +16,7 @@ import android.database.Cursor;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -34,10 +35,14 @@ public class LocationActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
 		
-		addPicture = (Button) this.findViewById(R.id.addPicture);
+		addPicture = (Button) findViewById(R.id.addPicture);
 		
 		if(savedInstanceState != null)
 		{
+			String name = savedInstanceState.getString("name");
+			String desc = savedInstanceState.getString("desc");
+			((TextView) findViewById(R.id.locationNameEdit)).setText(name);
+			((TextView) findViewById(R.id.locationDescriptionEdit)).setText(desc);
 			if(savedInstanceState.getString("picture") != null)
 			{
 				picture = savedInstanceState.getString("picture");
@@ -104,18 +109,24 @@ public class LocationActivity extends Activity{
 	}
 
 	public String getPath(Uri uri) {
-		Log.i("WTC", "Uri given is " + uri.toString());
-		String[] projection = { MediaStore.Images.Media.DATA };
-		Cursor cursor = managedQuery(uri, projection, null, null, null);
+		String[] projection = { MediaStore.Images.Media.DATA }; // Use image media table
+		Cursor cursor = managedQuery(uri, projection, null, null, null); // Although deprecated since API 11, we're working with API 8+
+		/* Cursor allows random read-write to database (which in this case is
+		 * the media database)
+		 */
 		startManagingCursor(cursor);
 		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 		cursor.moveToFirst();
-		Log.i("WTC", "Return path is " + cursor.getString(column_index));
-		return cursor.getString(column_index);
+		return cursor.getString(column_index);//Return the first entry, which will be our file
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle out) {
+		String name = ((EditText) findViewById(R.id.locationNameEdit)).getText().toString();
+		String desc = ((EditText) findViewById(R.id.locationDescriptionEdit)).getText().toString();
+		out.putString("name", name);
+		out.putString("desc", desc);
+		
 		if(picture != null) {
 			out.putString("picture", picture);	
 		}

@@ -26,6 +26,16 @@ public class WalkDetailsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_walk_details);
+		
+		if(savedInstanceState != null) {
+			EditText name = (EditText)findViewById(R.id.walkDetailsNameEdit);
+			EditText shortDescription = (EditText)findViewById(R.id.walkDetailsSDEdit);
+			EditText longDescription = (EditText)findViewById(R.id.walkDetailsLDEdit);
+			name.setText(savedInstanceState.getString("name"));
+			shortDescription.setText(savedInstanceState.getString("shortDescription"));
+			longDescription.setText(savedInstanceState.getString("longDescription"));
+		}
+		
 	}
 
 	@Override
@@ -122,5 +132,15 @@ public class WalkDetailsActivity extends Activity {
 		
 
 		return result;
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle out) {
+		String name = ((EditText)findViewById(R.id.walkDetailsNameEdit)).getText().toString();
+		String shortDescription = ((EditText)findViewById(R.id.walkDetailsSDEdit)).getText().toString();
+		String longDescription = ((EditText)findViewById(R.id.walkDetailsLDEdit)).getText().toString();
+		out.putString("name", name);
+		out.putString("shortDescription", shortDescription);
+		out.putString("longDescription", longDescription);
 	}
 }		

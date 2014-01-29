@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/NewWalk"
         android:layout_alignParentTop="true"
-        android:src="@drawable/logo2" />
+        android:src="@drawable/ic_launcher" />
 
     <Gallery
         android:id="@+id/gallery2"
