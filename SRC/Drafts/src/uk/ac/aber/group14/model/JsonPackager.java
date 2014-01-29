@@ -47,7 +47,7 @@ public class JsonPackager implements IJsonPackager {
 				
 				loc.put("latitude", locations[i].getLatitude());
 				loc.put("longitude", locations[i].getLongitude());
-				loc.put("time", ((int) locations[i].getTime() / 1000));
+				loc.put("timestamp", ((int) locations[i].getTime() / 1000));
 				loc.put("poiflag", false);
 				loc.put("poidata", JSONObject.NULL);
 				
@@ -60,7 +60,7 @@ public class JsonPackager implements IJsonPackager {
 				
 				loc.put("latitude", pointsOfInterest[i].getLocation().getLatitude());
 				loc.put("longitude", pointsOfInterest[i].getLocation().getLongitude());
-				loc.put("time", ((int) pointsOfInterest[i].getLocation().getTime() / 1000));
+				loc.put("timestamp", ((int) pointsOfInterest[i].getLocation().getTime() / 1000));
 				loc.put("poiflag", true);
 				
 				poiData.put("locationname", pointsOfInterest[i].getName());
