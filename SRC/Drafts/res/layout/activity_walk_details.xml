@@ -65,7 +65,7 @@
 	       android:layout_alignRight="@+id/walkDetailsSDEdit"
 	       android:layout_below="@+id/walkDetailsLDLabel"
 	       android:ems="10"
-	       android:gravity="bottom|fill_vertical"
+	       android:gravity="bottom|fill_vertical|fill_horizontal"
 	       android:hint="@string/WalkDetailsNameLDHint"
 	       android:inputType="textMultiLine"
 	       android:minLines="7"
@@ -77,7 +77,6 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentBottom="true"
 	        android:layout_alignParentRight="true"
-	        android:layout_below="@+id/walkDetailsLDEdit"
 	        android:layout_toRightOf="@+id/walkDetailsSDLabel"
 	        android:onClick="cancel"
 	        android:text="@string/walkDetailsCancelButtonText" />
@@ -103,7 +102,6 @@
 	        android:layout_alignLeft="@+id/walkDetailsLDEdit"
 	        android:layout_alignParentBottom="true"
 	        android:layout_alignRight="@+id/walkDetailsSDLabel"
-	        android:layout_below="@+id/walkDetailsLDEdit"
 	        android:onClick="createWalk"
 	        android:text="@string/walkDetailsConfirmButtonText" />
 	
