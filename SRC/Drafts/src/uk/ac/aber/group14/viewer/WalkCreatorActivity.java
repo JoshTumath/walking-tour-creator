@@ -39,12 +39,18 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 	private boolean isRunning, isFinished=false;
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
+	private WalkUploader walkUploader;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_walk_creator);
 		Intent myIntent = getIntent();
+		
+		progressDialog = new ProgressDialog(WalkCreatorActivity.this);
+		alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
+		walkUploader = new WalkUploader();
+		walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
 		
 		if(savedInstanceState!=null) {
 			walkController = savedInstanceState.getParcelable("walkController");
@@ -61,9 +67,6 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 					myIntent.getStringExtra("longDescription"));
 		}
 		
-		
-		progressDialog = new ProgressDialog(WalkCreatorActivity.this);
-		alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
 		alertDialog.setOnDismissListener(this);
 		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
 			
@@ -173,7 +176,6 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
     		locationManager.removeUpdates(this);
     		Log.i("WTC", "Attempting to upload walk...");
     		String jsonData = walkController.compileWalk();
-    		WalkUploader walkUploader = new WalkUploader();
     		walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
     		walkUploader.execute(jsonData);
     	}

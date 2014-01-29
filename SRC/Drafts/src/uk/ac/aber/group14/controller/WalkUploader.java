@@ -14,22 +14,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import uk.ac.aber.group14.R;
-import uk.ac.aber.group14.model.IJsonPackager;
-import uk.ac.aber.group14.model.JsonPackager;
-import uk.ac.aber.group14.model.Walk;
-import uk.ac.aber.group14.viewer.MainAppActivity;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 	private ProgressDialog progressDialog;
