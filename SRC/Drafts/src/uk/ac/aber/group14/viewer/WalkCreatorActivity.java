@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -160,7 +161,23 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
     		walkUploader.setDialogs(progressDialog, messageDialogBuilder);
     		walkUploader.execute(jsonData);
     	}
+    	else
+    	{
+    		Location currentLocation = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+    		if(currentLocation != null) {
+    			walkController.addLocation(currentLocation);
+    		}
+    		AlertDialog alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
+    		alertDialog.setTitle("Error");
+    		alertDialog.setMessage("You need at least 1 Point of Interest and GPS Location to upload a walk!");
+    		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+    		alertDialog.show();
+    	}
     }
-    
-    	
 }

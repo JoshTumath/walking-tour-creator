@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -32,8 +33,8 @@ import android.widget.TextView;
 public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 	private ProgressDialog progressDialog;
 	private AlertDialog.Builder messageDialogBuilder;
-	private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";
-	/*private static final String uploadAddress = "http://google.co.uk/";*/
+	/*private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";*/
+	private static final String uploadAddress = "http://lem0n.net/~tiggy/store.php";
 
     public void setDialogs(ProgressDialog progressDialog, AlertDialog.Builder messageDialogBuilder) {
         this.progressDialog = progressDialog;
@@ -72,23 +73,33 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 		Log.v("WTC", "\n\n=== JSON WALK===\n\n" + walk + "\n\n================");
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(uploadAddress);
+		
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("posttourdata", walk));
+		nameValuePairs.add(new BasicNameValuePair("tourdata", walk));
 		try {
 			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 		} catch (UnsupportedEncodingException e) {
 			Log.i("WTC", "Error attempting to encode URL: " + e.getLocalizedMessage());
 			uploadSuccess=false;
 		}
+		
+		HttpResponse response = null;
 		try {
-			httpClient.execute(httpPost);
+			response = httpClient.execute(httpPost);
 		} catch (ClientProtocolException e) {
 			Log.i("WTC", e.getLocalizedMessage());
-			uploadSuccess=false;
+			uploadSuccess = false;
 		} catch (IOException e) {
 			Log.i("WTC", e.getLocalizedMessage());
-			uploadSuccess=false;
+			uploadSuccess = false;
 		}
+		
+		if(response == null || response.getStatusLine().getStatusCode() != 200) {
+			uploadSuccess = false;
+		}
+		
+		Log.i("WTC", "Result of http post:" + response.getStatusLine().getStatusCode());
+		
 		return uploadSuccess;
 	}
 }
