@@ -40,6 +40,7 @@
 	<string name="ActivityWalkCreatorLat">Latitude</string>
 	<string name="ActivityWalkCreatorLong">Longitude</string>
 	<string name="ActivityWalkCreatorDefaultCoordinates">0.0000000</string>
+	<string name="EmptyString"></string>
 	
 	
 </resources>

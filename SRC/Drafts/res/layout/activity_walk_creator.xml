@@ -62,17 +62,6 @@
 		        android:text="@string/ActivityWalkCreatorDefaultCoordinates"
 		        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-		    <Button
-		        android:id="@+id/NewWalk"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_alignParentBottom="true"
-		        android:layout_alignParentLeft="true"
-		        android:layout_below="@+id/longitude"
-		        android:layout_marginBottom="20dp"
-		        android:onClick="cancelWalk"
-		        android:text="@string/CancelButton" />
-
 		    <android.widget.Space
 		        android:id="@+id/space1"
 		        android:layout_width="wrap_content"
@@ -82,13 +71,22 @@
 		        android:layout_marginRight="19dp"
 		        android:layout_marginTop="86dp" />
 
+		    <TextView
+		        android:id="@+id/textView2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_above="@+id/NewWalk"
+		        android:layout_alignLeft="@+id/longitude"
+		        android:layout_below="@+id/longitude"
+		        android:layout_centerVertical="true"
+		        android:text="@string/EmptyString"
+		        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 		    <Button
 		        android:id="@+id/walkDetailsCancelButton"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_alignBottom="@+id/NewWalk"
-		        android:layout_alignTop="@+id/NewWalk"
-		        android:layout_centerHorizontal="true"
+		        android:layout_alignParentBottom="true"
 		        android:layout_toLeftOf="@+id/button3"
 		        android:layout_toRightOf="@+id/NewWalk"
 		        android:onClick="onSaveRoute"
@@ -98,11 +96,19 @@
 		        android:id="@+id/button3"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_alignBottom="@+id/walkDetailsCancelButton"
+		        android:layout_alignParentBottom="true"
 		        android:layout_alignParentRight="true"
-		        android:layout_alignTop="@+id/walkDetailsCancelButton"
 		        android:onClick="addLocation"
 		        android:text="@string/AddButton" />
+
+		    <Button
+		        android:id="@+id/NewWalk"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentBottom="true"
+		        android:layout_alignParentLeft="true"
+		        android:onClick="cancelWalk"
+		        android:text="@string/CancelButton" />
 		
 		</RelativeLayout>
 	</ScrollView>
