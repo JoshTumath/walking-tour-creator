@@ -80,7 +80,7 @@ public class JsonPackager implements IJsonPackager {
 							do {
 								offset += bufIStream.read(byteArray, offset, iFileLength-offset);
 							} while(offset < iFileLength);
-							poiData.put("photo", Base64.encodeToString(byteArray,Base64.DEFAULT));
+							poiData.put("photo", URLEncodebase64(Base64.encodeToString(byteArray,Base64.DEFAULT)));
 						}
 						else {
 							bufIStream.close();
@@ -117,6 +117,15 @@ public class JsonPackager implements IJsonPackager {
 		}
 		
 		return null;
+	}
+	
+	private String URLEncodeBase64(String s) {
+		String encodedString;
+		encodedString = s.replace("+", "%2B");
+		encodedString = encodedString.replace("/", "%2F");
+		encodedString = encodedString.replace("=", "%3D");
+		
+		return encodedString;
 	}
 	
 }
