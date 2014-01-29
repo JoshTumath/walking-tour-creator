@@ -29,8 +29,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * cleaning up comments
- * @editor tht5
+ * 
+ * 
  *
  */
 public class WalkCreatorActivity extends Activity implements LocationListener,

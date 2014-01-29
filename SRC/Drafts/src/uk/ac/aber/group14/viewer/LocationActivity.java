@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
-//import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -85,12 +84,7 @@ public class LocationActivity extends Activity{
 		setResult(Activity.RESULT_CANCELED, new Intent());
 		finish();
 	}
-	//code the prevents back button
-	 /*public void onBackPressed() {
-	     // TODO Auto-generated method stub
-		 //buildAlertMessageBackMessage();
-	  //   super.onBackPressed();
-	 }*/
+	
 
 	public void onClickPictureButton(View view) {
 	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
