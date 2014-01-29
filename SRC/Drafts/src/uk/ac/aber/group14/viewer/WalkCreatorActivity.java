@@ -117,11 +117,9 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		isRunning = false;
 		finish();
 	}
-	//code the prevents back button
+		//code that disables the physical back button on android phones
 		 public void onBackPressed() {
-		     // TODO Auto-generated method stub
-			 //buildAlertMessageBackMessage();
-		  //   super.onBackPressed();
+			 
 		 }
 
 	public void addLocation(View view) {//creates location activity
