@@ -80,7 +80,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 
 		uiUpdateHandler = new Handler();
 		isRunning = true;
-		uiUpdateHandler.postDelayed(new Runnable() {
+		/*uiUpdateHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
 				if(isRunning) {
@@ -100,7 +100,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 					uiUpdateHandler.postDelayed(this, timerDelay);
 				}
 			}
-		}, timerDelay);
+		}, timerDelay);*/
 	}
 
 	@Override
@@ -147,9 +147,9 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 
 
 	private void recordNewLocation(Location location) {
-		Log.i("WTC", "Adding new location:" + location.getLatitude() + 
-				"," + location.getLongitude() + " at " + location.getTime());
 		walkController.addLocation(location);
+		((TextView) findViewById(R.id.latitude)).setText(Double.toString(location.getLatitude()));
+		((TextView) findViewById(R.id.longitude)).setText(Double.toString(location.getLongitude()));
 	}
 
 	public void onLocationChanged(Location location) {
