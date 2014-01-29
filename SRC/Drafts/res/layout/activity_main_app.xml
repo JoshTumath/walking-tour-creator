@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/NewWalk"
         android:layout_alignParentTop="true"
-        android:src="@drawable/Logo2" />
+        android:src="@drawable/logo2"/>
 
     <Gallery
         android:id="@+id/gallery2"
