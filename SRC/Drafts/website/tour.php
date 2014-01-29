@@ -46,67 +46,61 @@ while ($row = mysql_fetch_assoc($result)) {
 	<p><span><b>Hours: </b><?php echo $hours;?></span></p>
 </aside>
 
-<div id="map"></div>
 <?php insert_footer_top(); ?>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvBB7hlS-aPXieeaTMzZQMbCPtqCqJNz0&sensor=false">
-// The script above loads the Google Maps API. The Key is the API key I was
-// given and the sensor and indicates whether this application uses a sensor
-// (such as a GPS locator) to determine the users location.
-</script>
 
-<script>
-var infowindow = null;
-function initialize() {
-  var centerMap = new google.maps.LatLng(52.4151, -4.08352);
+<div id="map">
+	<script>
+		var infowindow = null;
+		function initialize() {
+		  var centerMap = new google.maps.LatLng(52.4151, -4.08352);
 
-  var myOptions = {
-    zoom: 13,
-    center: centerMap,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
+		  var myOptions = {
+			zoom: 13,
+			center: centerMap,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		  }
 
-  var map = new google.maps.Map(document.getElementById("maps"), myOptions);
+		  var map = new google.maps.Map(document.getElementById("map"), myOptions);
 
-  setMarkers(map, sites);
-    infowindow = new google.maps.InfoWindow({
-    content: "loading..."
-    });
+		  setMarkers(map, sites);
+			infowindow = new google.maps.InfoWindow({
+			content: "loading..."
+			});
 
-  var coordinates = [
-    <?php echo implode(',', $coordinates) ?>
-  ];
-  var lineBetweenPoints = new google.maps.Polyline({
-    path: coordinates,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
-  lineBetweenPoints.setMap(map);
-  }	
+		  var coordinates = [
+			<?php echo implode(',', $coordinates) ?>
+		  ];
+		  var lineBetweenPoints = new google.maps.Polyline({
+			path: coordinates,
+			geodesic: true,
+			strokeColor: '#FF0000',
+			strokeOpacity: 1.0,
+			strokeWeight: 2
+		  });
+		  lineBetweenPoints.setMap(map);
+		}	
 
-  var sites = [
-  <?php echo implode(',', $markers) ;?>
-];
+		  var sites = [
+		  <?php echo implode(',', $markers) ;?>
+		];
+		  function setMarkers(map, markers) {
+		  for (var i = 0; i < markers.length; i++) {
+			var sites = markers[i];
+			var siteLatLng = new google.maps.LatLng(sites[1], sites[2]);
+			var marker = new google.maps.Marker({
+			position: siteLatLng,
+			map: map,
+			title: sites[0],
+			html: sites[3]
+			});
+			google.maps.event.addListener(marker, "click", function () {
+			infowindow.setContent("<h1>"+ this.title +"</h1><p>"+ this.html +"</p>");
+			infowindow.open(map, this);
+			});
+		  }   
+		}
 
-  function setMarkers(map, markers) {
-  for (var i = 0; i < markers.length; i++) {
-    var sites = markers[i];
-    var siteLatLng = new google.maps.LatLng(sites[1], sites[2]);
-    var marker = new google.maps.Marker({
-    position: siteLatLng,
-    map: map,
-    title: sites[0],
-    html: sites[3]
-    });
-
-    google.maps.event.addListener(marker, "click", function () {
-    infowindow.setContent("<h1>"+ this.title +"</h1><p>"+ this.html +"</p>");
-    infowindow.open(map, this);
-    });
-  }
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+		google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+</div>
 <?php insert_footer_bottom(); ?>
