@@ -30,7 +30,7 @@
     <string name="WalkDetailsInvalidInputName">The name of the walk is too long</string>
     <string name="WalkDetailsInvalidInputShort">The short description of the walk is too long</string>
     <string name="WalkDetailsInvalidInputLong">The long description of the walk is too long</string>
-	<string name="WalkDetailsInvalidInputCharacters">One of the inputs contain an illegal character</string>
+	<string name="WalkDetailsInvalidInputCharacters">The name may not contain spaces</string>
 	<string name="ActivityLocationTimeStamp">Time Stamp</string>
 	<string name="ActivityLocationLocationName">Location Name</string>
 	<string name="ActivityLocationDescription">Description</string>

@@ -115,11 +115,11 @@ public class WalkDetailsActivity extends Activity {
 		else if(longDescription.length() > long_desc_len){
 			result = 4;
 		}
-		/*
-		else if(!Pattern.matches("/\\s|[a-zA-Z]|\\d|\\.*",name)){
+		
+		else if(name.contains(" ")){
 			result = 5;
 		}
-		*/
+		
 
 		return result;
 	}
