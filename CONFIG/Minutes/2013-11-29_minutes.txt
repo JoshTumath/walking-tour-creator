@@ -1,0 +1,46 @@
+Project:                    Group Project 14
+Meeting:                    Weekly Project Meeting
+Persons present:            All project members except Lars Lunde and Michael Oddie
+Place and date of meeting:  C57a, Friday 29th November 2013
+Circulation list:           All project members, plus project manager
+Author:                     Jake Maguire (jam64)
+Date of minutes:            1st December 2013
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Reviewed current status of the design specification.
+
+2. Reviewed current status of the web team.
+
+3. Reviewed current status of the android team.
+
+New business
+============
+
+1. Put Design Spec on to GitHub with source, and have the draft ready for review on wednesday.
+  ACTION: THEO TAYLOR
+
+2. Complete design spec for formal review on Wednesday.
+  ACTION: JAMES MELLORS, THEO TAYLOR, MICHAEL ODDIE
+
+3. Complete formal review for Wednesday. 
+  ACTION: JAKE MAGUIRE
+
+4. Make sure that chief architect (or rest of android team) talk to design spec team about possible algorithms.
+  ACTION: ROB BOLTON, MICHAEL ODDIE
+
+5. Email Bernie with question about whether or not we want to track the users walk or POIs.
+  ACTION: ROB BOLTON, JOSH TUMATH (?)
+  
+6. Look at commiting to app branch rather than master.
+  ACTION: ANDROID TEAM
+
+
+AOB
+===
+  ONGOING
+Make sure that mistakes and improvements are implemented in project plan according to feedback given.
+  ACTION: EVERYONE 
+
