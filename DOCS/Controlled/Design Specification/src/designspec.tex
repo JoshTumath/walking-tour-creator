@@ -1,4 +1,5 @@
 \documentclass{project}
+\usepackage {comment}
 
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[pdfauthor={Group 14},pdftitle={Software Engineering Group Project, Design Specification},pdftex]{hyperref}
@@ -67,7 +68,7 @@ The system is composed of two programs:
 The Walking Tour Creator is an application to allow the user can create walks
 on a mobile device for them to be uploaded to the server. It implements the
 requirements (FR1), (FR2), (FR3), (FR4), (FR5), (FR6), (FR7), (FR9), (PR1) and
-must comform with the requirements (EIR1), (PR2), (DC1), (DC2).\cite{se.qa.rs}
+must conform with the requirements (EIR1), (PR2), (DC1), (DC2).\cite{se.qa.rs}
 
 This application will use a GUI as a means for the user to create a walk. The
 user will be able to walk around an area and the GPS component of their device
@@ -100,15 +101,11 @@ recording the walk.
 is creating, and the metadata of the walk.
 
 \emph{PointOfInterest}. This contains a point of interest in the route, which
-is a coordinate with a description and optionally a photo of what is in that
-area.
-
-\emph{LocationLoggerService}. This is a service that runs in the background
+is a coordinate with a description and optionally a photo of what is in that.It also has a service that runs in the background
 recording the user's walk.
 
-
 \subsubsection{Significant functions in Walking Tour Displayer}
-\emph{intialize}. This JavaScript function creates an embeddded Google Map on
+\emph{intialize}. This JavaScript function creates an embedded Google Map on
 the page.
 
 \emph{addMarker}. This JavaScript function takes coordinates as parameters and
@@ -127,7 +124,7 @@ FR1 & MainAppActivity \\
 \hline
 FR2 & WalkCreatorActivity, Walk \\
 \hline
-FR3 & WalkCreatorActivity, Walk, PointOfInterest, LocationLoggerService \\
+FR3 & WalkCreatorActivity, Walk, PointOfInterest,  \\
 \hline
 FR4 & WalkCreatorActivity \\
 \hline
@@ -152,7 +149,8 @@ FR9 & WalkCreatorActivity \\
 
 \subsubsection{Component Diagram for Walking Tour Creator}
 \begin{figure}[h] 
-    \includegraphics[width=15cm]{compontent_diagram_WTC.png}
+
+\includegraphics[width=15cm]{NewComponentDiagram.jpg}
 \end{figure}
 
 \newpage
@@ -173,7 +171,7 @@ because it calls the gets and sets from that class.
 
 For basic understanding of the dependencies of the Walking Tour Creator:
 \begin{itemize}
-\item Walk controller on GPS logger, walk creator and Location activity.
+\item Walk controller on walk creator and Location activity.
 \item Walk on point of interest and walk controller.
 \item Web site on walk controller.
 \end{itemize}
@@ -243,6 +241,8 @@ public interface IWalkController {
     * and return to the MainAppActivity.
     */
    public void cancelWalk();
+   
+  
 }\end{verbatim}
 
 \newpage
@@ -251,7 +251,7 @@ public interface IWalkController {
 \begin{verbatim}/**
  * This interface is what actually stores the data of the walk. 
  * This contains a list of Location objects for the walk, a list of
- * IPointOfInterest objects, a title, a short description, and a long
+ * IPointOfInterest objects, a name, a short description, and a long
  * description
  *
  * @author Group 14
@@ -272,9 +272,9 @@ public interface IWalk {
    public void addLocations(LinkedList locations);
    
    /**
-    * This sets the walk's user-viewable title.
+    * This sets the walk's user-viewable name.
     */
-   public void setTitle(String title);
+   public void setTitle(String name);
    
    /**
     * This sets the walks short (<100 char) description.
@@ -282,7 +282,7 @@ public interface IWalk {
    public void setShortDesctiption(String Sdesc);
 
    /**
-    * This sets the walk's short (<1000 char) description. 
+    * This sets the walk's long (<1000 char) description. 
     */
    public void setLongDescription(String Ldesc);
    
@@ -299,7 +299,7 @@ public interface IWalk {
    public android.location.Location[] getLocations();
 
    /**
-    * This returns the String containing the walk's title.
+    * This returns the String containing the walk's name.
     */
    public String getTitle();
    
@@ -314,7 +314,11 @@ public interface IWalk {
     * description.
     */
    public String getLongDescription();
-}\end{verbatim}
+   
+   
+}
+
+\end{verbatim}
 
 \newpage
 
@@ -323,28 +327,34 @@ public interface IWalk {
 
 \begin{figure}[h] 
 
-    \includegraphics[width=15cm]{sequence.png}
+   
+\includegraphics[width=15cm]{New_Sequence_Diagram_Group_Project_14.png}
     
 \end{figure}
 
 \newpage
 
 \subsection{Significant algorithms}
+\subsection{SetMarkers}
+SetMarkers basically takes points from the database and plots them using the LineBetweenPoints function and the google API. It takes in the latitude and longitude from a 2 dimensional array and plots the points on the map
+/textbf{LineBetweenPoints}
+LineBetweenPoints uses the google API to go from of marker to the next and plots a route in between them. Before we discovered the API,we thought to write our own version in java. 
+\begin{comment}
 \subsubsection{LocationLoggerService algorithm}
 This algorithm is used to decide which GPS locations to keep and which to
 discard. This is done in order to remove unnecessary points and conserve
 memory on the phone as well as space in the database.
 
-This encompasses several aglroithms. First it decides wich method it picks by
+This encompasses several algorithms. First it decides which method it picks by
 looking at averages over several points and looking at the standard deviation
-to see if any anomolies might indicate a change in direction. This is separated
+to see if any anomalies might indicate a change in direction. This is separated
 into several different algorithms:
 
 \textbf{Straight line} \\
 No change of direction across several points (likely 4 or more, but this could
 be changed in the algorithms implementation as a variable) will cause the
 points in the middle to be removed. This will look at the standard deviation of
-points and general direciton of points to ensure it's not slowly going round a
+points and general direction of points to ensure it's not slowly going round a
 corner.
 
 \textbf{Corner} \\
@@ -368,6 +378,7 @@ loop or some recursion. Due to the constant change of direction across the turn
 this will not be picked up by any of the other algorithms. This itself will
 ignore the corner and leave the points in place, allowing the corner's GPS
 points to be preserved.
+\end{comment}
 
 \subsection{Significant data structures}
 The data structures we will be using are the IPointOfInterest interface and the
@@ -383,7 +394,7 @@ methods will remain the same.
 The IPointOfInterest will be used to store the data about a point of interest.
 For storing the pictures it is again likely that a LinkedList will be used.
 
-The Location objects will be stored in a LinkedList in the AGPSLocationLogger
+The Location objects will be stored in a LinkedList in the walk
 whilst they are being recorded. This will allow us to quickly and easily add
 new Location objects to the end of it. Unlike an array, we will not need to
 repeatedly recreate the list with a larger amount of memory each time a new
@@ -410,6 +421,8 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 0.2 & N/A & 2013-12-04 & Moved document to project template & jmt14 \\
 \hline
 1.0 & N/A & 2013-12-04 & Added remaining content & jmt14, tht5, jam66 \\
+\hline
+1.1 & N/A & 2013-1-29 & Updating and making changes to content & meo9, jam66 \\
 \hline
 \end{tabular}
 \label{thelastpage}
