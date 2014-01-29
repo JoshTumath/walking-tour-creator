@@ -19,6 +19,7 @@ import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.JsonPackager;
 import uk.ac.aber.group14.model.Walk;
 import uk.ac.aber.group14.viewer.MainAppActivity;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -32,13 +33,16 @@ import android.widget.TextView;
 
 public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 	private ProgressDialog progressDialog;
-	private AlertDialog.Builder messageDialogBuilder;
+	private AlertDialog alertDialog;
 	/*private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";*/
 	private static final String uploadAddress = "http://lem0n.net/~tiggy/store.php";
+	private IUploadFinishNotify finishNotify;
 
-    public void setDialogs(ProgressDialog progressDialog, AlertDialog.Builder messageDialogBuilder) {
+    public void setDialogsAndNotify(ProgressDialog progressDialog,
+    		AlertDialog alertDialog, IUploadFinishNotify finishNotify) {
         this.progressDialog = progressDialog;
-        this.messageDialogBuilder = messageDialogBuilder;
+        this.alertDialog = alertDialog;
+        this.finishNotify = finishNotify;
     }
 	
 	@Override
@@ -59,13 +63,14 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 		super.onPostExecute(result);
         progressDialog.dismiss();
 		if(result == false) {
-			messageDialogBuilder.setTitle("Error");
-			messageDialogBuilder.setMessage("Upload failed. Please try again.");
+			alertDialog.setTitle("Error");
+			alertDialog.setMessage("Upload failed. Please try again.");
 		} else {
-			messageDialogBuilder.setTitle("Success");
-			messageDialogBuilder.setMessage("Upload Successful.");
+			alertDialog.setTitle("Success");
+			alertDialog.setMessage("Upload Successful.");
+			finishNotify.setFinished();
 		}
-		messageDialogBuilder.create().show();
+		alertDialog.show();
 	}
 	
 	public boolean uploadWalk(String walk) {

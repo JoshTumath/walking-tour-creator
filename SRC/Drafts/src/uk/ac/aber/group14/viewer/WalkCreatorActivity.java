@@ -2,6 +2,7 @@ package uk.ac.aber.group14.viewer;
 
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
+import uk.ac.aber.group14.controller.IUploadFinishNotify;
 import uk.ac.aber.group14.controller.WalkControllerPrototype;
 import uk.ac.aber.group14.controller.WalkUploader;
 import uk.ac.aber.group14.model.IJsonPackager;
@@ -27,14 +28,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class WalkCreatorActivity extends Activity implements LocationListener{
+public class WalkCreatorActivity extends Activity implements LocationListener,
+		IUploadFinishNotify, DialogInterface.OnDismissListener{
 	IWalkController walkController;
 	private LocationManager locationManager ;
 	private final int timerDelay = 5000; // Milliseconds
 	private final int locationMinTime = 5000; // Milliseconds
 	private final int locationMinDistance = 5; // Meters
 	private Handler uiUpdateHandler;
-	private boolean isRunning;
+	private boolean isRunning, isFinished=false;
+	private ProgressDialog progressDialog;
+	private AlertDialog alertDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +49,18 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
 				myIntent.getStringExtra("name"),
 				myIntent.getStringExtra("shortDescription"),
 				myIntent.getStringExtra("longDescription"));
-		Log.i("WTC", "Created walk using /" + myIntent.getStringExtra("name") +
-				"/" + myIntent.getStringExtra("shortDescription") + 
-				"/" + myIntent.getStringExtra("longDescription") + "/");
+		
+		
+		progressDialog = new ProgressDialog(WalkCreatorActivity.this);
+		alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
+		alertDialog.setOnDismissListener(this);
+		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
 
 		// Acquire a reference to the system Location Manager
 		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -151,14 +164,12 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
     public void onSaveRoute(View view) {
     	if(walkController.canUpload())
     	{
-    		ProgressDialog progressDialog = new ProgressDialog(WalkCreatorActivity.this);
-    		AlertDialog.Builder messageDialogBuilder = new AlertDialog.Builder(WalkCreatorActivity.this);
     		isRunning = false;
     		locationManager.removeUpdates(this);
     		Log.i("WTC", "Attempting to upload walk...");
     		String jsonData = walkController.compileWalk();
     		WalkUploader walkUploader = new WalkUploader();
-    		walkUploader.setDialogs(progressDialog, messageDialogBuilder);
+    		walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
     		walkUploader.execute(jsonData);
     	}
     	else
@@ -167,17 +178,20 @@ public class WalkCreatorActivity extends Activity implements LocationListener{
     		if(currentLocation != null) {
     			walkController.addLocation(currentLocation);
     		}
-    		AlertDialog alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
     		alertDialog.setTitle("Error");
     		alertDialog.setMessage("You need at least 1 Point of Interest and GPS Location to upload a walk!");
-    		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
-				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.dismiss();
-				}
-			});
     		alertDialog.show();
     	}
     }
+	@Override
+	public void setFinished() {
+		isFinished = true;
+	}
+	@Override
+	public void onDismiss(DialogInterface dialog) {
+		if(isFinished)
+		{
+			finish();
+		}
+	}
 }
