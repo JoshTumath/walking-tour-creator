@@ -3,7 +3,7 @@ package uk.ac.aber.group14.viewer;
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.IUploadFinishNotify;
-import uk.ac.aber.group14.controller.WalkControllerPrototype;
+import uk.ac.aber.group14.controller.WalkController;
 import uk.ac.aber.group14.controller.WalkUploader;
 import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.IPointOfInterest;
@@ -30,7 +30,7 @@ import android.widget.TextView;
 
 public class WalkCreatorActivity extends Activity implements LocationListener,
 		IUploadFinishNotify, DialogInterface.OnDismissListener{
-	IWalkController walkController;
+	private IWalkController walkController;
 	private LocationManager locationManager ;
 	private final int timerDelay = 5000; // Milliseconds
 	private final int locationMinTime = 5000; // Milliseconds
@@ -45,10 +45,19 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_walk_creator);
 		Intent myIntent = getIntent();
-		walkController = new WalkControllerPrototype(
-				myIntent.getStringExtra("name"),
-				myIntent.getStringExtra("shortDescription"),
-				myIntent.getStringExtra("longDescription"));
+		
+		if(savedInstanceState!=null) {
+			walkController = savedInstanceState.getParcelable("walkController");
+			isRunning = savedInstanceState.getBoolean("isRunning");
+			isFinished = savedInstanceState.getBoolean("isFinished");
+		}
+		else
+		{
+			walkController = new WalkController(
+					myIntent.getStringExtra("name"),
+					myIntent.getStringExtra("shortDescription"),
+					myIntent.getStringExtra("longDescription"));
+		}
 		
 		
 		progressDialog = new ProgressDialog(WalkCreatorActivity.this);
@@ -64,12 +73,9 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 
 		// Acquire a reference to the system Location Manager
 		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-		Log.i("WTC", "Got the location manager");
 
-		Log.i("WTC", "Created the listener");
 		// Register the listener with the Location Manager to receive location updates
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationMinTime, locationMinDistance, this);
-		Log.i("WTC", "Requested updates");
 
 
 		uiUpdateHandler = new Handler();
@@ -78,9 +84,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 			@Override
 			public void run() {
 				if(isRunning) {
-					Log.i("WTC", "Getting last known location");
 					Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-					Log.i("WTC", "Recording last known location");
 					if(lastLocation != null) {
 						Log.i("WTC", "Changing last known location to " + 
 								lastLocation.getLongitude() + "," +
@@ -97,9 +101,8 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 				}
 			}
 		}, timerDelay);
-
 	}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -193,5 +196,12 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		{
 			finish();
 		}
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle out) {
+		out.putParcelable("walkController", walkController);
+		out.putBoolean("isRunning", isRunning);
+		out.putBoolean("isFinished", isFinished);
 	}
 }

@@ -75,7 +75,6 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 	
 	public boolean uploadWalk(String walk) {
 		boolean uploadSuccess=true;
-		Log.v("WTC", "\n\n=== JSON WALK===\n\n" + walk + "\n\n================");
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(uploadAddress);
 		

@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
-import uk.ac.aber.group14.controller.WalkControllerPrototype;
+import uk.ac.aber.group14.controller.WalkController;
 import java.lang.String;
 import java.util.regex.Pattern;
 

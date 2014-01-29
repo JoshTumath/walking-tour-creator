@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.View;
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.controller.IWalkController;
-import uk.ac.aber.group14.controller.WalkControllerPrototype;
+import uk.ac.aber.group14.controller.WalkController;
 import uk.ac.aber.group14.viewer.WalkCreatorActivity;
 import uk.ac.aber.group14.viewer.WalkDetailsActivity;
 

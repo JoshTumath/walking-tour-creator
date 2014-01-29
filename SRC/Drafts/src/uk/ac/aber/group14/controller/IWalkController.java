@@ -1,8 +1,9 @@
 package uk.ac.aber.group14.controller;
 import android.location.Location;
+import android.os.Parcelable;
 import uk.ac.aber.group14.model.*;
 
-public interface IWalkController {
+public interface IWalkController extends Parcelable {
 	
 	public void addPOI(IPointOfInterest point);
 	
