@@ -46,6 +46,11 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 	private AlertDialog alertDialog;
 	private WalkUploader walkUploader;
 
+	/**
+	 * onCreate is the core part of the Walk creator activity which houses a few key methods such as
+	 *  the cancel walk,add location, record location, saving the route and change location
+	 * tht5
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,7 +59,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		
 		progressDialog = new ProgressDialog(WalkCreatorActivity.this);
 		alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
-
+		// simple saving of states in the walk Controller
 		if(savedInstanceState!=null) {
 			walkController = savedInstanceState.getParcelable("walkController");
 			isRunning = savedInstanceState.getBoolean("isRunning");
@@ -73,7 +78,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		
 		
 		WalkCreatorActivity lastActivity = (WalkCreatorActivity) getLastNonConfigurationInstance();
-		if(lastActivity != null) {
+		if(lastActivity != null) { // this uploads the walk
 			walkUploader = lastActivity.getWalkUploader();
 			if(walkUploader != null) {
 				walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
@@ -166,7 +171,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
     public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
 
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
-    
+    //saves the route 
     public void onSaveRoute(View view) {
     	if(walkController.canUpload())
     	{

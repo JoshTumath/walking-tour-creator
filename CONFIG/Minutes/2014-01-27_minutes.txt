@@ -1,10 +1,10 @@
 Project:                    Group Project 14
 Meeting:                    Work week project meeting.
 Persons present:            All project member
-Place and date of meeting:  Wierd Room close to B23, Monday 27th January 2014
+Place and date of meeting:  57a, Monday 27th January 2014
 Circulation list:           All project members, plus project manager
 Author:                     Lars H Lunde (lah25)
-Date of minutes:            27nd January 2014
+Date of minutes:            27th January 2014
 Version:                    1.0
 
 Matters arising

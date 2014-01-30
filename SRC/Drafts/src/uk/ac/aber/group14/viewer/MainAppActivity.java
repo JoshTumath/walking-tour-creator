@@ -16,11 +16,15 @@ import uk.ac.aber.group14.controller.WalkController;
 import uk.ac.aber.group14.viewer.WalkCreatorActivity;
 import uk.ac.aber.group14.viewer.WalkDetailsActivity;
 
+/**
+ * @editor/commenter tht5
+ *
+ */
 public class MainAppActivity extends Activity {
 	
 	
 	LocationManager manager;
-
+		//Pop up that happens only if the user does not have GPS enabled 
 	 private void buildAlertMessageNoGps() {
 		    final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		    builder.setMessage("Your GPS seems to be disabled")
@@ -34,7 +38,7 @@ public class MainAppActivity extends Activity {
 		    alert.show();
 		}
 
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,7 +68,10 @@ public class MainAppActivity extends Activity {
 			//Pop up that says "GPS is not enabled, please enable GPS to continue"
 		}
 	}
-
+	 /**
+	  * This method is used on the main app activity for the name, short description and long description input boxes
+	  * tht5
+	  */
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data ){
 		super.onActivityResult(requestCode, resultCode, data);
