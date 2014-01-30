@@ -7,19 +7,21 @@ import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
+public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
 	private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";
@@ -43,7 +45,7 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 	}
 	
 	@Override
-	protected Boolean doInBackground(String... params) {
+	protected Boolean doInBackground(IWalkController... params) {
 		return uploadWalk(params[0]);
 	}
 	
@@ -62,8 +64,9 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 		alertDialog.show();
 	}
 	
-	public boolean uploadWalk(String walk) {
+	public boolean uploadWalk(IWalkController walkController) {
 		boolean uploadSuccess=true;
+		String walk = walkController.compileWalk();
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(uploadAddress);
 		
@@ -89,6 +92,18 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
 		
 		if(response == null || response.getStatusLine().getStatusCode() != 200) {
 			uploadSuccess = false;
+		} else {
+			try {
+				Log.i("WTC", "\n\n====== RECEIVED DATA =====\n" +
+						EntityUtils.toString(response.getEntity()) + 
+						"\n======= END OF DATA ======\n\n");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return uploadSuccess;
