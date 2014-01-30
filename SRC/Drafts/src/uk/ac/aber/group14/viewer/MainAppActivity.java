@@ -14,6 +14,13 @@ import uk.ac.aber.group14.viewer.WalkCreatorActivity;
 import uk.ac.aber.group14.viewer.WalkDetailsActivity;
 
 /**
+ * This activity is shown to the user when they launch the app.
+ * It has the app's logo and a single button to create a walk.
+ * Once the button is clicked it launches the walk details activity.
+ * If data is received back from this then a new walk is created
+ * and WalkCreatorActivity is launched.
+ * 
+ * @author Group14
  * @editor/commenter tht5
  *
  */
@@ -36,6 +43,11 @@ public class MainAppActivity extends Activity {
 		}
 
 	
+	/* (non-Javadoc)
+	 * This is called when the activity is created. We use this to
+	 * initialize the LocationManager "manager"
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,10 +62,12 @@ public class MainAppActivity extends Activity {
 		return true;
 	}
 
-
-	
-	
-	
+	/**
+	 * This method is called by the create walk button.
+	 * If the GPS is enabled then the walk details activity
+	 * is launched.
+	 * @param view
+	 */
 	public void createWalk(View view) {
 
 		if(manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ){
@@ -65,9 +79,12 @@ public class MainAppActivity extends Activity {
 			//Pop up that says "GPS is not enabled, please enable GPS to continue"
 		}
 	}
-	 /**
-	  * This method is used on the main app activity for the name, short description and long description input boxes
-	  * tht5
+	
+     /* (non-Javadoc)
+	  * This method is used to obtain the walk's details (name,
+	  * short description, long description) from the walk details
+	  * activity. If it did not return RESULT_OK, then we do nothing.
+	  * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
 	  */
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data ){
