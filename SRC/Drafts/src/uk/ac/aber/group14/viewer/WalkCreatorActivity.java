@@ -29,18 +29,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * 
- * 
- *
+ * @author Group 14
  */
-public class WalkCreatorActivity extends Activity implements LocationListener,
-		IUploadFinishNotify, DialogInterface.OnDismissListener{
+public class WalkCreatorActivity extends Activity
+implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListener {
 	private IWalkController walkController;
 	private LocationManager locationManager ;
-	private final int timerDelay = 5000; // Milliseconds
 	private final int locationMinTime = 5000; // Milliseconds
 	private final int locationMinDistance = 5; // Meters
-	private Handler uiUpdateHandler;
 	private boolean isRunning, isFinished=false, isUploading=false;
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
@@ -49,7 +45,6 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 	/**
 	 * onCreate is the core part of the Walk creator activity which houses a few key methods such as
 	 *  the cancel walk,add location, record location, saving the route and change location
-	 * tht5
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +101,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationMinTime, locationMinDistance, this);
 
 
-		uiUpdateHandler = new Handler();
+		new Handler();
 		isRunning = true;
 		
 	}
