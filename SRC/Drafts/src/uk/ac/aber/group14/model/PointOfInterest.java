@@ -51,6 +51,21 @@ public class PointOfInterest implements IPointOfInterest {
 	public Location getLocation() {
 		return this.location;
 	}
+	
+	@Override
+	public double getLatitude() {
+		return this.location.getLatitude();
+	}
+
+	@Override
+	public double getLongitude() {
+		return this.location.getLongitude();
+	}
+
+	@Override
+	public long getTime() {
+		return this.location.getTime();
+	}
 
 	@Override
 	public int describeContents() {
@@ -79,6 +94,5 @@ public class PointOfInterest implements IPointOfInterest {
 			return new PointOfInterest[size];
 		}
 	};
-
-
+	
 }

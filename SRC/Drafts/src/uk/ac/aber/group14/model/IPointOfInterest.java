@@ -16,6 +16,12 @@ public interface IPointOfInterest extends Parcelable {
 	
 	public String getPicture();
 	
+	public double getLatitude();
+	
+	public double getLongitude();
+	
+	public long getTime();
+	
 	public android.location.Location getLocation();
 	
 }
