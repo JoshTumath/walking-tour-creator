@@ -1,7 +1,23 @@
 List of Minutes for group 14:
 
-!! Below is an example - replace with details of actual minutes
+1.  2013-10-11_minutes.txt
+2.  2013-10-18_minutes.txt
+3.  2013-10-22_minutes.txt
+4.  2013-10-25_minutes.txt
+5.  2013-10-29_minutes.txt
+6.  2013-11-01_minutes.txt
+7.  2013-11-06_minutes.txt
+8.  2013-11-08_minutes.txt
+9.  2013-11-11_minutes.txt
+10. 2013-11-13_minutes.txt
+11. 2013-11-15_minutes.txt
+12. 2013-11-20_minutes.txt
+13. 2013-11-22_minutes.txt
+14. 2013-11-27_minutes.txt
+15. 2013-11-29_minutes.txt
+16. 2013-12-04_minutes.txt
+17. 2013-12-06_minutes.txt
+18. 2013-12-11_minutes.txt
+19. 2014-01-27_minutes.txt
+20. 2014-01-30_minutes.txt
 
-1. 2013-10-11_minutes.txt
-2. 2013-10-18_minutes.txt
-3. 2013-10-25_minutes.txt
