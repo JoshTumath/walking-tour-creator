@@ -7,12 +7,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import uk.ac.aber.group14.R;
-import uk.ac.aber.group14.controller.IWalkController;
-import uk.ac.aber.group14.controller.WalkController;
 import uk.ac.aber.group14.viewer.WalkCreatorActivity;
 import uk.ac.aber.group14.viewer.WalkDetailsActivity;
 
@@ -30,7 +27,7 @@ public class MainAppActivity extends Activity {
 		    builder.setMessage("Your GPS seems to be disabled")
 		           .setCancelable(false)       
 		           .setNegativeButton("ok", new DialogInterface.OnClickListener() {
-		               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+		               public void onClick(final DialogInterface dialog, final int id) {
 		                    dialog.cancel();
 		               }
 		           });
