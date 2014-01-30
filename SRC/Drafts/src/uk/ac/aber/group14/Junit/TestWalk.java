@@ -29,6 +29,7 @@ public class TestWalk extends TestCase {
 	
 	public void TestWalk(){
 		String result="walk";
+		assertEquals("walk", "walk");
 	}
 
 	public void TestgetLongDescription(){
