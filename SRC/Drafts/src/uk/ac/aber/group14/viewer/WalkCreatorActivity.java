@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -136,8 +137,22 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
     * @param view
     */
    public void cancelWalk(View view) {
-      isRunning = false;
-      finish();
+	  DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+		
+      @Override
+      public void onClick(DialogInterface dialog, int which) {
+         if(which == DialogInterface.BUTTON_POSITIVE) {
+            isRunning = false;
+            finish();
+         }
+	  }
+	};
+      AlertDialog.Builder builder = new AlertDialog.Builder(this);
+      builder.setTitle("Cancel?");
+      builder.setMessage("Are you sure?");
+      builder.setPositiveButton("Yes", listener);
+      builder.setNegativeButton("No", listener);
+      builder.create().show();
    }
       /**
        * code that disables the physical back button on android phones
