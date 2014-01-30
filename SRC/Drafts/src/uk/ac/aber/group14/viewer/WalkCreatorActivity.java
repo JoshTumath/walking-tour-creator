@@ -173,10 +173,9 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
     		isRunning = false;
     		locationManager.removeUpdates(this);
     		Log.i("WTC", "Attempting to upload walk...");
-    		String jsonData = walkController.compileWalk();
     		walkUploader = new WalkUploader();
     		walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
-    		walkUploader.execute(jsonData);
+    		walkUploader.execute(walkController);
     		isUploading = true;
     	}
     	else
