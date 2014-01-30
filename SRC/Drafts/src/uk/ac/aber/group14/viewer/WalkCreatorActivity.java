@@ -176,6 +176,8 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
+		Log.i("WTC", "Activity result received[" + requestCode + "] " + 
+		data.getAction() + ", " + data.getDataString());
 		if(resultCode == Activity.RESULT_OK) {
 			IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
 			Log.i("WTC", "Adding new point of interest, " + point.getName());
