@@ -37,6 +37,9 @@ public class LocationActivity extends Activity {
 	Location location;
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 	static final String changePictureText = "Change picture";
+	static final int nameMaxLength = 255;
+	static final int descMaxLength = 1000;
+	static enum InputValidity {VALID, NONAME, NODESC, LONGNAME, LONGDESC};
 	
 	/* (non-Javadoc)
 	 * This method is overriden to load any data from the
@@ -78,13 +81,24 @@ public class LocationActivity extends Activity {
 	 * 
 	 * @return boolean to show whether the input was valid (T) or not (F)
 	 */
-	public boolean validInput() {
-		String locationName = ((TextView) findViewById(R.id.locationNameEdit)).getText().toString();
-		String locationDesc = ((TextView) findViewById(R.id.locationDescriptionEdit)).getText().toString();
-		return (locationName.length() > 0 && locationDesc.length() > 0);
+	public InputValidity validInput() {
+		int locationNameLength = ((TextView) findViewById(R.id.locationNameEdit)).getText().length();
+		int locationDescLength = ((TextView) findViewById(R.id.locationDescriptionEdit)).getText().length();
+		InputValidity returnValue = InputValidity.VALID;
+		if(locationNameLength == 0) {
+			returnValue = InputValidity.NONAME;
+		} else if(locationDescLength == 0) {
+			returnValue = InputValidity.NODESC;
+		} else if(locationNameLength >= nameMaxLength) {
+			returnValue = InputValidity.LONGNAME;
+		} else if(locationDescLength >= descMaxLength) {
+			returnValue = InputValidity.LONGDESC;
+		}
+		
+		return returnValue;
 	}
 	
-	/*
+	/**
 	 * This method is called by the "add location" button.
 	 * It checks if the input is valid and saves the data to
 	 * an Intent if true.
@@ -95,7 +109,8 @@ public class LocationActivity extends Activity {
 	 * @param view
 	 */
 	public void addLocation(View view) {//button add location in confirm
-		if(validInput()) {
+		InputValidity inputValidity = validInput();
+		if(inputValidity == InputValidity.VALID) {
 			IPointOfInterest pointOfInterest = new PointOfInterest(location);
 			String locationName = ((TextView) findViewById(R.id.locationNameEdit)).getText().toString();
 			String locationDesc = ((TextView) findViewById(R.id.locationDescriptionEdit)).getText().toString();
@@ -114,8 +129,20 @@ public class LocationActivity extends Activity {
 			finish();//where you finish and output
 		} else {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			String error;
+			
+			switch(inputValidity) {
+				case NONAME : error = "No name given."; break;
+				case NODESC : error = "No description given."; break;
+				case LONGNAME : error = "Name must be less than " + 
+						nameMaxLength + " characters."; break;
+				case LONGDESC : error = "Description must be less than " + 
+						descMaxLength + " characters."; break;
+				default : error = "Error."; break;
+			}
+			
 			builder.setTitle("Error");
-			builder.setMessage("You need a name and description to add a point of interest.");
+			builder.setMessage(error);
 			builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 				
 				@Override
