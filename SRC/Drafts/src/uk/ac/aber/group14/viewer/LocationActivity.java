@@ -41,7 +41,7 @@ public class LocationActivity extends Activity {
 	static final int descMaxLength = 1000;
 	static enum InputValidity {VALID, NONAME, NODESC, LONGNAME, LONGDESC};
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is overriden to load any data from the
 	 * savedInstanceState which was saved on a configuration change.
 	 * This allows us to re-populate the text boxes and use the
@@ -180,7 +180,7 @@ public class LocationActivity extends Activity {
 	    }
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is overriden to listen for the camera Intent's result.
 	 * If we receive a RESULT_OK and the request code was
 	 * REQUEST_IMAGE_CAPTURE then we pass the url to getPath
@@ -219,7 +219,7 @@ public class LocationActivity extends Activity {
 	}
 	
 	 
-	/* (non-Javadoc)
+	/**
 	 * This method is overriden in order to save the text box
 	 * contents in the event of a configuration change (screen
 	 * re-orientation etc)

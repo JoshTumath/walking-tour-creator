@@ -47,7 +47,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	private WalkUploader walkUploader;
 
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is called when the activity is created.
 	 * Here we initialize variables and check to see if there
 	 * was a saved instance state. If one is found then we load
@@ -120,7 +120,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
@@ -166,7 +166,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * This method is used to wait for the LocationActivity's results.
 	 * If the result code is RESULT_OK then we take the PointOfInterest from
 	 * it and add it to the walk via the WalkController
@@ -176,8 +176,12 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
-		Log.i("WTC", "Activity result received[" + requestCode + "] " + 
-		data.getAction() + ", " + data.getDataString());
+		if(data != null && data.getAction() != null) {
+			Log.i("WTC", "Activity result received[" + requestCode + "] " +
+					data.getAction() + ", " + data.getDataString());
+		} else {
+			Log.i("WTC", "Activity result received[" + requestCode+ "]");
+		}
 		if(resultCode == Activity.RESULT_OK) {
 			IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
 			Log.i("WTC", "Adding new point of interest, " + point.getName());
@@ -200,7 +204,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		((TextView) findViewById(R.id.longitude)).setText(Double.toString(location.getLongitude()));
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * This is called by the LocationManager when a new GPS Location is
 	 * provided.
 	 * If the accuracy of the location is less than that specified
@@ -214,17 +218,17 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see android.location.LocationListener#onStatusChanged(java.lang.String, int, android.os.Bundle)
 	 */
 	public void onStatusChanged(String provider, int status, Bundle extras) {}
 
-    /* (non-Javadoc)
+    /**
      * @see android.location.LocationListener#onProviderEnabled(java.lang.String)
      */
     public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
 
-    /* (non-Javadoc)
+    /**
      * @see android.location.LocationListener#onProviderDisabled(java.lang.String)
      */
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
@@ -264,7 +268,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
     	}
     }
     
-	/* (non-Javadoc)
+	/**
 	 * This method is overriden to set isFinished to true.
 	 * We use this to determine that when the user closes the next
 	 * alert dialog that the activity should finish and the user
@@ -277,7 +281,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		isFinished = true;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * We override this to tell when an alert dialog has been dismissed.
 	 * If isFinished is true then we call "finish()" and exit.
 	 * if isFinished is false then we set "isUploading" to false (this

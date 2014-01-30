@@ -43,7 +43,7 @@ public class MainAppActivity extends Activity {
 		}
 
 	
-	/* (non-Javadoc)
+	/**
 	 * This is called when the activity is created. We use this to
 	 * initialize the LocationManager "manager"
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -55,6 +55,9 @@ public class MainAppActivity extends Activity {
 		manager = (LocationManager) this.getSystemService( Context.LOCATION_SERVICE );
 	}
 
+	/**
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -80,7 +83,7 @@ public class MainAppActivity extends Activity {
 		}
 	}
 	
-     /* (non-Javadoc)
+     /**
 	  * This method is used to obtain the walk's details (name,
 	  * short description, long description) from the walk details
 	  * activity. If it did not return RESULT_OK, then we do nothing.
