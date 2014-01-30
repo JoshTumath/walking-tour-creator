@@ -55,5 +55,3 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
-# Android auto-gen
-R.java
