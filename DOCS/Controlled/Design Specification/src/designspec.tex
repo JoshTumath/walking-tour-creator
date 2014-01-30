@@ -95,14 +95,13 @@ select a points of interest along the route of the walk.
 \emph{MainAppActivity}. This is the main class of the application.
 
 \emph{WalkCreatorActivity}. This is an activity panel holding the UI for
-recording the walk.
+recording the walk. It also has a Location Listener running in the backgorund recording the users walk
 
 \emph{Walk}. This contains a list of the coordinates of the route that the user
 is creating, and the metadata of the walk.
 
 \emph{PointOfInterest}. This contains a point of interest in the route, which
-is a coordinate with a description and optionally a photo of what is in that.It also has a service that runs in the background
-recording the user's walk.
+is a coordinate with a description and optionally a photo of what is in that.
 
 \subsubsection{Significant functions in Walking Tour Displayer}
 \emph{intialize}. This JavaScript function creates an embedded Google Map on
@@ -124,7 +123,7 @@ FR1 & MainAppActivity \\
 \hline
 FR2 & WalkCreatorActivity, Walk \\
 \hline
-FR3 & WalkCreatorActivity, Walk, PointOfInterest,  \\
+FR3 & WalkCreatorActivity, Walk, PointOfInterest  \\
 \hline
 FR4 & WalkCreatorActivity \\
 \hline
@@ -167,7 +166,7 @@ The class with the most dependency is the WalkController, which has GPS
 recording, walk creator and location activity. Just about all of the classes
 need WalkController and this is where the app will send the data from the walk
 made from the app to the website. Walk has a dependency with PointOfInterest
-because it calls the gets and sets from that class. 
+because it calls the gets and sets from that class. WalkCreatorActivity does GPS recording passes to controller then to walk. WalkCreatorActivity has the most dependancies.
 
 For basic understanding of the dependencies of the Walking Tour Creator:
 \begin{itemize}
@@ -339,6 +338,7 @@ public interface IWalk {
 SetMarkers basically takes points from the database and plots them using the LineBetweenPoints function and the google API. It takes in the latitude and longitude from a 2 dimensional array and plots the points on the map
 /textbf{LineBetweenPoints}
 LineBetweenPoints uses the google API to go from of marker to the next and plots a route in between them. Before we discovered the API,we thought to write our own version in java. 
+see the JSon document for the data transmission algorithms.
 \begin{comment}
 \subsubsection{LocationLoggerService algorithm}
 This algorithm is used to decide which GPS locations to keep and which to
@@ -358,7 +358,7 @@ points and general direction of points to ensure it's not slowly going round a
 corner.
 
 \textbf{Corner} \\
-It will be possible to test for corners above 60° easily by testing for a
+It will be possible to test for corners above 60Â° easily by testing for a
 straight line followed by another straight line in a completely different
 direction. This will probably rely on the previous algorithm to thin out some
 points before this can take effect.

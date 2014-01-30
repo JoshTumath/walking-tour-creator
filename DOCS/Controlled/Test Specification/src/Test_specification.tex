@@ -52,7 +52,7 @@ for tests
 \clearpage
 
 \section{TEST TABLE}
-
+\begin{small}
 \begin{longtable}{ | p{1cm} | p{1cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |} 
 
 \hline 
@@ -179,7 +179,7 @@ SE-F-017
 
 
 SE-F-018
-& FR
+& FR6
 & Loss of GPS while app is running
 & switch off phone's data connection during upload
 & Error message prompting user to turn on GPS
@@ -192,8 +192,15 @@ SE-F-018
 & Transmission of data
 & For data from andriod phone to be sent to web application  \\ \hline
 
+SE-F-019
+& FR4
+& No point of interests set
+& No input of points of interest
+& The walk should still create
+& The walk should still be created on the website and should still appear on the map \\ \hline
+
 SE-W-001
-& FR
+& FR9
 & Accepts Uploaded walks
 & Example Walk Uploaded
 & Database Entry
@@ -220,8 +227,10 @@ are displayed correctly\\ \hline
 
 
 
-\end{longtable}
 
+
+\end{longtable}
+\end{small}
 
 
 %------------------- References
@@ -243,7 +252,7 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 1.1 & N/A & 2013-11-15 & Updated Test Inputs & DAW46 \\ \hline
 1.2 & N/A & 2013-11-15 & Changed status to release and bolded header of table & LHL \\ \hline
 1.3 & N/A & 2014-01-28 & Added more test place to reflect upon program & THT5 \\ \hline
-
+1.4 & N/A & 2014-01-30 & Added another test and changed the FR that 2 tests applied too \\ \hline
 \end{tabular}
 \end{flushleft}
 \label{thelastpage}
