@@ -38,8 +38,8 @@ public class WalkCreatorActivity extends Activity
 implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListener {
 	private IWalkController walkController;
 	private LocationManager locationManager ;
-	private final int locationMinTime = 5000; // Milliseconds
-	private final int locationMinDistance = 5; // Meters
+	private final int locationMinTime = 0; // Milliseconds
+	private final int locationMinDistance = 20; // Meters
 	private boolean isRunning, isFinished=false, isUploading=false;
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
