@@ -29,8 +29,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * 
- * 
+ * This activity is used to actually record the walks.
+ * It dislays the user's latitude and longitude, and allows the
+ * user cancel or upload the walk, as well as adding a point of
+ * interest. If the user does not have any GPS coordinates or points
+ * of interest then they cannot upload, and a dialog will tell them this.
+ * When the user adds a location the LocationActivity is launched.
+ * When the user uploads the walk, the WalkUploader AsyncTask is executed
+ * and a progress dialog shows on their screen until it is complete.
+ * @author Group14
  *
  */
 public class WalkCreatorActivity extends Activity implements LocationListener,
@@ -83,8 +90,12 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 			if(walkUploader != null) {
 				walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
 			}
-			if(walkUploader != null && isUploading) {
+			if(walkUploader != null && isUploading && ! isFinished) {
 				progressDialog.show();
+			} else {
+				if(isFinished) {
+					alertDialog.show();
+				}
 			}
 		}
 		
