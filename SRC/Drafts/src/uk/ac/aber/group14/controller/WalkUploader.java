@@ -36,12 +36,17 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
         
 		progressDialog.setMessage("Please wait whilst the walk is uploaded...");
 		progressDialog.setIndeterminate(true);
+		
+		alertDialog.setTitle("Success");
+		alertDialog.setMessage("Upload Successful.");
     }
 	
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
-		progressDialog.show();
+		if(progressDialog != null) {
+			progressDialog.show();	
+		}
 	}
 	
 	@Override
@@ -57,8 +62,6 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 			alertDialog.setTitle("Error");
 			alertDialog.setMessage("Upload failed. Please try again.");
 		} else {
-			alertDialog.setTitle("Success");
-			alertDialog.setMessage("Upload Successful.");
 			finishNotify.setFinished();
 		}
 		alertDialog.show();
@@ -67,6 +70,7 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 	public boolean uploadWalk(IWalkController walkController) {
 		boolean uploadSuccess=true;
 		String walk = walkController.compileWalk();
+		Log.i("WTC", "\nCompiled walk:\n" + walk + "\n\n");
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(uploadAddress);
 		
