@@ -115,7 +115,7 @@ public class LocationActivity extends Activity {
 		cursor.moveToFirst();
 		return cursor.getString(column_index);//Return the first entry, which will be our file
 	}
-
+	// sends infromtaion from location name/Description to a String 
 	@Override
 	public void onSaveInstanceState(Bundle out) {
 		String name = ((EditText) findViewById(R.id.locationNameEdit)).getText().toString();
