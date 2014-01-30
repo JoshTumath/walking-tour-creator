@@ -39,8 +39,8 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	private IWalkController walkController;
 	private LocationManager locationManager ;
 	private final int locationMinTime = 0; // Milliseconds
-	private final int locationMinDistance = 20; // Meters
-	private final float gpsMinAccuracy = 15; // Meters
+	private final int locationMinDistance = 15; // Meters
+	private final float gpsMinAccuracy = 8; // Meters
 	private boolean isRunning, isFinished=false, isUploading=false;
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
