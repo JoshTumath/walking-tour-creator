@@ -301,7 +301,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		}
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is overriden in order to store local variables
 	 * which need to persist, as well as the latitude/longitude to be
 	 * displayed onscreen.
@@ -320,7 +320,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		out.putString("longitude", longitude);
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * This is used to the current instance of this activity
 	 * for the next instance after a configuration change.
 	 * This allows us to bring the AsyncTask to the next instance

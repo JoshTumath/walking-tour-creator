@@ -41,7 +41,7 @@ public class WalkController implements IWalkController, Parcelable {
 		this.walk = (Walk) source.readParcelable(Walk.class.getClassLoader());
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * This adds an IPointOfInterest to the walk.
 	 * @see uk.ac.aber.group14.controller.IWalkController#addPOI(uk.ac.aber.group14.model.IPointOfInterest)
 	 */
@@ -50,7 +50,7 @@ public class WalkController implements IWalkController, Parcelable {
 		walk.addPointOfInterest(point);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * This cancels the walk
 	 * @see uk.ac.aber.group14.controller.IWalkController#cancelWalk()
 	 */
@@ -59,7 +59,7 @@ public class WalkController implements IWalkController, Parcelable {
 		walk = null;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * This compiles the walk into JSON using the IJsonPackager interface
 	 * @see uk.ac.aber.group14.controller.IWalkController#compileWalk()
 	 */
@@ -69,7 +69,7 @@ public class WalkController implements IWalkController, Parcelable {
 		return jsonPackager.JSONify(walk);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * This adds a GPS Location to the walk
 	 * @see uk.ac.aber.group14.controller.IWalkController#addLocation(android.location.Location)
 	 */
@@ -77,7 +77,7 @@ public class WalkController implements IWalkController, Parcelable {
 		walk.addLocation(location);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * This is used to determine if the walk has the necessary assets
 	 * to upload it to the server. This returns true if the walk
 	 * has at least one point of interest and at least one location.
@@ -88,7 +88,7 @@ public class WalkController implements IWalkController, Parcelable {
 		return (walk.getNumberLocations() > 0 && walk.getNumberPOI() > 0);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see android.os.Parcelable#describeContents()
 	 */
 	@Override
@@ -97,7 +97,7 @@ public class WalkController implements IWalkController, Parcelable {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * This is used to store the walk variable to a Parcel
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
 	 */

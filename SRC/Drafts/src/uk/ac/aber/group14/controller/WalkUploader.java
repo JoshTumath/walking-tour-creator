@@ -59,7 +59,7 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 		alertDialog.setMessage("Upload Successful.");
     }
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is overriden in order to show the progress dialog
 	 * (if it is not null) before attempting to compile and upload the walk
 	 * @see android.os.AsyncTask#onPreExecute()
@@ -72,7 +72,7 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 		}
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * This method calls uploadWalk to compile and upload the
 	 * walk on a separate thread
 	 * @see uk.aber.ac.uk.group14.controller.WalkUploader#uploadWalk(IWalkController walkController)
@@ -83,7 +83,7 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 		return uploadWalk(params[0]);
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is overridden in order to dismiss the progress
 	 * dialog and display the alert dialog to the user, telling them
 	 * whether or not the upload succeeded or not.

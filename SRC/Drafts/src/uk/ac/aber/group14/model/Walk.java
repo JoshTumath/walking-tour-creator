@@ -54,7 +54,7 @@ public class Walk implements IWalk, Parcelable {
 		source.readList(locations, null);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#addPointOfInterest(uk.ac.aber.group14.model.IPointOfInterest)
 	 */
 	@Override
@@ -62,7 +62,7 @@ public class Walk implements IWalk, Parcelable {
 		points.add(point);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#addLocations(java.util.LinkedList)
 	 */
 	@Override
@@ -70,7 +70,7 @@ public class Walk implements IWalk, Parcelable {
 		this.locations.addAll(locations);
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#addLocation(android.location.Location)
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class Walk implements IWalk, Parcelable {
 		locations.add(location);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#setName(java.lang.String)
 	 */
 	@Override
@@ -86,7 +86,7 @@ public class Walk implements IWalk, Parcelable {
 		this.name = name;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#setShortDescription(java.lang.String)
 	 */
 	@Override
@@ -94,7 +94,7 @@ public class Walk implements IWalk, Parcelable {
 		shortDescription = desc;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#setLongDescription(java.lang.String)
 	 */
 	@Override
@@ -102,7 +102,7 @@ public class Walk implements IWalk, Parcelable {
 		longDescription = desc;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#getPointsOfInterest()
 	 */
 	@Override
@@ -110,7 +110,7 @@ public class Walk implements IWalk, Parcelable {
 		return points.toArray(new IPointOfInterest[points.size()]);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#getLocations()
 	 */
 	@Override
@@ -118,7 +118,7 @@ public class Walk implements IWalk, Parcelable {
 		return locations.toArray(new Location[locations.size()]);
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#getName()
 	 */
 	@Override
@@ -126,7 +126,7 @@ public class Walk implements IWalk, Parcelable {
 		return name;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#getShortDescription()
 	 */
 	@Override
@@ -134,7 +134,7 @@ public class Walk implements IWalk, Parcelable {
 		return shortDescription;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#getLongDescription()
 	 */
 	@Override
@@ -142,7 +142,7 @@ public class Walk implements IWalk, Parcelable {
 		return longDescription;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#getNumberLocations()
 	 */
 	@Override
@@ -150,7 +150,7 @@ public class Walk implements IWalk, Parcelable {
 		return locations.size();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IWalk#getNumberPOI()
 	 */
 	@Override
@@ -158,7 +158,7 @@ public class Walk implements IWalk, Parcelable {
 		return points.size();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see android.os.Parcelable#describeContents()
 	 */
 	@Override
@@ -167,7 +167,7 @@ public class Walk implements IWalk, Parcelable {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
 	 */
 	@Override

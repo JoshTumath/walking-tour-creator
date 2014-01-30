@@ -42,7 +42,7 @@ public class PointOfInterest implements IPointOfInterest {
 		this.location = (Location) parcel.readParcelable(null);
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#setName(java.lang.String)
 	 */
 	@Override
@@ -50,7 +50,7 @@ public class PointOfInterest implements IPointOfInterest {
 		this.name = name;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#setDescription(java.lang.String)
 	 */
 	@Override
@@ -58,7 +58,7 @@ public class PointOfInterest implements IPointOfInterest {
 		this.description = desc;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#addPicture(java.lang.String)
 	 */
 	@Override
@@ -66,7 +66,7 @@ public class PointOfInterest implements IPointOfInterest {
 		this.picture = picture;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#getName()
 	 */
 	@Override
@@ -74,7 +74,7 @@ public class PointOfInterest implements IPointOfInterest {
 		return this.name;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#getDescription()
 	 */
 	@Override
@@ -82,7 +82,7 @@ public class PointOfInterest implements IPointOfInterest {
 		return this.description;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#getLocation()
 	 */
 	@Override
@@ -90,7 +90,7 @@ public class PointOfInterest implements IPointOfInterest {
 		return this.location;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#getLatitude()
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class PointOfInterest implements IPointOfInterest {
 		return this.location.getLatitude();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#getLongitude()
 	 */
 	@Override
@@ -106,7 +106,7 @@ public class PointOfInterest implements IPointOfInterest {
 		return this.location.getLongitude();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#getTime()
 	 */
 	@Override
@@ -114,7 +114,7 @@ public class PointOfInterest implements IPointOfInterest {
 		return this.location.getTime();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see android.os.Parcelable#describeContents()
 	 */
 	@Override
@@ -123,14 +123,14 @@ public class PointOfInterest implements IPointOfInterest {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see uk.ac.aber.group14.model.IPointOfInterest#getPicture()
 	 */
 	public String getPicture() {
 		return this.picture;
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
 	 */
 	@Override

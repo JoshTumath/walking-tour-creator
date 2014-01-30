@@ -26,7 +26,7 @@ public class JsonPackager implements IJsonPackager {
 	JSONObject walkData;
 	JSONObject points;
 	
-	/* (non-Javadoc)
+	/**
 	 * This method converts the IWalk to a JSON String
 	 * @see uk.ac.aber.group14.model.IJsonPackager#JSONify(uk.ac.aber.group14.model.IWalk)
 	 */

@@ -28,7 +28,7 @@ public class WalkDetailsActivity extends Activity {
 	private final int long_desc_len = 1000;
 	private final int name_desc_len = 255;
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is used to create the Activity.
 	 * In here we check to see if there is a saved
 	 * instance state and load our variables from it if
@@ -121,7 +121,7 @@ public class WalkDetailsActivity extends Activity {
 		finish();
 	}
 	
-		 /* (non-Javadoc)
+		 /**
 		  * This method is overriden in order to prevent
 		  * the back button from taking the user to the previos
 		  * activity
@@ -174,7 +174,7 @@ public class WalkDetailsActivity extends Activity {
 		return result;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * This method is overriden to store anything between configuration
 	 * changes. This is what allows us to keep the text boxes populated
 	 * when rotating the screen
