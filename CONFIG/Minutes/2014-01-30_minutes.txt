@@ -1,0 +1,94 @@
+Project:                    Group Project 14
+Meeting:                    Work week project meeting.
+Persons present:            All project member
+Place and date of meeting:  57a, Thursday 30th January 2014
+Circulation list:           All project members, plus project manager
+Author:                     Lars H Lunde (lah25)
+Date of minutes:            30th January 2014
+Version:                    1.0
+
+Matters arising
+===============
+
+
+1. Design and feeding data in to the database.
+ACTION: WEB TEAM: DONE
+
+2. Write specs for the JSON.
+ACTION: ALL: DONE
+
+3. Write PHPUnit tests for the webpage
+ACTION: WEB TEAM: NOT DONE
+
+4. Implement a function to check that GPS is available.
+ACTION: ANDROID TEAM: DONE
+
+5. Create error checking on user input on user input
+ACTION: ANDROID TEAM: PARTIALLY DONE
+
+6. Implement GPS tracking in android
+ACTION: ANDROID TEAM: DONE
+
+7. Fix the UI to accommodate on screen keyboard.
+ACTION: ANDROID TEAM: DONE
+
+New business
+============
+
+1. Find and apply configuration references, and then apply them to all documents.
+ACTION: LAH25
+
+2. Apply correct packkaging scheme
+ACTION: RAB26
+
+3. Make the background of the logo transparent instead of white
+ACTION: JAM66
+
+4. Make JAVADOC for the project
+ACTION: ANDROID TEAM
+
+5. Make sure there are not more then 80 characters per line in Java code
+ACTION: ANDROID TEAM
+
+6. Make a program that fixes indentation to 3 spaces.
+ACTION: ANDROID TEAM
+
+7. Write block comments for Java code
+ACTION: ANDROID TEAM
+
+8. camelCase for all method and variable names.
+ACTION: ANDROID TEAM
+
+9. Fix so that rotation does not interupt popups.
+ACTION: ANDROID TEAM
+
+10. Try and seperate code blocks so that no block is more then 10 lines long
+ACTION: ANDROID TEAM
+
+11. Copy input limiters from walk creator to add location.
+ACTION: ANDROID TEAM
+
+12. Make JUnit tests
+ACTION: ANDROID TEAM
+
+13. Find out if we have to do testing this week
+ACTION: ODDIE
+
+14. Split PHP code whever possible
+ACTION: WEB TEAM
+
+15. Make PHPUnit tests
+ACTION: WEB TEAM
+
+16. Implement PDO
+ACTION: WEB TEAM
+
+17. Put all documentation written and put them on the GIT, compiled version and source.
+ACTION: ALL
+
+AOB
+===
+
+
+
+
