@@ -6,12 +6,12 @@ package uk.ac.aber.group14.model;
  *
  */
 public interface IJsonPackager {
-	
-	/**
-	 * This takes an IWalk and converts it into a JSON String
-	 * @param w The walk which will be converted
-	 * @return A String containing the walk represented as a JSON object
-	 */
-	public String JSONify(IWalk w);
-	
+   
+   /**
+    * This takes an IWalk and converts it into a JSON String
+    * @param w The walk which will be converted
+    * @return A String containing the walk represented as a JSON object
+    */
+   public String JSONify(IWalk w);
+   
 }

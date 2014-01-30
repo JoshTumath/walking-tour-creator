@@ -11,8 +11,8 @@ package uk.ac.aber.group14.controller;
  */
 public interface IUploadFinishNotify {
 
-	/**
-	 * This should be used to tell our class that it is finished.
-	 */
-	public void setFinished();
+   /**
+    * This should be used to tell our class that it is finished.
+    */
+   public void setFinished();
 }
