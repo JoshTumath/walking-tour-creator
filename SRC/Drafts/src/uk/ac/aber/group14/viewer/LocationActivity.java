@@ -4,7 +4,10 @@ import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.PointOfInterest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.location.Location;
@@ -18,6 +21,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+/**
+ * 
+ * @author Group14
+ *
+ */
 public class LocationActivity extends Activity {
 	private Button addPicture;
 	private String picture;
@@ -78,6 +86,18 @@ public class LocationActivity extends Activity {
 			output.putExtra("pointOfInterest", pointOfInterest);
 			setResult(Activity.RESULT_OK, output);
 			finish();//where you finish and output
+		} else {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Error");
+			builder.setMessage("You need a name and description to add a point of interest.");
+			builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+			builder.create().show();
 		}
 	}
 	
