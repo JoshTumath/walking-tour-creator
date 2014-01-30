@@ -74,9 +74,10 @@ for ($x = 0; $x < $number_of_points; $x++) {
 		$place_id = $db->lastInsertId();
 		
 		if ($image_data != null) {
+			$image_data
 			$image = base64_decode($image_data); //base64 decoding of image
 			$photo_name = md5($image);
-			file_put_contents('images/walkimages/' . $photo_name . '.png', $image_data); //name of saved png image becomes md5 key
+			file_put_contents("images/walkimages/{$photo_name}.png", $image_data); //name of saved png image becomes md5 key
 			
 			$q4r = $insert_photo_query->execute();
 		}

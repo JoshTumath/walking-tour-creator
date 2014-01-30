@@ -4,7 +4,7 @@
 // TODO: What happens if ID is not set?
 //if (isset($_GET['id'])) {
   $walkID = $_GET['id'];
-//}
+//} //Create an else that tells a user to go back to index and select a walk
 
 //---------- Connect to Database ----------//			
 $connection = mysql_connect('jakemaguire.co.uk','webWalk','123');
