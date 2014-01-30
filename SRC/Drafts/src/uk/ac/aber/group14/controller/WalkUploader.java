@@ -21,6 +21,17 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
+/**
+ * This class is used as a means of making http requests without blocking
+ * the ui thread, as is required by Android.
+ * It is given an IWalkController and uses this to compile the JSON walk,
+ * send it, and then return a true or false value for whether it was
+ * sent successfully.
+ * This must be provided with an AlertDialog, ProgressDialog, and IFinishNotify
+ * in order to function correctly. 
+ * @author Group14
+ *
+ */
 public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
@@ -28,6 +39,13 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 	/*private static final String uploadAddress = "http://lem0n.net/~tiggy/store.php";*/
 	private IUploadFinishNotify finishNotify;
 
+    /**
+     * This is used to set the WalkUploader's dialogs and IFinishNotify.
+     * 
+     * @param progressDialog The ProgressDialog to show
+     * @param alertDialog The AlertDialog to show
+     * @param finishNotify The IFinishNotify to notify of successful upload
+     */
     public void setDialogsAndNotify(ProgressDialog progressDialog,
     		AlertDialog alertDialog, IUploadFinishNotify finishNotify) {
         this.progressDialog = progressDialog;
@@ -41,6 +59,11 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 		alertDialog.setMessage("Upload Successful.");
     }
 	
+	/* (non-Javadoc)
+	 * This method is overriden in order to show the progress dialog
+	 * (if it is not null) before attempting to compile and upload the walk
+	 * @see android.os.AsyncTask#onPreExecute()
+	 */
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
@@ -49,11 +72,25 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * This method calls uploadWalk to compile and upload the
+	 * walk on a separate thread
+	 * @see uk.aber.ac.uk.group14.controller.WalkUploader#uploadWalk(IWalkController walkController)
+	 * @see android.os.AsyncTask#doInBackground(java.lang.Object[])
+	 */
 	@Override
 	protected Boolean doInBackground(IWalkController... params) {
 		return uploadWalk(params[0]);
 	}
 	
+	/* (non-Javadoc)
+	 * This method is overridden in order to dismiss the progress
+	 * dialog and display the alert dialog to the user, telling them
+	 * whether or not the upload succeeded or not.
+	 * If the upload was successful, then the IFinishNotify's "setFinished()"
+	 * method is also called.
+	 * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+	 */
 	@Override
 	protected void onPostExecute(Boolean result) {
 		super.onPostExecute(result);
@@ -67,10 +104,17 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
 		alertDialog.show();
 	}
 	
+	/**
+	 * This method is used to compile and upload the walk.
+	 * It uses the IJsonPackager to compile the walk, and then
+	 * uses http to send the walk as a String in post data.
+	 * @param walkController
+	 * @return
+	 */
 	public boolean uploadWalk(IWalkController walkController) {
 		boolean uploadSuccess=true;
 		String walk = walkController.compileWalk();
-		Log.i("WTC", "\nCompiled walk:\n" + walk + "\n\n");
+		/*Log.i("WTC", "\nCompiled walk:\n" + walk + "\n\n");*/
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(uploadAddress);
 		
