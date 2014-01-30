@@ -40,6 +40,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	private LocationManager locationManager ;
 	private final int locationMinTime = 0; // Milliseconds
 	private final int locationMinDistance = 20; // Meters
+	private final float gpsMinAccuracy = 15; // Meters
 	private boolean isRunning, isFinished=false, isUploading=false;
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
@@ -200,12 +201,15 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	/* (non-Javadoc)
 	 * This is called by the LocationManager when a new GPS Location is
 	 * provided.
+	 * If the accuracy of the location is less than that specified
+	 * in gpsMinAccuracy then we discard it.
 	 * 
 	 * @see android.location.LocationListener#onLocationChanged(android.location.Location)
 	 */
 	public void onLocationChanged(Location location) {
-		Log.i("WTC", "New location found, adding...");
-		recordNewLocation(location);
+		if(location.getAccuracy() <= gpsMinAccuracy) {
+			recordNewLocation(location);
+		}
 	}
 
 	/* (non-Javadoc)
