@@ -31,13 +31,14 @@ public class WalkUploader extends AsyncTask<String, Integer, Boolean> {
         this.progressDialog = progressDialog;
         this.alertDialog = alertDialog;
         this.finishNotify = finishNotify;
+        
+		progressDialog.setMessage("Please wait whilst the walk is uploaded...");
+		progressDialog.setIndeterminate(true);
     }
 	
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
-		progressDialog.setMessage("Please wait whilst the walk is uploaded...");
-		progressDialog.setIndeterminate(true);
 		progressDialog.show();
 	}
 	

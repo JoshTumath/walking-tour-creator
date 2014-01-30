@@ -41,7 +41,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 	private final int locationMinTime = 5000; // Milliseconds
 	private final int locationMinDistance = 5; // Meters
 	private Handler uiUpdateHandler;
-	private boolean isRunning, isFinished=false;
+	private boolean isRunning, isFinished=false, isUploading=false;
 	private ProgressDialog progressDialog;
 	private AlertDialog alertDialog;
 	private WalkUploader walkUploader;
@@ -54,13 +54,14 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		
 		progressDialog = new ProgressDialog(WalkCreatorActivity.this);
 		alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
-		
+
 		if(savedInstanceState!=null) {
 			walkController = savedInstanceState.getParcelable("walkController");
 			isRunning = savedInstanceState.getBoolean("isRunning");
 			isFinished = savedInstanceState.getBoolean("isFinished");
+			isUploading = savedInstanceState.getBoolean("isUploading");
 			((TextView) this.findViewById(R.id.latitude)).setText(savedInstanceState.getString("latitude"));
-			((TextView) this.findViewById(R.id.longitude)).setText(savedInstanceState.getString("longitude"));
+			((TextView) this.findViewById(R.id.longitude)).setText(savedInstanceState.getString("longitude"));		
 		}
 		else
 		{
@@ -69,6 +70,20 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 					myIntent.getStringExtra("shortDescription"),
 					myIntent.getStringExtra("longDescription"));
 		}
+		
+		
+		WalkCreatorActivity lastActivity = (WalkCreatorActivity) getLastNonConfigurationInstance();
+		if(lastActivity != null) {
+			walkUploader = lastActivity.getWalkUploader();
+			if(walkUploader != null) {
+				walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
+			}
+			if(walkUploader != null && isUploading) {
+				progressDialog.show();
+			}
+		}
+		
+		
 		
 		alertDialog.setOnDismissListener(this);
 		alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
@@ -162,6 +177,7 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
     		walkUploader = new WalkUploader();
     		walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
     		walkUploader.execute(jsonData);
+    		isUploading = true;
     	}
     	else
     	{
@@ -183,6 +199,8 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		if(isFinished)
 		{
 			finish();
+		} else {
+			isUploading = false;
 		}
 	}
 	
@@ -191,9 +209,19 @@ public class WalkCreatorActivity extends Activity implements LocationListener,
 		out.putParcelable("walkController", walkController);
 		out.putBoolean("isRunning", isRunning);
 		out.putBoolean("isFinished", isFinished);
+		out.putBoolean("isUploading", isUploading);
 		String latitude = (String) ((TextView) this.findViewById(R.id.latitude)).getText();
 		String longitude = (String) ((TextView) this.findViewById(R.id.longitude)).getText();
 		out.putString("latitude", latitude);
 		out.putString("longitude", longitude);
+	}
+	
+	@Override
+	public Object onRetainNonConfigurationInstance() {
+		return this;
+	}
+	
+	public WalkUploader getWalkUploader() {
+		return walkUploader;
 	}
 }
