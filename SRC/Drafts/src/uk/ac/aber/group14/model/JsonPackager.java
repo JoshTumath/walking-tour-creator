@@ -24,7 +24,7 @@ public class JsonPackager implements IJsonPackager {
 	@Override
 	public String JSONify(IWalk w) {
 		this.walk = new JSONObject();
-		
+		this.points = new JSONObject();
 		try {
 			PointOfInterest[] pointsOfInterest = w.getPointsOfInterest();
 			Location[] locations = w.getLocations();
