@@ -5,10 +5,7 @@ import uk.ac.aber.group14.controller.IWalkController;
 import uk.ac.aber.group14.controller.IUploadFinishNotify;
 import uk.ac.aber.group14.controller.WalkController;
 import uk.ac.aber.group14.controller.WalkUploader;
-import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.IPointOfInterest;
-import uk.ac.aber.group14.model.JsonPackager;
-import uk.ac.aber.group14.model.PointOfInterest;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -16,7 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,8 +20,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -181,7 +175,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
     	}
     	else
     	{
-    		Location currentLocation = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+    		Location currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     		if(currentLocation != null) {
     			walkController.addLocation(currentLocation);
     		}

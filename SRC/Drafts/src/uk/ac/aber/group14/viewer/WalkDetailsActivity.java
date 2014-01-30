@@ -3,18 +3,13 @@ package uk.ac.aber.group14.viewer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import uk.ac.aber.group14.R;
-import uk.ac.aber.group14.controller.IWalkController;
-import uk.ac.aber.group14.controller.WalkController;
 import java.lang.String;
-import java.util.regex.Pattern;
 
 public class WalkDetailsActivity extends Activity {
 
