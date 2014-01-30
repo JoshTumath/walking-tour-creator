@@ -56,4 +56,4 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Android auto-gen
-*R.java
+R.java
