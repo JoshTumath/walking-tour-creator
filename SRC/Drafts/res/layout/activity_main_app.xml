@@ -15,8 +15,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/Main_CreateWalk_Button" 
-        android:onClick="createWalk" />
-
+        android:onClick="createWalk" 
+        android:color="#2f6699"/>
+        
+        
+    
     <Gallery
         android:id="@+id/gallery1"
         android:layout_width="wrap_content"
