@@ -1,33 +1,13 @@
 package uk.ac.aber.group14.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
-import android.location.Location;
-import android.util.Log;
 import uk.ac.aber.group14.model.IJsonPackager;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.IWalk;
 import uk.ac.aber.group14.model.JsonPackager;
+import uk.ac.aber.group14.model.Walk;
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
-import uk.ac.aber.group14.model.IWalk;
-import uk.ac.aber.group14.model.PointOfInterest;
-import uk.ac.aber.group14.model.Walk;
 
 public class WalkController implements IWalkController, Parcelable {
 	private IWalk walk;
