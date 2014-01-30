@@ -45,9 +45,15 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	private AlertDialog alertDialog;
 	private WalkUploader walkUploader;
 
-	/**
-	 * onCreate is the core part of the Walk creator activity which houses a few key methods such as
-	 *  the cancel walk,add location, record location, saving the route and change location
+	
+	/* (non-Javadoc)
+	 * This method is called when the activity is created.
+	 * Here we initialize variables and check to see if there
+	 * was a saved instance state. If one is found then we load
+	 * our variables from it. This allows the app to keep the
+	 * last latitude/longitude points displayed on-screen.
+	 * 
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +119,9 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -120,6 +129,11 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		return true;
 	}
 
+	/**
+	 * This method is called by the "cancel walk" button.
+	 * This calls "finish()" and the activity exits
+	 * @param view
+	 */
 	public void cancelWalk(View view) {
 		isRunning = false;
 		finish();
@@ -132,6 +146,12 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 			 
 		 }
 
+	/**
+	 * This method is called by the "add location" button.
+	 * This launches the LocationActivity activity, giving it
+	 * the last recorded GPS location.
+	 * @param view
+	 */
 	public void addLocation(View view) {//creates location activity
 		Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		if(lastLocation != null)
@@ -145,6 +165,13 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		}
 	}
 
+	/* (non-Javadoc)
+	 * This method is used to wait for the LocationActivity's results.
+	 * If the result code is RESULT_OK then we take the PointOfInterest from
+	 * it and add it to the walk via the WalkController
+	 * 
+	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
 		super.onActivityResult(requestCode, resultCode, data);
@@ -156,24 +183,58 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	}
 
 
+	/**
+	 * This method is called when new GPS data is received and needs to
+	 * be added to the walk.
+	 * This adds the location to the walk via the WalkController, and
+	 * updates the latitude and longitude values on-screen
+	 * 
+	 * @param location A GPS Location to add to the walk
+	 */
 	private void recordNewLocation(Location location) {
 		walkController.addLocation(location);
 		((TextView) findViewById(R.id.latitude)).setText(Double.toString(location.getLatitude()));
 		((TextView) findViewById(R.id.longitude)).setText(Double.toString(location.getLongitude()));
 	}
 
+	/* (non-Javadoc)
+	 * This is called by the LocationManager when a new GPS Location is
+	 * provided.
+	 * 
+	 * @see android.location.LocationListener#onLocationChanged(android.location.Location)
+	 */
 	public void onLocationChanged(Location location) {
-		// Called when a new location is found by the GPS location provider.
 		Log.i("WTC", "New location found, adding...");
 		recordNewLocation(location);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.location.LocationListener#onStatusChanged(java.lang.String, int, android.os.Bundle)
+	 */
 	public void onStatusChanged(String provider, int status, Bundle extras) {}
 
+    /* (non-Javadoc)
+     * @see android.location.LocationListener#onProviderEnabled(java.lang.String)
+     */
     public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
 
+    /* (non-Javadoc)
+     * @see android.location.LocationListener#onProviderDisabled(java.lang.String)
+     */
     public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
-    //saves the route 
+
+    
+    /**
+     * This method is called by the "Upload Walk" button.
+     * It determines if the walk can be uploaded (at least 1 POI,
+     * 1 GPS Location) and then creates a new WalkUploader AsyncTask.
+     * This is then provided with our alertDialog and progressDailog
+     * and executed.
+     * If the user cannot upload a walk then they are told so with an
+     * alert dialog.
+     * 
+     * @param view
+     */
     public void onSaveRoute(View view) {
     	if(walkController.canUpload())
     	{
@@ -196,10 +257,30 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
     		alertDialog.show();
     	}
     }
+    
+	/* (non-Javadoc)
+	 * This method is overriden to set isFinished to true.
+	 * We use this to determine that when the user closes the next
+	 * alert dialog that the activity should finish and the user
+	 * should be returned to the main app activity.
+	 * 
+	 * @see uk.ac.aber.group14.controller.IUploadFinishNotify#setFinished()
+	 */
 	@Override
 	public void setFinished() {
 		isFinished = true;
 	}
+	
+	/* (non-Javadoc)
+	 * We override this to tell when an alert dialog has been dismissed.
+	 * If isFinished is true then we call "finish()" and exit.
+	 * if isFinished is false then we set "isUploading" to false (this
+	 * is because if we were given an alert dialog then we are not
+	 * currently uploading as we have just informed the user that either
+	 * they cannot upload, the upload worked, or the upload failed.
+	 * 
+	 * @see android.content.DialogInterface.OnDismissListener#onDismiss(android.content.DialogInterface)
+	 */
 	@Override
 	public void onDismiss(DialogInterface dialog) {
 		if(isFinished)
@@ -210,6 +291,13 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * This method is overriden in order to store local variables
+	 * which need to persist, as well as the latitude/longitude to be
+	 * displayed onscreen.
+	 * 
+	 * @see android.app.Activity#onSaveInstanceState(android.os.Bundle)
+	 */
 	@Override
 	public void onSaveInstanceState(Bundle out) {
 		out.putParcelable("walkController", walkController);
@@ -222,11 +310,26 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 		out.putString("longitude", longitude);
 	}
 	
+	/* (non-Javadoc)
+	 * This is used to the current instance of this activity
+	 * for the next instance after a configuration change.
+	 * This allows us to bring the AsyncTask to the next instance
+	 * and then update its dialog variables. This prevents window
+	 * leaks and null pointers associated with dialogs with no visible
+	 * parents.
+	 * 
+	 * @see android.app.Activity#onRetainNonConfigurationInstance()
+	 */
 	@Override
 	public Object onRetainNonConfigurationInstance() {
 		return this;
 	}
 	
+	/**
+	 * This is a simple get method to return the AsyncTask.
+	 * Used to relay the AsyncTask to future instances of ourself.
+	 * @return
+	 */
 	public WalkUploader getWalkUploader() {
 		return walkUploader;
 	}
