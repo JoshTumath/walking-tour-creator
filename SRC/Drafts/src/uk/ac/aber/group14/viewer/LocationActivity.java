@@ -1,28 +1,24 @@
 package uk.ac.aber.group14.viewer;
-import java.util.LinkedList;
 
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.PointOfInterest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 
 
-public class LocationActivity extends Activity{
-	
+public class LocationActivity extends Activity {
 	private Button addPicture;
 	private String picture;
 	final Context context = this;

@@ -14,14 +14,16 @@ import android.location.Location;
 import android.util.Base64;
 import android.util.Log;
 
+
+@SuppressWarnings("unused")
 public class JsonPackager implements IJsonPackager {
 	JSONObject walk;
 	JSONObject walkData;
 	JSONObject points;
-
+	
 	@Override
 	public String JSONify(IWalk w) {
-		JSONObject walk = new JSONObject();
+		this.walk = new JSONObject();
 		
 		try {
 			PointOfInterest[] pointsOfInterest = w.getPointsOfInterest();
@@ -36,8 +38,8 @@ public class JsonPackager implements IJsonPackager {
 			JSONifyLocations(locations);
 			JSONifyPointsOfInterest(pointsOfInterest);
 			
-			walk.put("data", walkData);
-			walk.put("points", points);
+			this.walk.put("data", walkData);
+			this.walk.put("points", points);
 			
 			return walk.toString(2);
 		} catch (JSONException e) {
@@ -47,6 +49,14 @@ public class JsonPackager implements IJsonPackager {
 		return null;
 	}
 	
+	/**
+	 * Modifies the walkData JSONObject to contain the required fields
+	 * taken from the Walk that is passed in.
+	 * 
+	 * @param w - IWalk
+	 * @param timeDelta - long
+	 * @throws JSONException
+	 */
 	private void JSONifyWalkData(IWalk w, long timeDelta) throws JSONException {
 		this.walkData = new JSONObject();
 		this.walkData.put("walkname", w.getName());
@@ -55,24 +65,49 @@ public class JsonPackager implements IJsonPackager {
 		this.walkData.put("time", timeDelta);
 	}
 	
+	/**
+	 * Creates JSONObjects for each normal location in the Location array
+	 * that is passed to the function.
+	 * 
+	 * As required by the JSON Specification :
+	 * Encodes the poiflag field as false
+	 * Encodes the poidata field as a null JSON value
+	 * Places the created JSONObject in the points JSONObject with a numeric key
+	 * 
+	 * @param loc - Locations[]
+	 * @throws JSONException
+	 */
 	private void JSONifyLocations(Location[] loc) throws JSONException {
 		JSONObject location;
 		
 		for (Location l: loc) {
-			location = JSONifyGenericLocation(l.getLatitude(), l.getLongitude(), l.getTime());
+			location = JSONifyGenericLocation(l.getLatitude(), l.getLongitude(), (int) l.getTime() / 1000);
 			location.put("poiflag", false);
 			location.put("poidata", JSONObject.NULL);
 			
-			points.put(String.valueOf(points.length() + 1), location);
+			this.points.put(String.valueOf(points.length() + 1), location);
 		}
 	}
 	
+	/**
+	 * Creates JSONObjects for each Point Of Interest in the PointOfInterest array
+	 * that is passed to the function.
+	 * 
+	 * As required by the JSON Specification :
+	 * Encodes the poiflag field as true
+	 * Encodes the poidata field as a JSONObject containing additional information.
+	 * Embeds a base64 of any photo attached to the point or a null JSON value
+	 * Places the created JSONObject in the points JSONObject with a numeric key
+	 * 
+	 * @param poi - PointOfInterest[]
+	 * @throws JSONException
+	 */
 	private void JSONifyPointsOfInterest(PointOfInterest[] poi) throws JSONException {
 		JSONObject pointOfInterest;
 		JSONObject poiData;
 		
 		for (PointOfInterest p : poi) {
-			pointOfInterest = JSONifyGenericLocation(p.getLatitude(), p.getLongitude(), p.getTime());
+			pointOfInterest = JSONifyGenericLocation(p.getLatitude(), p.getLongitude(), (int) p.getTime() / 1000);
 			pointOfInterest.put("poiflag", true);
 			
 			poiData = new JSONObject();
@@ -93,11 +128,21 @@ public class JsonPackager implements IJsonPackager {
 			}
 			
 			pointOfInterest.put("poidata", poiData);
-			points.put(String.valueOf(points.length() + 1), pointOfInterest);
+			this.points.put(String.valueOf(points.length() + 1), pointOfInterest);
 		}
 	}
 	
-	private JSONObject JSONifyGenericLocation(double lat, double lng, long timestamp) throws JSONException {
+	/**
+	 * Creates and returns the base location object used by both location
+	 * and pointOfInterest based on the supplied values.
+	 * 
+	 * @param lat - double
+	 * @param lng - double
+	 * @param timestamp - int
+	 * @return JSONObject
+	 * @throws JSONException
+	 */
+	private JSONObject JSONifyGenericLocation(double lat, double lng, int timestamp) throws JSONException {
 		JSONObject location = new JSONObject();
 		
 		location.put("latitude", lat);
