@@ -106,8 +106,8 @@ public class Walk implements IWalk, Parcelable {
 	 * @see uk.ac.aber.group14.model.IWalk#getPointsOfInterest()
 	 */
 	@Override
-	public PointOfInterest[] getPointsOfInterest() {
-		return points.toArray(new PointOfInterest[points.size()]);
+	public IPointOfInterest[] getPointsOfInterest() {
+		return points.toArray(new IPointOfInterest[points.size()]);
 	}
 
 	/* (non-Javadoc)

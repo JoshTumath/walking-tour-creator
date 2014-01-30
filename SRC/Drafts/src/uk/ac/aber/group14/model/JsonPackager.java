@@ -35,7 +35,7 @@ public class JsonPackager implements IJsonPackager {
 		this.walk = new JSONObject();
 		this.points = new JSONObject();
 		try {
-			PointOfInterest[] pointsOfInterest = w.getPointsOfInterest();
+			IPointOfInterest[] pointsOfInterest = w.getPointsOfInterest();
 			Location[] locations = w.getLocations();
 			
 			//TODO This will break if there are no location or points of interest
@@ -111,11 +111,11 @@ public class JsonPackager implements IJsonPackager {
 	 * @param poi - PointOfInterest[]
 	 * @throws JSONException
 	 */
-	private void JSONifyPointsOfInterest(PointOfInterest[] poi) throws JSONException {
+	private void JSONifyPointsOfInterest(IPointOfInterest[] poi) throws JSONException {
 		JSONObject pointOfInterest;
 		JSONObject poiData;
 		
-		for (PointOfInterest p : poi) {
+		for (IPointOfInterest p : poi) {
 			pointOfInterest = JSONifyGenericLocation(p.getLatitude(), p.getLongitude(), (int) p.getTime() / 1000);
 			pointOfInterest.put("poiflag", true);
 			

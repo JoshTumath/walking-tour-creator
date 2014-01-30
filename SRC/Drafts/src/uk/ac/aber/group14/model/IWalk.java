@@ -49,7 +49,7 @@ public interface IWalk extends Parcelable{
 	 * as an array of PointOfInterest
 	 * @return An array of type PointOfInterest representing all the points of interest in the IWalk
 	 */
-	public PointOfInterest[] getPointsOfInterest();
+	public IPointOfInterest[] getPointsOfInterest();
 	
 	/**
 	 * This method is used to return the GPS locations as an array of
