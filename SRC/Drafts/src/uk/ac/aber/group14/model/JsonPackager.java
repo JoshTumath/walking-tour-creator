@@ -15,12 +15,21 @@ import android.util.Base64;
 import android.util.Log;
 
 
+/**
+ * This class is used to convert IWalk objects to JSON Strings
+ * @author Group14
+ *
+ */
 @SuppressWarnings("unused")
 public class JsonPackager implements IJsonPackager {
 	JSONObject walk;
 	JSONObject walkData;
 	JSONObject points;
 	
+	/* (non-Javadoc)
+	 * This method converts the IWalk to a JSON String
+	 * @see uk.ac.aber.group14.model.IJsonPackager#JSONify(uk.ac.aber.group14.model.IWalk)
+	 */
 	@Override
 	public String JSONify(IWalk w) {
 		this.walk = new JSONObject();
@@ -152,6 +161,11 @@ public class JsonPackager implements IJsonPackager {
 		return location;
 	}
 	
+	/**
+	 * This method encodes a photo into a base64 String
+	 * @param photoURI The URI to the photo's file
+	 * @return A String containing the base64 String of the photo
+	 */
 	private String EncodePhoto(String photoURI) {
 		Log.i("WTC", "Attempting to convert picture to Base64 string");
 		File imageFile = new File(photoURI);
@@ -184,6 +198,12 @@ public class JsonPackager implements IJsonPackager {
 		}
 	}
 	
+	
+	/**
+	 * This method encodes a photo into a base64 String
+	 * @param photoURI The URI to the photo's file
+	 * @return A String containing the base64 String of the photo
+	 */
 	private String EncodePhotoUpgrade(String photoURI) {
 		File imageFile = new File(photoURI);
 		FileInputStream fis = null;
@@ -203,6 +223,11 @@ public class JsonPackager implements IJsonPackager {
 		return Base64.encodeToString(byteArray, Base64.URL_SAFE);
 	}
 	
+	/**
+	 * This method is used to escape a String base64 String to be URL-safe
+	 * @param s The String to encode
+	 * @return The URL-safe base64 String
+	 */
 	private String URLEncodeBase64(String s) {
 		String encodedString;
 		encodedString = s.replace("+", "%2B");
