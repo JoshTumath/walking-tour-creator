@@ -1,5 +1,7 @@
 package uk.ac.aber.group14.model;
 
+import java.util.LinkedList;
+
 import android.os.Parcelable;
 
 /**
@@ -37,17 +39,25 @@ public interface IPointOfInterest extends Parcelable {
    public String getDescription();
    
    /**
-    * This method is used to set the picture of the IPointOfInterest.
+    * This method is used to add a picture to the IPointOfInterest.
     * This must be a valid path to a picture in the filesystem.
     * @param picture String representing the location of the picture in the filesystem
     */
    public void addPicture(String picture);
+
+   /**
+    * This method is used to add a collection of pictures to the
+    * IPointOfInterest.
+    * These must be valid paths to pictures in the filesystem.
+    * @param pictures LinkedList of Strings representing the locations of the pictures in the filesystem
+    */
+   public void addPictures(LinkedList<String> pictures);
    
    /**
     * This method is used to get the picture of the IPointOfInterest
     * @return A string representing the location on the filesystem of the picture
     */
-   public String getPicture();
+   public String[] getPictures();
    
    /**
     * This method is used to get the IPointOfInterest's latitude

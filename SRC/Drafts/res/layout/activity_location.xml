@@ -79,27 +79,33 @@
 	    </EditText>
 
 	    <Button
-	        android:id="@+id/addPicture"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentBottom="false"
-	        android:layout_alignParentLeft="true"
-	        android:layout_alignRight="@+id/textView1"
-	        android:layout_below="@+id/locationDescriptionEdit"
-	        android:onClick="onClickPictureButton"
-	        android:text="@string/ActivityLocationAddPicture" />
-
-	    <Button
 	        android:id="@+id/ConfirmAction"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignParentBottom="false"
+	        android:layout_alignParentBottom="true"
 	        android:layout_alignParentRight="true"
 	        android:layout_alignTop="@+id/addPicture"
-	        android:layout_below="@+id/locationDescriptionEdit"
 	        android:layout_toRightOf="@+id/textView1"
 	        android:onClick="addLocation"
 	        android:text="@string/ConfirmButton" />
+
+	    <Button
+	        android:id="@+id/addPicture"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/locationDescriptionEdit"
+	        android:layout_alignParentBottom="true"
+	        android:onClick="onClickPictureButton"
+	        android:text="@string/ActivityLocationAddPicture" />
+
+	    <Gallery
+	        android:id="@+id/gallery1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/ConfirmAction"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="36dp"
+	        android:minHeight="20dp" />
 	
 	</RelativeLayout>
 </ScrollView>

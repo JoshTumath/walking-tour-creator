@@ -27,15 +27,15 @@ public final class R {
         public static final int logo2=0x7f020002;
     }
     public static final class id {
-        public static final int ConfirmAction=0x7f080008;
-        public static final int NewWalk=0x7f080009;
+        public static final int ConfirmAction=0x7f080007;
+        public static final int NewWalk=0x7f08000a;
         public static final int TextView01=0x7f08000e;
         public static final int action_settings=0x7f08001c;
-        public static final int addPicture=0x7f080007;
+        public static final int addPicture=0x7f080008;
         public static final int button3=0x7f080012;
         public static final int dialogButtonOK=0x7f08001b;
         public static final int digitalClock1=0x7f080001;
-        public static final int gallery1=0x7f08000a;
+        public static final int gallery1=0x7f080009;
         public static final int gallery2=0x7f08000c;
         public static final int imageView1=0x7f08000b;
         public static final int latitude=0x7f08000d;

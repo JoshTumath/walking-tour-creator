@@ -212,6 +212,10 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
          IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
          Log.i("WTC", "Adding new point of interest, " + point.getName());
          walkController.addPOI(point);
+         Log.i("WTC", "POI added, testing for null...");
+         if(point.getLocation() != null) {
+            Log.i("WTC", "POI is not null");
+         }
       }
    }
 

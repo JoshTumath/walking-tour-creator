@@ -1,5 +1,8 @@
 package uk.ac.aber.group14.viewer;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import uk.ac.aber.group14.R;
 import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.PointOfInterest;
@@ -10,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,14 +35,15 @@ import android.widget.TextView;
  *
  */
 public class LocationActivity extends Activity {
-   private Button addPicture;
-   private String picture;
-   final Context context = this;
-   Location location;
    static final int REQUEST_IMAGE_CAPTURE = 1;
-   static final String changePictureText = "Change picture";
    static final int nameMaxLength = 255;
    static final int descMaxLength = 1000;
+   private static final int imageViewheight = 20;
+   private static final String changePictureText = "Change picture";
+   private ArrayList<String> pictures;
+   private ArrayList<Bitmap> thumbnails;
+   final Context context = this;
+   private Location location;
    static enum InputValidity {VALID, NONAME, NODESC, LONGNAME, LONGDESC};
    
    /**
@@ -54,7 +59,9 @@ public class LocationActivity extends Activity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_location);
       
-      addPicture = (Button) findViewById(R.id.addPicture);
+      location = (Location) getIntent().getExtras().getParcelable("location");
+      pictures = null;
+      thumbnails = null;
       
       if(savedInstanceState != null)
       {
@@ -62,16 +69,21 @@ public class LocationActivity extends Activity {
          String desc = savedInstanceState.getString("desc");
          ((TextView) findViewById(R.id.locationNameEdit)).setText(name);
          ((TextView) findViewById(R.id.locationDescriptionEdit)).setText(desc);
-         if(savedInstanceState.getString("picture") != null)
-         {
-            picture = savedInstanceState.getString("picture");
-            addPicture.setText(changePictureText);
-            
-         }
+         pictures = savedInstanceState.getStringArrayList("pictures");
+         thumbnails = savedInstanceState.getParcelableArrayList("thumbnails");
+         location = savedInstanceState.getParcelable("location");
+      }
+      if(pictures == null || thumbnails == null) {
+         pictures = new ArrayList<String>();
+         thumbnails = new ArrayList<Bitmap>();
       }
       
-      location = (Location) getIntent().getExtras().getParcelable("location");
-      
+      Log.i("WTC", "Testing for valid location(start)...");
+      if(location != null) {
+         Log.i("WTC", "Location is not null");
+      } else {
+         Log.i("WTC", "Location is null");
+      }
    }
    
    /**
@@ -116,14 +128,17 @@ public class LocationActivity extends Activity {
          String locationDesc = ((TextView) findViewById(R.id.locationDescriptionEdit)).getText().toString();
          pointOfInterest.setName(locationName);
          pointOfInterest.setDescription(locationDesc);
-         if(picture != null) {
-            pointOfInterest.addPicture(picture);
+         if(pictures.size() != 0) {
+            pointOfInterest.addPictures(new LinkedList<String>(pictures));
          }
-         
+         Log.i("WTC", "Testing for valid location...");
+         if(location != null) {
+            Log.i("WTC", "Location not null.");
+         } else {
+            Log.i("WTC", "Location is null.");
+         }
          Intent output = new Intent();//save
          
-         Log.i("WTC", "Adding POI:\nName:" + pointOfInterest.getName() +
-               "\nPicture:" + pointOfInterest.getPicture());
          output.putExtra("pointOfInterest", pointOfInterest);
          setResult(Activity.RESULT_OK, output);
          finish();//where you finish and output
@@ -193,8 +208,10 @@ public class LocationActivity extends Activity {
       // Check which request we're responding to
       if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 
-         addPicture.setText(changePictureText);
-         picture = getPath(data.getData());
+         String picturePath = getPath(data.getData());
+         Bitmap pictureThumb = (Bitmap) data.getExtras().get("data");
+         pictures.add(picturePath);
+         thumbnails.add(pictureThumb);
       }
    }
 
@@ -232,9 +249,20 @@ public class LocationActivity extends Activity {
       String desc = ((EditText) findViewById(R.id.locationDescriptionEdit)).getText().toString();
       out.putString("name", name);
       out.putString("desc", desc);
-      
-      if(picture != null) {
-         out.putString("picture", picture);   
+      out.putParcelable("location", location);
+
+      if(pictures.size() != 0 && thumbnails.size() != 0) {
+         out.putStringArrayList("pictures", pictures);
+         out.putParcelableArrayList("thumbnails", thumbnails);   
       }
    }
+   
+   public class GalleryAdapter {
+      private Context context;
+      
+      public GalleryAdapter(Context context) {
+         this.context = context;
+      }
+   }
+   
 }

@@ -1,5 +1,8 @@
 package uk.ac.aber.group14.model;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -15,7 +18,7 @@ import android.os.Parcelable;
 public class PointOfInterest implements IPointOfInterest {
    private String name;
    private String description;
-   private String picture;
+   private ArrayList<String> pictures;
    private Location location;
 
    /**
@@ -25,7 +28,7 @@ public class PointOfInterest implements IPointOfInterest {
     */
    public PointOfInterest(Location location) {
       this.location = location;
-      this.picture = null;
+      pictures = new ArrayList<String>();
    }
    
    /**
@@ -36,10 +39,11 @@ public class PointOfInterest implements IPointOfInterest {
     * @param parcel
     */
    private PointOfInterest(Parcel parcel) {
-      this.name = parcel.readString();
-      this.description = parcel.readString();
-      this.picture = parcel.readString();
-      this.location = (Location) parcel.readParcelable(null);
+      name = parcel.readString();
+      description = parcel.readString();
+      pictures = new ArrayList<String>();
+      parcel.readList(pictures, null);
+      location = (Location) parcel.readParcelable(null);
    }
    
    /**
@@ -63,7 +67,7 @@ public class PointOfInterest implements IPointOfInterest {
     */
    @Override
    public void addPicture(String picture) {
-      this.picture = picture;
+      pictures.add(picture);
    }
 
    /**
@@ -126,8 +130,8 @@ public class PointOfInterest implements IPointOfInterest {
    /**
     * @see uk.ac.aber.group14.model.IPointOfInterest#getPicture()
     */
-   public String getPicture() {
-      return this.picture;
+   public String[] getPictures() {
+      return pictures.toArray(new String[pictures.size()]);
    }
 
    /**
@@ -137,7 +141,7 @@ public class PointOfInterest implements IPointOfInterest {
    public void writeToParcel(Parcel parcel, int flags) {
       parcel.writeString(this.name);
       parcel.writeString(this.description);
-      parcel.writeString(this.picture);
+      parcel.writeList(pictures);
       parcel.writeParcelable(this.location, 0);
    }
 
@@ -153,5 +157,10 @@ public class PointOfInterest implements IPointOfInterest {
       public PointOfInterest[] newArray(int size) {
          return new PointOfInterest[size];
       }
-   };   
+   };
+
+   @Override
+   public void addPictures(LinkedList<String> pictures) {
+      this.pictures.addAll(pictures);
+   }
 }

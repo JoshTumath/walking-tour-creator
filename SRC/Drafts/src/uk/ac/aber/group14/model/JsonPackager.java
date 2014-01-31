@@ -6,8 +6,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -124,16 +127,19 @@ public class JsonPackager implements IJsonPackager {
          poiData.put("description", p.getDescription());
          
          Log.i("WTC", "Testing to see if POI contains a picture...");
-         if (p.getPicture() != null) {
-            String encodedPhoto = EncodePhoto(p.getPicture());
-            
-            if (encodedPhoto == null) {
-               poiData.put("photo", JSONObject.NULL);
-            } else {
-               poiData.put("photo", encodedPhoto);
+         String[] pictures = p.getPictures();
+         if ( pictures != null && pictures.length != 0) {
+            JSONArray photoArray = new JSONArray();
+            for(String picture : pictures) {
+               String encodedPhoto = EncodePhoto(picture);
+               
+               if (encodedPhoto != null) {
+                  photoArray.put(encodedPhoto);
+               }
             }
+            poiData.put("photos", photoArray);
          } else {
-            poiData.put("photo", JSONObject.NULL);
+            poiData.put("photos", JSONObject.NULL);
          }
          
          pointOfInterest.put("poidata", poiData);
