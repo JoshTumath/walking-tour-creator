@@ -1,0 +1,170 @@
+html, body {
+   height:100%;
+}
+
+body {
+   margin:0;
+   background:#CCCCCC;
+   font-family:Vollkorn, Georgia, Times, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+   font-family:Ubuntu, Helvetica, Arial, sans-serif;
+}
+
+
+/*************
+ * STRUCTURE *
+ *************/
+header {
+   background:white;
+}
+
+header h1 {
+   -moz-box-sizing:border-box;
+   box-sizing:border-box;
+   margin:auto;
+   width:960px;
+   font-size:medium;
+}
+
+header h1 a {
+   display:block;
+   line-height:2em;
+   text-decoration:none;
+   text-transform:uppercase;
+   color:#FFAA00;
+   transition:200ms color;
+}
+
+header h1 a:hover {
+   color:#FFD073;
+}
+
+main > h1 {
+   margin:0;
+   padding:3em 0;
+   background:url("../images/banner.jpg") center no-repeat black;
+   background-size:cover;
+   font-size:64px;
+   text-align:center;
+   text-shadow:0 0 0.25em black;
+   color:white;
+}
+
+main > .wrapper {
+   -moz-box-sizing:border-box;
+   box-sizing:border-box;
+   margin:auto;
+   padding:16px;
+   width:960px;
+   background:white;
+   color:#262626;
+}
+
+footer {
+   background:#571073;
+   color:white;
+}
+
+footer p {
+   -moz-box-sizing:border-box;
+   box-sizing:border-box;
+   margin:auto;
+   width:960px;
+   line-height:2em;
+}
+
+
+/*************
+ * WALK LIST *
+ *************/
+#list {
+   overflow:hidden;
+}
+
+#list > p {
+   margin:0;
+   font-size:x-large;
+   text-align:center;
+}
+
+#list ul {
+   margin:0;
+   padding:0;
+   text-align:center;
+}
+
+#list li {
+   display:block;
+   float:left;
+   margin:16px 8px 0 0;
+}
+
+#list li:nth-child(3n) {
+   margin-right:0;
+}
+
+#list a {
+   text-decoration:none;
+   color:inherit;
+}
+
+#list img {
+   display:block;
+   margin:4px;
+   height:222px;
+   width:296px;
+   background:black;
+   transition:200ms box-shadow;
+}
+
+#list a:hover img {
+   box-shadow:0 0 0 4px #FFAA00;	
+}
+
+#list li p {
+   margin: 8px 0 0;
+}
+
+
+/* _____MAP_____ */
+.tour header {
+   position:fixed;
+   top:0;
+   right:0;
+   left:0;
+}
+
+.tour footer {
+   position:fixed;
+   right:0;
+   bottom:0;
+   left:0;
+}
+
+.tour aside {
+   position:fixed;
+   top:2em;
+   right:70%;
+   bottom:2em;
+   left:0;
+   padding:16px;
+   overflow:auto;
+   background:white;
+}
+
+#map {
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   float: right;
+   width: 70%;
+   height:100%;
+   height:calc(100% - 4em);
+   position:relative;
+   margin-top:2em;
+}
+
+#map-canvas { 
+   height:100%;
+}
