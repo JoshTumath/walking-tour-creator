@@ -75,7 +75,7 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 	<p><span><b>Short Description: </b><?php echo $short_desc;?></span></p>
 	<p><span><b>Long Description: </b><?php echo $long_desc;?></span></p>
 	<p><span><b>Distance: </b><span id="distance"></span> miles</span></p>
-	<p><span><b>Hours: </b><?php echo $duration;?></span></p>
+	<p><span><b>Minutes: </b><?php echo ($duration / 60) . ($duration % 60);?></span></p>
 </aside>
 
 <?php insert_footer_top(); ?>
