@@ -173,9 +173,10 @@ footer p {
 }
 
 #map .infowindow_header {
-
+   font-size:medium;
 }
 
 #map .infowindow_content {
-
+   font-family:Vollkorn, Georgia, Times, serif;
+   font-size:small;
 }
