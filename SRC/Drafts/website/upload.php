@@ -27,10 +27,6 @@ $short_desc = $walk_data["data"]['shortdescription'];
 $long_desc	= $walk_data["data"]['longdescription'];
 $time 		= $walk_data["data"]['time'];
 
-echo $walk_data["data"]["walkname"];
-echo $walk_data["data"]['shortdescription'];
-echo $walk_data["data"]['longdescription'];
-echo $walk_data["data"]['time'];
 $db = new PDO("mysql:host=jakemaguire.co.uk;dbname=walking_tour_database", "webWalk", "123");
 $db->beginTransaction();
 
@@ -112,7 +108,7 @@ if ($q1r && $q2r && $q3r) {
 	$db->commit();
 } else {
 	
-	echo "Failure - {$q1r} | {$q2r} | {$q3r}";		
+	echo "Failure";		
 	$db->rollBack();
 }
 
