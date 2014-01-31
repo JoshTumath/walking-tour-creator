@@ -61,7 +61,7 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 	
 	$marker_html = "<p>" . $marker_info['description'] . "</p>";
 	while ($photo = $select_photo_name->fetch(PDO::FETCH_ASSOC)) {
-		$marker_html = "{$marker_html} <img class='tourimg' src='images/walkimages/{$photo['photoName']}.jpeg' alt='' />";
+		$marker_html = "{$marker_html} <img class='mapimg' src='images/walkimages/{$photo['photoName']}.jpeg' alt='' />";
 	}
 	
 	$markers[] = '["' . $marker_info['title'] . '",' . $marker_info['latitude'] . ',' . $marker_info['longitude'] . ', "' . $marker_html . '"]';
@@ -75,7 +75,7 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 	<p><span><b>Short Description: </b><?php echo $short_desc;?></span></p>
 	<p><span><b>Long Description: </b><?php echo $long_desc;?></span></p>
 	<p><span><b>Distance: </b><span id="distance"></span> miles</span></p>
-	<p><span><b>Minutes: </b><?php echo ($duration / 60) . ($duration % 60);?></span></p>
+	<p><span><b>Duration: </b><span id="duration"><?php echo gmdate("H:i:s", $duration);?></span></span></p>
 </aside>
 
 <?php insert_footer_top(); ?>
@@ -86,9 +86,9 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 		function initialize() {
 			var centerMap = new google.maps.LatLng(52.4151, -4.08352);
 			var myOptions = {
-			zoom: 13,
-			center: centerMap,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+				zoom: 13,
+				center: centerMap,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 
 			var map = new google.maps.Map(document.getElementById("map"), myOptions);
@@ -122,18 +122,18 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 			
 			var walkDistance = calcDistance(coordinates).toFixed(3);
 			document.getElementById("distance").innerHTML = walkDistance;
-			
-			function calcDistance(coords){
-				var distance = 0;
-				for (var i = 0; i < coords.length - 1; i++) {
-					p1 = coords[i];
-					p2 = coords[i+1];
-					distance += (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000);
-				}
-				return distance / 1.6;
-			}		
 		}	
 
+		function calcDistance(coords){
+			var distance = 0;
+			for (var i = 0; i < coords.length - 1; i++) {
+				p1 = coords[i];
+				p2 = coords[i+1];
+				distance += (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000);
+			}
+			return distance / 1.6;
+		}
+			
 		function setMarkers(map, markers) {
 			for (var i = 0; i < markers.length; i++) {
 				var bounds = new google.maps.LatLngBounds();

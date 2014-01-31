@@ -168,3 +168,12 @@ footer p {
 #map-canvas { 
    height:100%;
 }
+
+#map img.mapimg {
+   display:block;
+   margin:4px;
+   height:222px;
+   width:296px;
+   background:black;
+   transition:200ms box-shadow;
+}
