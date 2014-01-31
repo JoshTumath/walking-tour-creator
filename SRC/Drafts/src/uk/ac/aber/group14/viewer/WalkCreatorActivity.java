@@ -1,3 +1,10 @@
+/*
+ * @(#) JsonPackager.java 1.0 2014-01-31
+ *
+ * Copyright (c) 2014 Aberystwyth University.
+ * All rights reserved.
+ *
+ */
 package uk.ac.aber.group14.viewer;
 
 import uk.ac.aber.group14.R;
