@@ -61,7 +61,7 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 	
 	$marker_html = "<p>" . $marker_info['description'] . "</p>";
 	while ($photo = $select_photo_name->fetch(PDO::FETCH_ASSOC)) {
-		$marker_html = "{$marker_html} <img src='images/walkimages/{$photo['photoName']}.jpeg' alt='' />";
+		$marker_html = "{$marker_html} <img class='tourimg' src='images/walkimages/{$photo['photoName']}.jpeg' alt='' />";
 	}
 	
 	$markers[] = '["' . $marker_info['title'] . '",' . $marker_info['latitude'] . ',' . $marker_info['longitude'] . ', "' . $marker_html . '"]';
