@@ -17,14 +17,11 @@ h1, h2, h3, h4, h5, h6 {
  * STRUCTURE *
  *************/
 header {
-   background:white;
+   background:#FFAA00;
 }
 
 header h1 {
-   -moz-box-sizing:border-box;
-   box-sizing:border-box;
-   margin:auto;
-   width:960px;
+   margin:0 1em;
    font-size:medium;
 }
 
@@ -33,12 +30,12 @@ header h1 a {
    line-height:2em;
    text-decoration:none;
    text-transform:uppercase;
-   color:#FFAA00;
+   color:white;
    transition:200ms color;
 }
 
 header h1 a:hover {
-   color:#FFD073;
+   color:rgba(255, 255, 255, 0.8);
 }
 
 main > h1 {
@@ -68,10 +65,7 @@ footer {
 }
 
 footer p {
-   -moz-box-sizing:border-box;
-   box-sizing:border-box;
-   margin:auto;
-   width:960px;
+   margin:0 1em;
    line-height:2em;
 }
 
@@ -167,4 +161,22 @@ footer p {
 
 #map-canvas { 
    height:100%;
+}
+
+#map img.infowindow_img {
+   display:block;
+   margin:4px;
+   height:222px;
+   width:296px;
+   background:black;
+   transition:200ms box-shadow;
+}
+
+#map .infowindow_header {
+   font-size:medium;
+}
+
+#map .infowindow_content {
+   font-family:Vollkorn, Georgia, Times, serif;
+   font-size:small;
 }
