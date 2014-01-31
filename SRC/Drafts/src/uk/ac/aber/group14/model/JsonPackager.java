@@ -224,7 +224,7 @@ public class JsonPackager implements IJsonPackager {
 
       Bitmap bitmap = BitmapFactory.decodeStream(fis);
       ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-      bitmap.compress(Bitmap.CompressFormat.JPEG, 100 , byteStream);
+      bitmap.compress(Bitmap.CompressFormat.JPEG, 50 , byteStream);
       byte[] byteArray = byteStream.toByteArray();
       
       return Base64.encodeToString(byteArray, Base64.URL_SAFE);
