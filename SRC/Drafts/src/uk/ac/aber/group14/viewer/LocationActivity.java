@@ -188,6 +188,10 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
       }
    }
    
+   /**
+    * This method is used to delete the image at the currently set
+    * "deleteIndex"
+    */
    public void deleteImage() {
       if(deleteIndex < pictures.size() && deleteIndex < thumbnails.size()) {
          pictures.remove(deleteIndex);
@@ -197,6 +201,10 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
       isDeleting=false;
    }
    
+   /**
+    * This method is used to prompt the user with an AlertDialog asking
+    * them if they are sure they want to delete the image.
+    */
    public void promptDeleteImage() {
       isDeleting = true;
       DialogInterface.OnClickListener deleteListener = new DialogInterface.OnClickListener() {
@@ -309,6 +317,14 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
       }
    }
    
+   /**
+    * This adapter is used with the Gallary to draw the images on
+    * the screen.
+    * Each image is created by taking its position in the gallary and
+    * using that as the index to lookup its image in the thumbnails arraylist 
+    * @author Group14
+    *
+    */
    public class GalleryAdapter extends BaseAdapter {
       private Context context;
       
@@ -342,6 +358,13 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
       }
    }
 
+   /**
+    * This catches when the user clicks on a picture, sets deleteIndex to the
+    * position in the Gallery they clicked, and then prompts for deletion
+    * with "promptDeleteImage()"
+    * @see uk.ac.aber.group14.LocationActivity#promptDeleteImage()
+    * @see android.widget.AdapterView.OnItemClickListener#onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    */
    @Override
    public void onItemClick(AdapterView<?> parent, View child, int position, long id) {
       deleteIndex = position;
