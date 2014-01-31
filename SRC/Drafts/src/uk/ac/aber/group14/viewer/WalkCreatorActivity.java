@@ -175,9 +175,20 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
          Intent locationIntent = new Intent(this, LocationActivity.class);
 
          locationIntent.putExtra("location", lastLocation);
-         Log.i("WTC", "testing addlocation, in wcA");//used for testing
          //passing the bundle into
          startActivityForResult(locationIntent, 1);
+      } else {
+    	  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	  builder.setTitle("Error");
+    	  builder.setMessage("Not enough GPS data to add a location");
+    	  builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+    	  builder.create().show();
       }
    }
 
