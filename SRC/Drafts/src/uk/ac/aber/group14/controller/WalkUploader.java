@@ -91,6 +91,7 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
    protected void onPostExecute(Boolean result) {
       super.onPostExecute(result);
       progressDialog.dismiss();
+      
       if(result == false) {
          alertDialog.setTitle("Error");
          alertDialog.setMessage("Upload failed. Please try again.");
@@ -114,6 +115,7 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
       HttpClient httpClient = new DefaultHttpClient();
       HttpPost httpPost = new HttpPost(uploadAddress);
       
+      //NameValurPairs are used for post data such that name=value in the POST
       nameValuePairs = new ArrayList<NameValuePair>();
       nameValuePairs.add(new BasicNameValuePair("tourdata", walk));
       try {
@@ -131,6 +133,8 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
          uploadSuccess = false;
       }
       
+      /* 200 is the http response code for "OK" - if we get anything but this
+         then we have not managed to upload anything properly */
       if(response == null || response.getStatusLine().getStatusCode() != 200) {
          uploadSuccess = false;
       }

@@ -40,13 +40,18 @@ public class JsonPackager implements IJsonPackager {
          IPointOfInterest[] pointsOfInterest = w.getPointsOfInterest();
          Location[] locations = w.getLocations();
          
-         //TODO This will break if there are no location or points of interest
          int startTime = (int) (Math.min(pointsOfInterest[0].getLocation().getTime(), locations[0].getTime()) / 1000);
          int endTime = (int) (Math.max(pointsOfInterest[pointsOfInterest.length - 1].getLocation().getTime(), locations[locations.length - 1].getTime()) / 1000);
          int timeDelta = endTime - startTime;
          
+         /* Create JSON data from walk (name, descriptions, timestamp).
+            Create walkData JSON object and put this data into it */
          JSONifyWalkData(w, timeDelta);
+         
+         // Create JSON data from Locations and add it to points JSON object
          JSONifyLocations(locations);
+         
+         // Create JSON data from POIs and add it to the points JSON object
          JSONifyPointsOfInterest(pointsOfInterest);
          
          this.walk.put("data", walkData);
