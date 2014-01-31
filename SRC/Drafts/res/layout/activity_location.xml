@@ -78,26 +78,6 @@
 	        <requestFocus />
 	    </EditText>
 
-	    <Button
-	        android:id="@+id/ConfirmAction"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentBottom="true"
-	        android:layout_alignParentRight="true"
-	        android:layout_alignTop="@+id/addPicture"
-	        android:layout_toRightOf="@+id/textView1"
-	        android:onClick="addLocation"
-	        android:text="@string/ConfirmButton" />
-
-	    <Button
-	        android:id="@+id/addPicture"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/locationDescriptionEdit"
-	        android:layout_alignParentBottom="true"
-	        android:onClick="onClickPictureButton"
-	        android:text="@string/ActivityLocationAddPicture" />
-
 	    <Gallery
 	        android:id="@+id/imageGallery"
 	        android:layout_width="fill_parent"
@@ -110,6 +90,26 @@
 	        android:paddingBottom="10dp"
 	        android:paddingTop="10dp"
 	        android:spacing="15dp" />
+
+	    <Button
+	        android:id="@+id/ConfirmAction"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/locationDescriptionEdit"
+	        android:layout_below="@+id/locationDescriptionEdit"
+	        android:layout_toRightOf="@+id/addPicture"
+	        android:onClick="addLocation"
+	        android:text="@string/ConfirmButton" />
+
+	    <Button
+	        android:id="@+id/addPicture"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/locationDescriptionEdit"
+	        android:layout_alignRight="@+id/textView1"
+	        android:layout_below="@+id/locationDescriptionEdit"
+	        android:onClick="onClickPictureButton"
+	        android:text="@string/ActivityLocationAddPicture" />
 	
 	</RelativeLayout>
 </ScrollView>
