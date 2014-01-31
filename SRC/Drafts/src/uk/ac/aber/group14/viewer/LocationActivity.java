@@ -14,14 +14,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -34,16 +41,20 @@ import android.widget.TextView;
  * @author Group14
  *
  */
-public class LocationActivity extends Activity {
+public class LocationActivity extends Activity implements Gallery.OnItemClickListener{
    static final int REQUEST_IMAGE_CAPTURE = 1;
    static final int nameMaxLength = 255;
    static final int descMaxLength = 1000;
-   private static final int imageViewheight = 20;
-   private static final String changePictureText = "Change picture";
+   private static final int imageViewWidth = 100;
+   private static final int imageViewHeight = 100;
+   private final Context context = this;
    private ArrayList<String> pictures;
    private ArrayList<Bitmap> thumbnails;
-   final Context context = this;
    private Location location;
+   private Gallery imageGallery;
+   private GalleryAdapter galleryAdapter;
+   private int deleteIndex;
+   private boolean isDeleting;
    static enum InputValidity {VALID, NONAME, NODESC, LONGNAME, LONGDESC};
    
    /**
@@ -59,6 +70,8 @@ public class LocationActivity extends Activity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_location);
       
+      imageGallery = (Gallery) this.findViewById(R.id.imageGallery);
+      imageGallery.setOnItemClickListener(this);
       location = (Location) getIntent().getExtras().getParcelable("location");
       pictures = null;
       thumbnails = null;
@@ -72,17 +85,23 @@ public class LocationActivity extends Activity {
          pictures = savedInstanceState.getStringArrayList("pictures");
          thumbnails = savedInstanceState.getParcelableArrayList("thumbnails");
          location = savedInstanceState.getParcelable("location");
+         isDeleting = savedInstanceState.getBoolean("isDeleting");
+         deleteIndex = savedInstanceState.getInt("deleteIndex");
+      } else {
+         isDeleting = false;
+         deleteIndex = 0;
       }
+      
       if(pictures == null || thumbnails == null) {
          pictures = new ArrayList<String>();
          thumbnails = new ArrayList<Bitmap>();
       }
       
-      Log.i("WTC", "Testing for valid location(start)...");
-      if(location != null) {
-         Log.i("WTC", "Location is not null");
-      } else {
-         Log.i("WTC", "Location is null");
+      galleryAdapter = new GalleryAdapter(this);
+      imageGallery.setAdapter(galleryAdapter);
+      
+      if(isDeleting) {
+         promptDeleteImage();
       }
    }
    
@@ -169,6 +188,36 @@ public class LocationActivity extends Activity {
       }
    }
    
+   public void deleteImage() {
+      if(deleteIndex < pictures.size() && deleteIndex < thumbnails.size()) {
+         pictures.remove(deleteIndex);
+         thumbnails.remove(deleteIndex);
+         galleryAdapter.notifyDataSetChanged();
+      }
+      isDeleting=false;
+   }
+   
+   public void promptDeleteImage() {
+      isDeleting = true;
+      DialogInterface.OnClickListener deleteListener = new DialogInterface.OnClickListener() {
+         
+         @Override
+         public void onClick(DialogInterface dialog, int which) {
+            if(which == DialogInterface.BUTTON_POSITIVE) {
+               deleteImage();
+            }
+            dialog.dismiss();
+         }
+      };
+      AlertDialog.Builder builder = new AlertDialog.Builder(this);
+      builder.setTitle("Delete?");
+      builder.setMessage("Are you sure you want to delete this picture?");
+      builder.setPositiveButton("Yes", deleteListener);
+      builder.setNegativeButton("No", deleteListener);
+      builder.setCancelable(false);
+      builder.create().show();
+   }
+   
    /**
     * This method is called by the cancel button, closing
     * the Activity and returning an Activity.RESULT_CANCELED
@@ -181,7 +230,6 @@ public class LocationActivity extends Activity {
       finish();
    }
    
-
    /**
     * This method is called by the "Add picture" button. It
     * starts the camera intent.
@@ -212,6 +260,7 @@ public class LocationActivity extends Activity {
          Bitmap pictureThumb = (Bitmap) data.getExtras().get("data");
          pictures.add(picturePath);
          thumbnails.add(pictureThumb);
+         galleryAdapter.notifyDataSetChanged();
       }
    }
 
@@ -250,19 +299,52 @@ public class LocationActivity extends Activity {
       out.putString("name", name);
       out.putString("desc", desc);
       out.putParcelable("location", location);
+      out.putBoolean("isDeleting", isDeleting);
+      out.putInt("deleteIndex", deleteIndex);
 
       if(pictures.size() != 0 && thumbnails.size() != 0) {
+         Log.i("WTC", "pictures and thumbnails exist");
          out.putStringArrayList("pictures", pictures);
          out.putParcelableArrayList("thumbnails", thumbnails);   
       }
    }
    
-   public class GalleryAdapter {
+   public class GalleryAdapter extends BaseAdapter {
       private Context context;
       
       public GalleryAdapter(Context context) {
          this.context = context;
       }
+
+      @Override
+      public int getCount() {
+         return pictures.size();
+      }
+
+      @Override
+      public Object getItem(int position) {
+         return position;
+      }
+
+      @Override
+      public long getItemId(int position) {
+         return position;
+      }
+
+      @Override
+      public View getView(int position, View convertView, ViewGroup parent) {
+         ImageView imageView = new ImageView(context);
+         imageView.setImageBitmap(thumbnails.get(position));
+         Gallery.LayoutParams params = new Gallery.LayoutParams(imageViewWidth,imageViewHeight);
+         imageView.setLayoutParams(params);
+         
+         return imageView;
+      }
    }
-   
+
+   @Override
+   public void onItemClick(AdapterView<?> parent, View child, int position, long id) {
+      deleteIndex = position;
+      promptDeleteImage();
+   }
 }

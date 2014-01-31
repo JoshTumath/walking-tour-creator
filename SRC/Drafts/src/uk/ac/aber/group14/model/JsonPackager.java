@@ -131,7 +131,7 @@ public class JsonPackager implements IJsonPackager {
          if ( pictures != null && pictures.length != 0) {
             JSONArray photoArray = new JSONArray();
             for(String picture : pictures) {
-               String encodedPhoto = EncodePhoto(picture);
+               String encodedPhoto = EncodePhotoUpgrade(picture);
                
                if (encodedPhoto != null) {
                   photoArray.put(encodedPhoto);

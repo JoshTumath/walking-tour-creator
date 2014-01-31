@@ -99,13 +99,17 @@
 	        android:text="@string/ActivityLocationAddPicture" />
 
 	    <Gallery
-	        android:id="@+id/gallery1"
-	        android:layout_width="wrap_content"
+	        android:id="@+id/imageGallery"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_above="@+id/ConfirmAction"
+	        android:layout_below="@+id/locationDescriptionEdit"
 	        android:layout_centerHorizontal="true"
-	        android:layout_marginBottom="36dp"
-	        android:minHeight="20dp" />
+	        android:fadingEdge="none|horizontal"
+	        android:minHeight="100dp"
+	        android:paddingBottom="10dp"
+	        android:paddingTop="10dp"
+	        android:spacing="15dp" />
 	
 	</RelativeLayout>
 </ScrollView>

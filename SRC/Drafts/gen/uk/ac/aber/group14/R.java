@@ -35,8 +35,8 @@ public final class R {
         public static final int button3=0x7f080012;
         public static final int dialogButtonOK=0x7f08001b;
         public static final int digitalClock1=0x7f080001;
-        public static final int gallery1=0x7f080009;
         public static final int gallery2=0x7f08000c;
+        public static final int imageGallery=0x7f080009;
         public static final int imageView1=0x7f08000b;
         public static final int latitude=0x7f08000d;
         public static final int locationDescriptionEdit=0x7f080006;
