@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,8 +43,8 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
    static final int REQUEST_IMAGE_CAPTURE = 1;
    static final int nameMaxLength = 255;
    static final int descMaxLength = 1000;
-   private static final int imageViewWidth = 100;
-   private static final int imageViewHeight = 100;
+   private static final int imageViewWidth = 500;
+   private static final int imageViewHeight = 500;
    private final Context context = this;
    private ArrayList<String> pictures;
    private ArrayList<Bitmap> thumbnails;
@@ -69,6 +70,7 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
       
       imageGallery = (Gallery) this.findViewById(R.id.imageGallery);
       imageGallery.setOnItemClickListener(this);
+      
       location = (Location) getIntent().getExtras().getParcelable("location");
       pictures = null;
       thumbnails = null;
@@ -344,6 +346,8 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
          imageView.setImageBitmap(thumbnails.get(position));
          Gallery.LayoutParams params = new Gallery.LayoutParams(imageViewWidth,imageViewHeight);
          imageView.setLayoutParams(params);
+         imageView.setScaleType(ScaleType.FIT_CENTER);
+         //imageView.setLayoutParams( new Gallery.LayoutParams(WindowManager.LayoutParams.MATCH_PARENT, GalleryView.LayoutParams.MATCH_PARENT));
          
          return imageView;
       }
