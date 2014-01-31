@@ -61,7 +61,7 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 	
 	$marker_html = "<p>" . $marker_info['description'] . "</p>";
 	while ($photo = $select_photo_name->fetch(PDO::FETCH_ASSOC)) {
-		$marker_html = "{$marker_html} <img class='mapimg' src='images/walkimages/{$photo['photoName']}.jpeg' alt='' />";
+		$marker_html = "{$marker_html} <img class='infowindow_img' src='images/walkimages/{$photo['photoName']}.jpeg' alt='' />";
 	}
 	
 	$markers[] = '["' . $marker_info['title'] . '",' . $marker_info['latitude'] . ',' . $marker_info['longitude'] . ', "' . $marker_html . '"]';
@@ -147,7 +147,7 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 					html: sites[3]
 				});
 				google.maps.event.addListener(marker, "click", function () {
-					infowindow.setContent("<h1>"+ this.title +"</h1><p>"+ this.html +"</p>");
+					infowindow.setContent("<h1 class='infowindow_header'>"+ this.title +"</h1><p class='infowindow_content'>" + this.html + "</p>");
 					infowindow.open(map, this);
 				});
 				map.fitBounds(bounds);

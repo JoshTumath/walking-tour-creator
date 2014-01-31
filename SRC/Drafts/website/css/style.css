@@ -163,11 +163,19 @@ footer p {
    height:100%;
 }
 
-#map img.mapimg {
+#map img.infowindow_img {
    display:block;
    margin:4px;
    height:222px;
    width:296px;
    background:black;
    transition:200ms box-shadow;
+}
+
+#map .infowindow_header {
+
+}
+
+#map .infowindow_content {
+
 }
