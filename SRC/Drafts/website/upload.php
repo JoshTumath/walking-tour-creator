@@ -86,7 +86,7 @@ for ($x = 1; $x <= $number_of_points; $x++) {
 		
 		$number_of_images = count($image_data);
 		
-		for ($y = 0; $y <= $number_of_images; $y++) {
+		for ($y = 0; $y < $number_of_images; $y++) {
 			$image_data_replaced = strtr($image_data[$y], '-_', '+/');
 			$image = base64_decode($image_data_replaced);
 			$photo_name = md5($image);
