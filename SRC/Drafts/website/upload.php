@@ -1,14 +1,10 @@
 <?php
-$TEST_JSON = file_get_contents("log/test_json.txt");
 //Recieves data from java application and decodes it into php readable form
 
 if ( !isset($_POST["tourdata"])) {
-	if ($TEST_JSON) {
-		$_POST["tourdata"] = $TEST_JSON;
-	} else {
-		header("HTTP/1.1 418 I'm a teapot");
-		exit;
-	}
+	header("HTTP/1.1 418 I'm a teapot");
+	exit;
+	
 }
  
 $json_data = $_POST["tourdata"];
