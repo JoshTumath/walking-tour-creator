@@ -54,8 +54,8 @@ public interface IPointOfInterest extends Parcelable {
    public void addPictures(LinkedList<String> pictures);
    
    /**
-    * This method is used to get the picture of the IPointOfInterest
-    * @return A string representing the location on the filesystem of the picture
+    * This method is used to get an array of the pictures in the IPointOfInterest
+    * @return An array of strings representing the locations on the filesystem of the pictures
     */
    public String[] getPictures();
    
