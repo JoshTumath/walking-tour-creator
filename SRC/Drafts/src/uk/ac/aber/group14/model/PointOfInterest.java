@@ -128,7 +128,7 @@ public class PointOfInterest implements IPointOfInterest {
    }
 
    /**
-    * @see uk.ac.aber.group14.model.IPointOfInterest#getPicture()
+    * @see uk.ac.aber.group14.model.IPointOfInterest#getPictures()
     */
    public String[] getPictures() {
       return pictures.toArray(new String[pictures.size()]);
@@ -159,6 +159,9 @@ public class PointOfInterest implements IPointOfInterest {
       }
    };
 
+   /**
+    * @see uk.ac.aber.group14.model.IPointOfInterest#addPictures(java.util.LinkedList)
+    */
    @Override
    public void addPictures(LinkedList<String> pictures) {
       this.pictures.addAll(pictures);
