@@ -11,28 +11,28 @@
 	
 	$select_walks = $db->prepare("SELECT * FROM listOfWalks");
 	$select_walks->execute();
-	$select_walks->setAttribute(PDO::FETCH_ASSOC);
 	
 	$select_photo_query = $db->prepare("SELECT photoUsage.photoName FROM (((photoUsage INNER JOIN placeDescription ON photoUsage.placeID = placeDescription.id) INNER JOIN location ON placeDescription.locationID = location.id) INNER JOIN listOfWalks ON location.walkID = listOfWalks.id) WHERE listOfWalks.id = :id");
 	$select_photo_query->bindParam(":id", $walk_id);
-	$select_photo_query->setAttribute(PDO::FETCH_BOTH);
-	
-	
 	
     echo "<ul class='walkItem'>";
-    while ($walk = $select_walks->fetch()) {
+    while ($walk = $select_walks->fetch(PDO::FETCH_ASSOC)) {
 		$walk_id = $walk["id"];
 		$walk_name = $walk["title"];
 		
 		echo "<li>";
 			echo "<a href='tour.php?id={$walk_id}'>";
-				$select_photo_query->execute();
-				$photo_select_result = $select_photo_query->fetch();
-				$image_name = $photo_select_result[0];
-				echo "<img src='images/walkimages/{$image_name}.png' alt=''/>";
-			echo "<p>{$walk["title"]}</p>";
-		echo "</a>";
-    echo "</li>";
+				$is_proper_name = $select_photo_query->execute();
+				$photo_select_result = $select_photo_query->fetch(PDO::FETCH_ASSOC);
+				
+				if ($photo_select_result) {
+					echo "<img src='images/walkimages/{$photo_select_result["photoName"]}.jpeg' alt=''/>";
+				} else {
+					echo "<img src='images/logo.jpg' alt=''/>";
+				}
+			echo "<p>{$walk['title']}</p>";
+			echo "</a>";
+		echo "</li>";
     }
 	
     echo "</ul>";
