@@ -119,6 +119,7 @@ while ($poi = $select_poi->fetch(PDO::FETCH_ASSOC)) {
 				this.setZoom(14);
 				google.maps.event.removeListener(boundsListener);
 			});
+			
 			var walkDistance = calcDistance(coordinates).toFixed(3);
 			document.getElementById("distance").innerHTML = walkDistance;
 			
