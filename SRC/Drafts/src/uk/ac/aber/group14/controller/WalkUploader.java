@@ -1,9 +1,16 @@
 package uk.ac.aber.group14.controller;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -14,6 +21,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import uk.ac.aber.group14.model.IPointOfInterest;
+import uk.ac.aber.group14.model.JsonPackager;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -76,7 +85,16 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
     */
    @Override
    protected Boolean doInBackground(IWalkController... params) {
-      return uploadWalk(params[0]);
+      boolean returnValue = false;
+      try {
+         return uploadWalk(params[0]);
+      } catch (MalformedURLException e) {
+         e.printStackTrace();
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      
+      return returnValue;
    }
    
    /**
@@ -107,8 +125,10 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
     * uses http to send the walk as a String in post data.
     * @param walkController
     * @return
+    * @throws IOException 
+    * @throws MalformedURLException 
     */
-   public boolean uploadWalk(IWalkController walkController) {
+   public boolean uploadWalk(IWalkController walkController) throws MalformedURLException, IOException {
       boolean uploadSuccess=true;
       String walk = walkController.compileWalk();
       List<NameValuePair> nameValuePairs;
@@ -139,6 +159,58 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
          uploadSuccess = false;
       }
       
+      /*HttpURLConnection urlConnection;
+      urlConnection = (HttpURLConnection) new URL(uploadAddress).openConnection();
+      
+      urlConnection.setDoOutput(true);
+      urlConnection.setRequestMethod("POST");
+      
+      urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+      PrintWriter printWriter = new PrintWriter(urlConnection.getOutputStream());
+      
+      
+      //Default is UTF-8 for android, so this is quite predictable
+      char[] jsonWalk = walkController.memSafeCompileWalk().toCharArray();
+      IPointOfInterest[] pois = walkController.getPOIs();
+      String pictures[] = pois[0].getPictures();
+      int nextNull = indexOfNextNull(jsonWalk, 0); 
+      int lastNull=0, poi=0, picture=0;
+      for(nextNull=0; nextNull<jsonWalk.length; lastNull=indexOfNextNull(jsonWalk, nextNull+1)) {
+         String urlEncodedChunk = String.copyValueOf(jsonWalk, lastNull, nextNull - lastNull);
+         printWriter.write(urlEncodedChunk);
+         String urlEncodedBase64Image = JsonPackager.EncodePhotoUpgrade(pictures[picture]);
+         printWriter.write(urlEncodedBase64Image);
+         if(picture < pictures.length - 1) {
+            poi++;
+            picture = 0;
+         } else {
+            picture++;
+         }
+      }
+      printWriter.close();
+      
+      Scanner inStream = new Scanner(urlConnection.getInputStream());
+      StringBuilder responseBuilder = new StringBuilder();
+      while(inStream.hasNextLine()) {
+         responseBuilder.append(inStream.nextLine());
+      }
+      String response = responseBuilder.toString();
+      int responseStart = response.indexOf(' ')+1;
+      int responseCode = Integer.valueOf(response.substring(responseStart, responseStart+3));
+      if(responseCode != 200) {
+         uploadSuccess = false;
+      }*/
+      
       return uploadSuccess;
+   }
+   
+   private int indexOfNextNull(char[] string, int lastIndex) {
+      int index;
+      for(index = lastIndex; index < string.length; index++) {
+         if(string[index] == '0') {
+            break;
+         }
+      }
+      return lastIndex;
    }
 }

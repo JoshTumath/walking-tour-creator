@@ -93,7 +93,7 @@ public class JsonPackager implements IJsonPackager {
     * @param loc - Locations[]
     * @throws JSONException
     */
-   private void JSONifyLocations(Location[] loc) throws JSONException {
+   public void JSONifyLocations(Location[] loc) throws JSONException {
       JSONObject location;
       
       for (Location l: loc) {
@@ -160,7 +160,7 @@ public class JsonPackager implements IJsonPackager {
     * @return JSONObject
     * @throws JSONException
     */
-   private JSONObject JSONifyGenericLocation(double lat, double lng, int timestamp) throws JSONException {
+   public JSONObject JSONifyGenericLocation(double lat, double lng, int timestamp) throws JSONException {
       JSONObject location = new JSONObject();
       
       location.put("latitude", lat);
@@ -212,7 +212,7 @@ public class JsonPackager implements IJsonPackager {
     * @param photoURI The URI to the photo's file
     * @return A String containing the base64 String of the photo
     */
-   private String EncodePhotoUpgrade(String photoURI) {
+   public static String EncodePhotoUpgrade(String photoURI) {
       File imageFile = new File(photoURI);
       FileInputStream fis = null;
       
@@ -235,7 +235,7 @@ public class JsonPackager implements IJsonPackager {
     * @param s The String to encode
     * @return The URL-safe base64 String
     */
-   private String URLEncodeBase64(String s) {
+   public String URLEncodeBase64(String s) {
       String encodedString;
       encodedString = s.replace("+", "%2B");
       encodedString = encodedString.replace("/", "%2F");
@@ -244,4 +244,124 @@ public class JsonPackager implements IJsonPackager {
       return encodedString;
    }
    
+   //---------------------------------
+   
+   /**
+    * Modifies the walkData JSONObject to contain the required fields
+    * taken from the Walk that is passed in.
+    * 
+    * @param w - IWalk
+    * @param timeDelta - long
+    * @throws JSONException
+    */
+   public JSONObject memSafeJSONifyWalkData(IWalk w, long timeDelta) throws JSONException {
+      JSONObject returnJSONObject = new JSONObject();
+      returnJSONObject.put("walkname", w.getName());
+      returnJSONObject.put("shortdescription", w.getShortDescription());
+      returnJSONObject.put("longdescription", w.getLongDescription());
+      returnJSONObject.put("time", timeDelta);
+      
+      return returnJSONObject;
+   }
+   
+   
+   /**
+    * Creates JSONObjects for each Point Of Interest in the PointOfInterest array
+    * that is passed to the function.
+    * 
+    * As required by the JSON Specification :
+    * Encodes the poiflag field as true
+    * Encodes the poidata field as a JSONObject containing additional information.
+    * Instead of embedding the base64 encoded images, this places a null byte in the JSON
+    * Places the created JSONObject in the points JSONObject with a numeric key
+    * 
+    * @param poi - PointOfInterest[]
+    * @throws JSONException
+    */
+   public void memSafeJSONifyPointsOfInterest(JSONObject jsonPoints, IPointOfInterest[] poi) throws JSONException {
+      JSONObject pointOfInterest;
+      JSONObject poiData;
+      
+      for (IPointOfInterest p : poi) {
+         pointOfInterest = JSONifyGenericLocation(p.getLatitude(), p.getLongitude(), (int) p.getTime() / 1000);
+         pointOfInterest.put("poiflag", true);
+         
+         poiData = new JSONObject();
+         poiData.put("locationname", p.getName());
+         poiData.put("description", p.getDescription());
+         
+         String[] pictures = p.getPictures();
+         if ( pictures != null && pictures.length != 0) {
+            JSONArray photoArray = new JSONArray();
+            for(String picture : pictures) {
+               photoArray.put("\0");
+            }
+            poiData.put("photos", photoArray);
+         } else {
+            poiData.put("photos", JSONObject.NULL);
+         }
+         
+         pointOfInterest.put("poidata", poiData);
+         jsonPoints.put(String.valueOf(points.length() + 1), pointOfInterest);
+      }
+   }
+   
+   /**
+    * Creates JSONObjects for each normal location in the Location array
+    * that is passed to the function.
+    * 
+    * As required by the JSON Specification :
+    * Encodes the poiflag field as false
+    * Encodes the poidata field as a null JSON value
+    * Places the created JSONObject in the points JSONObject with a numeric key
+    * 
+    * @param loc - Locations[]
+    * @throws JSONException
+    */
+   public void memSafeJSONifyLocations(JSONObject jsonPoints, Location[] loc) throws JSONException {
+      JSONObject location;
+      
+      for (Location l: loc) {
+         location = JSONifyGenericLocation(l.getLatitude(), l.getLongitude(), (int) l.getTime() / 1000);
+         location.put("poiflag", false);
+         location.put("poidata", JSONObject.NULL);
+         
+         jsonPoints.put(String.valueOf(points.length() + 1), location);
+      }
+   }
+   
+   /**
+    * This method converts the IWalk to a JSON String
+    * @see uk.ac.aber.group14.model.IJsonPackager#JSONify(uk.ac.aber.group14.model.IWalk)
+    */
+   public String memSafeJSONify(IWalk w) {
+      this.walk = new JSONObject();
+      this.points = new JSONObject();
+      try {
+         IPointOfInterest[] pointsOfInterest = w.getPointsOfInterest();
+         Location[] locations = w.getLocations();
+         
+         int startTime = (int) (Math.min(pointsOfInterest[0].getLocation().getTime(), locations[0].getTime()) / 1000);
+         int endTime = (int) (Math.max(pointsOfInterest[pointsOfInterest.length - 1].getLocation().getTime(), locations[locations.length - 1].getTime()) / 1000);
+         int timeDelta = endTime - startTime;
+         
+         /* Create JSON data from walk (name, descriptions, timestamp).
+            Create walkData JSON object and put this data into it */
+         memSafeJSONifyWalkData(w, timeDelta);
+         
+         // Create JSON data from Locations and add it to points JSON object
+         memSafeJSONifyLocations(points, locations);
+         
+         // Create JSON data from POIs and add it to the points JSON object
+         memSafeJSONifyPointsOfInterest(points, pointsOfInterest);
+         
+         this.walk.put("data", walkData);
+         this.walk.put("points", points);
+         
+         return walk.toString(2);
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
+      return null;
+   }
 }

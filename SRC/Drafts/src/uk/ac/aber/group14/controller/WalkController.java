@@ -124,4 +124,15 @@ public class WalkController implements IWalkController, Parcelable {
       }
       
    }; 
+   
+   @Override
+   public IPointOfInterest[] getPOIs() {
+      return walk.getPointsOfInterest();
+   }
+   
+   @Override
+   public String memSafeCompileWalk() {
+      JsonPackager packager = new JsonPackager();
+      return packager.memSafeJSONify(walk);
+   }
 }

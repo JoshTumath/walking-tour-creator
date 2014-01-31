@@ -47,4 +47,8 @@ public interface IWalkController extends Parcelable {
     * @return A String representing the walk as a JSON object
     */
    public String compileWalk();
+   
+   public IPointOfInterest[] getPOIs();
+   
+   public String memSafeCompileWalk();
 }

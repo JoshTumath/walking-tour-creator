@@ -14,4 +14,6 @@ public interface IJsonPackager {
     */
    public String JSONify(IWalk w);
    
+   public String memSafeJSONify(IWalk w);
+   
 }
