@@ -1,12 +1,27 @@
 <?php
-//Recieves data from java application and decodes it into php readable form
+
+/**
+ *This is the upload.php page which handles the post request from the app
+ * 
+ *First of all there is a check to see if the JSON data is set properly, if it has not breen set then an
+ *error message is displayed. otherwise the $_POST of the tour data is set to the variable called $json_data
+ *
+ *@author group 14
+ */
 
 if ( !isset($_POST["tourdata"])) {
 	header("HTTP/1.1 418 I'm a teapot");
 	exit;
-	
 }
- 
+
+/**
+ *Tour Data arrives as post request from the walking tour app
+ *
+ *The JSON file arrives from the app and is stored in a $_POST associative array where is is then decoded
+ *using the json_decode method. The decoded information is stored in a .txt log on the server.
+ *
+ *@author group 14
+ */
 $json_data = $_POST["tourdata"];
 $walk_data = json_decode($json_data, true);
 
@@ -23,9 +38,21 @@ $short_desc = $walk_data["data"]['shortdescription'];
 $long_desc	= $walk_data["data"]['longdescription'];
 $time 		= $walk_data["data"]['time'];
 
+/**
+ *A connection to the database is opened so that the decrypted JSON data can be inserted into the database
+ *
+ *@author group 14
+ */
 $db = new PDO("mysql:host=jakemaguire.co.uk;dbname=walking_tour_database", "webWalk", "123");
 $db->beginTransaction();
 
+/**
+ *These are the INSERT statements, which will insert all of the JSON data into the database
+ *
+ *There is a seperate INSERT statement for each table that exhists in the database
+ *
+ *@author
+ */
 
 // Prepared statement to insert a walk from parsed JSON data
 $insert_walk_query = $db->prepare("INSERT INTO listOfWalks (title, shortDesc, longDesc, time) VALUES (:walkname, :shortdesc, :longdesc, :time)");
@@ -54,6 +81,12 @@ $q1r = $insert_walk_query->execute();
 $walk_id = $db->lastInsertId(); //selects last id of added walk using the auto increment option in the database
 $number_of_points = count($walk_data["points"]); //counts the number of 'points'(locations on walk)
 
+/**
+ *For loop goes through all of the points in a walk, assigning the variables that are associated with it.
+ *These vriables include the $latitude, $longitude, $timestamp and $poi_flag.
+ *
+ *@author group 14
+ */
 
 //for loop assigns variables to the json data
 for ($x = 1; $x <= $number_of_points; $x++) {
@@ -67,6 +100,15 @@ for ($x = 1; $x <= $number_of_points; $x++) {
 		$description	= $walk_data["points"][$x]["poidata"]["description"];
 		$image_data 	= $walk_data["points"][$x]["poidata"]["photos"]; // CHANGE TO PHOTO IF USING ONE PHOTO SOLUTION
 	}
+	
+/**
+ *$q2r executes the $insert_location_query. If there is a point of interest then $q3r executes the insert_poi_query
+ *and the id of the location is set to the locationID of the the placeDirsiprion where the number of images is counted.
+ *A for loop then loops through all of the images, decodes the base 64 then executes the $insert_photo_query.
+ *the md5 of the images then becomes the image name and is saved into a file called images on the server
+ *
+ *@author group 14
+ */
 	
 	$q2r = $insert_location_query->execute();
 	$location_id = $db->lastInsertId();
@@ -86,18 +128,17 @@ for ($x = 1; $x <= $number_of_points; $x++) {
 			
 			$insert_photo_query->execute();
 		}
-		
-		// if ($image_data != null) {
-			// $image_data_replaced = strtr($image_data, '-_', '+/');
-			// //$image_data_replaced_again = str_pad($image_data_replaced, strlen($image_data_replaced) % 4, '=', STR_PAD_RIGHT);
-			// $image = base64_decode($image_data_replaced);
-			// $photo_name = md5($image);
-			// file_put_contents("images/walkimages/{$photo_name}.jpeg", $image); //name of saved png image becomes md5 key
-			
-			// $insert_photo_query->execute();
-		// }
+
 	}
 }
+
+/**
+ *If statement checks if $q1r, $q2r $q3r are all true, if so the 'Success' will be echoed and all of the
+ *insert statements will be commited to the database. If not the 'Failure is echoed and then insert statements are cancelled
+ *and the databse is restored to its former status
+ *
+ *@author group 14
+ */
 
 if ($q1r && $q2r && $q3r) {
 	echo "Success";
