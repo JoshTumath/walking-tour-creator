@@ -149,7 +149,7 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
 	};
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
       builder.setTitle("Cancel?");
-      builder.setMessage("Are you sure?");
+      builder.setMessage("Are you sure? You will lose all data associated with this walk!");
       builder.setPositiveButton("Yes", listener);
       builder.setNegativeButton("No", listener);
       builder.create().show();
@@ -202,20 +202,9 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
    @Override
    protected void onActivityResult(int requestCode, int resultCode, Intent data) {//recieves
       super.onActivityResult(requestCode, resultCode, data);
-      if(data != null && data.getAction() != null) {
-         Log.i("WTC", "Activity result received[" + requestCode + "] " +
-               data.getAction() + ", " + data.getDataString());
-      } else {
-         Log.i("WTC", "Activity result received[" + requestCode+ "]");
-      }
       if(resultCode == Activity.RESULT_OK) {
          IPointOfInterest point = data.getParcelableExtra("pointOfInterest");
-         Log.i("WTC", "Adding new point of interest, " + point.getName());
          walkController.addPOI(point);
-         Log.i("WTC", "POI added, testing for null...");
-         if(point.getLocation() != null) {
-            Log.i("WTC", "POI is not null");
-         }
       }
    }
 
