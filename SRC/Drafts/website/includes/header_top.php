@@ -7,5 +7,5 @@
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu:bold">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
 		
-		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script> 
     
