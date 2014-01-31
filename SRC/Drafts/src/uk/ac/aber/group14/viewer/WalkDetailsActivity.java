@@ -52,6 +52,9 @@ public class WalkDetailsActivity extends Activity {
       
    }
 
+   /**
+    * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+    */
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
       // Inflate the menu; this adds items to the action bar if it is present.
@@ -121,15 +124,13 @@ public class WalkDetailsActivity extends Activity {
       finish();
    }
    
-       /**
-        * This method is overriden in order to prevent
-        * the back button from taking the user to the previos
-        * activity
-       * @see android.app.Activity#onBackPressed()
-       */
-      public void onBackPressed() {
-
-       }
+  /**
+   * This method is overriden in order to prevent
+   * the back button from taking the user to the previos
+   * activity
+   * @see android.app.Activity#onBackPressed()
+   */
+   public void onBackPressed() { }
    
    /**
     * This method is used to validate all of the user's input.

@@ -123,7 +123,6 @@ public class PointOfInterest implements IPointOfInterest {
     */
    @Override
    public int describeContents() {
-      // Apparently this method is required but rarely necessary to modify
       return 0;
    }
 

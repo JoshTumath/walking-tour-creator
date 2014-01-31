@@ -13,12 +13,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -65,8 +63,8 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
       
       progressDialog = new ProgressDialog(WalkCreatorActivity.this);
       alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
-      // simple saving of states in the walk Controller
       if(savedInstanceState!=null) {
+         //Load previously saved values
          walkController = savedInstanceState.getParcelable("walkController");
          isRunning = savedInstanceState.getBoolean("isRunning");
          isFinished = savedInstanceState.getBoolean("isFinished");
@@ -116,7 +114,6 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
       locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, locationMinTime, locationMinDistance, this);
 
 
-      new Handler();
       isRunning = true;
       
    }
@@ -245,12 +242,12 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
    /**
     * @see android.location.LocationListener#onProviderEnabled(java.lang.String)
     */
-   public void onProviderEnabled(String provider) { Log.i("WTC", "Provider " + provider + " enabled.");}
+   public void onProviderEnabled(String provider) { }
 
    /**
     * @see android.location.LocationListener#onProviderDisabled(java.lang.String)
     */
-   public void onProviderDisabled(String provider) {Log.i("WTC", "Provider " + provider + "disabled.");}
+   public void onProviderDisabled(String provider) { }
 
    
    /**
@@ -269,7 +266,6 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
       {
          isRunning = false;
          locationManager.removeUpdates(this);
-         Log.i("WTC", "Attempting to upload walk...");
          walkUploader = new WalkUploader();
          walkUploader.setDialogsAndNotify(progressDialog, alertDialog, this);
          walkUploader.execute(walkController);

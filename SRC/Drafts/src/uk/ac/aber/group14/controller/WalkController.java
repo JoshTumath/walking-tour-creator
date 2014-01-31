@@ -51,30 +51,20 @@ public class WalkController implements IWalkController, Parcelable {
    }
 
    /**
+    * This adds a GPS Location to the walk
+    * @see uk.ac.aber.group14.controller.IWalkController#addLocation(android.location.Location)
+    */
+   public void addLocation(Location location) {
+      walk.addLocation(location);
+   }
+   
+   /**
     * This cancels the walk
     * @see uk.ac.aber.group14.controller.IWalkController#cancelWalk()
     */
    @Override
    public void cancelWalk() {
       walk = null;
-   }
-   
-   /**
-    * This compiles the walk into JSON using the IJsonPackager interface
-    * @see uk.ac.aber.group14.controller.IWalkController#compileWalk()
-    */
-   @Override
-   public String compileWalk() {
-      IJsonPackager jsonPackager = new JsonPackager();
-      return jsonPackager.JSONify(walk);
-   }
-
-   /**
-    * This adds a GPS Location to the walk
-    * @see uk.ac.aber.group14.controller.IWalkController#addLocation(android.location.Location)
-    */
-   public void addLocation(Location location) {
-      walk.addLocation(location);
    }
 
    /**
@@ -86,6 +76,16 @@ public class WalkController implements IWalkController, Parcelable {
    @Override
    public boolean canUpload() {
       return (walk.getNumberLocations() > 0 && walk.getNumberPOI() > 0);
+   }
+   
+   /**
+    * This compiles the walk into JSON using the IJsonPackager interface
+    * @see uk.ac.aber.group14.controller.IWalkController#compileWalk()
+    */
+   @Override
+   public String compileWalk() {
+      IJsonPackager jsonPackager = new JsonPackager();
+      return jsonPackager.JSONify(walk);
    }
 
    /**

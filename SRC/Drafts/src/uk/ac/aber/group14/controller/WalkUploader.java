@@ -7,19 +7,16 @@ import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.util.Log;
 
 /**
  * This class is used as a means of making http requests without blocking
@@ -33,10 +30,9 @@ import android.util.Log;
  *
  */
 public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
+   private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";
    private ProgressDialog progressDialog;
    private AlertDialog alertDialog;
-   private static final String uploadAddress = "http://jakemaguire.co.uk/projects/wtc/upload.php";
-   /*private static final String uploadAddress = "http://lem0n.net/~tiggy/store.php";*/
    private IUploadFinishNotify finishNotify;
 
    /**
@@ -114,16 +110,15 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
    public boolean uploadWalk(IWalkController walkController) {
       boolean uploadSuccess=true;
       String walk = walkController.compileWalk();
-      /*Log.i("WTC", "\nCompiled walk:\n" + walk + "\n\n");*/
+      List<NameValuePair> nameValuePairs;
       HttpClient httpClient = new DefaultHttpClient();
       HttpPost httpPost = new HttpPost(uploadAddress);
       
-      List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+      nameValuePairs = new ArrayList<NameValuePair>();
       nameValuePairs.add(new BasicNameValuePair("tourdata", walk));
       try {
          httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
       } catch (UnsupportedEncodingException e) {
-         Log.i("WTC", "Error attempting to encode URL: " + e.getLocalizedMessage());
          uploadSuccess=false;
       }
       
@@ -131,27 +126,13 @@ public class WalkUploader extends AsyncTask<IWalkController, Integer, Boolean> {
       try {
          response = httpClient.execute(httpPost);
       } catch (ClientProtocolException e) {
-         Log.i("WTC", e.getLocalizedMessage());
          uploadSuccess = false;
       } catch (IOException e) {
-         Log.i("WTC", e.getLocalizedMessage());
          uploadSuccess = false;
       }
       
       if(response == null || response.getStatusLine().getStatusCode() != 200) {
          uploadSuccess = false;
-      } else {
-         try {
-            Log.i("WTC", "\n\n====== RECEIVED DATA =====\n" +
-                  EntityUtils.toString(response.getEntity()) + 
-                  "\n======= END OF DATA ======\n\n");
-         } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-         }
       }
       
       return uploadSuccess;

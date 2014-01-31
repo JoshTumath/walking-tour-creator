@@ -8,18 +8,15 @@ import uk.ac.aber.group14.model.IPointOfInterest;
 import uk.ac.aber.group14.model.PointOfInterest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -150,12 +147,7 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
          if(pictures.size() != 0) {
             pointOfInterest.addPictures(new LinkedList<String>(pictures));
          }
-         Log.i("WTC", "Testing for valid location...");
-         if(location != null) {
-            Log.i("WTC", "Location not null.");
-         } else {
-            Log.i("WTC", "Location is null.");
-         }
+
          Intent output = new Intent();//save
          
          output.putExtra("pointOfInterest", pointOfInterest);
@@ -311,7 +303,6 @@ public class LocationActivity extends Activity implements Gallery.OnItemClickLis
       out.putInt("deleteIndex", deleteIndex);
 
       if(pictures.size() != 0 && thumbnails.size() != 0) {
-         Log.i("WTC", "pictures and thumbnails exist");
          out.putStringArrayList("pictures", pictures);
          out.putParcelableArrayList("thumbnails", thumbnails);   
       }

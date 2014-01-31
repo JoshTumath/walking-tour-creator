@@ -15,7 +15,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.util.Base64;
-import android.util.Log;
 
 
 /**
@@ -126,7 +125,6 @@ public class JsonPackager implements IJsonPackager {
          poiData.put("locationname", p.getName());
          poiData.put("description", p.getDescription());
          
-         Log.i("WTC", "Testing to see if POI contains a picture...");
          String[] pictures = p.getPictures();
          if ( pictures != null && pictures.length != 0) {
             JSONArray photoArray = new JSONArray();
@@ -173,13 +171,13 @@ public class JsonPackager implements IJsonPackager {
     * @return A String containing the base64 String of the photo
     */
    private String EncodePhoto(String photoURI) {
-      Log.i("WTC", "Attempting to convert picture to Base64 string");
       File imageFile = new File(photoURI);
+      String returnValue = null;
       try {
          BufferedInputStream bufIStream = new BufferedInputStream(new FileInputStream(imageFile));
-
          long lFileLength = imageFile.length();
          int iFileLength = (int) lFileLength;
+         
          if(lFileLength == iFileLength) {
             byte[] byteArray = new byte[iFileLength];
             int offset = 0;
@@ -187,21 +185,20 @@ public class JsonPackager implements IJsonPackager {
                offset += bufIStream.read(byteArray, offset, iFileLength-offset);
             } while(offset < iFileLength);
             bufIStream.close();
-            return Base64.encodeToString(byteArray, Base64.URL_SAFE);
+            returnValue = Base64.encodeToString(byteArray, Base64.URL_SAFE);
          }
          else {
             bufIStream.close();
-            Log.i("WTC", "IOException");
             throw new IOException("File larger than 2GB");
          }
          
       } catch (FileNotFoundException e) {
-         Log.i("WTC", e.getLocalizedMessage());
-         return null;
+         returnValue = null;
       } catch (IOException e) {
-         Log.i("WTC", e.getLocalizedMessage());
-         return null;
+         returnValue = null;
       }
+      
+      return returnValue;
    }
    
    
@@ -217,7 +214,6 @@ public class JsonPackager implements IJsonPackager {
       try {
          fis = new FileInputStream(imageFile);
       } catch (FileNotFoundException e) {
-         Log.i("WTC", e.getLocalizedMessage());
          return null;
       }
 

@@ -163,7 +163,6 @@ public class Walk implements IWalk, Parcelable {
     */
    @Override
    public int describeContents() {
-      // TODO Auto-generated method stub
       return 0;
    }
 
