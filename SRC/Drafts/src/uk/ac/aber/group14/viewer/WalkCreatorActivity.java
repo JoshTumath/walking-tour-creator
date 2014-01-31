@@ -10,7 +10,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -63,6 +62,9 @@ implements LocationListener, IUploadFinishNotify, DialogInterface.OnDismissListe
       
       progressDialog = new ProgressDialog(WalkCreatorActivity.this);
       alertDialog = new AlertDialog.Builder(WalkCreatorActivity.this).create();
+      
+      progressDialog.setCancelable(false);
+      
       if(savedInstanceState!=null) {
          //Load previously saved values
          walkController = savedInstanceState.getParcelable("walkController");
