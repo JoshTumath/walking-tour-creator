@@ -1,0 +1,41 @@
+Project:                    Group Project 14
+Meeting:                    Documentation Meeting.
+Persons present:            Michael Oddie, Rob Bolton, Lars Lunde, James Berry
+Place and date of meeting:  C57a, Monday 10th February 2014
+Circulation list:           All project members, plus project manager
+Author:                     Jake Maguire (jam64)
+Date of minutes:            10th February 2014
+Version:                    1.0
+
+Matters arising
+===============
+
+1. Check to see if personal reflective reports were accurate.
+
+New business
+============
+
+1. End of project documentation must be finished by Monday the 17th of February.
+
+2. Theo Taylor is to do the Management Summary.
+
+3. James Mellors is to do Historical Account.
+
+4. Jake and Rob are to do Final State of the Project and Critical Evaluation.
+
+5. Dan is to do the Readme.
+
+6. Dan and Lars are to do Maintanence.
+
+7. Lars is to do the Test Report.
+
+8. Oddie and James Berry are to finish the Revised Project Plan.
+
+9. All may need to do Persoanl Reflective Report depending on email from Bernie.
+
+10. Meeting on Thursday and Friday depending on Facebook response.
+
+AOB
+===
+
+None.
