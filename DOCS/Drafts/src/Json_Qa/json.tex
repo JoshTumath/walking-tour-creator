@@ -80,7 +80,10 @@ All keys are strings and are required.
                                 "poidata"		: {
                                                 "locationname"	: "varsity",
                                                 "description"	: "a good pub",
-                                                "photo"			: "----------"
+                                                "photo"			: [ "image_data",
+                                                					"image_data2",
+                                                                    "image_data3"
+                                                                    ]
                                 			}
                         	},
                      	"2" : {
@@ -104,7 +107,7 @@ Each location contains a longitude, latitude and a timestamp of the location. Th
 indicating whether it is a point of interest as well.
 
 The poidata JSON Object contains the additional information that a point of interest requires such as the location name,
-location description and the optional Base64 encoded image.
+location description and an optional array of base64 image data strings.
 
 
 
