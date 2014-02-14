@@ -1,19 +1,19 @@
 \documentclass{project}
 
 %---------- Edit for current document
-\usepackage[pdfauthor={Daniel Wakefield},pdftitle={Test Specification},pdftex]{hyperref}
+\usepackage[pdfauthor={Group 14},pdftitle={Test Report},pdftex]{hyperref}
 \usepackage{longtable}
 \begin{document}
 \title{Group Project 14}
 
 %---------- Edit for current document
-\subtitle{Test Specification}
-\author{Daniel Wakefield}
-\shorttitle{Test Specification}
-\version{1.3}
+\subtitle{Test Report}
+\author{Group 14}
+\shorttitle{Test Report}
+\version{1.0}
 \status{Release}
 \date{2014-02-14}
-\configref{GP14-TEST-SPEC}
+\configref{GP14-TEST-REP}
 
 \maketitle
 \tableofcontents
@@ -25,94 +25,92 @@
 \section{INTRODUCTION}
 
 \subsection{Purpose of this Document}
-The purpose of this document is to provide robust and repeatable system tests.
-They will be run in each version of the program to ensure that adequate 
-functionality remains as the software is updated. Provide a outline to 
-group leaders so they can estimate resources and effort required for each test
-run.
+The purpose of this document is to create a report on how many of our set
+test the release version of our walking tour creator, and see how many of the 
+predetermined tests it passes. 
 
 
 \subsection{Scope}
-This document covers the testing plan for the system. The tests cover all relevant functional requirements. QA Managers and Group leaders should be
-up to date with this specification as they will be required to sign off
-on all version changes to the system.
-
+This will show the results of running all the tests on the HTC One phone running Android Jelly Bean.
+This particular test report will not cover any other phone, nor the emulated version.
 
 \subsection{Objectives}
-The objectives of this document are to :
-\begin{enumerate}
-\item Provide Robust and repeatable system tests.
-\item Provide tests for all verifiable functional requirements
-\item Ensure all areas of the system work when integrated
-\item Provide Leaders with estimates for resources and effort required
-for tests
+The objective of this document is to show the result of all the tests of the test table, being tested
+on the HTC One Android mobile phone.
 
-\end {enumerate}
 
 \clearpage
 
 \section{TEST TABLE}
 
-\begin{longtable}{ | p{1cm} | p{1cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |} 
+\begin{longtable}{ | p{1cm} | p{1cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{1cm} |} 
 
 \hline 
-{\bf Test Ref} & {\bf Req being tested} & {\bf Test Content} & {\bf Inputs} & {\bf Output} & {\bf Pass Criteria} \endhead  \hline
+{\bf Test Ref} & {\bf Req being tested} & {\bf Test Content} & {\bf Inputs} & {\bf Output} & {\bf Pass Criteria} & {\bf Result} \endhead  \hline
 
 SE-F-001 
 & FR1
 & Pressing "Start Walk" Button on Main Screen. 
 & Button Press Event 
 & New Screen
-&  Should Open a new application screen prompting the user for the walk details. \\ \hline
+& Should Open a new application screen prompting the user for the walk details. 
+& PASS \\ \hline
 
 SE-F-002
 & FR2
 & Data Entry of Null Walk Name on Walk Detail Screen  
 & "" 
 & Error Message
-& Walk Fails to Start with appropriate error message\\ \hline
+& Walk Fails to Start with appropriate error message
+& PASS\\ \hline
 
 SE-F-003 
 & FR2
 & Data Entry of Long Walk Name on Walk Detail Screen  
 & "this walk has a very long name wouldn't you agree? well it doesn't matter if you don't I know its true"
 & Error Message
-& Walk Fails to Start with appropriate error message\\ \hline
+& Walk Fails to Start with appropriate error message
+& PASS\\ \hline
 
 SE-F-004
 & FR2
 & Data entry of Normal Walk Name on Walk Detail Screen with other fields filled with valid input
 & "SampleWalkName"
 & New Screen
-& Walk can be started with this name \\ \hline
+& Walk can be started with this name 
+& PASS\\ \hline
 
 SE-F-005
 & FR2
 & Data Entry of 100 Character Description in Short Description Box with other fields filled with valid input
 & Enter letter "a" 100 times
 & New Screen
-& Walk can be started with this Description \\ \hline
+& Walk can be started with this Description 
+& PASS\\ \hline
 
 SE-F-006
 & FR2
 & Data Entry of 101 Character Description in Short Description Box with other fields filled with valid input
 & Enter letter "a" 101 times
 & Error Message
-& Walk Fails to Start with appropriate error message \\ \hline
+& Walk Fails to Start with appropriate error message 
+& PASS\\ \hline
 
 SE-F-007
 & FR2
 & Data Entry of 1000 Character Description in Long Description Box with other fields filled with valid input
 & Enter letter "a" 1000 times
 & New Screen
-& Walk can be started with this Description \\ \hline
+& Walk can be started with this Description 
+& PASS\\ \hline
 
 SE-F-008
 & FR2
 & Data Entry of 1001 Character Description in Long Description Box with other fields filled with valid input
 & Enter letter "a" 1001 times
 & Error Message
-& Walk Fails to Start with appropriate error message \\ \hline
+& Walk Fails to Start with appropriate error message 
+& PASS\\ \hline
 
 
 SE-F-009
@@ -120,63 +118,72 @@ SE-F-009
 & Data entry of Multiple Words in Name box
 & Enter "Aberystwyth Is A University Town" in Name box
 & Error Message
-& Walk Fails to Start with appropriate error message \\ \hline
+& Walk Fails to Start with appropriate error message 
+& PASS\\ \hline
 
 SE-F-010
 & FR3
 & Press Add Waypoint Button on the Walk Screen
 & Button Press Event 
 & New Screen
-& Waypoint entry screen appears with the current timestamp \\ \hline
+& Waypoint entry screen appears with the current timestamp
+& PASS \\ \hline
 
 SE-F-011
 & FR4
 & Press "Add Picture" Button on Add Waypoint Details Screen
 & Button Press Event 
 & System Pop-up
-& System camera options appear on the screen \\ \hline
+& System camera options appear on the screen 
+& PASS\\ \hline
 
 SE-F-012
 & FR5
 & Press "Cancel Walk" Button on Walk Screen
 & Button Press Event 
 & Confirm System  Pop-up
-& Warning if the user really wants to cancel the walk \\ \hline
+& Warning if the user really wants to cancel the walk 
+& PASS\\ \hline
 
 SE-F-013
 & FR5
 & Press "Confirm" Button on Cancel walk warning pop-up
 & Button Press Event 
 & Main Screen
-& Walk Ends and returns to Main Screen \\ \hline
+& Walk Ends and returns to Main Screen 
+& PASS\\ \hline
 
 SE-F-014
 & FR6
 & Press "Upload Walk" button on Main Screen with no points of interest
 & Button Press Event
 & Pop up warning
-& Warning telling the user they need a point of interest to upload \\ \hline
+& Warning telling the user they need a point of interest to upload 
+& PASS\\ \hline
 
 SE-F-015
 & FR6
 & Press "Upload Walk" button on Main Screen without internet connection
 & Button Press Event
 & Pop up warning
-& Warning telling the user they can not upload at this time and return to walk screen\\ \hline
+& Warning telling the user they can not upload at this time and return to walk screen
+& PASS\\ \hline
 
 SE-F-016
 & FR6
 & Press "Upload Walk" button on Main Screen with internet connection
 & Saved Example walk
 & Database Entry
-& Database entry and uploaded walk match in all details \\ \hline
+& Database entry and uploaded walk match in all details
+& PASS\\ \hline
 
 SE-F-017
 & FR7
 & Rotate the phone
 & Physical interaction with phone
 & Different Screen orientation
-& Different Screen orientation with the same data before screen rotation on every screen\\ \hline
+& Different Screen orientation with the same data before screen rotation on every screen
+& PASS\\ \hline
 
 SE-W-001
 & X
@@ -184,15 +191,15 @@ SE-W-001
 & Example Walk Uploaded
 & Database Entry
 & Database Entry with the correct Details and returns appropriate message
-\\ \hline
+& PASS\\ \hline
 
 SE-W-002
 & FR8
 & Can search through saved walks
 & "aberystwyth"
 & Populated Dropdown List
-& Displays a dropdown list of walks containing the word "Aberystwyth" in their
-title \\ \hline
+& Displays a dropdown list of walks containing the word "Aberystwyth" in their title 
+& PASS\\ \hline
 
 SE-W-003
 & FR8
@@ -201,18 +208,17 @@ SE-W-003
 & N/A
 & When a walk is selected its general walk details display next to the 
 map and its waypoints are displayed on the map
-\\ \hline
+& PASS \\ \hline
 
 SE-W-004
 & FR8
 & Waypoint Detail are correctly displayed
 & Mouse Click
 & N/A
-& When Selecting a waypoint Timestamp, Co-ords, Details and pictures
-are displayed correctly\\ \hline
+& When Selecting a waypoint Timestamp, Co-ords, Details and pictures are displayed correctly
+& PASS\\ \hline
 
 \end{longtable}
-
 
 
 %------------------- References
@@ -230,10 +236,8 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 \hline
 
 %----------- Add edits and change author
-1.0 & N/A & 2013-11-13 & Initial creation & DAW46 \\ \hline
-1.1 & N/A & 2013-11-15 & Updated Test Inputs & DAW46 \\ \hline
-1.2 & N/A & 2013-11-15 & Changed status to release and bolded header of table & LHL \\ \hline
-1.3 & N/A & 2014-02-14 & Added more tests and removed deprecated ones, and spell check & LHL \\ \hline
+1.0 & N/A & 2013-02-14 & Initial creation & LAH25 \\ \hline
+
 
 \end{tabular}
 \end{flushleft}
