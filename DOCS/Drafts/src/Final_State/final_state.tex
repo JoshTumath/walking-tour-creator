@@ -29,7 +29,9 @@ and which parts are not. This includes both the code and the documentation. \cit
 
 \subsection{Scope}
 This document will be split into three sections: Android App, Website, and Documnentation.
-Android App will discuss any issues with the code for the app, the Website section will cover the HTML, PHP, database, and CSS parts of the website, and the Documentation section will cover any issues with the documentation. This will include the Javadoc. \cite{se.qa.03}
+Android App will discuss any issues with the code for the app, the Website section will cover the HTML,
+PHP, database, and CSS parts of the website, and the Documentation section will cover any issues with the
+documentation. This will include the Javadoc. \cite{se.qa.03}
 
 \subsection{Objectives}
 % TODO: FIX
@@ -49,12 +51,49 @@ should be possible to verify that these objectives have been met. \cite{se.qa.03
 
 
 \subsection{Android App}
+The android section will be split into 5 sections: Features, User Interface, GPS, Points Of Interest, Server Interaction.
+
+\subsubsection{Features}
+The features of the app were mostly correct. The only feature that was missing was the ability to edit previous
+Points Of Interest.
+Most features were implemented correctly, except that the app is meant to tell you if you try to take a Point Of Interest
+without any GPS signal, and prevent a Point Of Interest from being created. Instead, our app uses the user's last know location
+for the new Point Of Interest.
+GPS, the UI, and server interaction all work correctly.
+
+\subsubsection{User Interface}
+The UI works correctly. The user cannot any invalid data and are told what is wrong when they attempt to do so.
+The user cannot navigate to displays which would not make sense e.g. returning to the "Create a new walk" Activity
+whilst a current walk is being created.
+The UI can properly handle the user pressing the home button or rotating the screen on certain windows. These are
+any which require input before closing, and cannot be dismissed. Any windows which can be dismissed will not return
+upon the user opening the app again.
+
+
+\subsubsection{GPS}
+The GPS collects data correctly and filters any points which are not accurate enough. The only issue
+with the GPS is that it will automatically use the last known position if no new data is available, after
+warning the user once that they need GPS data.
+
+
+\subsubsection{Points Of Interest}
+The only issue with the Points Of Interest is that the they were meant to have "one or more" images, but we allowed the
+user to have no images as well.
+The user can take as many pictures as they want, and when adding pictures to a Point Of Interest, they can look through thumbnails
+of pictures they've already taken. Tapping on a picture deletes it. This was our interpretation of editing a Point Of Interest.
+
+\subsubsection{Server Interaction}
+Aside from a memory issue, the server interaction works well. It attempts to upload the image to the server and if anything
+other than an http "200 OK" is received then the user is told that their upload failed. The user can attempt to upload again
+if they want. This means that if anything goes wrong with sending the image then the user will be told - this includes website
+issues and connection issues.
+
 
 \subsection{Website}
 %TODO: Add website stuff
 
 \subsection{Documentation}
-%DODO: Add doc stuff
+%TODO: Add doc stuff
 
 
 %------------------- References
