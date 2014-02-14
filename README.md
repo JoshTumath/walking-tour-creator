@@ -1,29 +1,34 @@
-# Walking Tour Creator
+# README
 
-##Eclipse Setup
 
-1. Open Eclipse
-2. File -> Import -> Existing projects into workspace
-3. Change root directory to be <your git repo>/SRC/Drafts
-4. Tick the project and import it
-5. Make sure you haven't ticked "copy projects into workspace"
-6. Finish
+## Web site installation
 
-##Git Setup
+### Requirements 
 
-For More Knowledge on the workings of Git read
-http://www-cs-students.stanford.edu/~blynn/gitmagic/book.pdf
+- PHP 5.1+
+- PHP PDO module
+- Any SQL Database (Requires minor changes to files to use anything but mysql)
+- Any web server
 
-###Giteye
-1. Right clcik on the Git Repositories view
-2. Choose "Paste repository path or URI"
-3. Paste "https://github.com/JoshTumath/group-project.git"
-4. Type Your Git UserName and password into the boxes at the bottom of the
-   prompt
-5. Tick the Store in Secure Storage Box
+### Installation
 
-###Command Line
-1. Type "git clone https://github.com/JoshTumath/group-project.git"
-2. Type "git config --global credential.helper 'cache --timeout 10800'"
-3. Finished
+1. Open zip file containing git repository. 
+2. Copy all files from directory "SRC/Controlled/website" on master branch to
+   the web server.
+3. Run walking\_tour\_database.sql to create the database in your chosen
+   server.
+4. Edit upload.php, tour.php and index.php to add the correct settings for your
+   database server. This options should be put on the line
+   "$db = new PDO('TYPE\_OF\_DB:host=HOSTNAME;db=walking\_tour\_database',
+   'DB\_USER\_NAME', 'DB\_PASSWORD')"
+5. Finished.
 
+
+
+# App installation
+
+### Installation
+
+1. Change phone settings to allow application installs from unknown locations.
+2. Copy the WalkingTourCreator.apk to the phone and choose to install it.
+3. Finished.
