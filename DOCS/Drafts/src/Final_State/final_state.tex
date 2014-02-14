@@ -51,7 +51,6 @@ should be possible to verify that these objectives have been met. \cite{se.qa.03
 
 
 \subsection{Android App}
-The android section will be split into 5 sections: Features, User Interface, GPS, Points Of Interest, Server Interaction.
 
 \subsubsection{Features}
 The features of the app were mostly correct. The only feature that was missing was the ability to edit previous
@@ -90,10 +89,23 @@ issues and connection issues.
 
 
 \subsection{Website}
-%TODO: Add website stuff
+\subsubsection{Features}
+All features work correctly. The only potential issue would be if two separately uploaded images had the same hash. If this
+were to occur then the old image would be overriden with the new one.
+Parsing of the uploaded JSON and saving this data in the database works correctly.
+
+\subsubsection{Walk List}
+The page which displays the list of all recorded walks works correctly, and they are shown in a large grid with the walk's
+name and a picture from it.
+If a walk has no image then the app/webiste logo is displayed instead.
+
+
+\subsubsection{Walk Viewer}
+The walk viewer works correctly. On the left of the page it gives the user the walk's name, short \& long descriptsions, the total distance covered,
+how long the walk took. On the right the walk is displayed using Google Maps. Walks are correctly displayed in this area, with each GPS point and Point Of Interest being linked.
 
 \subsection{Documentation}
-%TODO: Add doc stuff
+%TODO: Add any remaining issues with the documentation here.
 
 
 %------------------- References
