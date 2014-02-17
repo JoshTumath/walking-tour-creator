@@ -1,10 +1,10 @@
 Configuration Reference File for Group 14
 
 
-Reference               Config Item Status      Description
-SE_14_USERMANUAL_01	Draft v0.1              User manual
-SE_14_JSON_QA_01        Draft v1.0              JSON Documentation
-SE_14_DESIGN_01         Release v1.0	        Design Spec
-SE_14_TEST_01           Release v1.5	        Test Spec
-SE_14_PLAN_01           Release v1.1	        Project Plan
+Reference                 Config Item Status      Description
+SE_14_USERMANUAL_01	      Release v1.0          User manual
+SE_14_JSON_QA_01          Draft v1.0            JSON Documentation
+SE_14_DESIGN_01           Release v1.0	        Design Spec
+SE_14_TEST_01             Release v1.5	        Test Spec
+SE_14_PLAN_01             Release v1.1	        Project Plan
 
