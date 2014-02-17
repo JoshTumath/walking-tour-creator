@@ -1,0 +1,37 @@
+<h1>README</h1>
+
+<h2>Web site installation</h2>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>PHP 5.1+</li>
+<li>PHP PDO module</li>
+<li>Any SQL Database (Requires minor changes to files to use anything but mysql)</li>
+<li>Any web server</li>
+</ul>
+
+<h3>Installation</h3>
+
+<ol>
+<li>Open zip file containing git repository. </li>
+<li>Copy all files from directory "SRC/Controlled/website" on master branch to
+the web server.</li>
+<li>Run walking_tour_database.sql to create the database in your chosen
+server.</li>
+<li>Edit upload.php, tour.php and index.php to add the correct settings for your
+database server. This options should be put on the line
+"$db = new PDO('TYPE_OF_DB:host=HOSTNAME;db=walking_tour_database',
+'DB_USER_NAME', 'DB_PASSWORD')"</li>
+<li>Finished.</li>
+</ol>
+
+<h1>App installation</h1>
+
+<h3>Installation</h3>
+
+<ol>
+<li>Change phone settings to allow application installs from unknown locations.</li>
+<li>Copy the WalkingTourCreator.apk to the phone and choose to install it.</li>
+<li>Finished.</li>
+</ol>
