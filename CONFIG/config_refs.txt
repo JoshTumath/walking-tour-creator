@@ -1,5 +1,10 @@
+Configuration Reference File for Group 14
 
-Example of this file - you need to put your own refs here…
 
+Reference               Config Item Status      Description
+SE_14_USERMANUAL_01	Draft v0.1              User manual
+SE_14_JSON_QA_01        Draft v1.0              JSON Documentation
+SE_14_DESIGN_01         Release v1.0	        Design Spec
+SE_14_TEST_01           Release v1.5	        Test Spec
+SE_14_PLAN_01           Release v1.1	        Project Plan
 
-Reference	Config Item Status	DescriptionSE_D_USER_01	Released v1.1	User manualSE_D_DESIGN_01	Draft v0.3	Design SpecSE_D_TEST_01	Released v1.0	Test Specetc.		

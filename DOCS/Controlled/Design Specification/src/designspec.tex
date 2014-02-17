@@ -208,6 +208,7 @@ public class WalkDetailsActivity {
 
 \subsection{WalkDetailsActivity interface specification}
 \begin{verbatim}/**
+<<<<<<< HEAD
  * This interface is used represent a point of interest.
  * This will store a String name, String description,
  * Location object, and optional String representing
@@ -324,10 +325,64 @@ public interface IWalk extends Parcelable{
    /**
     * This method is used to add a single IPointOfInterest to the IWalk
     * @param point The point to add to the IWalk
+=======
+ * This activity requires the user to enter a name, short description, and long
+ * description of the walk. When they press the "Create route" button this
+ * launches the "WalkCreatorActivity" giving it the details to create the walk
+ * from.
+ *
+ * @author Group 14
+ */
+public class WalkDetailsActivity {
+}\end{verbatim}
+
+\newpage
+
+\subsection{WalkController interface specification}
+\begin{verbatim}/**
+ * This interface is used to control the IWalk object. 
+ * When instantiated, this will create an IWalk and an AGPSLocationLogger.
+ * It allows the viewer to add a point of interest, finish, or cancel the walk.
+ *
+ * @author Group 14
+ */
+public interface IWalkController {
+   /**
+    * This method takes an IPointOfInterest as an argument and adds it to the
+    * IWalk.
+    */
+   public void addPointOfInterest(IPointOfInterest poi);
+    
+   /**
+    * This method will stop the AGPSLocationLogger, remove the current IWalk,
+    * and return to the MainAppActivity.
+    */
+   public void cancelWalk();
+   
+  
+}\end{verbatim}
+
+\newpage
+
+\subsection{Walk interface specification}
+\begin{verbatim}/**
+ * This interface is what actually stores the data of the walk. 
+ * This contains a list of Location objects for the walk, a list of
+ * IPointOfInterest objects, a name, a short description, and a long
+ * description
+ *
+ * @author Group 14
+ */
+public interface IWalk {
+   /**
+    * This method takes an IPointOfInterest object and adds it to the list of
+    * points of interest.
+>>>>>>> doc
     */
    public void addPointOfInterest(IPointOfInterest point);
    
    /**
+<<<<<<< HEAD
     * This method is used to add a LinkedList of Location objects to the IWalk
     * @param locations The Locations to add to the IWalk
     */
@@ -355,10 +410,38 @@ public interface IWalk extends Parcelable{
     * This method is used to return the points of interest
     * as an array of PointOfInterest
     * @return An array of type PointOfInterest representing all the points of interest in the IWalk
+=======
+    * This method adds a LinkedList of Location objects to the walk. 
+    * This is to allow the controller to put a large number of Location objects
+    * into the walk once the walk is finished and the logger as returned all of
+    * the points of data.
+    */
+   public void addLocations(LinkedList locations);
+   
+   /**
+    * This sets the walk's user-viewable name.
+    */
+   public void setTitle(String name);
+   
+   /**
+    * This sets the walks short (<100 char) description.
+    */
+   public void setShortDesctiption(String Sdesc);
+
+   /**
+    * This sets the walk's long (<1000 char) description. 
+    */
+   public void setLongDescription(String Ldesc);
+   
+   /**
+    * This returns an array of all of the IPointOfInterest objects. 
+    * This is to be used when finishing and uploading the walk.
+>>>>>>> doc
     */
    public IPointOfInterest[] getPointsOfInterest();
    
    /**
+<<<<<<< HEAD
     * This method is used to return the GPS locations as an array of
     * type Location
     * @return An array of type Location representing all of the Locations in the IWalk
@@ -374,10 +457,26 @@ public interface IWalk extends Parcelable{
    /**
     * This method is used to get the short description of the IWalk
     * @return A String representing the short description of the IWalk
+=======
+    * This returns an array of all of the walk's Location objects. 
+    * This is used when finishing and uploading the walk.
+    */
+   public android.location.Location[] getLocations();
+
+   /**
+    * This returns the String containing the walk's name.
+    */
+   public String getTitle();
+   
+   /**
+    * This returns the string containing the walk's short (<100 characters)
+    * description.
+>>>>>>> doc
     */
    public String getShortDescription();
    
    /**
+<<<<<<< HEAD
     * This method is used to get the long description of the IWalk
     * @return A String representing the long description of the IWalk
     */
@@ -402,6 +501,14 @@ public interface IWalk extends Parcelable{
     * @return An int representing the number of IPointOfInterest objects in the IWalk
     */
    public int getNumberPOI();
+=======
+    * This returns the string containing the walk's long (<1000 characters)
+    * description.
+    */
+   public String getLongDescription();
+   
+   
+>>>>>>> doc
 }
 
 \end{verbatim}
@@ -421,11 +528,19 @@ public interface IWalk extends Parcelable{
 \newpage
 
 \subsection{Significant algorithms}
+<<<<<<< HEAD
 \textbf{SetMarkers}
 SetMarkers basically takes points from the database and plots them using the LineBetweenPoints function and the google API. It takes in the latitude and longitude from a 2 dimensional array and plots the points on the map
 
 \textbf{LineBetweenPoints}
 LineBetweenPoints uses the Google API to go from of marker to the next and plots a route in between them. See the JSON format specification for the data transmission algorithms.
+=======
+\subsection{SetMarkers}
+SetMarkers basically takes points from the database and plots them using the LineBetweenPoints function and the google API. It takes in the latitude and longitude from a 2 dimensional array and plots the points on the map
+/textbf{LineBetweenPoints}
+LineBetweenPoints uses the google API to go from of marker to the next and plots a route in between them. Before we discovered the API,we thought to write our own version in java. 
+see the JSon document for the data transmission algorithms.
+>>>>>>> doc
 \begin{comment}
 \subsubsection{LocationLoggerService algorithm}
 This algorithm is used to decide which GPS locations to keep and which to
@@ -509,9 +624,13 @@ Version & CCF No. & Date & Changes made to Document & Changed by \\
 \hline
 1.0 & N/A & 2013-12-04 & Added remaining content & jmt14, tht5, jam66 \\
 \hline
+<<<<<<< HEAD
 1.1 & N/A & 2014-1-29 & Updating and making changes to content & meo9, jam66 \\
 \hline
 1.2 & N/A & 2014-2-13 & Updating interface specifications and formatting. & meo9 \\
+=======
+1.1 & N/A & 2013-1-29 & Updating and making changes to content & meo9, jam66 \\
+>>>>>>> doc
 \hline
 \end{tabular}
 \label{thelastpage}

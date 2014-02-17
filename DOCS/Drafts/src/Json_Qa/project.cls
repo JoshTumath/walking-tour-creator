@@ -1,3 +1,4 @@
+
 % article.sty 23 Sep 85
 % modified by F.W. Long to provide headers and footers 17 March 1989
 % modified by F.W. Long for West Wales Software, 29 May 1989
@@ -57,7 +58,7 @@
 \def\description{\list{}{\labelwidth\z@ \itemindent-\leftmargin
  \let\makelabel\descriptionlabel}}
 \let\enddescription\endlist
-
+
 
 \def\theequation{\arabic{equation}}
 
@@ -71,14 +72,14 @@
 
 \skip\@mpfootins = \skip\footins
 \fboxsep = 3pt \fboxrule = .4pt 
-
+
 
 \def\thepart{\Roman{part}} \def\thesection {\arabic{section}}
 \def\thesubsection {\thesection.\arabic{subsection}}
 \def\thesubsubsection {\thesubsection .\arabic{subsubsection}}
 \def\theparagraph {\thesubsubsection.\arabic{paragraph}}
 \def\thesubparagraph {\theparagraph.\arabic{subparagraph}}
-
+
 \def\@pnumwidth{1.55em}
 \def\@tocrmarg {2.55em}
 \def\@dotsep{4.5}
@@ -111,7 +112,7 @@
  {\parskip=0pt \@starttoc{lot}}}
 \let\l@table\l@figure
 
-
+
 \def\thebibliography#1{\section*{REFERENCES}\list
  {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
  \advance\leftmargin\labelsep
@@ -121,7 +122,7 @@
  \sfcode`\.=1000\relax}
 \let\endthebibliography=\endlist
  
-
+
 \newif\if@restonecol
 \def\theindex{\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
 \columnseprule \z@
@@ -133,7 +134,7 @@
 \def\subsubitem{\par\hangindent 40pt \hspace*{30pt}}
 \def\endtheindex{\if@restonecol\onecolumn\else\clearpage\fi}
 \def\indexspace{\par \vskip 10pt plus 5pt minus 3pt\relax}
-
+
 \def\footnoterule{\kern-3\p@ 
  \hrule width .4\columnwidth 
  \kern 2.6\p@} 
@@ -141,7 +142,7 @@
 \long\def\@makefntext#1{\parindent 1em\noindent 
  \hbox to 1.8em{\hss$^{\@thefnmark}$}#1}
 
-
+
 \setcounter{topnumber}{2}
 \def\topfraction{.7}
 \setcounter{bottomnumber}{1}
@@ -180,7 +181,7 @@ to\hsize{\hfil\box\@tempboxa\hfil}
 \let\endtable\end@float
 \@namedef{table*}{\@dblfloat{table}}
 \@namedef{endtable*}{\end@dblfloat}
-
+
 
 % set up the information for the title page
 % title redefined to also set shorttitle
@@ -259,7 +260,7 @@ U.K. \\
 \quotation 
 \fi}
 \def\endabstract{\if@twocolumn\else\endquotation\fi}
-
+
 \mark{{}{}} 
 
 \if@twoside \def\ps@headings{\def\@oddfoot{}\def\@evenfoot{}\def\@evenhead{\rm
@@ -320,4 +321,5 @@ U.K. \\
 % more style definitions
 
 \ps@myheadings \pagenumbering{arabic}
-\onecolumn \if@twoside\else\raggedbottom\fi
+\onecolumn \if@twoside\else\raggedbottom\fi 
+

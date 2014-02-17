@@ -1,0 +1,180 @@
+\documentclass{project}
+
+%---------- Edit for current document 
+\usepackage[pdfauthor={Robert Alexander Bolton},pdftitle={Final State of the project},pdftex]{hyperref}
+\begin{document}
+\title{Group Project 14 -}
+
+%---------- Edit for current document 
+\subtitle{LaTeX Template}
+\author{Robert Alexander Bolton}     
+\shorttitle{LaTeX Template}
+\version{1.0}
+\status{Draft}
+\date{2013-11-13}
+\configref{GP14-TEMPLATE-ALL}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%------------------- Document text
+%-------- This section and its 3 subsections are mandatory for ANY document
+
+\section{INTRODUCTION}
+
+\subsection{Purpose of this Document}
+The purpose of this document is to detail which parts of the project are correct
+and which parts are not. This includes both the code and the documentation. \cite{se.qa.03}
+
+\subsection{Scope}
+This document will be split into three sections: Android App, Website, and Documnentation.
+Android App will discuss any issues with the code for the app, the Website section will cover the HTML,
+PHP, database, and CSS parts of the website, and the Documentation section will cover any issues with the
+documentation. This will include the Javadoc. \cite{se.qa.03}
+
+\subsection{Objectives}
+% TODO: FIX
+%
+%    XXXXXXXXX    XXXXXXXXXXXX   XX    XX
+%    XXXXXXXXX    XXXXXXXXXXXX   XX    XX
+%    XXXX             XXXX        XX  XX
+%    XXXXXXX          XXXX         XXXX
+%    XXXXXXX          XXXX          XX
+%    XXXX             XXXX         XXXX
+%    XXXX         XXXXXXXXXXXX   XX   XX
+%    XXXX         XXXXXXXXXXXX  XX     XX
+%
+%
+%
+should be possible to verify that these objectives have been met. \cite{se.qa.03}
+
+
+\subsection{Android App}
+
+\subsubsection{Features}
+The features of the app were mostly correct. The only feature that was missing was the ability to edit previous
+Points Of Interest.
+Most features were implemented correctly, except that the app is meant to tell you if you try to take a Point Of Interest
+without any GPS signal, and prevent a Point Of Interest from being created. Instead, our app uses the user's last know location
+for the new Point Of Interest.
+GPS, the UI, and server interaction all work correctly.
+
+\subsubsection{User Interface}
+The UI works correctly. The user cannot any invalid data and are told what is wrong when they attempt to do so.
+The user cannot navigate to displays which would not make sense e.g. returning to the "Create a new walk" Activity
+whilst a current walk is being created.
+The UI can properly handle the user pressing the home button or rotating the screen on certain windows. These are
+any which require input before closing, and cannot be dismissed. Any windows which can be dismissed will not return
+upon the user opening the app again.
+
+
+\subsubsection{GPS}
+The GPS collects data correctly and filters any points which are not accurate enough. The only issue
+with the GPS is that it will automatically use the last known position if no new data is available, after
+warning the user once that they need GPS data.
+
+
+\subsubsection{Points Of Interest}
+The only issue with the Points Of Interest is that the they were meant to have "one or more" images, but we allowed the
+user to have no images as well.
+The user can take as many pictures as they want, and when adding pictures to a Point Of Interest, they can look through thumbnails
+of pictures they've already taken. Tapping on a picture deletes it. This was our interpretation of editing a Point Of Interest.
+
+\subsubsection{Server Interaction}
+Aside from a memory issue, the server interaction works well. It attempts to upload the image to the server and if anything
+other than an http "200 OK" is received then the user is told that their upload failed. The user can attempt to upload again
+if they want. This means that if anything goes wrong with sending the image then the user will be told - this includes website
+issues and connection issues.
+
+
+\subsection{Website}
+\subsubsection{Features}
+All features work correctly. The only potential issue would be if two separately uploaded images had the same hash. If this
+were to occur then the old image would be overriden with the new one.
+Parsing of the uploaded JSON and saving this data in the database works correctly.
+
+\subsubsection{Walk List}
+The page which displays the list of all recorded walks works correctly, and they are shown in a large grid with the walk's
+name and a picture from it.
+If a walk has no image then the app/webiste logo is displayed instead.
+
+
+\subsubsection{Walk Viewer}
+The walk viewer works correctly. On the left of the page it gives the user the walk's name, short \& long descriptsions, the total distance covered,
+how long the walk took. On the right the walk is displayed using Google Maps. Walks are correctly displayed in this area, with each GPS point and Point Of Interest being linked.
+
+\subsection{Documentation}
+%TODO: Add any remaining issues with the documentation here.
+
+
+%------------------- References
+%--------- This contains  all the QA documents, edit out the ones you don't use in the document
+
+\clearpage
+\addcontentsline{toc}{section}{REFERENCES}
+\begin{thebibliography}{5}
+
+\bibitem{ReqSpec} \emph{Software Engineering Group Projects}
+Walking Tour Creator Requirements Specification
+C. J. Price, B.P.Tiddeman. 1.2 Release.
+
+\bibitem{se.qa.01} \emph{Software Engineering Group Projects}
+Quality Assurance Plan
+C. J. Price, B.P.Tiddeman. 1.8 Release.
+
+\bibitem{se.qa.02} \emph{Software Engineering Group Projects}
+Project Management Standards
+C. J. Price. 1.8 Release.
+
+\bibitem{se.qa.03} \emph{Software Engineering Group Projects}
+General Documentation Standards.
+C. J. Price, N. W. Hardy. 1.5 Release.
+
+\bibitem{se.qa.05A} \emph{Software Engineering Group Projects}
+Design Specification Standards.
+C. J. Price, N. W. Hardy, B.P.Tiddeman. 1.7 Release.
+
+\bibitem{se.qa.05B} \emph{Software Engineering Group Projects}
+Project Plan Specification Standards.
+B.P.Tiddeman. 1.2 Release.
+
+\bibitem{se.qa.06} \emph{Software Engineering Group Projects}
+Test Procedure Standards.
+C. J. Price, N.W.Hardy, B.P.Tiddeman. 1.7 Release.
+
+\bibitem{se.qa.06} \emph{Software Engineering Group Projects}
+Review Standards.
+C. J. Price, N.W.Hardy, B.P.Tiddeman. 1.6 Release.
+
+\bibitem{se.qa.08} \emph{Software Engineering Group Projects}
+Operating Procedures and Configuration Management Standards
+C. J. Price. 1.81 Release.
+
+\bibitem{se.qa.09} \emph{Software Engineering Group Projects}
+Java Coding Standards
+C. J. Price, A. McManus. 1.7 Release.
+
+\bibitem{se.qa.11} \emph{Software Engineering Group Projects}
+Producing a Final Report
+C. J. Price, N.W. Hardy, B.P.Tiddeman. 1.7 Release.
+
+\end{thebibliography}
+
+%---------------------- Version History 
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{flushleft}
+\begin{tabular}{ | p{1.5cm} | p{1cm} | p{2cm} | p{6cm}| p{1.5cm}| }
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+
+%----------- Add edits and change author
+1.0 & N/A & 2013-11-11 & Initial creation & LHL \\
+\hline
+
+\end{tabular}
+\end{flushleft}
+\label{thelastpage}
+\end{document}
