@@ -1,0 +1,227 @@
+\documentclass{project}
+
+%---------- Edit for current document
+\usepackage[pdfauthor={Daniel Wakefield},pdftitle={Test Specification},pdftex]{hyperref}
+\usepackage{longtable}
+\begin{document}
+\title{Group Project 14}
+
+%---------- Edit for current document
+\subtitle{Test Specification}
+\author{Daniel Wakefield}
+\shorttitle{Test Specification}
+\version{1.1}
+\status{Final}
+\date{2013-11-13}
+\configref{GP14-TEST-SPEC}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%------------------- Document text
+%-------- This section and its 3 subsections are mandatory for ANY document
+
+\section{INTRODUCTION}
+
+\subsection{Purpose of this Document}
+The purpose of this document is to provide robust and repeatable system tests.
+They will be run in each version of the program to ensure that adequate 
+functionality remains as the software is updated. Provide a outline to 
+group leaders so they can estimate resources and effort required for each test
+run.
+
+
+\subsection{Scope}
+This document covers the testing plan for the system. The tests cover all relevant functional requirements. QA Managers and Group leaders should be
+up to date with this specification as they will be required to sign off
+on all version changes to the system.
+
+
+\subsection{Objectives}
+The objectives of this document are to :
+\begin{enumerate}
+\item Provide Robust and repeatable system tests.
+\item Provide tests for all verifiable functional requirements
+\item Ensure all areas of the system work when intergrated
+\item Provide Leaders with estimates for resources and effort required
+for tests
+
+\end {enumerate}
+
+\clearpage
+
+\section{TEST TABLE}
+
+\begin{longtable}{ | p{1cm} | p{1cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |} 
+
+\hline 
+Test Ref & Req being tested & Test Content & Inputs & Output & Pass Criteria \endhead  \hline
+
+SE-F-001 
+& FR1
+& Pressing "Start Walk" Button on Main Screen. 
+& Button Press Event 
+& New Screen
+&  Should Open a new application screen prompting the user for the walk details. \\ \hline
+
+SE-F-002
+& FR2
+& Data Entry of Null Walk Name on Walk Detail Screen  
+& "" 
+& Error Message
+& Walk Fails to Start with appropriate error message\\ \hline
+
+SE-F-003 
+& FR2
+& Data Entry of Long Walk Name on Walk Detail Screen  
+& "this walk has a very long name wouldnt you agree? well it doesnt matter if you dont i know its true"
+& Error Message
+& Walk Fails to Start with appropriate error message\\ \hline
+
+SE-F-004
+& FR2
+& Data entry of Normal Walk Name on Walk Detail Screen
+& "Sample Walk Name"
+& New Screen
+& Walk can be started with this name \\ \hline
+
+SE-F-005
+& FR2
+& Data Entry of 100 Character Description in Short Description Box
+& Enter letter "a" 100 times
+& New Screen
+& Walk can be started with this Description \\ \hline
+
+SE-F-006
+& FR2
+& Data Entry of 101 Character Description in Short Description Box
+& Enter letter "a" 101 times
+& Error Message
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-007
+& FR2
+& Data Entry of 1000 Character Description in Long Description Box
+& Enter letter "a" 1000 times
+& New Screen
+& Walk can be started with this Description \\ \hline
+
+SE-F-008
+& FR2
+& Data Entry of 1001 Character Description in Long Description Box
+& Enter letter "a" 1001 times
+& Error Message
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-009
+& FR2
+& Data entry of Single Word in Keyword box
+& Enter "Aberystwyth" in keyword box
+& New Screen
+& Walk can be started successfully with this keyword \\ \hline
+
+SE-F-010
+& FR2
+& Data entry of Multiple Words in Keyword box
+& Enter "Aberystwyth Is A University Town" in keyword box
+& Error Message
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-011
+& FR3
+& Press Add Waypoint Button on the Walk Screen
+& Button Press Event 
+& New Screen
+& Waypoint entry screen appears with the current GPS Co-ords displayed \\ \hline
+
+SE-F-012
+& FR4
+& Press "Add Picture" Button on Add Waypoint Details Screen
+& Button Press Event 
+& System Pop-up
+& System camera options appear on the screen \\ \hline
+
+SE-F-013
+& FR5
+& Press "Cancel Walk" Button on Walk Screen
+& Button Press Event 
+& Main Screen
+& Walk Ends and returns to Main Screen \\ \hline
+
+SE-F-014
+& FR6
+& Press "Upload Walk" button on Main Screen
+& Saved Example walk
+& Database Entry
+& Database entry and uploaded walk match in all details \\ \hline
+
+SE-F-014
+& FR7
+& Rotate the phone
+& Physical interaction with phone
+& Different Screen orientation
+& Different Screen orientation with the same data before screen rotation\\ \hline
+
+SE-W-001
+& X
+& Accepts Uploaded walks
+& Example Walk Uploaded
+& Database Entry
+& Database Entry with the correct Details and returns appropriate message
+\\ \hline
+
+SE-W-002
+& FR8
+& Can search through saved walks
+& "aberystwyth"
+& Populated Dropdown List
+& Displays a dropdown list of walks containing the word "Aberystwyth" in their
+title \\ \hline
+
+SE-W-003
+& FR8
+& A Walk can be selected
+& Mouse Click
+& N/A
+& When a walk is selected its general walk details display next to the 
+map and its waypoints are displayed on the map
+\\ \hline
+
+SE-W-004
+& FR8
+& Waypoint Detail are correctly displayed
+& Mouse Click
+& N/A
+& When Selecting a waypoint Timestamp, Co-ords, Details and pictures
+are displayed correctly\\ \hline
+
+\end{longtable}
+
+
+
+%------------------- References
+%--------- This contains all the QA documents, edit out the ones you don't use in the document
+
+
+
+%---------------------- Version History
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{flushleft}
+\begin{tabular}{ | p{1.5cm} | p{1cm} | p{2cm} | p{6cm}| p{1.5cm}| }
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+
+%----------- Add edits and change author
+1.0 & N/A & 2013-11-13 & Initial creation & DAW46 \\ \hline
+1.1 & N/A & 2013-11-15 & Updated Test Inputs & DAW46 \\ 
+\hline
+
+\end{tabular}
+\end{flushleft}
+\label{thelastpage}
+\end{document}
+
+

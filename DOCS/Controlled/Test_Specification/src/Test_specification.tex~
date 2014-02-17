@@ -1,0 +1,304 @@
+\documentclass{project}
+
+%---------- Edit for current document
+\usepackage[pdfauthor={Daniel Wakefield},pdftitle={Test Specification},pdftex]{hyperref}
+\usepackage{longtable}
+\begin{document}
+\title{Group Project 14}
+
+%---------- Edit for current document
+\subtitle{Test Specification}
+\author{Daniel Wakefield}
+\shorttitle{Test Specification}
+\version{1.5}
+\status{Release}
+\date{2013-11-13}
+\configref{GP14-TEST-SPEC}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%------------------- Document text
+%-------- This section and its 3 subsections are mandatory for ANY document
+
+\section{INTRODUCTION}
+
+\subsection{Purpose of this Document}
+The purpose of this document is to provide robust and repeatable system tests.
+They will be run in each version of the program to ensure that adequate 
+functionality remains as the software is updated. Provide a outline to 
+group leaders so they can estimate resources and effort required for each test
+run.
+
+
+\subsection{Scope}
+This document covers the testing plan for the system. The tests cover all relevant functional requirements. QA Managers and Group leaders should be
+up to date with this specification as they will be required to sign off
+on all version changes to the system.
+
+
+\subsection{Objectives}
+The objectives of this document are to :
+\begin{enumerate}
+\item Provide Robust and repeatable system tests.
+\item Provide tests for all verifiable functional requirements
+\item Ensure all areas of the system work when intergrated
+\item Provide Leaders with estimates for resources and effort required
+for tests
+
+\end {enumerate}
+
+\clearpage
+
+\section{TEST TABLE}
+\begin{small}
+\begin{longtable}{ | p{1cm} | p{1cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} |} 
+
+\hline 
+{\bf Test Ref} & {\bf Req being tested} & {\bf Test Content} & {\bf Inputs} & {\bf Output} & {\bf Pass Criteria} \endhead  \hline
+
+SE-F-001 
+& FR1
+& Pressing "Start Walk" button on main screen. 
+& Button Press Event 
+& New activity will be opened
+&  Should Open a new application screen prompting the user for the walk details. \\ \hline
+
+SE-F-002
+& FR2
+& Data entry of null walk name on Walk Detail Screen  
+& "" 
+& Prompt telling user of invalid entry
+& Walk Fails to Start with appropriate error message\\ \hline
+
+SE-F-003 
+& FR2
+& Data entry of long walk name on Walk Detail Screen  
+& "Data Entry"
+& Error message prompting user not to enter a space
+& Walk fails to start with appropriate error message\\ \hline
+
+SE-F-004
+& FR2
+& Data entry of normal walk name on walk detail screen
+& "AberWalk"
+& input box to be complete with data
+& Walk can be started with this name \\ \hline
+
+SE-F-005
+& FR2
+& Data entry of 100 character Description in Short Description Box
+& Enter letter "a" 100 times
+& input box to be complete with data
+& Walk can be started with this Description \\ \hline
+
+SE-F-006
+& FR2
+& Data entry of 101 Character Description in Short Description Box
+& Enter letter "a" 101 times
+& Error Message prompting user not to exceed 101 character limit
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-007
+& FR2
+& Data entry of 1000 Character Description in Long Description Box
+& Enter letter "a" 1000 times
+& input box to be complete with data
+& Walk can be started with this Description \\ \hline
+
+SE-F-008
+& FR2
+& Data Entry of 1001 Character Description in Long Description Box
+& Enter letter "a" 1001 times
+& Error Message prompting user not to exceed 101 character limit
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-009
+& FR2
+& Data entry of Single Word in Keyword box
+& Data entry
+& new Acvtivity screen will show and continue as expected
+& Walk can be started successfully with this keyword \\ \hline
+
+SE-F-010
+& FR2
+& Data entry of Multiple Words in Keyword box
+& Data entry
+& Prompt telling user of invalid entry, Activity will continue as expected
+& Walk Fails to Start with appropriate error message \\ \hline
+
+SE-F-011
+& FR3
+& Press add points of interest Button on the Walk Screen
+& Button Press Event 
+& New activity while selecting point of interest then returns to previous activity 
+& points of interest entry screen appears with the current GPS Co-ords displayed \\ \hline
+
+SE-F-012
+& FR4
+& Press "Add Picture" Button on Add Waypoint Details Screen
+& Button Press Event 
+& System Pop-up
+& System camera options appear on the screen \\ \hline
+
+SE-F-013
+& FR5
+& Press "Cancel Walk" Button on Walk Screen
+& Button Press Event 
+& Main Screen
+& Walk Ends and returns to Main Screen \\ \hline
+
+SE-F-014
+& FR6
+& Press "Upload Walk" button on Main Screen with internet connection
+& Saved Example walk
+& Database Entry
+& Database entry and uploaded walk match in all details \\ \hline
+
+SE-F-015
+& FR7
+& Rotate the phone on each individual screen
+& Physical interaction with phone
+& Different Screen orientation
+& Different Screen orientation with the same data before screen rotation\\ \hline
+
+SE-F-016
+& FR1
+& Each activity has to be complete before user is allowed to continue
+& finishing current activity?
+& Next activity screen
+& For next activity screen to show when information as been added in current section\\ \hline
+
+SE-F-017
+& FR1
+& On button press, GPS has to be enabled
+& Create New Route button will enable GPS
+& Activity will go to next screen
+& Walk details activity screen will show \\ \hline
+
+
+SE-F-018
+& FR6
+& Loss of GPS while app is running
+& switch off phone's data connection during upload
+& Error message prompting user to turn on GPS
+& Upload is stopped and user is offered the option to restart \\ \hline
+
+SE-F-018
+& FR9
+& Passing Data from end activity into website to be shown
+& Button touch
+& Transmission of data
+& For data from andriod phone to be sent to web application  \\ \hline
+
+SE-F-019
+& FR4
+& No point of interests set
+& No input of points of interest
+& The walk should create error message
+& The walk should not upload if no point of interest has been set \\ \hline
+
+SE-F-020
+& FR2
+& Adding correct information in Name and long description, but leaving short description empty
+& "" on short description
+& The walk should create error message
+& Error message keeps user from continuing \\ \hline
+
+SE-F-021
+& FR6
+& Uploading walk without an internet connection
+& Press upload button
+& The walk should creates an error message and continue the walk
+& Error message keeps user from continuing \\ \hline
+
+SE-F-022
+& FR6
+& Uploading walk without an internet connection
+& Press upload button multiple times
+& The walk should creates an error message and continue the walk
+& Error message keeps user from continuing \\ \hline
+
+SE-F-023
+& FR6
+& Uploading walk without an internet connection
+& Press upload button multiple times
+& The walk should creates an error message and continue the walk
+& Error message keeps user from continuing \\ \hline
+
+SE-F-024
+& FR7
+& Rotate the phone while there is a dialog box on screen
+& Physical interaction with phone
+& Different Screen orientation
+& Different Screen orientation with the same data before screen rotation\\ \hline
+
+SE-F-025
+& FR7
+& Rotate the phone while there is an error box on screen
+& Physical interaction with phone
+& Different Screen orientation
+& Different Screen orientation with the same data before screen rotation\\ \hline
+
+
+
+SE-W-001
+& FR9
+& Accepts Uploaded walks
+& Example Walk Uploaded
+& Database Entry
+& Database Entry with the correct Details and returns appropriate message
+\\ \hline
+
+SE-W-002
+& FR8
+& A Walk can be selected
+& Click on a walk on the homepage
+& New page showing data for selected walk
+& When a walk is selected its general walk details display next to the 
+map and its waypoints are displayed on the map
+\\ \hline
+
+SE-W-003
+& FR8
+& Points of interest are correctly displayed
+& Click on push pin on map
+& speech bubble showing data
+& When Selecting a waypoint Timestamp, Co-ords, Details and pictures
+are displayed correctly\\ \hline
+
+
+
+
+
+
+\end{longtable}
+\end{small}
+
+
+%------------------- References
+%--------- This contains all the QA documents, edit out the ones you don't use in the document
+
+
+
+%---------------------- Version History
+\addcontentsline{toc}{section}{DOCUMENT HISTORY}
+\section*{DOCUMENT HISTORY}
+\begin{flushleft}
+\begin{tabular}{ | p{1.5cm} | p{1cm} | p{2cm} | p{6cm}| p{1.5cm}| }
+\hline
+Version & CCF No. & Date & Changes made to Document & Changed by \\
+\hline
+
+%----------- Add edits and change author
+1.0 & N/A & 2013-11-13 & Initial creation & daw46 \\ \hline
+1.1 & N/A & 2013-11-15 & Updated Test Inputs & daw46 \\ \hline
+1.2 & N/A & 2013-11-15 & Changed status to release and bolded header of table & lah25 \\ \hline
+1.3 & N/A & 2014-01-28 & Added more test place to reflect upon program & tht5 \\ \hline
+1.4 & N/A & 2014-01-30 & Added another test and changed the FR that 2 tests applied too & meo9 \\ \hline
+1.5 & N/A & 2014-01-30 & Added more tests, especially to accomodate FR7 & lah25 \\ \hline
+\end{tabular}
+\end{flushleft}
+\label{thelastpage}
+\end{document}
